@@ -1,0 +1,7 @@
+UNIVERSO DA HELLEN — CAPAS DOS PROJETOS
+
+Foram criadas 22 capas SVG individuais, sem emojis ou títulos dentro das imagens.
+As capas ficam em assets/capas/ e são vinculadas aos cartões pelo campo cover em assets/site.js.
+Para trocar uma capa, substitua o arquivo SVG correspondente ou atualize o caminho cover.
+As capas são composições vetoriais conceituais, não imagens ou evidências reais dos projetos.
+A versão do site anterior foi preservada, inclusive páginas individuais, fotografia e dashboard Itaú.

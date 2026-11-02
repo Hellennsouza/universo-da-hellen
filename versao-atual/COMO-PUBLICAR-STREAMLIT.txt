@@ -1,0 +1,10 @@
+COMO PUBLICAR O DASHBOARD INTERATIVO
+
+1. Crie um repositório GitHub com dashboard_app_v3.py e requirements.txt (incluídos neste ZIP).
+2. Acesse https://share.streamlit.io/ e entre com o GitHub.
+3. Clique em New app, selecione repositório, branch e dashboard_app_v3.py como arquivo principal.
+4. Publique e copie a URL HTTPS da aplicação.
+5. No arquivo projetos/painel-estrategico-itau-pi1.html, encontre const STREAMLIT_APP_URL=""; e preencha com a URL.
+6. Envie o site atualizado para seu domínio.
+
+Observações: o painel é executado em servidor Python, não diretamente no HTML. Arquivos de imagem referenciados pelo código original precisam ser adicionados ao repositório para aparecer. O código inclui dados acadêmicos estáticos, que não foram auditados. Se o iframe for bloqueado, o link para abrir em tela cheia funciona como alternativa.
