@@ -1,0 +1,10 @@
+UNIVERSO DA HELLEN — VERSÃO HTML
+
+1. Extraia o ZIP.
+2. Abra index.html no navegador.
+3. Clique no projeto Painel Estratégico Itaú para acessar o dashboard HTML.
+4. Para publicar, envie a pasta inteira preservando a estrutura de arquivos para o diretório público do domínio (por exemplo public_html).
+5. O dashboard HTML funciona sem Python, Streamlit, API, servidor de aplicação ou banco de dados.
+6. O cronômetro e o menu são interativos. Os indicadores são estáticos, baseados no código acadêmico enviado.
+7. Não substitui todos os componentes do Streamlit 1:1; é uma adaptação HTML das 15 seções com conteúdo, tabelas, gráficos e interações.
+8. O arquivo dashboard_app_v3.py foi mantido como referência.

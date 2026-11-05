@@ -1,0 +1,5 @@
+GALERIAS GITHUB
+
+As paginas dos projetos publicos carregam automaticamente imagens originais dos arquivos README e das pastas dos repositorios no GitHub. Necessita internet e acesso a API publica do GitHub. Imagens nao foram copiadas para o ZIP; imagens privadas nao sao acessadas. O carregamento depende de limites da API e disponibilidade das imagens.
+
+Para acrescentar uma imagem ao projeto, coloque o arquivo no repositorio GitHub e, preferencialmente, referencie-o no README.

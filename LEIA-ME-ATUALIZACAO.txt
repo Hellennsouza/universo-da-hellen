@@ -1,0 +1,32 @@
+UNIVERSO DA HELLEN — VERSÃO REVISADA
+
+O QUE FOI FEITO
+- Página inicial reorganizada com projetos em destaque e acervo completo.
+- Busca instantânea e filtros por área; menu responsivo para celular.
+- Microinterações suaves e respeito a prefers-reduced-motion.
+- Linha do tempo temática e seção Laboratório.
+- Cartões construídos com textContent (proteção contra HTML injetado).
+- Catálogo local em data/projetos.json; sem dependência de API para exibir os projetos.
+- Etiquetas para registros documentados, projeto acadêmico e rascunhos.
+- Metadados sociais, imagem de compartilhamento e estilos de detalhes.
+- Foto original e dashboard HTML do Itaú preservados.
+
+COMO PUBLICAR
+Envie TODO o conteúdo desta pasta para a raiz pública da sua hospedagem.
+Acesse index.html. O dashboard do Itaú está em projetos/painel-estrategico-itau-pi1.html.
+Os caminhos são relativos, adequados a hospedagem estática.
+
+COMO EDITAR OS PROJETOS
+Edite a lista PROJECTS em assets/site.js para mudar os cartões.
+O arquivo data/projetos.json é uma cópia legível de referência, não é carregado pelo site.
+Para atualizar descrições das páginas individuais, edite os arquivos em projetos/.
+
+PENDÊNCIAS QUE PRECISAM DE VOCÊ
+- Informar e-mail profissional e URL exata do LinkedIn antes de inserir contato.
+- Validar as datas da trajetória anterior a 2026.
+- Completar os estudos de caso com sua contribuição, capturas reais e resultados.
+- Verificar direitos de uso e acessibilidade das imagens externas dos repositórios.
+- Revisar dados financeiros e indicadores acadêmicos do dashboard antes de divulgar como fatos atuais.
+- Testar a versão publicada no seu provedor de hospedagem e em dispositivos reais.
+
+Atenção: este pacote não altera automaticamente seu domínio nem seu GitHub.

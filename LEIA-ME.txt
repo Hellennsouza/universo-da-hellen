@@ -1,0 +1,7 @@
+UNIVERSO DA HELLEN — PÁGINAS INDIVIDUAIS
+
+Abra index.html. Clique em Conhecer registro para abrir a página individual.
+Cada projeto existente tem um arquivo HTML na pasta projetos/.
+Edite os textos diretamente nesses arquivos para completar cada estudo de caso.
+O arquivo projetos/github.html mostra automaticamente dados básicos de novos repositórios públicos sincronizados.
+Mantenha a pasta projetos ao publicar o site.
