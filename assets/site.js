@@ -11,7 +11,7 @@ const PROJECTS = [{"title": "Painel Estratégico Itaú Unibanco — PI1",
                    "page": "projetos/painel-estrategico-itau-pi1.html", 
                    "status": "Projeto acadêmico em equipe", 
                    "featured": true, 
-                   "cover": "assets/capas/planitau.png"
+                   "cover": "assets/capas/itau.png"
                   }, 
                   {"title": "ICDF — Framework de Decisão em Crédito Integrado", 
                    "cat": "Data Science", 
