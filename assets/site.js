@@ -94,7 +94,7 @@ const PROJECTS = [{"title": "Painel Estratégico Itaú Unibanco — PI1",
                    "page": "projetos/automacao-residencial-com-arduino.html", 
                    "status": "Documentado", 
                    "featured": false, 
-                   "cover": "assets/capas/projeto-07.svg"
+                   "cover": "assets/capas/arduinocasa.png"
                   }, 
                   {"title": "FinCrime", 
                    "cat": "Finanças", 
