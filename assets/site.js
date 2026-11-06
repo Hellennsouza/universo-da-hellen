@@ -167,7 +167,7 @@ const PROJECTS = [{"title": "Painel Estratégico Itaú Unibanco — PI1",
                    "page": "projetos/hhmp.html", 
                    "status": "Registro em construção", 
                    "featured": false, 
-                   "cover": "assets/capas/projeto-21.svg"
+                   "cover": "assets/capas/eng.png"
                   }, 
                   {"title": "SS Consultoria LTDA", 
                    "cat": "Empreendedorismo", 
