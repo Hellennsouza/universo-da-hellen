@@ -251,7 +251,7 @@ const PROJECTS = [{"title": "Painel Estratégico Itaú Unibanco — PI1",
                    "page": "projetos/consultoria-empresarial.html", 
                    "status": "Registro em construção", 
                    "featured": false, 
-                   "cover": "assets/capas/projeto-20.svg"
+                   "cover": "assets/capas/consultoria.png"
                   }, 
                   {"title": "HHMP", 
                    "cat": "Empreendedorismo", 
