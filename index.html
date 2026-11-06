@@ -2,6 +2,8 @@
 
 <html lang="pt-BR">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Compartilhamento: WhatsApp, Facebook e LinkedIn -->
 
@@ -51,6 +53,111 @@
 
 
 <link href="assets/site.css" rel="stylesheet"/>
+
+      
+<style>
+/* Ajustes para todas as telas */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  max-width: 100%;
+}
+
+body {
+  margin: 0;
+  max-width: 100%;
+}
+
+img, video, iframe {
+  max-width: 100%;
+}
+
+.area-image {
+  display: block;
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 16px;
+}
+
+/* Celulares */
+@media (max-width: 768px) {
+
+  .wrap {
+    width: calc(100% - 32px);
+    max-width: 100%;
+    margin-inline: auto;
+  }
+
+  .hero-inner,
+  .about,
+  .area-grid,
+  .outcomes-grid,
+  .cv-grid,
+  .lab-grid,
+  .grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hero-inner > *,
+  .about > *,
+  .area-grid > *,
+  .grid > * {
+    min-width: 0;
+  }
+
+  .section {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 9vw, 3rem);
+    line-height: 1.12;
+  }
+
+  h2 {
+    font-size: clamp(1.6rem, 7vw, 2.2rem);
+    line-height: 1.2;
+  }
+
+  p {
+    overflow-wrap: break-word;
+  }
+
+  .area-image {
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+
+  .window {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .searchbar,
+  .searchbar input {
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+  }
+}
+</style>
+
 
 <!-- Logo na aba do navegador -->
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
