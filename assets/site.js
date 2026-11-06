@@ -258,7 +258,7 @@ const PROJECTS = [{"title": "Painel Estratégico Itaú Unibanco — PI1",
                    "page": "projetos/ss-consultoria-ltda.html", 
                    "status": "Registro em construção", 
                    "featured": false, 
-                   "cover": "assets/capas/projeto-22.svg"
+                   "cover": "assets/capas/ss.png"
                   }
                 ];
 const cards=document.getElementById('cards'), featured=document.getElementById('featuredCards'), search=document.getElementById('searchProjects');
