@@ -52,7 +52,7 @@ const PROJECTS = [{"title": "Painel Estratégico Itaú Unibanco — PI1",
                    "page": "projetos/analise-de-risco-de-credito-e-inadimplencia.html", 
                    "status": "Documentado", 
                    "featured": false, 
-                   "cover": "assets/capas/projeto-04.svg"
+                   "cover": "assets/capas/risco.png"
                   }, 
                   {"title": "Arduino: Meninas na Ciência", 
                    "cat": "Robótica", 
