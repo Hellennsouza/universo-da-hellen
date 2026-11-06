@@ -225,7 +225,7 @@ const PROJECTS = [{"title": "Painel Estratégico Itaú Unibanco — PI1",
                    "page": "projetos/candy-lover.html", 
                    "status": "Registro em construção", 
                    "featured": false, 
-                   "cover": "assets/capas/projeto-19.svg"
+                   "cover": "assets/capas/pirulito.png"
                   }, 
                   {"title": "Consultoria Empresarial", 
                    "cat": "Empreendedorismo", 
