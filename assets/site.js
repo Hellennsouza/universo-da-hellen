@@ -66,7 +66,7 @@ const PROJECTS = [{"title": "Painel Estratégico Itaú Unibanco — PI1",
                    "page": "projetos/arduino-meninas-na-ciencia.html", 
                    "status": "Documentado", 
                    "featured": false, 
-                   "cover": "assets/capas/projeto-05.svg"
+                   "cover": "assets/capas/meninas.png"
                   }, 
                   {"title": "Caminhão da Ciência — UFOB", 
                    "cat": "Robótica", 
