@@ -214,7 +214,7 @@ const PROJECTS = [{"title": "Painel Estratégico Itaú Unibanco — PI1",
                    "page": "projetos/reborna.html", 
                    "status": "Registro em construção", 
                    "featured": false, 
-                   "cover": "assets/capas/projeto-18.svg"
+                   "cover": "assets/capas/reborna.png"
                   }, 
                   {"title": "Candy Lover", 
                    "cat": "Empreendedorismo", 
