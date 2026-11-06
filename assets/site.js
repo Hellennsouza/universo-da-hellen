@@ -203,7 +203,7 @@ const PROJECTS = [{"title": "Painel Estratégico Itaú Unibanco — PI1",
                    "page": "projetos/globantix.html", 
                    "status": "Registro em construção", 
                    "featured": false, 
-                   "cover": "assets/capas/projeto-17.svg"
+                   "cover": "assets/capas/globantix.png"
                   }, 
                   {"title": "Reborna", 
                    "cat": "Empreendedorismo", 
