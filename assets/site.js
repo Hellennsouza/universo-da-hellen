@@ -25,7 +25,7 @@ const PROJECTS = [{"title": "Painel Estratégico Itaú Unibanco — PI1",
                    "page": "projetos/icdf-framework-de-decisao-em-credito-integrado.html", 
                    "status": "Documentado", 
                    "featured": true, 
-                   "cover": "assets/capas/projeto-02.svg"
+                   "cover": "assets/capas/icdf.png"
                   }, 
                   {"title": "Operação Espelho Falso — Detecção de Deepfakes", 
                    "cat": "Data Science", "icon": "🪞", 
