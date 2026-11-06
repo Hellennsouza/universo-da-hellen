@@ -38,7 +38,7 @@ const PROJECTS = [{"title": "Painel Estratégico Itaú Unibanco — PI1",
                    "page": "projetos/operacao-espelho-falso-deteccao-de-deepfakes.html", 
                    "status": "Documentado", 
                    "featured": true, 
-                   "cover": "assets/capas/projeto-03.svg"
+                   "cover": "assets/capas/espelho.png"
                   }, 
                   {"title": "Análise de Risco de Crédito e Inadimplência", 
                    "cat": "Finanças", 
