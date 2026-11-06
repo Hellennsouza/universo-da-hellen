@@ -80,7 +80,7 @@ const PROJECTS = [{"title": "Painel Estratégico Itaú Unibanco — PI1",
                    "page": "projetos/caminhao-da-ciencia-ufob.html", 
                    "status": "Documentado", 
                    "featured": false, 
-                   "cover": "assets/capas/projeto-06.svg"
+                   "cover": "assets/capas/caminhao.png"
                   }, 
                   {"title": "Automação Residencial com Arduino", 
                    "cat": "Robótica", 
