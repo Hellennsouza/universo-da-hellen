@@ -189,6 +189,470 @@ body{margin:0;font:15px/1.6 system-ui,-apple-system,Segoe UI,sans-serif;backgrou
   border-radius: 15px;
 }
 
+
+/* =========================================
+   FORMAÇÃO & COMPETÊNCIAS — VERSÃO ROSA
+   ========================================= */
+
+.formacao-v2 {
+  --rosa: #d9468f;
+  --rosa-claro: #fff0f7;
+  --azul: #102d50;
+  --azul-escuro: #0d2340;
+  --texto: #1b2944;
+  --cinza: #65748c;
+
+  padding: 75px 24px 90px;
+  background: #f5f8fd;
+  color: var(--texto);
+}
+
+.formacao-container {
+  max-width: 1380px;
+  margin: 0 auto;
+}
+
+.formacao-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 35px;
+  margin-bottom: 32px;
+}
+
+.formacao-eyebrow {
+  display: block;
+  color: #167db5;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+}
+
+.formacao-topo h2 {
+  margin: 0 0 12px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(34px, 4vw, 56px);
+  line-height: 1.12;
+  color: #17233e;
+}
+
+.formacao-topo p {
+  color: var(--cinza);
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.formacao-traco {
+  width: 120px;
+  height: 5px;
+  border-radius: 10px;
+  background: var(--rosa);
+  margin-top: 16px;
+}
+
+.formacao-ilustracao {
+  width: 260px;
+  min-width: 220px;
+  height: 150px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #e9f2ff, #fceaf4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.formacao-ilustracao-icone {
+  font-size: 75px;
+}
+
+.formacao-mini-grafico {
+  width: 90px;
+  height: 75px;
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.formacao-mini-grafico span {
+  flex: 1;
+  background: var(--rosa);
+  border-radius: 5px 5px 0 0;
+}
+
+/* FAIXA DE TECNOLOGIAS */
+
+.formacao-tech {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 16px 20px;
+  background: linear-gradient(110deg, #0b2441, #194b7d);
+  border-radius: 22px;
+  box-shadow: 0 12px 28px rgba(16,45,80,.15);
+  margin-bottom: 28px;
+}
+
+.formacao-tech-titulo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 260px;
+  padding-right: 18px;
+  border-right: 1px solid rgba(255,255,255,.3);
+}
+
+.formacao-code-icon {
+  color: #f3a1c8;
+  font-size: 32px;
+  font-weight: 900;
+}
+
+.formacao-tech-titulo h3 {
+  margin: 0;
+  color: white;
+  font-family: Arial, sans-serif;
+  font-size: 23px;
+  line-height: 1.15;
+}
+
+.formacao-tech-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0,1fr));
+  gap: 10px;
+}
+
+.formacao-tech-item {
+  min-width: 0;
+  padding: 12px 5px 9px;
+  background: white;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.formacao-tech-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(0,0,0,.2);
+}
+
+.formacao-tech-item img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+}
+
+.formacao-tech-item span {
+  font-size: 12px;
+  font-weight: 800;
+  color: #142441;
+  white-space: nowrap;
+}
+
+.formacao-tech-fallback {
+  display: none;
+  font-size: 35px;
+  color: #e9ad00;
+}
+
+/* CARDS DE DESTAQUE */
+
+.formacao-destaques {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+.formacao-destaque {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 24px;
+  background: white;
+  border: 1px solid #dce5f2;
+  border-bottom: 5px solid var(--rosa);
+  border-radius: 22px;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 8px 22px rgba(16,45,80,.07);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.formacao-destaque:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(16,45,80,.12);
+}
+
+.formacao-destaque-icone {
+  width: 70px;
+  height: 70px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  background: #eaf3ff;
+  font-size: 35px;
+}
+
+.formacao-destaque-label {
+  display: block;
+  color: #0879b5;
+  font-size: 17px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.formacao-destaque h3 {
+  margin: 0 0 8px;
+  color: #102344;
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  line-height: 1.3;
+}
+
+.formacao-destaque p {
+  margin: 0;
+  color: var(--cinza);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* PAINÉIS INFERIORES */
+
+.formacao-paineis {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.formacao-painel {
+  overflow: hidden;
+  background: white;
+  border: 1px solid #dce5f2;
+  border-radius: 22px;
+  box-shadow: 0 8px 22px rgba(16,45,80,.07);
+}
+
+.formacao-painel-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 21px 28px;
+  background: linear-gradient(110deg, #0b2441, #194b7d);
+}
+
+.formacao-painel-header span {
+  color: #f3a1c8;
+  font-size: 30px;
+}
+
+.formacao-painel-header h3 {
+  margin: 0;
+  color: white;
+  font-family: Arial, sans-serif;
+  font-size: 22px;
+}
+
+.formacao-painel-body {
+  padding: 22px 28px;
+}
+
+.formacao-metodo {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 15px 0;
+}
+
+.formacao-metodo + .formacao-metodo {
+  border-top: 1px solid #e4eaf2;
+}
+
+.formacao-metodo-icone {
+  width: 75px;
+  height: 70px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  background: #eaf3ff;
+  border-radius: 18px;
+  color: #167db5;
+  font-size: 32px;
+}
+
+.formacao-metodo:nth-child(2) .formacao-metodo-icone {
+  background: #f1eaff;
+  color: #7938c5;
+}
+
+.formacao-metodo:nth-child(3) .formacao-metodo-icone {
+  background: var(--rosa-claro);
+  color: var(--rosa);
+}
+
+.formacao-metodo h4,
+.formacao-timeline-item h4 {
+  margin: 0 0 7px;
+  color: #102344;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.formacao-metodo p,
+.formacao-timeline-item p {
+  margin: 0;
+  color: #34445e;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+/* LINHA DO TEMPO */
+
+.formacao-timeline {
+  position: relative;
+  padding-left: 30px;
+}
+
+.formacao-timeline::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  bottom: 35px;
+  left: 9px;
+  width: 3px;
+  background: #f2a3c8;
+}
+
+.formacao-timeline-item {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 17px 0;
+}
+
+.formacao-timeline-item + .formacao-timeline-item {
+  border-top: 1px solid #e4eaf2;
+}
+
+.formacao-timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -30px;
+  top: 22px;
+  width: 15px;
+  height: 15px;
+  border: 3px solid var(--rosa);
+  background: white;
+  border-radius: 50%;
+}
+
+.formacao-timeline-item.concluido::before {
+  background: #22a66a;
+  border-color: #22a66a;
+}
+
+.formacao-status {
+  flex-shrink: 0;
+  border-radius: 30px;
+  padding: 7px 13px;
+  font-size: 12px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.formacao-status.concluida {
+  background: #e2f7eb;
+  color: #16864f;
+}
+
+.formacao-status.andamento {
+  background: var(--rosa-claro);
+  color: #b92d72;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 1200px) {
+  .formacao-tech {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .formacao-tech-titulo {
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,.3);
+    padding-bottom: 14px;
+  }
+
+  .formacao-tech-grid {
+    grid-template-columns: repeat(5, minmax(0,1fr));
+  }
+}
+
+@media (max-width: 850px) {
+  .formacao-topo {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .formacao-ilustracao {
+    display: none;
+  }
+
+  .formacao-destaques,
+  .formacao-paineis {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 550px) {
+  .formacao-v2 {
+    padding: 50px 15px;
+  }
+
+  .formacao-topo h2 {
+    font-size: 35px;
+  }
+
+  .formacao-tech-grid {
+    grid-template-columns: repeat(3, minmax(0,1fr));
+  }
+
+  .formacao-tech-titulo {
+    min-width: 0;
+  }
+
+  .formacao-destaque,
+  .formacao-painel-body {
+    padding: 20px;
+  }
+
+  .formacao-timeline-item {
+    flex-direction: column;
+  }
+
+  .formacao-metodo-icone {
+    width: 55px;
+    height: 55px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .formacao-v2 * {
+    transition: none !important;
+  }
+}
+
+   
   </style>
   <link href="../assets/detail-enhancements.css" rel="stylesheet"/>
   <meta content="article" property="og:type"/>
