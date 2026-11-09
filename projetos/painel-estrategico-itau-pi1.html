@@ -124,6 +124,37 @@ body{margin:0;font:15px/1.6 system-ui,-apple-system,Segoe UI,sans-serif;backgrou
 .navbtn{line-height:1.45}.metric strong{overflow-wrap:anywhere}
 .tablewrap{scrollbar-width:thin}.view table{line-height:1.5}
 @media(max-width:600px){.menu-group-title{margin-top:16px}.card{padding:18px}.top{flex-wrap:wrap}.top a{font-size:12px}}
+
+   
+/* Cards clicáveis dentro da grade de indicadores */
+.metrics > .card-link {
+  display: block;
+  min-width: 0;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.metrics > .card-link > .kpi {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  transition: transform 0.25s ease,
+              box-shadow 0.25s ease;
+}
+
+.metrics > .card-link:hover > .kpi {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 22px rgba(0, 43, 91, 0.12);
+}
+
+.metrics > .card-link:focus-visible {
+  outline: 3px solid #ff6b00;
+  outline-offset: 4px;
+  border-radius: 14px;
+}
+
   </style>
   <link href="../assets/detail-enhancements.css" rel="stylesheet"/>
   <meta content="article" property="og:type"/>
