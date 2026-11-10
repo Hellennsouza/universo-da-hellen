@@ -1045,3 +1045,18 @@ mask-image: none !important;
     margin-bottom: 0;
   }
 }
+
+/* FOTO PROFISSIONAL — LEGENDA SIMPLIFICADA */
+
+#sobre .profile-caption {
+  padding: 18px 15px 12px;
+  text-align: center;
+}
+
+#sobre .profile-caption .eyebrow {
+  margin: 0;
+  color: #286d9d;
+  font-size: clamp(14px, 2vw, 18px);
+  font-weight: 800;
+  letter-spacing: 0.15em;
+}
