@@ -406,3 +406,91 @@ details.ufob-details[open] summary::after { transform: rotate(180deg); }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .reveal { opacity: 1; transform: none; }
 }
+/* =========================================
+   1. FUNDO VIVO E MALHA DE DADOS (FLUIDEZ GERAL)
+   ========================================= */
+body {
+  margin: 0;
+  font: 16px/1.65 system-ui, -apple-system, sans-serif;
+  color: var(--ink);
+  /* Malha (grid) bem sutil de fundo simulando um ambiente de dados */
+  background-color: #f4f7fc;
+  background-image: radial-gradient(#dce5f2 1px, transparent 1px);
+  background-size: 40px 40px; 
+  position: relative;
+}
+
+/* Os pontos de luz (glows) que flutuam no fundo */
+.ambient-background {
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  overflow: hidden; z-index: -1; pointer-events: none;
+}
+.glow {
+  position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.35;
+  animation: float 20s infinite ease-in-out alternate;
+}
+.glow-pink { background: var(--pink); width: 450px; height: 450px; top: -10%; left: -10%; }
+.glow-blue { background: var(--blue); width: 600px; height: 600px; top: 40%; right: -20%; animation-delay: -5s; }
+.glow-cyan { background: #57c6eb; width: 350px; height: 350px; bottom: -10%; left: 15%; animation-delay: -10s; }
+
+@keyframes float { 
+  0% { transform: translate(0, 0) scale(1); } 
+  100% { transform: translate(80px, 120px) scale(1.15); } 
+}
+
+/* =========================================
+   2. REMOVENDO OS "BLOCOS" DAS SEÇÕES
+   ========================================= */
+/* Remova qualquer background color (como background: var(--white) ou --paper) destas seções para o fundo vivo aparecer */
+.areas, .projetos, .resultados, .trajetoria, .competencias, .section { 
+  background: transparent !important; 
+}
+
+/* =========================================
+   3. TRANSIÇÃO SUAVE DO HERO ESCURO
+   ========================================= */
+.hero {
+  background: var(--navy);
+  color: var(--white);
+  overflow: hidden;
+  position: relative;
+  /* Dissolve o azul escuro para o fundo claro do resto do site */
+  padding-bottom: 120px;
+}
+.hero::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; width: 100%; height: 180px;
+  background: linear-gradient(to bottom, rgba(244, 247, 252, 0) 0%, #f4f7fc 100%);
+  pointer-events: none;
+}
+
+/* =========================================
+   4. EFEITO VIDRO (GLASSMORPHISM) NOS CARDS
+   Isso faz a luz e a malha do fundo "passarem" pelos elementos
+   ========================================= */
+.area-card, .project, .outcome, .step, .metric, .about-photo, details.ufob-details, .formacao-painel, .formacao-tech {
+  background: rgba(255, 255, 255, 0.65) !important; /* Branco translúcido */
+  backdrop-filter: blur(16px); /* O desfoque do vidro */
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.9) !important; /* Borda fininha de vidro */
+  box-shadow: 0 10px 30px rgba(17, 29, 58, 0.05) !important;
+}
+
+/* Ajuste específico para a linha do tempo não parecer blocada */
+.timeline {
+  border-left: 2px dashed rgba(217, 70, 143, 0.4); /* Linha tracejada em vez de sólida */
+}
+
+/* =========================================
+   5. ANIMAÇÃO DE ROLAGEM MAIS ORGÂNICA
+   ========================================= */
+/* Em vez de apenas "surgir de baixo", os elementos "respiram" e ganham foco */
+.reveal { 
+  opacity: 0; 
+  transform: translateY(40px) scale(0.97); 
+  transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); 
+}
+.reveal.visible { 
+  opacity: 1; 
+  transform: translateY(0) scale(1); 
+}
