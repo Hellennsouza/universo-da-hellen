@@ -4228,6 +4228,145 @@ if (etapa.icone === "ufob") {
 })();
 </script>
 
+<!-- BUSCA JUNTO AO TÍTULO PROJETOS E SOLUÇÕES -->
+
+<style>
+  #projetos .uh-search-top {
+    margin: 35px 0 65px;
+    padding: 24px 28px;
+    border: 1px solid rgba(139, 173, 220, .3);
+    border-radius: 16px;
+
+    background: linear-gradient(
+      120deg,
+      rgba(29, 49, 82, .80),
+      rgba(28, 32, 61, .70)
+    );
+
+    box-shadow: 0 15px 35px rgba(0, 0, 0, .12);
+  }
+
+  #projetos .uh-search-top .archive-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 0;
+  }
+
+  #projetos .uh-search-top .archive-search {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  #projetos .uh-search-top .archive-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+  }
+
+  #projetos .uh-search-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255,255,255,.15);
+  }
+
+  #projetos .uh-search-footer #resultsCount {
+    margin: 0;
+    color: #c5d5e9;
+    font: .78rem Consolas, monospace;
+  }
+
+  #projetos .uh-search-footer a {
+    color: #f397c3;
+    font-size: .83rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  #projetos .uh-search-footer a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+  }
+
+  @media (max-width: 680px) {
+    #projetos .uh-search-top {
+      padding: 18px 15px;
+      margin: 25px 0 45px;
+    }
+  }
+</style>
+
+<script>
+(function () {
+  function posicionarBusca() {
+    const projetos = document.getElementById("projetos");
+
+    if (!projetos) return;
+
+    const abertura = projetos.querySelector(".uh-intro");
+    const controles = projetos.querySelector(".archive-controls");
+
+    if (!abertura || !controles) return;
+
+    // Impede duplicação
+    if (projetos.querySelector(".uh-search-top")) return;
+
+    // Cria a área visual da busca
+    const painel = document.createElement("div");
+    painel.className = "uh-search-top";
+    painel.setAttribute(
+      "aria-label",
+      "Pesquisa e filtros do portfólio"
+    );
+
+    // Move os controles originais,
+    // preservando os eventos já associados.
+    painel.appendChild(controles);
+
+    // Move a contagem existente para perto da busca
+    const rodape = document.createElement("div");
+    rodape.className = "uh-search-footer";
+
+    const contagem = projetos.querySelector("#resultsCount");
+
+    if (contagem) {
+      rodape.appendChild(contagem);
+    }
+
+    const acessar = document.createElement("a");
+
+    acessar.href = projetos.querySelector("#acervo")
+      ? "#acervo"
+      : "#cards";
+
+    acessar.textContent = "Ver projetos filtrados ↓";
+
+    rodape.appendChild(acessar);
+    painel.appendChild(rodape);
+
+    // Coloca o painel imediatamente abaixo
+    // da abertura "Projetos e Soluções"
+    abertura.insertAdjacentElement("afterend", painel);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener(
+      "DOMContentLoaded",
+      posicionarBusca,
+      { once: true }
+    );
+  } else {
+    posicionarBusca();
+  }
+})();
+</script>
+
  </body>
 </html>
 
