@@ -1,1691 +1,387 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
- <head>
+<head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   
-  <!-- Compartilhamento: WhatsApp, Facebook e LinkedIn -->
   <meta content="website" property="og:type">
-   <meta content="Universo da Hellen" property="og:site_name">
-    <meta content="pt_BR" property="og:locale"/>
-    <meta content="Universo da Hellen | Projetos e trajetória" property="og:title"/>
-    <meta content="Registros de alguém que sonha alto: projetos, experiências e aprendizados." property="og:description"/>
-    <meta content="https://universodahellen.com.br/" property="og:url"/>
-    <!-- Imagem de compartilhamento atualizada -->
-    <meta content="https://universodahellen.com.br/assets/universo-hellen-preview.png?v=3" property="og:image"/>
-    <meta content="https://universodahellen.com.br/assets/universo-hellen-preview.png?v=3" property="og:image:secure_url"/>
-    <meta content="image/png" property="og:image:type"/>
-    <meta content="1200" property="og:image:width"/>
-    <meta content="630" property="og:image:height"/>
-    <meta content="Universo da Hellen — Portfólio de Hellen Souza" property="og:image:alt"/>
-    <!-- Compatibilidade com outras redes -->
-    <meta content="summary_large_image" name="twitter:card"/>
-    <meta content="Universo da Hellen | Projetos e trajetória" name="twitter:title"/>
-    <meta content="https://universodahellen.com.br/assets/compartilhamento.png?v=3" name="twitter:image"/>
-    <title>
-     Universo da Hellen | Projetos e trajetória
-    </title>
-    <link href="assets/site.css" rel="stylesheet"/>
-    <style>
-     /* Títulos principais */
-h1, h2, h3 {
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 700;
-  letter-spacing: -0.025em;
-}
-
-/* Textos e elementos interativos */
-body, p, button, nav {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-/* Ajustes para todas as telas */
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
-html {
-  max-width: 100%;
-}
-
-body {
-  margin: 0;
-  max-width: 100%;
-}
-
-img, video, iframe {
-  max-width: 100%;
-}
-
-.area-image {
-  display: block;
-  width: 100%;
-  height: 140px;
-  object-fit: cover;
-  border-radius: 14px;
-  margin-bottom: 16px;
-}
-
-/* Celulares */
-@media (max-width: 768px) {
-
-  .wrap {
-    width: calc(100% - 32px);
-    max-width: 100%;
-    margin-inline: auto;
-  }
-
-  .hero-inner,
-  .about,
-  .area-grid,
-  .outcomes-grid,
-  .cv-grid,
-  .lab-grid,
-  .grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .hero-inner > *,
-  .about > *,
-  .area-grid > *,
-  .grid > * {
-    min-width: 0;
-  }
-
-  .section {
-    padding-top: 48px;
-    padding-bottom: 48px;
-  }
-
-  h1 {
-    font-size: clamp(2rem, 9vw, 3rem);
-    line-height: 1.12;
-  }
-
-  h2 {
-    font-size: clamp(1.6rem, 7vw, 2.2rem);
-    line-height: 1.2;
-  }
-
-  p {
-    overflow-wrap: break-word;
-  }
-
-  .area-image {
-    height: auto;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-  }
-
-  .window {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .filters {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .searchbar,
-  .searchbar input {
-    max-width: 100%;
-    min-width: 0;
-  }
-
-  .menu-toggle {
-    display: inline-flex;
-  }
-}
-     /* Estilos integrados da seção UFOB */
-
-.area-image {
-  display: block;
-  width: 100%;
-  height: 140px;
-  object-fit: cover;
-  border-radius: 14px;
-  margin-bottom: 16px;
-}
-
-/* FORMAÇÃO ACADÊMICA — UFOB */
-
-.formacao-ufob {
-  padding: 80px 22px;
-  color: #172b4d;
-}
-
-.ufob-container {
-  max-width: 1050px;
-  margin: auto;
-}
-
-.ufob-etiqueta {
-  color: #c44580;
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 2px;
-}
-
-.formacao-ufob h2,
-.formacao-ufob h3 {
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 700;
-  letter-spacing: -0.025em;
-}
-
-.formacao-ufob h2 {
-  font-size: clamp(38px, 5vw, 64px);
-  line-height: 1.1;
-  margin: 18px 0 24px;
-}
-
-.ufob-intro {
-  font-size: 17px;
-  line-height: 1.8;
-  max-width: 780px;
-}
-
-.ufob-destaques {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  margin: 32px 0;
-}
-
-.ufob-destaques > div {
-  padding: 25px;
-  background: #f7f8fc;
-  border-radius: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.ufob-destaques strong {
-  font-family: "Times New Roman", Times, serif;
-  font-size: 38px;
-}
-
-.ufob-destaques span {
-  font-size: 13px;
-}
-
-.ufob-card {
-  background: #f7f8fc;
-  border: 1px solid #e3e6ed;
-  border-radius: 20px;
-  padding: 32px;
-}
-
-.ufob-card h3 {
-  font-size: clamp(25px, 3vw, 36px);
-  margin: 12px 0;
-}
-
-.ufob-card h4 {
-  margin: 28px 0 14px;
-  font-size: 17px;
-}
-
-.ufob-card ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.ufob-card li {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  padding: 13px 0;
-  border-bottom: 1px solid #e3e6ed;
-  font-size: 14px;
-}
-
-.ufob-card li span {
-  color: #8b5a86;
-  font-size: 12px;
-  white-space: nowrap;
-}
-
-.ufob-card details {
-  margin-top: 24px;
-}
-
-.ufob-card summary {
-  cursor: pointer;
-  font-weight: 700;
-  color: #b83274;
-  padding: 16px 0;
-}
-
-.ufob-rodape {
-  font-style: italic;
-  line-height: 1.7;
-  margin-top: 25px;
-  opacity: .8;
-}
-
-@media (max-width: 600px) {
-  .formacao-ufob {
-    padding: 48px 18px;
-  }
-
-  .ufob-destaques {
-    grid-template-columns: 1fr;
-  }
-
-  .ufob-card {
-    padding: 20px;
-  }
-
-  .ufob-card li {
-    align-items: flex-start;
-  }
-}
-
-
-     /* =========================================
-   FORMAÇÃO & COMPETÊNCIAS — VERSÃO ROSA
-   ========================================= */
-
-.formacao-v2 {
-  --rosa: #d9468f;
-  --rosa-claro: #fff0f7;
-  --azul: #102d50;
-  --azul-escuro: #0d2340;
-  --texto: #1b2944;
-  --cinza: #65748c;
-
-  padding: 75px 24px 90px;
-  background: #f5f8fd;
-  color: var(--texto);
-}
-
-.formacao-container {
-  max-width: 1380px;
-  margin: 0 auto;
-}
-
-.formacao-topo {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 35px;
-  margin-bottom: 32px;
-}
-
-.formacao-eyebrow {
-  display: block;
-  color: #167db5;
-  font-size: 14px;
-  font-weight: 800;
-  letter-spacing: 3px;
-  margin-bottom: 12px;
-}
-
-.formacao-topo h2 {
-  margin: 0 0 12px;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(34px, 4vw, 56px);
-  line-height: 1.12;
-  color: #17233e;
-}
-
-.formacao-topo p {
-  color: var(--cinza);
-  font-size: 18px;
-  line-height: 1.6;
-}
-
-.formacao-traco {
-  width: 120px;
-  height: 5px;
-  border-radius: 10px;
-  background: var(--rosa);
-  margin-top: 16px;
-}
-
-.formacao-ilustracao {
-  width: 260px;
-  min-width: 220px;
-  height: 150px;
-  border-radius: 24px;
-  background: linear-gradient(135deg, #e9f2ff, #fceaf4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-}
-
-.formacao-ilustracao-icone {
-  font-size: 75px;
-}
-
-.formacao-mini-grafico {
-  width: 90px;
-  height: 75px;
-  display: flex;
-  align-items: flex-end;
-  gap: 8px;
-}
-
-.formacao-mini-grafico span {
-  flex: 1;
-  background: var(--rosa);
-  border-radius: 5px 5px 0 0;
-}
-
-/* FAIXA DE TECNOLOGIAS */
-
-.formacao-tech {
-  display: flex;
-  align-items: center;
-  gap: 22px;
-  padding: 16px 20px;
-  background: linear-gradient(110deg, #0b2441, #194b7d);
-  border-radius: 22px;
-  box-shadow: 0 12px 28px rgba(16,45,80,.15);
-  margin-bottom: 28px;
-}
-
-.formacao-tech-titulo {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  min-width: 260px;
-  padding-right: 18px;
-  border-right: 1px solid rgba(255,255,255,.3);
-}
-
-.formacao-code-icon {
-  color: #f3a1c8;
-  font-size: 32px;
-  font-weight: 900;
-}
-
-.formacao-tech-titulo h3 {
-  margin: 0;
-  color: white;
-  font-family: Arial, sans-serif;
-  font-size: 23px;
-  line-height: 1.15;
-}
-
-.formacao-tech-grid {
-  flex: 1;
-  display: grid;
-  grid-template-columns: repeat(10, minmax(0,1fr));
-  gap: 10px;
-}
-
-.formacao-tech-item {
-  min-width: 0;
-  padding: 12px 5px 9px;
-  background: white;
-  border-radius: 15px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  transition: transform .25s ease, box-shadow .25s ease;
-}
-
-.formacao-tech-item:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 20px rgba(0,0,0,.2);
-}
-
-.formacao-tech-item img {
-  width: 44px;
-  height: 44px;
-  object-fit: contain;
-}
-
-.formacao-tech-item span {
-  font-size: 12px;
-  font-weight: 800;
-  color: #142441;
-  white-space: nowrap;
-}
-
-.formacao-tech-fallback {
-  display: none;
-  font-size: 35px;
-  color: #e9ad00;
-}
-
-/* CARDS DE DESTAQUE */
-
-.formacao-destaques {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  gap: 24px;
-  margin-bottom: 30px;
-}
-
-.formacao-destaque {
-  display: flex;
-  align-items: flex-start;
-  gap: 18px;
-  padding: 24px;
-  background: white;
-  border: 1px solid #dce5f2;
-  border-bottom: 5px solid var(--rosa);
-  border-radius: 22px;
-  text-decoration: none;
-  color: inherit;
-  box-shadow: 0 8px 22px rgba(16,45,80,.07);
-  transition: transform .25s ease, box-shadow .25s ease;
-}
-
-.formacao-destaque:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 30px rgba(16,45,80,.12);
-}
-
-.formacao-destaque-icone {
-  width: 70px;
-  height: 70px;
-  flex-shrink: 0;
-  display: grid;
-  place-items: center;
-  border-radius: 18px;
-  background: #eaf3ff;
-  font-size: 35px;
-}
-
-.formacao-destaque-label {
-  display: block;
-  color: #0879b5;
-  font-size: 17px;
-  font-weight: 800;
-  margin-bottom: 8px;
-}
-
-.formacao-destaque h3 {
-  margin: 0 0 8px;
-  color: #102344;
-  font-family: Arial, sans-serif;
-  font-size: 20px;
-  line-height: 1.3;
-}
-
-.formacao-destaque p {
-  margin: 0;
-  color: var(--cinza);
-  font-size: 15px;
-  line-height: 1.5;
-}
-
-/* PAINÉIS INFERIORES */
-
-.formacao-paineis {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-}
-
-.formacao-painel {
-  overflow: hidden;
-  background: white;
-  border: 1px solid #dce5f2;
-  border-radius: 22px;
-  box-shadow: 0 8px 22px rgba(16,45,80,.07);
-}
-
-.formacao-painel-header {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  padding: 21px 28px;
-  background: linear-gradient(110deg, #0b2441, #194b7d);
-}
-
-.formacao-painel-header span {
-  color: #f3a1c8;
-  font-size: 30px;
-}
-
-.formacao-painel-header h3 {
-  margin: 0;
-  color: white;
-  font-family: Arial, sans-serif;
-  font-size: 22px;
-}
-
-.formacao-painel-body {
-  padding: 22px 28px;
-}
-
-.formacao-metodo {
-  display: flex;
-  gap: 20px;
-  align-items: flex-start;
-  padding: 15px 0;
-}
-
-.formacao-metodo + .formacao-metodo {
-  border-top: 1px solid #e4eaf2;
-}
-
-.formacao-metodo-icone {
-  width: 75px;
-  height: 70px;
-  flex-shrink: 0;
-  display: grid;
-  place-items: center;
-  background: #eaf3ff;
-  border-radius: 18px;
-  color: #167db5;
-  font-size: 32px;
-}
-
-.formacao-metodo:nth-child(2) .formacao-metodo-icone {
-  background: #f1eaff;
-  color: #7938c5;
-}
-
-.formacao-metodo:nth-child(3) .formacao-metodo-icone {
-  background: var(--rosa-claro);
-  color: var(--rosa);
-}
-
-.formacao-metodo h4,
-.formacao-timeline-item h4 {
-  margin: 0 0 7px;
-  color: #102344;
-  font-size: 18px;
-  font-weight: 800;
-}
-
-.formacao-metodo p,
-.formacao-timeline-item p {
-  margin: 0;
-  color: #34445e;
-  font-size: 15px;
-  line-height: 1.55;
-}
-
-/* LINHA DO TEMPO */
-
-.formacao-timeline {
-  position: relative;
-  padding-left: 30px;
-}
-
-.formacao-timeline::before {
-  content: "";
-  position: absolute;
-  top: 20px;
-  bottom: 35px;
-  left: 9px;
-  width: 3px;
-  background: #f2a3c8;
-}
-
-.formacao-timeline-item {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 17px 0;
-}
-
-.formacao-timeline-item + .formacao-timeline-item {
-  border-top: 1px solid #e4eaf2;
-}
-
-.formacao-timeline-item::before {
-  content: "";
-  position: absolute;
-  left: -30px;
-  top: 22px;
-  width: 15px;
-  height: 15px;
-  border: 3px solid var(--rosa);
-  background: white;
-  border-radius: 50%;
-}
-
-.formacao-timeline-item.concluido::before {
-  background: #22a66a;
-  border-color: #22a66a;
-}
-
-.formacao-status {
-  flex-shrink: 0;
-  border-radius: 30px;
-  padding: 7px 13px;
-  font-size: 12px;
-  font-weight: 800;
-  white-space: nowrap;
-}
-
-.formacao-status.concluida {
-  background: #e2f7eb;
-  color: #16864f;
-}
-
-.formacao-status.andamento {
-  background: var(--rosa-claro);
-  color: #b92d72;
-}
-
-/* RESPONSIVIDADE */
-
-@media (max-width: 1200px) {
-  .formacao-tech {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .formacao-tech-titulo {
-    border-right: none;
-    border-bottom: 1px solid rgba(255,255,255,.3);
-    padding-bottom: 14px;
-  }
-
-  .formacao-tech-grid {
-    grid-template-columns: repeat(5, minmax(0,1fr));
-  }
-}
-
-@media (max-width: 850px) {
-  .formacao-topo {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .formacao-ilustracao {
-    display: none;
-  }
-
-  .formacao-destaques,
-  .formacao-paineis {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 550px) {
-  .formacao-v2 {
-    padding: 50px 15px;
-  }
-
-  .formacao-topo h2 {
-    font-size: 35px;
-  }
-
-  .formacao-tech-grid {
-    grid-template-columns: repeat(3, minmax(0,1fr));
-  }
-
-  .formacao-tech-titulo {
-    min-width: 0;
-  }
-
-  .formacao-destaque,
-  .formacao-painel-body {
-    padding: 20px;
-  }
-
-  .formacao-timeline-item {
-    flex-direction: column;
-  }
-
-  .formacao-metodo-icone {
-    width: 55px;
-    height: 55px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .formacao-v2 * {
-    transition: none !important;
-  }
-}
-
+  <meta content="Universo da Hellen" property="og:site_name">
+  <meta content="pt_BR" property="og:locale"/>
+  <meta content="Universo da Hellen | Portfólio de Dados e Inteligência Financeira" property="og:title"/>
+  <meta content="Transformando dados em inteligência para decisões." property="og:description"/>
+  <meta content="https://universodahellen.com.br/" property="og:url"/>
+  <meta content="https://universodahellen.com.br/assets/universo-hellen-preview.png" property="og:image"/>
   
-    </style>
-    <!-- Logo na aba do navegador -->
-    <link href="assets/favicon.ico" rel="icon" type="image/x-icon"/>
-    <link href="assets/favicon.png" rel="icon" sizes="512x512" type="image/png"/>
-    <link href="assets/favicon.png" rel="apple-touch-icon"/>
-   </meta>
-  </meta>
- </head>
- <body>
-  <a class="skip" href="#conteudo">
-   Ir para conteúdo
-  </a>
+  <title>Universo da Hellen | Portfólio e Trajetória</title>
+  <link href="assets/site.css" rel="stylesheet"/>
+  <link href="assets/favicon.ico" rel="icon" type="image/x-icon"/>
+</head>
+<body>
+  <a class="skip" href="#conteudo">Ir para conteúdo</a>
+  
   <header class="top">
-   <div class="wrap nav">
-    <a class="brand" href="#inicio">
-     UNIVERSO
-     <span>
-      DA HELLEN
-     </span>
-     ✦
-    </a>
-    <button aria-controls="navLinks" aria-expanded="false" class="menu-toggle" id="menuToggle">
-     ☰ Menu
-    </button>
-    <nav aria-label="Navegação principal" class="navlinks" id="navLinks">
-     <a href="#sobre">
-      Sobre
-     </a>
-     <a href="#areas">
-      Áreas
-     </a>
-     <a href="#destaques">
-      Destaques
-     </a>
-     <a href="#projetos">
-      Projetos
-     </a>
-     <a href="#resultados">
-      Resultados
-     </a>
-     <a href="#trajetoria">
-      Trajetória
-     </a>
-     <a href="#competencias">
-      Competências
-     </a>
-     <a href="#laboratorio">
-      Laboratório
-     </a>
-     <a href="#contato">
-      Contato
-     </a>
-    </nav>
-   </div>
+    <div class="wrap nav">
+      <a class="brand" href="#inicio">UNIVERSO<span>DA HELLEN</span></a>
+      <button aria-controls="navLinks" aria-expanded="false" class="menu-toggle" id="menuToggle">☰ Menu</button>
+      <nav aria-label="Navegação principal" class="navlinks" id="navLinks">
+        <a href="#inicio">Início</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#areas">Áreas</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#resultados">Resultados</a>
+        <a href="#trajetoria">Trajetória</a>
+        <a href="#competencias">Competências</a>
+        <a href="#laboratorio">Lab</a>
+      </nav>
+    </div>
   </header>
+
   <main id="conteudo">
-   <section class="hero" id="inicio">
-    <div class="wrap hero-inner">
-     <div>
-      <div class="eyebrow">
-       Bem-vindo ao meu universo
+    <!-- 01 INÍCIO -->
+    <section class="hero" id="inicio">
+      <div class="wrap hero-inner">
+        <div class="reveal">
+          <div class="eyebrow">Data Science & Inteligência de Negócios</div>
+          <h1>Transformando dados em inteligência para decisões.</h1>
+          <p>Gestão financeira e comercial aliada à ciência de dados. Projetos, pesquisas e soluções que conectam visão estratégica à análise profunda de evidências.</p>
+          <div class="hero-buttons">
+            <a class="btn" href="#projetos">Explorar projetos</a>
+            <a class="btn secondary" href="#trajetoria">Conhecer minha trajetória</a>
+          </div>
+        </div>
+        <div class="hero-visual reveal">
+          <!-- Espaço para uma visualização abstrata de dados ou fotografia de alto padrão -->
+          <img alt="Visualização abstrata de dados" src="assets/hellen-souza.jpg" style="object-position: center 30%;" loading="eager"/>
+        </div>
       </div>
-      <h1>
-       Ideias, caminhos e
-       <em>
-        projetos que ganham vida.
-       </em>
-      </h1>
-      <p>
-       Gestão financeira e comercial, ciência de dados e inteligência financeira: projetos, pesquisas e experiências que conectam visão de negócios à análise de dados.
-      </p>
-      <a class="btn" href="#destaques">
-       Ver destaques
-      </a>
-      <a class="btn secondary" href="#sobre">
-       Minha história
-      </a>
-     </div>
-     <div aria-label="Registros de alguém que sonha alto" class="window">
-      <div class="windowbar">
-       <i class="dot">
-       </i>
-       <i class="dot">
-       </i>
-       <i class="dot">
-       </i>
-      </div>
-      <div class="windowcontent">
-       <strong>
-        Registros de alguém
-        <br/>
-        que sonha alto ✨
-       </strong>
-       <small>
-        BY HELLEN SOUZA
-       </small>
-      </div>
-     </div>
-    </div>
-   </section>
-   <section class="section" id="sobre">
-    <div class="wrap about">
-     <div class="reveal">
-      <div class="eyebrow">
-       Quem sou
-      </div>
-      <h2>
-       Olá, eu sou a Hellen.
-      </h2>
-      <p>
-       Sou graduanda em Ciência de Dados para Negócios na Fatec Votorantim, com experiência em gestão financeira, comercial e operacional. Integro análise de negócios, estruturação de processos e desenvolvimento de soluções orientadas por dados.
-      </p>
-      <p>
-       Tenho certificação CPA da ANBIMA e estudo inteligência financeira, prevenção a fraudes (FinCrime), modelos preditivos e IA explicável (LIME/SHAP). Este espaço reúne projetos acadêmicos, pesquisas, experiências e aprendizados.
-      </p>
-      <div class="metrics">
-       <div class="metric">
-        <b>
-         Desde 2020
-        </b>
-        <span>
-         Atuação em gestão e negócios
-        </span>
-       </div>
-       <div class="metric">
-        <b>
-         CPA
-        </b>
-        <span>
-         Certificação ANBIMA
-        </span>
-       </div>
-       <div class="metric">
-        <b>
-         2029
-        </b>
-        <span>
-         Previsão de conclusão da graduação
-        </span>
-       </div>
-      </div>
-     </div>
-     <aside class="about-card reveal">
-      <img alt="Retrato profissional de Hellen Souza" class="profile-photo" loading="lazy" src="assets/hellen-souza.jpg"/>
-      <div class="profile-caption">
-       <div class="eyebrow">
-        Hellen Souza
-       </div>
-       <h3>
-        Gestão, Dados &amp; Inteligência Financeira
-       </h3>
-       <p>
-        Construir, investigar, organizar e compartilhar.
-       </p>
-      </div>
-     </aside>
-    </div>
-   </section>
-   <section class="section areas" id="areas">
-    <div class="wrap">
-     <div class="eyebrow">
-      Um universo, muitas possibilidades
-     </div>
-     <h2>
-      Minhas cinco áreas de atuação
-     </h2>
-     <p class="lead">
-      Conheça as frentes que conectam minha experiência profissional, meus estudos e os projetos que desenvolvo.
-     </p>
-     <div class="area-grid">
-      <a class="area-card reveal" data-area="Finanças" href="#projetos">
-       <img alt="Ilustração de finanças" class="area-image" loading="lazy" src="assets/areas/financas.png"/>
-       <h3>
-        Finanças
-       </h3>
-       <p>
-        Inteligência financeira, FinCrime, crédito, riscos e finanças empresariais e pessoais.
-       </p>
-       <span class="area-action">
-        Explorar projetos ↗
-       </span>
-      </a>
-      <a class="area-card reveal" data-area="Robótica" href="#projetos">
-       <img alt="Ilustração de robotica" class="area-image" loading="lazy" src="assets/areas/robotica.png"/>
-       <h3>
-        Robótica
-       </h3>
-       <p>
-        Oficinas de Arduino, automação residencial e iniciativas de educação científica.
-       </p>
-       <span class="area-action">
-        Explorar projetos ↗
-       </span>
-      </a>
-      <a class="area-card reveal" data-area="Gestão" href="#projetos">
-       <img alt="Ilustração de gestao" class="area-image" loading="lazy" src="assets/areas/gestao.png"/>
-       <h3>
-        Gestão
-       </h3>
-       <p>
-        Gestão financeira, comercial, operacional, de processos e do tempo.
-       </p>
-       <span class="area-action">
-        Explorar projetos ↗
-       </span>
-      </a>
-      <a class="area-card reveal" data-area="Data Science" href="#projetos">
-       <img alt="Ilustração de data" class="area-image" loading="lazy" src="assets/areas/data.png"/>
-       <h3>
-        Data Science
-       </h3>
-       <p>
-        Python, SQL, Streamlit, modelos preditivos e inteligência de dados para negócios.
-       </p>
-       <span class="area-action">
-        Explorar projetos ↗
-       </span>
-      </a>
-      <a class="area-card reveal" data-area="Empreendedorismo" href="#projetos">
-       <img alt="Ilustração de empreendedorismo" class="area-image" loading="lazy" src="assets/areas/empreendedorismo.png"/>
-       <h3>
-        Empreendedorismo
-       </h3>
-       <p>
-        Empreendimentos, desenvolvimento de marcas, soluções de negócio e inovação.
-       </p>
-       <span class="area-action">
-        Explorar projetos ↗
-       </span>
-      </a>
-     </div>
-    </div>
-   </section>
-   <section class="section featured" id="destaques">
-    <div class="wrap">
-     <div class="eyebrow">
-      Seleção especial
-     </div>
-     <h2>
-      Projetos em destaque
-     </h2>
-     <p class="lead">
-      Três projetos para conhecer minhas áreas de interesse e a maneira como estruturo soluções.
-     </p>
-     <div class="grid" id="featuredCards">
-     </div>
-    </div>
-   </section>
-   <section class="section categories" id="projetos">
-    <div class="wrap">
-     <div class="eyebrow">
-      Acervo de projetos
-     </div>
-     <h2>
-      Explore meu universo
-     </h2>
-     <p class="lead">
-      Busque por nome, área ou ferramenta. Os registros diferenciam trabalhos documentados, projetos acadêmicos e conteúdos ainda em construção.
-     </p>
-     <label class="searchbar" for="searchProjects">
-      ⌕
-      <input autocomplete="off" id="searchProjects" placeholder="Buscar projetos, Python, Arduino, finanças..." type="search"/>
-     </label>
-     <div aria-label="Filtrar projetos" class="filters" id="filters" role="group">
-      <button aria-pressed="true" class="filter active" data-filter="Todos">
-       Todos
-      </button>
-      <button class="filter" data-filter="Finanças">
-       Finanças
-      </button>
-      <button class="filter" data-filter="Robótica">
-       Robótica
-      </button>
-      <button class="filter" data-filter="Gestão">
-       Gestão
-      </button>
-      <button class="filter" data-filter="Data Science">
-       Data Science
-      </button>
-      <button class="filter" data-filter="Empreendedorismo">
-       Empreendedorismo
-      </button>
-     </div>
-     <p aria-live="polite" class="results-count" id="resultsCount">
-     </p>
-     <div class="grid" id="cards">
-     </div>
-     <p class="note">
-      O catálogo local funciona sem conexão com o GitHub. Links e galerias externas dependem de internet.
-     </p>
-    </div>
-   </section>
-   <section class="section outcomes" id="resultados">
-    <div class="wrap">
-     <div class="eyebrow">
-      Experiência aplicada
-     </div>
-     <h2>
-      Resultados da minha trajetória
-     </h2>
-     <p class="lead">
-      Indicadores relatados no currículo, vinculados às respectivas experiências profissionais.
-     </p>
-     <div class="outcomes-grid">
-      <article class="outcome reveal">
-       <b>
-        +30%
-       </b>
-       <span>
-        Faturamento anual
-       </span>
-       <small>
-        DUKE · 2020–2023
-       </small>
-      </article>
-      <article class="outcome reveal">
-       <b>
-        95%
-       </b>
-       <span>
-        Capital inadimplente recuperado
-       </span>
-       <small>
-        DUKE · 2020–2023
-       </small>
-      </article>
-      <article class="outcome reveal">
-       <b>
-        3×
-       </b>
-       <span>
-        Carteira de clientes
-       </span>
-       <small>
-        Terraço Duke · 2024–2025
-       </small>
-      </article>
-      <article class="outcome reveal">
-       <b>
-        −20%
-       </b>
-       <span>
-        Custos operacionais
-       </span>
-       <small>
-        BWM · 2025
-       </small>
-      </article>
-      <article class="outcome reveal">
-       <b>
-        25%
-       </b>
-       <span>
-        Otimização de taxas bancárias e MDR
-       </span>
-       <small>
-        BWM · 2025
-       </small>
-      </article>
-     </div>
-    </div>
-   </section>
-   <section class="section" id="trajetoria">
-    <div class="wrap">
-     <div class="eyebrow">
-      Trajetória
-     </div>
-     <h2>
-      Os caminhos que me trouxeram até aqui
-     </h2>
-     <p class="lead">
-      Experiências profissionais e formação, com datas e resultados registrados no meu currículo.
-     </p>
-     <div class="timeline">
-      <div class="step reveal">
-       <b>
-        2020–2023 · DUKE — Experiências Inteligentes
-       </b>
-       <p>
-        Gerente financeiro e comercial, em Barreiras (BA). Aumento de 30% no faturamento anual e recuperação de 95% do capital inadimplente com fluxos de cobrança orientados por dados.
-       </p>
-      </div>
-      <div class="step reveal">
-       <b>
-        2023–2024 · Empreendedorismo autônomo
-       </b>
-       <p>
-        Gestão de negócio próprio em Irecê (BA), abrangendo finanças, coordenação de equipes e melhoria de serviços.
-       </p>
-      </div>
-      <div class="step reveal">
-       <b>
-        2024–2025 · Terraço Duke
-       </b>
-       <p>
-        Sócia participativa, em Barreiras (BA). Triplicação da carteira de clientes por meio de inteligência de mercado e direcionamento financeiro e comercial.
-       </p>
-      </div>
-      <div class="step reveal">
-       <b>
-        2025 · BWM dos Santos &amp; Cia
-       </b>
-       <p>
-        Gerente geral, em Barreiras (BA). Redução de 20% nos custos operacionais e otimização de 25% nas taxas bancárias e MDR.
-       </p>
-      </div>
-      <div class="step reveal">
-       <b>
-        2026–2029 (previsto) · Fatec Votorantim
-       </b>
-       <p>
-        Graduação em Ciência de Dados para Negócios. Projetos em análise estratégica, risco de crédito, IA explicável e inteligência financeira.
-       </p>
-      </div>
-      <div class="step reveal">
-       <b>
-        Pesquisa e projetos · Robótica, FinCrime e dados
-       </b>
-       <p>
-        Projetos Arduino Mulheres na Ciência e Caminhão da Ciência (UFOB); Operação Espelho Falso; Framework ICDF e estudos de risco de crédito.
-       </p>
-      </div>
-     </div>
-    </div>
-    <section class="formacao-ufob" id="formacao-ufob">
-    <div class="ufob-container">
-     <span class="ufob-etiqueta">
-      TRAJETÓRIA ACADÊMICA
-     </span>
-     <h2>
-      Conhecimentos que se conectam.
-     </h2>
-     <p class="ufob-intro">
-      Minha trajetória acadêmica começou antes da
-      Ciência de Dados. Na Universidade Federal do
-      Oeste da Bahia (UFOB), desenvolvi uma base
-      interdisciplinar em matemática, computação,
-      ciências, engenharia e humanidades.
-      Hoje, esses conhecimentos se conectam à minha
-      formação em Ciência de Dados para Negócios.
-     </p>
-     <div class="ufob-destaques">
-      <div>
-       <strong>
-        23
-       </strong>
-       <span>
-        Disciplinas cursadas
-       </span>
-      </div>
-      <div>
-       <strong>
-        UFOB
-       </strong>
-       <span>
-        Universidade Federal do Oeste da Bahia
-       </span>
-      </div>
-     </div>
-     <div class="ufob-card">
-      <div class="ufob-card-topo">
-       <div>
-        <span class="ufob-etiqueta">
-         FORMAÇÃO ANTERIOR
-        </span>
-        <h3>
-         Universidade Federal do Oeste da Bahia
-        </h3>
-        <p>
-         Conhecimentos acadêmicos e interdisciplinares
-        </p>
-       </div>
-      </div>
-      <h4>
-       Matemática e computação
-      </h4>
-      <ul>
-       <li>
-        Álgebra Linear I
-        <span>
-         CET0005
-        </span>
-       </li>
-       <li>
-        Geometria Analítica
-        <span>
-         CET0140
-        </span>
-       </li>
-       <li>
-        Programação de Computadores I
-        <span>
-         CET0242
-        </span>
-       </li>
-       <li>
-        Programação de Computadores II
-        <span>
-         CET0243
-        </span>
-       </li>
-      </ul>
-      <details>
-       <summary>
-        Ver todas as disciplinas cursadas
-       </summary>
-       <h4>
-        Ciências exatas e engenharia
-       </h4>
-       <ul>
-        <li>
-         Geologia Geral
-         <span>
-          CET0137
-         </span>
-        </li>
-        <li>
-         Introdução à Engenharia Civil
-         <span>
-          CET0172
-         </span>
-        </li>
-        <li>
-         Física Experimental I
-         <span>
-          CET0103
-         </span>
-        </li>
-        <li>
-         Física Geral I
-         <span>
-          CET0107
-         </span>
-        </li>
-        <li>
-         Introdução ao Desenho Técnico
-         <span>
-          CET0176
-         </span>
-        </li>
-        <li>
-         Física Experimental II
-         <span>
-          CET0104
-         </span>
-        </li>
-        <li>
-         Fundamentos de Química Geral Experimental
-         <span>
-          CET0125
-         </span>
-        </li>
-        <li>
-         Desenho Arquitetônico
-         <span>
-          CET0043
-         </span>
-        </li>
-        <li>
-         Fundamentos de Química Geral e Inorgânica
-         <span>
-          CET0124
-         </span>
-        </li>
-        <li>
-         Biologia Geral
-         <span>
-          CBS0057
-         </span>
-        </li>
-        <li>
-         Física e Sociedade
-         <span>
-          CET0102
-         </span>
-        </li>
-       </ul>
-       <h4>
-        Humanidades, comunicação e gestão
-       </h4>
-       <ul>
-        <li>
-         Ética e Política
-         <span>
-          CHU0013
-         </span>
-        </li>
-        <li>
-         Filosofia e História das Ciências
-         <span>
-          CHU0002
-         </span>
-        </li>
-        <li>
-         Introdução à Administração
-         <span>
-          CHU2005
-         </span>
-        </li>
-        <li>
-         Oficina de Leitura e Produção Textual
-         <span>
-          CHU0001
-         </span>
-        </li>
-        <li>
-         Psicologia da Aprendizagem
-         <span>
-          CHU1046
-         </span>
-        </li>
-        <li>
-         Oficina de Leitura e Produção de Textos Acadêmicos
-         <span>
-          CHU0003
-         </span>
-        </li>
-       </ul>
-       <h4>
-        Componentes adicionais
-       </h4>
-       <ul>
-        <li>
-         Disciplina CHU1050
-         <span>
-          CHU1050
-         </span>
-        </li>
-        <li>
-         Disciplina CET0123
-         <span>
-          CET0123
-         </span>
-        </li>
-       </ul>
-      </details>
-     </div>
-     <p class="ufob-rodape">
-      Uma formação multidisciplinar que contribui
-      para minha visão analítica, capacidade de
-      resolver problemas e compreensão de negócios.
-     </p>
-    </div>
-   </section>
-   </section>
-   
-   
-<section class="formacao-v2" id="competencias">
-  <div class="formacao-container">
+    </section>
 
-    <!-- CABEÇALHO -->
-    <div class="formacao-topo">
-      <div>
-        <span class="formacao-eyebrow">FORMAÇÃO & COMPETÊNCIAS</span>
-        <h2>Conhecimento em construção contínua</h2>
-        <p>
-          Tecnologia, análise de dados e negócios financeiros
-          aplicados à tomada de decisão.
-        </p>
-        <div class="formacao-traco"></div>
-      </div>
-
-      <div class="formacao-ilustracao" aria-hidden="true">
-        <span class="formacao-ilustracao-icone">🎓</span>
-        <div class="formacao-mini-grafico">
-          <span style="height:35%"></span>
-          <span style="height:58%"></span>
-          <span style="height:48%"></span>
-          <span style="height:83%"></span>
+    <!-- 02 SOBRE -->
+    <section class="section" id="sobre">
+      <div class="wrap about-grid">
+        <div class="about-photo reveal">
+          <img alt="Retrato profissional de Hellen Souza" src="assets/hellen-souza.jpg" loading="lazy"/>
+        </div>
+        <div class="reveal">
+          <div class="eyebrow">Identidade Profissional</div>
+          <h2>Olá, eu sou a Hellen.</h2>
+          <p class="lead">Integro análise de negócios, estruturação de processos e desenvolvimento de soluções orientadas por dados.</p>
+          <p>Com background sólido em gestão financeira, comercial e operacional, estudo inteligência financeira, prevenção a fraudes (FinCrime), modelos preditivos e IA explicável (LIME/SHAP). Este espaço é a documentação viva de como traduzo problemas complexos em estruturas lógicas.</p>
+          
+          <div class="metrics">
+            <div class="metric">
+              <b>Desde 2020</b>
+              <span>Gestão Financeira e Comercial</span>
+            </div>
+            <div class="metric">
+              <b>CPA</b>
+              <span>Certificação ANBIMA</span>
+            </div>
+            <div class="metric">
+              <b>Data Science</b>
+              <span>Fatec Votorantim (2029)</span>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- FAIXA DE TECNOLOGIAS -->
-    <div class="formacao-tech">
-      <div class="formacao-tech-titulo">
-        <span class="formacao-code-icon">&lt;/&gt;</span>
-        <h3>Tecnologias &<br>Ferramentas</h3>
-      </div>
-
-      <div class="formacao-tech-grid">
-        <div class="formacao-tech-item">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python">
-          <span>Python</span>
-        </div>
-        <div class="formacao-tech-item">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="SQL">
-          <span>SQL</span>
-        </div>
-        <div class="formacao-tech-item">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" alt="C++">
-          <span>C++</span>
-        </div>
-        <div class="formacao-tech-item">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" alt="VS Code">
-          <span>VS Code</span>
-        </div>
-        <div class="formacao-tech-item">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="Git">
-          <span>Git</span>
-        </div>
-        <div class="formacao-tech-item">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="GitHub">
-          <span>GitHub</span>
-        </div>
-        <div class="formacao-tech-item">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jupyter/jupyter-original.svg" alt="Jupyter">
-          <span>Jupyter</span>
-        </div>
-        <div class="formacao-tech-item">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg" alt="SQLite">
-          <span>SQLite</span>
-        </div>
-        <div class="formacao-tech-item">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" alt="Excel" class="formacao-excel-fallback">
-          <span>Excel</span>
-        </div>
-        <div class="formacao-tech-item">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/powerbi/powerbi-original.svg" alt="Power BI"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-          <b class="formacao-tech-fallback">▥</b>
-          <span>Power BI</span>
+    <!-- 03 ÁREAS -->
+    <section class="section areas" id="areas">
+      <div class="wrap">
+        <div class="eyebrow">Universos Conectados</div>
+        <h2>Onde eu atuo</h2>
+        <p class="lead">As frentes que conectam minha experiência profissional, pesquisa acadêmica e desenvolvimento de soluções.</p>
+        
+        <div class="area-grid">
+          <a class="area-card reveal" data-area="Data Science" href="#projetos">
+            <span class="area-icon">📊</span>
+            <h3>Data Science</h3>
+            <p>Python, SQL, Machine Learning, XAI e inteligência para negócios.</p>
+            <span class="area-action">Ver projetos →</span>
+          </a>
+          <a class="area-card reveal" data-area="Finanças" href="#projetos">
+            <span class="area-icon">🏦</span>
+            <h3>Finanças</h3>
+            <p>FinCrime, crédito, riscos, inteligência e finanças corporativas.</p>
+            <span class="area-action">Ver projetos →</span>
+          </a>
+          <a class="area-card reveal" data-area="Gestão" href="#projetos">
+            <span class="area-icon">⚙️</span>
+            <h3>Gestão</h3>
+            <p>Controle financeiro, processos operacionais e gestão do tempo.</p>
+            <span class="area-action">Ver projetos →</span>
+          </a>
+          <a class="area-card reveal" data-area="Robótica" href="#projetos">
+            <span class="area-icon">🤖</span>
+            <h3>Robótica</h3>
+            <p>Microcontroladores, automação e iniciação científica com Arduino.</p>
+            <span class="area-action">Ver projetos →</span>
+          </a>
+          <a class="area-card reveal" data-area="Empreendedorismo" href="#projetos">
+            <span class="area-icon">💡</span>
+            <h3>Empreendedorismo</h3>
+            <p>Desenvolvimento de marcas, branding e soluções de inovação.</p>
+            <span class="area-action">Ver projetos →</span>
+          </a>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- CARDS RESUMIDOS -->
-    <div class="formacao-destaques">
-
-      <a class="formacao-destaque"
-         href="https://fatecvotorantim.cps.sp.gov.br/ciencia-de-dados-para-negocios/"
-         target="_blank" rel="noopener noreferrer">
-        <div class="formacao-destaque-icone">🎓</div>
-        <div>
-          <span class="formacao-destaque-label">Graduação</span>
-          <h3>Ciência de Dados para Negócios</h3>
-          <p>Fatec Votorantim · Conclusão prevista em 2029</p>
+    <!-- 04 DESTAQUES E PROJETOS -->
+    <section class="section projetos" id="projetos">
+      <div class="wrap">
+        <div class="eyebrow">Portfólio com Evidências</div>
+        <h2>Projetos e Soluções</h2>
+        <p class="lead">Pesquise e filtre os registros detalhados das soluções que venho documentando e desenvolvendo.</p>
+        
+        <div aria-label="Filtrar projetos" class="filters" id="filters">
+          <button class="filter active" data-filter="Todos">Todos</button>
+          <button class="filter" data-filter="Data Science">Data Science</button>
+          <button class="filter" data-filter="Finanças">Finanças</button>
+          <button class="filter" data-filter="Gestão">Gestão</button>
+          <button class="filter" data-filter="Robótica">Robótica</button>
+          <button class="filter" data-filter="Empreendedorismo">Empreendedorismo</button>
         </div>
-      </a>
+        
+        <div class="searchbar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input autocomplete="off" id="searchProjects" placeholder="Buscar tecnologias, ferramentas, áreas..." type="search"/>
+        </div>
+        
+        <p aria-live="polite" class="results-count" id="resultsCount"></p>
+        
+        <!-- O Grid recebe a injeção do site.js (com o 1º projeto expandido) -->
+        <div class="grid" id="cards"></div>
+      </div>
+    </section>
 
-      <div class="formacao-destaque">
-        <div class="formacao-destaque-icone">🏅</div>
-        <div>
-          <span class="formacao-destaque-label">Certificação</span>
-          <h3>CPA — ANBIMA</h3>
-          <p>Mercado financeiro, riscos e performance</p>
+    <!-- 05 RESULTADOS -->
+    <section class="section resultados" id="resultados">
+      <div class="wrap">
+        <div class="eyebrow">Impacto Profissional</div>
+        <h2>Resultados da Experiência</h2>
+        <p class="lead">Indicadores extraídos de minha atuação profissional na estruturação de fluxos operacionais e estratégias de recuperação.</p>
+        
+        <div class="outcomes-grid">
+          <article class="outcome reveal">
+            <b>+30%</b>
+            <span>Faturamento anual</span>
+            <small>DUKE · 2020–2023</small>
+          </article>
+          <article class="outcome reveal">
+            <b>95%</b>
+            <span>Capital inadimplente recuperado</span>
+            <small>DUKE · 2020–2023</small>
+          </article>
+          <article class="outcome reveal">
+            <b>3×</b>
+            <span>Carteira de clientes</span>
+            <small>Terraço Duke · 2024–25</small>
+          </article>
+          <article class="outcome reveal">
+            <b>−20%</b>
+            <span>Custos operacionais</span>
+            <small>BWM · 2025</small>
+          </article>
+          <article class="outcome reveal">
+            <b>25%</b>
+            <span>Otimização em taxas bancárias</span>
+            <small>BWM · 2025</small>
+          </article>
         </div>
       </div>
+    </section>
 
-      <div class="formacao-destaque">
-        <div class="formacao-destaque-icone">📈</div>
-        <div>
-          <span class="formacao-destaque-label">Em andamento</span>
-          <h3>Business Intelligence (BI)</h3>
-          <p>Google/Coursera · Power BI (Microsoft)</p>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- PAINÉIS INFERIORES -->
-    <div class="formacao-paineis">
-
-      <!-- FERRAMENTAS E MÉTODOS -->
-      <div class="formacao-painel">
-        <div class="formacao-painel-header">
-          <span>◇</span>
-          <h3>Ferramentas e métodos</h3>
+    <!-- 06 TRAJETÓRIA -->
+    <section class="section trajetoria" id="trajetoria">
+      <div class="wrap">
+        <div class="eyebrow">Uma história em movimento</div>
+        <h2>Trajetória Profissional</h2>
+        <p class="lead">Evolução de carreira e formação acadêmica conectando gestão ao mundo dos dados.</p>
+        
+        <div class="timeline">
+          <div class="step reveal">
+            <span class="date">2026 – 2029 (Previsto)</span>
+            <h3>Ciência de Dados para Negócios</h3>
+            <p>Fatec Votorantim. Projetos acadêmicos em análise estratégica, risco de crédito, Inteligência Artificial explicável e finanças.</p>
+          </div>
+          <div class="step reveal">
+            <span class="date">2025</span>
+            <h3>Gerente Geral · BWM dos Santos</h3>
+            <p>Barreiras, BA. Redução de custos operacionais e reestruturação de taxas financeiras.</p>
+          </div>
+          <div class="step reveal">
+            <span class="date">2024 – 2025</span>
+            <h3>Sócia Participativa · Terraço Duke</h3>
+            <p>Barreiras, BA. Inteligência de mercado, expansão da carteira e direcionamento comercial e financeiro.</p>
+          </div>
+          <div class="step reveal">
+            <span class="date">2023 – 2024</span>
+            <h3>Empreendedorismo Autônomo</h3>
+            <p>Irecê, BA. Gestão completa de negócio englobando rotinas financeiras e coordenação operacional.</p>
+          </div>
+          <div class="step reveal">
+            <span class="date">2020 – 2023</span>
+            <h3>Gerente Financeiro e Comercial · DUKE</h3>
+            <p>Barreiras, BA. Implantação de fluxos de cobrança orientados a dados, recuperação de capital e alavancagem de faturamento.</p>
+          </div>
         </div>
 
-        <div class="formacao-painel-body">
-          <div class="formacao-metodo">
-            <div class="formacao-metodo-icone">⌨</div>
+        <details class="ufob-details reveal">
+          <summary>Base Acadêmica Anterior: Universidade Federal do Oeste da Bahia (UFOB)</summary>
+          <div class="ufob-content">
+            <p style="margin-top: 0; color: var(--muted); font-size: 0.95rem;">23 disciplinas cursadas integrando matemática, computação, ciências exatas e humanidades, formando a base lógica que aplico hoje em Data Science.</p>
+            <ul>
+              <li>Álgebra Linear I <span>CET0005</span></li>
+              <li>Geometria Analítica <span>CET0140</span></li>
+              <li>Programação de Computadores I e II <span>CET0242/43</span></li>
+              <li>Física e Física Experimental (I e II) <span>Vários</span></li>
+              <li>Fundamentos de Química <span>CET0124/25</span></li>
+              <li>Introdução à Administração <span>CHU2005</span></li>
+              <li>Filosofia e História das Ciências <span>CHU0002</span></li>
+              <li>Biologia e Geologia Geral <span>Vários</span></li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- 07 COMPETÊNCIAS -->
+    <section class="section competencias" id="competencias">
+      <div class="wrap formacao-container">
+        <div class="eyebrow">Painel de Conhecimentos</div>
+        <h2>Competências e Ferramentas</h2>
+        <p class="lead">Tecnologia, análise de dados e negócios financeiros aplicados à tomada de decisão.</p>
+
+        <div class="formacao-tech reveal">
+          <div class="formacao-tech-titulo">
+            <span class="formacao-code-icon"></></span>
+            <h3>Stack Técnico</h3>
+          </div>
+          <div class="formacao-tech-grid">
+            <div class="formacao-tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python"><span>Python</span></div>
+            <div class="formacao-tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="SQL"><span>SQL</span></div>
+            <div class="formacao-tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" alt="C++"><span>C++</span></div>
+            <div class="formacao-tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" alt="VS Code"><span>VS Code</span></div>
+            <div class="formacao-tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="Git"><span>Git</span></div>
+            <div class="formacao-tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="GitHub"><span>GitHub</span></div>
+            <div class="formacao-tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jupyter/jupyter-original.svg" alt="Jupyter"><span>Jupyter</span></div>
+            <div class="formacao-tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg" alt="SQLite"><span>SQLite</span></div>
+            <div class="formacao-tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" alt="Excel"><span>Excel</span></div>
+            <div class="formacao-tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/powerbi/powerbi-original.svg" alt="Power BI"><span>Power BI</span></div>
+          </div>
+        </div>
+
+        <div class="formacao-destaques reveal">
+          <a class="formacao-destaque" href="#" target="_blank" rel="noopener noreferrer">
+            <div class="formacao-destaque-icone">🎓</div>
             <div>
-              <h4>Programação e Dados</h4>
-              <p>Python, SQL, C++, Git, GitHub, Jupyter Notebook,
-              VS Code e Excel Avançado.</p>
+              <span class="formacao-destaque-label">Graduação</span>
+              <h3>Ciência de Dados</h3>
+              <p>Fatec Votorantim · Até 2029</p>
+            </div>
+          </a>
+          <div class="formacao-destaque">
+            <div class="formacao-destaque-icone">🏅</div>
+            <div>
+              <span class="formacao-destaque-label">Certificação</span>
+              <h3>CPA — ANBIMA</h3>
+              <p>Mercado financeiro e riscos</p>
             </div>
           </div>
-
-          <div class="formacao-metodo">
-            <div class="formacao-metodo-icone">⌘</div>
+          <div class="formacao-destaque">
+            <div class="formacao-destaque-icone">📈</div>
             <div>
-              <h4>Modelagem e IA</h4>
-              <p>Random Forest, árvores de decisão, algoritmos
-              e IA explicável (LIME/SHAP).</p>
+              <span class="formacao-destaque-label">Trilha Google</span>
+              <h3>Business Intelligence</h3>
+              <p>Google/Coursera · Em andamento</p>
             </div>
           </div>
+        </div>
 
-          <div class="formacao-metodo">
-            <div class="formacao-metodo-icone">▥</div>
-            <div>
-              <h4>Negócios e Finanças</h4>
-              <p>Fluxo de caixa, indicadores, valuation,
-              gestão de riscos e auditoria interna.</p>
+        <div class="formacao-paineis reveal">
+          <div class="formacao-painel">
+            <div class="formacao-painel-header"><span>◇</span><h3>Métodos de Análise</h3></div>
+            <div class="formacao-painel-body">
+              <div class="formacao-metodo">
+                <div class="formacao-metodo-icone">🧠</div>
+                <div><h4>Modelagem e IA</h4><p>Modelos Preditivos (Random Forest, Árvores) e IA Explicável (LIME/SHAP).</p></div>
+              </div>
+              <div class="formacao-metodo">
+                <div class="formacao-metodo-icone">💼</div>
+                <div><h4>Negócios e Finanças</h4><p>Fluxo de caixa, Valuation, Indicadores de Gestão (KPIs) e Auditoria.</p></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="formacao-painel">
+            <div class="formacao-painel-header"><span>▤</span><h3>Capacitação Específica</h3></div>
+            <div class="formacao-painel-body">
+              <div class="formacao-metodo">
+                <div class="formacao-metodo-icone">🔍</div>
+                <div><h4>Investigação e FinCrime</h4><p>Estudos independentes aplicados a biometria, detecção de deepfakes e mitigação de risco.</p></div>
+              </div>
+              <div class="formacao-metodo">
+                <div class="formacao-metodo-icone">🛠️</div>
+                <div><h4>Extensão Universitária</h4><p>Desenvolvimento prático e robótica (Arduino Meninas na Ciência, UFOB).</p></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- TRILHA DE FORMAÇÃO -->
-      <div class="formacao-painel">
-        <div class="formacao-painel-header">
-          <span>▤</span>
-          <h3>Formação e trilha de desenvolvimento</h3>
-        </div>
-
-        <div class="formacao-painel-body">
-          <div class="formacao-timeline">
-
-            <div class="formacao-timeline-item concluido">
-              <div>
-                <h4>CPA — ANBIMA</h4>
-                <p>Certificação profissional do mercado financeiro.</p>
-              </div>
-              <span class="formacao-status concluida">Concluída</span>
-            </div>
-
-            <div class="formacao-timeline-item">
-              <div>
-                <h4>Ciência de Dados para Negócios</h4>
-                <p>Fatec Votorantim · Previsão de conclusão: 2029.</p>
-              </div>
-              <span class="formacao-status andamento">Em andamento</span>
-            </div>
-
-            <div class="formacao-timeline-item">
-              <div>
-                <h4>Business Intelligence (BI) e Power BI</h4>
-                <p>Google/Coursera e Microsoft/Coursera.</p>
-              </div>
-              <span class="formacao-status andamento">Em andamento</span>
-            </div>
-
-          </div>
+    <!-- 08 LABORATÓRIO -->
+    <section class="section laboratorio" id="laboratorio">
+      <div class="wrap">
+        <div class="eyebrow">Pesquisa e Experimentação</div>
+        <h2>Laboratório da Hellen</h2>
+        <p class="lead">Provas de conceito, validação técnica e arquitetura de ideias em desenvolvimento.</p>
+        
+        <div class="lab-grid">
+          <article class="lab-card reveal">
+            <div class="eyebrow">Protótipo Funcional</div>
+            <h3>Painel Estratégico Itaú</h3>
+            <p>Dashboard analítico em Streamlit portado para web. Estruturas, KPIs e matrizes SWOT/BCG aplicadas.</p>
+            <a class="pilllink" href="projetos/painel-estrategico-itau-pi1.html">Acessar projeto</a>
+          </article>
+          <article class="lab-card reveal">
+            <div class="eyebrow">Arquitetura de Crédito</div>
+            <h3>ICDF Framework</h3>
+            <p>Integração de risco financeiro (ICD) e qualidade de dados (IQD) com Machine Learning explicável e simulações de MLOps.</p>
+            <a class="pilllink" href="projetos/icdf-framework-de-decisao-em-credito-integrado.html">Ver framework</a>
+          </article>
+          <article class="lab-card reveal">
+            <div class="eyebrow">Prevenção a Fraudes</div>
+            <h3>Operação Espelho Falso</h3>
+            <p>Prova de conceito autônoma em Python para detecção de deepfakes com ruído PRNU, vivacidade ocular e grafos.</p>
+            <a class="pilllink" href="projetos/operacao-espelho-falso-deteccao-de-deepfakes.html">Ler pesquisa</a>
+          </article>
         </div>
       </div>
+    </section>
 
-    </div>
-  </div>
-</section>
-
-   
-   <section class="section lab" id="laboratorio">
-    <div class="wrap">
-     <div class="eyebrow">
-      Espaço de experimentação
-     </div>
-     <h2>
-      Laboratório da Hellen
-     </h2>
-     <p class="lead">
-      Um lugar para protótipos, testes e ideias em desenvolvimento — sem confundir experimentos com resultados já validados.
-     </p>
-     <div class="lab-grid">
-      <article class="lab-card reveal">
-       <div class="eyebrow">
-        Protótipo interativo
-       </div>
-       <h3>
-        Painel Estratégico Itaú
-       </h3>
-       <p>
-        Explore os indicadores, matrizes e ferramentas estratégicas convertidos para HTML.
-       </p>
-       <a class="pilllink" href="projetos/painel-estrategico-itau-pi1.html">
-        Abrir painel →
-       </a>
-      </article>
-      <article class="lab-card reveal">
-       <div class="eyebrow">
-        Pesquisa e desenvolvimento
-       </div>
-       <h3>
-        ICDF Framework
-       </h3>
-       <p>
-        Documentação da arquitetura e dos experimentos de decisão em crédito.
-       </p>
-       <a class="pilllink" href="projetos/icdf-framework-de-decisao-em-credito-integrado.html">
-        Ver estudo →
-       </a>
-      </article>
-      <article class="lab-card reveal">
-       <div class="eyebrow">
-        Experimento
-       </div>
-       <h3>
-        Operação Espelho Falso
-       </h3>
-       <p>
-        Protótipo de investigação de fraudes e análise de evidências digitais.
-       </p>
-       <a class="pilllink" href="projetos/operacao-espelho-falso-deteccao-de-deepfakes.html">
-        Ver experimento →
-       </a>
-      </article>
-     </div>
-    </div>
-   </section>
-   <section class="section contact" id="contato">
-    <div class="wrap">
-     <div class="eyebrow" style="color:#7bd4f4">
-      Vamos conversar?
-     </div>
-     <h2>
-      Conexões que geram ideias.
-     </h2>
-     <p>
-      Para conversar sobre ciência de dados, inteligência financeira, projetos, pesquisa e oportunidades profissionais.
-     </p>
-     <a class="pilllink" href="https://github.com/Hellennsouza" rel="noopener noreferrer" target="_blank">
-      Meu GitHub ↗
-     </a>
-     <a class="pilllink" href="mailto:hellenhmpejs@outlook.com">
-      E-mail ↗
-     </a>
-     <a class="pilllink" href="https://www.linkedin.com/in/hellen-souza-879051194/" rel="noopener noreferrer" target="_blank">
-      LinkedIn ↗
-     </a>
-     <a class="pilllink" href="https://gitlab.com/Hellen_Souza" rel="noopener noreferrer" target="_blank">
-      GitLab ↗
-     </a>
-    </div>
-   </section>
+    <!-- 09 CONTATO -->
+    <section class="contato" id="contato">
+      <div class="wrap reveal">
+        <div class="eyebrow">Convite para conexões</div>
+        <h2>O que vamos construir?</h2>
+        <p>Aberta a diálogos sobre dados, inteligência financeira e inovação de processos.</p>
+        <div class="contact-links">
+          <a class="btn" href="https://www.linkedin.com/in/hellen-souza-879051194/" target="_blank">LinkedIn</a>
+          <a class="btn secondary" href="mailto:hellenhmpejs@outlook.com">Enviar E-mail</a>
+          <a class="btn secondary" href="https://github.com/Hellennsouza" target="_blank">GitHub</a>
+          <a class="btn secondary" href="https://gitlab.com/Hellen_Souza" target="_blank">GitLab</a>
+        </div>
+      </div>
+    </section>
   </main>
-  <footer class="footer">
-   ©
-   <span id="year">
-   </span>
-   Universo da Hellen · Gestão Estratégica &amp; Resultados · By Hellen Souza
-  </footer>
-  <script defer="" src="assets/site.js">
-  </script>
- </body>
-</html>
 
+  <footer class="footer">
+    © <span id="year"></span> Universo da Hellen · Design System Atualizado · By Hellen Souza
+  </footer>
+
+  <script defer src="assets/site.js"></script>
+</body>
+</html>
