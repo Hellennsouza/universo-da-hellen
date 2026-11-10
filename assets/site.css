@@ -680,3 +680,62 @@
     transform: none;
   }
 }
+
+
+/* ============================================
+   TRANSIÇÃO ESPELHADA — INÍCIO → SOBRE
+   ============================================ */
+
+/* Mantém o fundo original e permite a transição */
+#inicio.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* Cria espaço para a transição sem cobrir os botões */
+#inicio .hero-inner {
+  position: relative;
+  z-index: 1;
+  padding-bottom: 175px;
+}
+
+/* Dissolve o azul-marinho até chegar ao branco */
+#inicio.hero::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 210px;
+  z-index: 0;
+  pointer-events: none;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(16, 27, 60, 0) 0%,
+    rgba(30, 65, 111, 0.25) 23%,
+    rgba(74, 121, 169, 0.55) 45%,
+    rgba(155, 186, 216, 0.85) 68%,
+    rgba(222, 232, 244, 0.97) 87%,
+    #f5f7fc 100%
+  );
+}
+
+/* A próxima seção começa exatamente na cor final */
+#sobre {
+  position: relative;
+  background: #f5f7fc;
+  border-top: none;
+}
+
+/* Ajuste para celular */
+@media (max-width: 768px) {
+  #inicio .hero-inner {
+    padding-bottom: 125px;
+  }
+
+  #inicio.hero::after {
+    height: 160px;
+  }
+}
