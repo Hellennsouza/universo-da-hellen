@@ -751,7 +751,7 @@
   isolation: isolate;
 
   /* Reduz o espaço vazio após os cards */
-  padding-bottom: clamp(100px, 12vw, 165px);
+  padding-bottom: clamp(60px, 8vw, 110px);
 
   /* O degradê agora ocupa TODA a seção */
   background:
