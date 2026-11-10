@@ -187,8 +187,153 @@ let observer; // Inicializar antes da primeira renderização
 const normalize=s=>(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
 function el(tag,cls,text){const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n;}
 function makeCard(p){const a=el('article','project reveal');const v=el('div','visual');v.setAttribute('aria-hidden','true');const img=el('img');img.src=p.cover;img.alt='';img.loading=p.featured?'eager':'lazy';img.decoding='async';v.append(img);a.append(v);const body=el('div','project-body');const tags=el('div');tags.append(el('span','tag',p.cat));tags.append(el('span','tag'+(p.status==='Registro em construção'?' draft':''),p.status));body.append(tags,el('h3','',p.title),el('p','',p.desc));const link=el('a','more','Conhecer registro →');link.href=p.page||p.source||'#projetos';body.append(link);a.append(body);return a;}
-function render(){const q=normalize(search.value.trim());const filtered=PROJECTS.filter(p=>(currentCategory==='Todos'||p.cat===currentCategory)&&normalize([p.title,p.desc,p.cat,p.tools,p.context].join(' ')).includes(q));cards.replaceChildren(...filtered.map(makeCard));if(!filtered.length)cards.append(el('p','empty','Nenhum projeto encontrado. Experimente outra busca.'));document.getElementById('resultsCount').textContent=filtered.length+' registro(s) encontrado(s)';observeReveals();}
-featured.replaceChildren(...PROJECTS.filter(p=>p.featured).map(makeCard));
+
+// Card principal ou secundário do acervo
+function makeFeatureCard(p, primary = false) {
+  const article = el(
+    'article',
+    'archive-feature-card ' +
+      (primary ? 'primary' : 'secondary') +
+      ' reveal'
+  );
+
+  const visual = el('div', 'archive-feature-visual');
+  const image = el('img');
+
+  image.src = p.cover || '';
+  image.alt = 'Capa do projeto ' + p.title;
+  image.loading = primary ? 'eager' : 'lazy';
+  image.decoding = 'async';
+
+  // Se a capa não estiver disponível, mantém o fundo
+  // estilizado do card sem exibir ícone quebrado.
+  image.addEventListener('error', () => image.remove());
+
+  if (p.cover) visual.append(image);
+
+  const content = el('div', 'archive-feature-content');
+
+  const kicker = el(
+    'span',
+    'archive-card-kicker',
+    primary ? '[ PROJETO PRINCIPAL ]' : '[ PROJETO SELECIONADO ]'
+  );
+
+  const status = el('span', 'archive-card-status', p.status || p.cat);
+
+  const title = el(
+    'h3',
+    '',
+    primary
+      ? p.title.replace(' — Detecção de Deepfakes', '')
+      : p.title
+  );
+
+  const description = el('p', '', p.desc);
+
+  content.append(kicker, status, title, description);
+
+  // Tecnologias reais registradas no projeto principal
+  if (primary && p.tools) {
+    const tags = el('div', 'archive-project-tags');
+
+    p.tools
+      .split(',')
+      .map(t => t.trim())
+      .filter(Boolean)
+      .slice(0, 4)
+      .forEach(tool => tags.append(el('span', '', tool)));
+
+    content.append(tags);
+  }
+
+  const link = el(
+    'a',
+    'archive-feature-link',
+    primary ? 'Explorar projeto ↗' : 'Acessar registro ↗'
+  );
+
+  link.href = p.page || p.source || '#projetos';
+  link.setAttribute('aria-label', 'Acessar ' + p.title);
+
+  content.append(link);
+  article.append(visual, content);
+
+  return article;
+}
+
+
+// Renderização integrada: destaques, filtros e catálogo
+function render() {
+  const q = normalize(search.value.trim());
+
+  const filtered = PROJECTS.filter(p => {
+    const categoryMatch =
+      currentCategory === 'Todos' ||
+      p.cat === currentCategory;
+
+    const textMatch = normalize([
+      p.title,
+      p.desc,
+      p.cat,
+      p.tools,
+      p.context
+    ].join(' ')).includes(q);
+
+    return categoryMatch && textMatch;
+  });
+
+  // Ordem desejada dos destaques
+  const priority = [
+    'Operação Espelho Falso',
+    'ICDF —',
+    'Painel Estratégico Itaú'
+  ];
+
+  let promoted;
+
+  // Mostra os três projetos escolhidos na abertura.
+  // Quando o usuário pesquisa ou muda de área,
+  // os destaques também passam a respeitar o filtro.
+  if (
+    !q &&
+    (currentCategory === 'Todos' ||
+     currentCategory === 'Data Science')
+  ) {
+    promoted = priority
+      .map(name => filtered.find(p => p.title.includes(name)))
+      .filter(Boolean);
+  } else {
+    promoted = filtered.slice(0, 3);
+  }
+
+  // Evita repetir os destaques no catálogo inferior
+  const promotedSet = new Set(promoted);
+  const remaining = filtered.filter(p => !promotedSet.has(p));
+
+  featured.replaceChildren(
+    ...promoted.map((p, i) => makeFeatureCard(p, i === 0))
+  );
+
+  featured.hidden = promoted.length === 0;
+
+  cards.replaceChildren(...remaining.map(makeCard));
+
+  document.getElementById('archiveMore').hidden =
+    remaining.length === 0;
+
+  document.getElementById('archiveEmpty').hidden =
+    filtered.length !== 0;
+
+  document.getElementById('resultsCount').textContent =
+    filtered.length === 1
+      ? '1 registro encontrado'
+      : filtered.length + ' registros encontrados';
+
+  observeReveals();
+}
+
+
 for(const b of document.querySelectorAll('.filter'))b.addEventListener('click',()=>{currentCategory=b.dataset.filter;for(const other of document.querySelectorAll('.filter')){other.classList.toggle('active',other===b);other.setAttribute('aria-pressed',String(other===b));}render();});
 search.addEventListener('input',render);render();
 const toggle=document.getElementById('menuToggle'),nav=document.getElementById('navLinks');toggle.addEventListener('click',()=>{const expanded=toggle.getAttribute('aria-expanded')==='true';toggle.setAttribute('aria-expanded',String(!expanded));nav.classList.toggle('open',!expanded);});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');toggle.setAttribute('aria-expanded','false');}));
