@@ -1000,50 +1000,125 @@ img, video, iframe {
      </div>
     </div>
    </section>
-   <section class="section categories" id="projetos">
-    <div class="wrap">
-     <div class="eyebrow">
-      Acervo de projetos
-     </div>
-     <h2>
-      Explore meu universo
-     </h2>
-     <p class="lead">
-      Busque por nome, área ou ferramenta. Os registros diferenciam trabalhos documentados, projetos acadêmicos e conteúdos ainda em construção.
-     </p>
-     <label class="searchbar" for="searchProjects">
-      ⌕
-      <input autocomplete="off" id="searchProjects" placeholder="Buscar projetos, Python, Arduino, finanças..." type="search"/>
-     </label>
-     <div aria-label="Filtrar projetos" class="filters" id="filters" role="group">
-      <button aria-pressed="true" class="filter active" data-filter="Todos">
-       Todos
-      </button>
-      <button class="filter" data-filter="Finanças">
-       Finanças
-      </button>
-      <button class="filter" data-filter="Robótica">
-       Robótica
-      </button>
-      <button class="filter" data-filter="Gestão">
-       Gestão
-      </button>
-      <button class="filter" data-filter="Data Science">
-       Data Science
-      </button>
-      <button class="filter" data-filter="Empreendedorismo">
-       Empreendedorismo
-      </button>
-     </div>
-     <p aria-live="polite" class="results-count" id="resultsCount">
-     </p>
-     <div class="grid" id="cards">
-     </div>
-     <p class="note">
-      O catálogo local funciona sem conexão com o GitHub. Links e galerias externas dependem de internet.
-     </p>
+
+<!-- ACERVO DE PROJETOS — NOVA IDENTIDADE -->
+<section class="section project-archive" id="projetos">
+  <!-- Preserva os links existentes para #destaques -->
+  <span id="destaques" class="archive-anchor" aria-hidden="true"></span>
+
+  <div class="wrap">
+    <div class="archive-intro">
+      <div>
+        <span class="archive-kicker">[ 03 // ACERVO DE PROJETOS ]</span>
+
+        <h2 class="archive-title">
+          <span class="archive-title-serif">Projetos e</span>
+          <span class="archive-title-gradient">Soluções</span>
+        </h2>
+      </div>
+
+      <p class="archive-description">
+        Explore estudos, experimentos e soluções que conectam
+        ciência de dados, inteligência financeira, tecnologia
+        e estratégia de negócios.
+      </p>
     </div>
-   </section>
+
+    <!-- BUSCA -->
+    <div class="archive-controls">
+      <label class="archive-search" for="searchProjects">
+        <svg viewBox="0 0 24 24" width="20" height="20"
+             fill="none" stroke="currentColor" stroke-width="1.8"
+             aria-hidden="true">
+          <circle cx="10.8" cy="10.8" r="6.8"></circle>
+          <path d="m16 16 5 5"></path>
+        </svg>
+
+        <input
+          type="search"
+          id="searchProjects"
+          autocomplete="off"
+          placeholder="O que você busca? Tente 'crédito', 'Arduino'..."
+        />
+      </label>
+
+      <!-- FILTROS -->
+      <div class="archive-filters"
+           id="filters"
+           role="group"
+           aria-label="Filtrar projetos por área">
+
+        <button class="filter active"
+                data-filter="Todos"
+                aria-pressed="true">Todos</button>
+
+        <button class="filter"
+                data-filter="Finanças"
+                aria-pressed="false">Finanças</button>
+
+        <button class="filter"
+                data-filter="Robótica"
+                aria-pressed="false">Robótica</button>
+
+        <button class="filter"
+                data-filter="Gestão"
+                aria-pressed="false">Gestão</button>
+
+        <button class="filter"
+                data-filter="Data Science"
+                aria-pressed="false">Data Science</button>
+
+        <button class="filter"
+                data-filter="Empreendedorismo"
+                aria-pressed="false">Empreendedorismo</button>
+      </div>
+    </div>
+
+    <div class="archive-toolbar">
+      <span class="archive-toolbar-label">
+        PORTFÓLIO / PESQUISA / EXPERIMENTAÇÃO
+      </span>
+
+      <p id="resultsCount"
+         class="archive-results-count"
+         aria-live="polite"></p>
+    </div>
+
+    <!-- DESTAQUE PRINCIPAL + PROJETOS SECUNDÁRIOS -->
+    <div
+      id="featuredCards"
+      class="archive-feature-grid"
+      aria-label="Projetos selecionados">
+    </div>
+
+    <!-- OUTROS PROJETOS DO ACERVO -->
+    <div class="archive-more" id="archiveMore">
+      <div class="archive-more-heading">
+        <div>
+          <span class="archive-small-label">
+            CONTINUE EXPLORANDO
+          </span>
+          <h3>Outros projetos do acervo</h3>
+        </div>
+
+        <span class="archive-line-decoration" aria-hidden="true"></span>
+      </div>
+
+      <div id="cards" class="grid archive-project-grid"></div>
+    </div>
+
+    <p id="archiveEmpty" class="archive-empty" hidden>
+      Nenhum projeto encontrado. Experimente outra busca ou filtro.
+    </p>
+
+    <p class="archive-footnote">
+      Os registros distinguem projetos acadêmicos, experiências
+      profissionais, protótipos e iniciativas em desenvolvimento.
+    </p>
+  </div>
+</section>
+
+   
    <section class="section outcomes" id="resultados">
     <div class="wrap">
      <div class="eyebrow">
