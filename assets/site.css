@@ -931,3 +931,79 @@
   }
 }
 
+
+/* ============================================
+   TRANSIÇÃO CONTÍNUA
+   PROJETOS → RESULTADOS
+   Preto/roxo → azul → branco azulado
+   ============================================ */
+
+/* Preserva o fundo original de Projetos */
+#projetos {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-bottom: 0;
+}
+
+/* Camada que dissolve o fundo escuro */
+#projetos::after {
+  content: "" !important;
+  display: block !important;
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+
+  height: clamp(320px, 32vw, 480px);
+
+  z-index: 1;
+  pointer-events: none;
+
+  background: linear-gradient(
+    to bottom,
+
+    /* Fundo preto/roxo original */
+    rgba(244,247,252,0) 0%,
+
+    /* Primeiros reflexos azulados */
+    rgba(55,95,153,.07) 16%,
+    rgba(80,125,183,.18) 32%,
+
+    /* Azul intermediário */
+    rgba(133,171,213,.40) 50%,
+
+    /* Azul claro */
+    rgba(184,208,234,.68) 68%,
+
+    /* Branco azulado */
+    rgba(226,235,247,.94) 86%,
+
+    /* Cor exata da seção Resultados */
+    #f4f7fc 100%
+  ) !important;
+}
+
+/* Conteúdos ficam acima do degradê */
+#projetos > .wrap {
+  position: relative;
+  z-index: 2;
+}
+
+/* Resultados continua na mesma cor
+   em que a transição termina */
+#resultados.outcomes {
+  position: relative;
+  background: #f4f7fc;
+  margin-top: -1px;
+  border-top: 0;
+}
+
+/* Celulares */
+@media (max-width: 768px) {
+  #projetos::after {
+    height: 260px;
+  }
+}
+
