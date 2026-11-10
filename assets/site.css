@@ -883,6 +883,12 @@
 /* 4. Desativa o degradê antigo */
 
 #areas.section.areas::after {
+  
+top: auto !important;
+opacity: 1 !important;
+mask-image: none !important;
+-webkit-mask-image: none !important;
+
   content: none !important;
   display: none !important;
 }
