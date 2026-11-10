@@ -1831,6 +1831,849 @@ img, video, iframe {
   </footer>
   <script defer src="assets/site.js?v=20261110"></script>
   </script>
+  
+<!-- ==================================================
+     UNIVERSO DA HELLEN
+     ÁREAS IMERSIVAS: ROBÓTICA E DADOS
+     ================================================== -->
+
+<style>
+  /* Áreas temáticas — isoladas do restante do site */
+
+  #projetos {
+    overflow: visible !important;
+  }
+
+  #projetos .uh-topic[hidden],
+  #uh-topic-areas[hidden] {
+    display: none !important;
+  }
+
+  #projetos .uh-topic {
+    position: relative;
+    isolation: isolate;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    max-width: none;
+    overflow: hidden;
+
+    padding:
+      68px max(22px, calc((100vw - 1180px) / 2))
+      75px;
+
+    background:
+      radial-gradient(
+        ellipse at 1% 55%,
+        rgba(15, 113, 240, .38),
+        transparent 21%
+      ),
+      radial-gradient(
+        ellipse at 98% 14%,
+        rgba(230, 52, 147, .34),
+        transparent 22%
+      ),
+      radial-gradient(
+        ellipse at 80% 90%,
+        rgba(25, 112, 237, .25),
+        transparent 26%
+      ),
+      radial-gradient(
+        ellipse at 5% 95%,
+        rgba(230, 55, 151, .18),
+        transparent 19%
+      ),
+      linear-gradient(
+        125deg,
+        #041024 0%,
+        #061329 55%,
+        #071630 100%
+      );
+
+    border-top: 1px solid #49648a66;
+    color: #f5f7ff;
+    scroll-margin-top: 90px;
+  }
+
+  #projetos .uh-topic::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: .18;
+    pointer-events: none;
+
+    background-image:
+      linear-gradient(#75a3df14 1px, transparent 1px),
+      linear-gradient(90deg, #75a3df14 1px, transparent 1px);
+
+    background-size: 44px 44px;
+  }
+
+  #projetos .uh-topic::after {
+    content: "";
+    position: absolute;
+    right: -80px;
+    top: 12%;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: #d9468f30;
+    filter: blur(85px);
+    pointer-events: none;
+  }
+
+  #projetos .uh-topic-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  /* Código decorativo nas laterais */
+
+  #projetos .uh-topic-code {
+    position: absolute;
+    top: 105px;
+    left: 16px;
+    z-index: 0;
+    margin: 0;
+
+    color: #65b0ff;
+    opacity: .28;
+    pointer-events: none;
+    font: .65rem/1.8 Consolas, monospace;
+    white-space: pre;
+  }
+
+  #projetos .uh-topic-keywords {
+    position: absolute;
+    top: 115px;
+    right: 18px;
+    z-index: 0;
+    color: #5aaffd;
+    opacity: .37;
+    font: .7rem/1.7 Consolas, monospace;
+    white-space: pre-line;
+  }
+
+  /* Cabeçalho: título + tecnologias */
+
+  #projetos .uh-topic-header {
+    display: grid;
+    grid-template-columns: .8fr 1.2fr;
+    align-items: center;
+    gap: 35px;
+    margin-bottom: 32px;
+  }
+
+  #projetos .uh-topic-kicker {
+    display: block;
+    margin-bottom: 7px;
+    color: #ff72b5;
+    font: 600 .77rem Consolas, monospace;
+    letter-spacing: .13em;
+  }
+
+  #projetos .uh-topic-title {
+    margin: 0;
+    font: italic 500 clamp(3.8rem, 7vw, 7rem)/1.05
+      Georgia, serif;
+    letter-spacing: -.055em;
+
+    background: linear-gradient(
+      105deg,
+      #ffffff 5%,
+      #ffffff 31%,
+      #f0479f 59%,
+      #368fff 90%
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  #projetos .uh-topic-description {
+    max-width: 440px;
+    margin: 11px 0 0;
+    color: #c4d3e8;
+    font: .96rem/1.65 Consolas, monospace;
+  }
+
+  #projetos .uh-topic-techs {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0,1fr));
+    gap: 10px;
+  }
+
+  #projetos .uh-tech {
+    min-width: 0;
+    min-height: 92px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 9px;
+
+    padding: 12px 5px;
+    border: 1px solid #526d9e;
+    border-radius: 13px;
+
+    background: linear-gradient(
+      150deg,
+      rgba(28,45,75,.94),
+      rgba(7,17,38,.95)
+    );
+
+    box-shadow:
+      inset 0 1px 0 #ffffff20,
+      0 6px 18px #0004;
+
+    transition: transform .2s, border-color .2s;
+  }
+
+  #projetos .uh-tech:hover {
+    transform: translateY(-4px);
+    border-color: #e575b8;
+  }
+
+  #projetos .uh-tech img {
+    display: block;
+    width: 33px;
+    height: 33px;
+    object-fit: contain;
+  }
+
+  #projetos .uh-tech-symbol {
+    color: #5cb9ff;
+    font: 700 1.65rem Consolas, monospace;
+  }
+
+  #projetos .uh-tech span:last-child {
+    color: #eef3ff;
+    font-size: .67rem;
+    line-height: 1.25;
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+
+  /* Cards assimétricos */
+
+  #projetos .uh-topic-grid {
+    display: grid;
+    grid-template-columns:
+      minmax(0,1.65fr)
+      repeat(2,minmax(0,.87fr))
+      minmax(0,.83fr);
+    gap: 15px;
+    align-items: stretch;
+  }
+
+  #projetos .uh-topic-card {
+    position: relative;
+    min-width: 0;
+    min-height: 275px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+
+    padding: 20px;
+    border: 1px solid #718ab4;
+    border-radius: 12px;
+
+    background: #162743;
+    color: #fff;
+    box-shadow:
+      0 12px 28px #0005,
+      inset 0 0 12px #6a92dd16;
+
+    transition:
+      transform .25s,
+      border-color .25s,
+      box-shadow .25s;
+  }
+
+  #projetos .uh-topic-card:hover,
+  #projetos .uh-topic-card:focus-visible {
+    transform: translateY(-6px);
+    border-color: #ff82c0;
+    box-shadow:
+      0 18px 35px #0008,
+      0 0 22px #dc4c992a;
+  }
+
+  /* Reflexos luminosos nas bordas */
+
+  #projetos .uh-topic-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 12%;
+    width: 55px;
+    height: 2px;
+    background: #c9e8ff;
+    box-shadow: 0 0 12px 3px #76baff;
+  }
+
+  #projetos .uh-topic-card img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: .78;
+    transition: transform .35s;
+  }
+
+  #projetos .uh-topic-card:hover img {
+    transform: scale(1.04);
+  }
+
+  #projetos .uh-topic-card .uh-card-shade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      #06122612 0%,
+      #07132766 35%,
+      #071225f5 100%
+    );
+  }
+
+  #projetos .uh-card-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  #projetos .uh-card-kicker {
+    display: block;
+    margin-bottom: 12px;
+    color: #ffa3d2;
+    font: 600 .65rem Consolas, monospace;
+    letter-spacing: .06em;
+  }
+
+  #projetos .uh-topic-card h4 {
+    margin: 0 0 12px;
+    color: #fff;
+    font: 600 clamp(1rem,1.5vw,1.3rem)/1.3
+      system-ui, sans-serif;
+  }
+
+  #projetos .uh-topic-card.uh-card-main h4 {
+    font-size: clamp(1.45rem,2.1vw,2.15rem);
+  }
+
+  #projetos .uh-card-link {
+    color: #7bd4ff;
+    font: 700 .7rem Consolas, monospace;
+  }
+
+  #projetos .uh-card-link::before {
+    content: ">> ";
+    color: #ff65b2;
+  }
+
+  /* Terminal lateral */
+
+  #projetos .uh-topic-terminal {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    border: 1px solid #6b84aa;
+    border-radius: 11px;
+    overflow: hidden;
+
+    background: #061326e8;
+    box-shadow: 0 10px 28px #0005;
+    font: .73rem/1.6 Consolas, monospace;
+  }
+
+  #projetos .uh-terminal-head {
+    padding: 11px 13px;
+    border-bottom: 1px solid #496382;
+    color: #e7f1ff;
+    background: #13223b;
+  }
+
+  #projetos .uh-terminal-body {
+    padding: 17px 13px;
+    color: #cadcf1;
+  }
+
+  #projetos .uh-terminal-command {
+    display: block;
+    margin-bottom: 13px;
+    color: #f6a0cb;
+  }
+
+  #projetos .uh-terminal-item {
+    display: flex;
+    gap: 8px;
+    margin: 9px 0;
+  }
+
+  #projetos .uh-terminal-item::before {
+    content: "✓";
+    color: #43dccd;
+  }
+
+  #projetos .uh-terminal-total {
+    margin-top: 17px;
+    padding-top: 11px;
+    border-top: 1px solid #395371;
+    color: #70c7ff;
+  }
+
+  /* Transição entre Robótica e Dados */
+
+  #projetos .uh-topic + .uh-topic {
+    border-top: 1px solid #7e97bd77;
+  }
+
+  @media (max-width: 1180px) {
+    #projetos .uh-topic-code,
+    #projetos .uh-topic-keywords {
+      display: none;
+    }
+
+    #projetos .uh-topic-header {
+      grid-template-columns: 1fr;
+    }
+
+    #projetos .uh-topic-grid {
+      grid-template-columns: repeat(2,minmax(0,1fr));
+    }
+
+    #projetos .uh-card-main {
+      grid-column: 1 / -1;
+    }
+
+    #projetos .uh-topic-terminal {
+      min-height: 210px;
+    }
+  }
+
+  @media (max-width: 680px) {
+    #projetos .uh-topic {
+      padding: 46px 20px 54px;
+    }
+
+    #projetos .uh-topic-title {
+      font-size: clamp(3.2rem,15vw,5rem);
+    }
+
+    #projetos .uh-topic-techs {
+      grid-template-columns: repeat(3,minmax(0,1fr));
+    }
+
+    #projetos .uh-topic-grid {
+      grid-template-columns: 1fr;
+    }
+
+    #projetos .uh-card-main {
+      grid-column: auto;
+    }
+
+    #projetos .uh-topic-card {
+      min-height: 240px;
+    }
+
+    #projetos .uh-topic-card.uh-card-main {
+      min-height: 320px;
+    }
+
+    #projetos .uh-topic-terminal {
+      min-height: auto;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #projetos .uh-tech,
+    #projetos .uh-topic-card,
+    #projetos .uh-topic-card img {
+      transition: none !important;
+    }
+  }
+</style>
+
+<script>
+(function () {
+  'use strict';
+
+  function initializeTopicAreas() {
+    const portfolio = document.getElementById('projetos');
+
+    // PROJECTS é a lista de projetos do assets/site.js
+    if (!portfolio || typeof PROJECTS === 'undefined') return;
+
+    // Evita inserir duas vezes
+    if (document.getElementById('uh-topic-areas')) return;
+
+    const projects = PROJECTS;
+
+    const configurations = [
+      {
+        id: 'portfolio-robotica',
+        category: 'Robótica',
+        title: 'Robótica',
+        kicker: '[ 01 // ROBÓTICA ]',
+        description:
+          'Robótica, automação, sistemas embarcados e educação científica.',
+        priority: [
+          'Automação Residencial com Arduino',
+          'Arduino: Meninas na Ciência',
+          'Caminhão da Ciência'
+        ],
+        tools: [
+          ['Arduino', 'arduino'],
+          ['C/C++', 'cplusplus'],
+          ['Eletrônica', null, '⌁'],
+          ['Sensores', null, '◉'],
+          ['Automação', null, '⚙'],
+          ['Protótipos', null, '</>']
+        ],
+        terminal: [
+          'Arduino e C/C++',
+          'Automação residencial',
+          'Oficinas educativas',
+          'Divulgação científica'
+        ],
+        code:
+          '01  #include <Arduino.h>\\n' +
+          '02  void setup() {\\n' +
+          '03    iniciar();\\n' +
+          '04  }\\n' +
+          '05  void loop() {\\n' +
+          '06    lerSensores();\\n' +
+          '07  }',
+        keywords:
+          '> robótica\\n> automação\\n> eletrônica\\n> sensores\\n> protótipos'
+      },
+      {
+        id: 'portfolio-dados',
+        category: 'Data Science',
+        title: 'Dados',
+        kicker: '[ 02 // DADOS ]',
+        description:
+          'Ciência de dados, análise financeira, modelos preditivos e inteligência para decisões.',
+        priority: [
+          'Operação Espelho Falso',
+          'ICDF —',
+          'Painel Estratégico Itaú'
+        ],
+        tools: [
+          ['Python', 'python'],
+          ['SQL', null, '▤'],
+          ['Pandas', 'pandas'],
+          ['Streamlit', 'streamlit'],
+          ['Modelagem', null, '∑'],
+          ['IA / XAI', null, '◇']
+        ],
+        terminal: [
+          'Análise de dados',
+          'Modelos de crédito',
+          'Visão computacional',
+          'IA explicável'
+        ],
+        code:
+          '01  SELECT categoria,\\n' +
+          '02    COUNT(*) AS total\\n' +
+          '03  FROM projetos\\n' +
+          '04  GROUP BY categoria;\\n' +
+          '05  -- análise de dados',
+        keywords:
+          '> analytics\\n> modelos\\n> python\\n> sql\\n> inteligência'
+      }
+    ];
+
+    function createTech(tool) {
+      const [name, iconName, symbol] = tool;
+
+      const tile = document.createElement('div');
+      tile.className = 'uh-tech';
+
+      if (iconName) {
+        const img = document.createElement('img');
+        img.src =
+          'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/' +
+          iconName + '/' + iconName + '-original.svg';
+
+        img.alt = '';
+        img.loading = 'lazy';
+
+        img.addEventListener('error', () => {
+          const fallback = document.createElement('span');
+          fallback.className = 'uh-tech-symbol';
+          fallback.textContent = name.substring(0, 2);
+          img.replaceWith(fallback);
+        });
+
+        tile.append(img);
+      } else {
+        const mark = document.createElement('span');
+        mark.className = 'uh-tech-symbol';
+        mark.textContent = symbol || '◇';
+        tile.append(mark);
+      }
+
+      const label = document.createElement('span');
+      label.textContent = name;
+      tile.append(label);
+
+      return tile;
+    }
+
+    function createProjectCard(project, main) {
+      const card = document.createElement('a');
+      card.className =
+        'uh-topic-card' + (main ? ' uh-card-main' : '');
+
+      card.href = project.page || project.source || '#projetos';
+      card.setAttribute(
+        'aria-label',
+        'Conhecer o projeto ' + project.title
+      );
+
+      if (project.cover) {
+        const img = document.createElement('img');
+        img.src = project.cover;
+        img.alt = '';
+        img.loading = 'lazy';
+
+        img.addEventListener('error', () => img.remove());
+        card.append(img);
+      }
+
+      const shade = document.createElement('div');
+      shade.className = 'uh-card-shade';
+      card.append(shade);
+
+      const body = document.createElement('div');
+      body.className = 'uh-card-content';
+
+      if (main) {
+        const kicker = document.createElement('span');
+        kicker.className = 'uh-card-kicker';
+        kicker.textContent = '[ PROJETO EM DESTAQUE ]';
+        body.append(kicker);
+      }
+
+      const title = document.createElement('h4');
+      title.textContent = project.title;
+      body.append(title);
+
+      const linkLabel = document.createElement('span');
+      linkLabel.className = 'uh-card-link';
+      linkLabel.textContent = 'VER PROJETO_';
+      body.append(linkLabel);
+
+      card.append(body);
+      return card;
+    }
+
+    function buildArea(config) {
+      const categoryProjects = projects.filter(
+        p => p.cat === config.category
+      );
+
+      if (!categoryProjects.length) return null;
+
+      // Ordena os projetos usando títulos reais do cadastro
+      const sorted = [
+        ...config.priority
+          .map(prefix =>
+            categoryProjects.find(p => p.title.startsWith(prefix))
+          )
+          .filter(Boolean)
+      ];
+
+      categoryProjects.forEach(p => {
+        if (!sorted.includes(p)) sorted.push(p);
+      });
+
+      const section = document.createElement('section');
+      section.id = config.id;
+      section.className = 'uh-topic';
+      section.dataset.category = config.category;
+      section.setAttribute('aria-label', 'Projetos de ' + config.title);
+
+      const decorativeCode = document.createElement('pre');
+      decorativeCode.className = 'uh-topic-code';
+      decorativeCode.setAttribute('aria-hidden', 'true');
+      decorativeCode.textContent = config.code;
+      section.append(decorativeCode);
+
+      const keywords = document.createElement('div');
+      keywords.className = 'uh-topic-keywords';
+      keywords.setAttribute('aria-hidden', 'true');
+      keywords.textContent = config.keywords;
+      section.append(keywords);
+
+      const inner = document.createElement('div');
+      inner.className = 'uh-topic-inner';
+
+      const header = document.createElement('div');
+      header.className = 'uh-topic-header';
+
+      const heading = document.createElement('div');
+
+      const kicker = document.createElement('span');
+      kicker.className = 'uh-topic-kicker';
+      kicker.textContent = config.kicker;
+
+      const title = document.createElement('h3');
+      title.className = 'uh-topic-title';
+      title.textContent = config.title;
+
+      const description = document.createElement('p');
+      description.className = 'uh-topic-description';
+      description.textContent = config.description;
+
+      heading.append(kicker, title, description);
+
+      const techs = document.createElement('div');
+      techs.className = 'uh-topic-techs';
+
+      config.tools.forEach(tool => techs.append(createTech(tool)));
+
+      header.append(heading, techs);
+      inner.append(header);
+
+      const grid = document.createElement('div');
+      grid.className = 'uh-topic-grid';
+
+      sorted.slice(0, 3).forEach((project, index) => {
+        grid.append(createProjectCard(project, index === 0));
+      });
+
+      const terminal = document.createElement('aside');
+      terminal.className = 'uh-topic-terminal';
+
+      const terminalHead = document.createElement('div');
+      terminalHead.className = 'uh-terminal-head';
+      terminalHead.textContent = '>_ PORTFÓLIO / ' + config.title;
+
+      const terminalBody = document.createElement('div');
+      terminalBody.className = 'uh-terminal-body';
+
+      const command = document.createElement('span');
+      command.className = 'uh-terminal-command';
+      command.textContent = '$ projetos --categoria';
+      terminalBody.append(command);
+
+      config.terminal.forEach(text => {
+        const item = document.createElement('div');
+        item.className = 'uh-terminal-item';
+        item.textContent = text;
+        terminalBody.append(item);
+      });
+
+      const total = document.createElement('div');
+      total.className = 'uh-terminal-total';
+      total.textContent =
+        categoryProjects.length + ' registros nesta área';
+
+      terminalBody.append(total);
+      terminal.append(terminalHead, terminalBody);
+      grid.append(terminal);
+
+      inner.append(grid);
+      section.append(inner);
+
+      return section;
+    }
+
+    // Insere as duas áreas ANTES do acervo pesquisável
+    const holder = document.createElement('div');
+    holder.id = 'uh-topic-areas';
+
+    configurations.forEach(config => {
+      const section = buildArea(config);
+      if (section) holder.append(section);
+    });
+
+    const catalog =
+      portfolio.querySelector('#acervo') ||
+      portfolio.querySelector('.archive-controls') ||
+      portfolio.querySelector('.searchbar') ||
+      portfolio.querySelector('#cards');
+
+    if (catalog) {
+      catalog.before(holder);
+    } else {
+      const wrap = portfolio.querySelector('.wrap');
+      if (wrap) wrap.append(holder);
+    }
+
+    // Integração com os filtros que já existem no site
+    function updateVisibility(category) {
+      let visible = false;
+
+      holder.querySelectorAll('.uh-topic').forEach(section => {
+        const shouldShow =
+          category === 'Todos' ||
+          category === section.dataset.category;
+
+        section.hidden = !shouldShow;
+        if (shouldShow) visible = true;
+      });
+
+      holder.hidden = !visible;
+    }
+
+    portfolio.querySelectorAll('#filters .filter').forEach(button => {
+      button.addEventListener('click', () => {
+        updateVisibility(button.dataset.filter);
+      });
+    });
+
+    const activeFilter =
+      portfolio.querySelector('#filters .filter.active');
+
+    updateVisibility(
+      activeFilter ? activeFilter.dataset.filter : 'Todos'
+    );
+
+    // Clicar nas áreas de atuação leva à seção correspondente
+    document.querySelectorAll('[data-area]').forEach(link => {
+      link.addEventListener('click', () => {
+        const target =
+          link.dataset.area === 'Robótica'
+            ? document.getElementById('portfolio-robotica')
+            : link.dataset.area === 'Data Science'
+              ? document.getElementById('portfolio-dados')
+              : null;
+
+        if (target) {
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              target.scrollIntoView({
+                behavior: matchMedia(
+                  '(prefers-reduced-motion: reduce)'
+                ).matches ? 'auto' : 'smooth',
+                block: 'start'
+              });
+            });
+          });
+        }
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener(
+      'DOMContentLoaded',
+      initializeTopicAreas
+    );
+  } else {
+    initializeTopicAreas();
+  }
+})();
+</script>
+
  </body>
 </html>
 
