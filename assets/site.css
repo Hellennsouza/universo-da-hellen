@@ -1013,3 +1013,35 @@ mask-image: none !important;
   }
 }
 
+
+
+/* ============================================
+   SOBRE MIM — FOTO PRIMEIRO NO CELULAR
+   ============================================ */
+
+@media (max-width: 768px) {
+
+  #sobre .about {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 26px;
+  }
+
+  /* Foto aparece antes das informações */
+  #sobre .about > .about-card {
+    order: -1;
+    width: 100%;
+    max-width: 360px;
+    justify-self: center;
+  }
+
+  /* Apresentação aparece depois da foto */
+  #sobre .about > .reveal:not(.about-card) {
+    order: 0;
+  }
+
+  /* Ajuste do espaçamento */
+  #sobre .about-card {
+    margin-bottom: 0;
+  }
+}
