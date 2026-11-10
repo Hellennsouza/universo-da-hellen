@@ -3479,6 +3479,773 @@ document.addEventListener('DOMContentLoaded', function () {
 })();
 </script>
 
+<!-- =============================================
+     UNIVERSO DA HELLEN
+     NOVA TRAJETÓRIA — CAMINHO PROFISSIONAL
+     ============================================= -->
+
+<style>
+/* Seção principal */
+#trajetoria.section {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      ellipse at 95% 14%,
+      rgba(175, 145, 240, .17),
+      transparent 38%
+    ),
+    radial-gradient(
+      ellipse at 3% 94%,
+      rgba(77, 182, 247, .16),
+      transparent 35%
+    ),
+    #f4f7fc;
+}
+
+#trajetoria > .wrap {
+  max-width: 1320px;
+}
+
+#trajetoria > .wrap > h2 {
+  font-family: Georgia, serif;
+  color: #111d3a;
+  letter-spacing: -.035em;
+}
+
+#trajetoria > .wrap > .lead {
+  max-width: 900px;
+  margin-bottom: 45px;
+}
+
+/* Área do caminho */
+#trajetoria .hellen-route {
+  position: relative;
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 32px 0 20px;
+  isolation: isolate;
+}
+
+/* Linha sinuosa luminosa */
+#trajetoria .j-path {
+  position: absolute;
+  z-index: 0;
+  top: 60px;
+  bottom: 96px;
+  left: 50%;
+  width: 118px;
+  height: calc(100% - 156px);
+  transform: translateX(-50%);
+  overflow: visible;
+  pointer-events: none;
+}
+
+#trajetoria .j-path .path-glow {
+  fill: none;
+  stroke: #a978ee;
+  stroke-width: 20;
+  opacity: .2;
+  filter: blur(9px);
+}
+
+#trajetoria .j-path .path-main {
+  fill: none;
+  stroke: url(#hellenRouteGradient);
+  stroke-width: 9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 2px 5px #9579d55c);
+}
+
+/* Chegada */
+#trajetoria .j-arrival {
+  position: relative;
+  z-index: 4;
+  width: fit-content;
+  margin: -20px 0 25px auto;
+  padding: 9px 16px;
+  border-radius: 999px;
+
+  background: linear-gradient(110deg, #ea368e, #b62fc3);
+  color: white;
+
+  font: 750 .73rem Consolas, monospace;
+  letter-spacing: .08em;
+
+  box-shadow: 0 8px 22px #d9468f35;
+}
+
+/* Cada parada da jornada */
+#trajetoria .j-stage {
+  position: relative;
+  z-index: 2;
+
+  display: grid;
+  grid-template-columns:
+    minmax(0,1fr)
+    110px
+    minmax(0,1fr);
+
+  align-items: center;
+  min-height: 165px;
+  margin-bottom: 22px;
+}
+
+/* Cards alternados */
+#trajetoria .j-stage.left .j-card {
+  grid-column: 1;
+}
+
+#trajetoria .j-stage.right .j-card {
+  grid-column: 3;
+}
+
+/* Marcador circular */
+#trajetoria .j-node {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: center;
+  align-self: center;
+  position: relative;
+  z-index: 4;
+
+  width: 25px;
+  height: 25px;
+  border: 5px solid #fff;
+  border-radius: 50%;
+
+  background: var(--accent, #d9468f);
+
+  box-shadow:
+    0 0 0 3px var(--accent, #d9468f),
+    0 0 0 9px rgba(194,110,224,.1),
+    0 0 22px var(--accent, #d9468f);
+}
+
+/* Card com aparência de vidro */
+#trajetoria .j-card {
+  grid-row: 1;
+  position: relative;
+  min-width: 0;
+
+  padding: 19px 21px 20px;
+  overflow: visible;
+
+  border: 1px solid var(--accent, #87b8e0);
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.94),
+      rgba(247,247,255,.80)
+    );
+
+  box-shadow:
+    0 12px 27px rgba(33,44,91,.10),
+    0 4px 12px rgba(42,65,113,.04);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease;
+}
+
+#trajetoria .j-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 35px rgba(33,44,91,.15);
+}
+
+/* Ligação card → caminho */
+#trajetoria .j-card::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 32px;
+  height: 2px;
+  background: var(--accent, #d9468f);
+  opacity: .50;
+}
+
+#trajetoria .j-stage.left .j-card::after {
+  right: -32px;
+}
+
+#trajetoria .j-stage.right .j-card::after {
+  left: -32px;
+}
+
+/* Conteúdo dos cards */
+#trajetoria .j-card-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+#trajetoria .j-icon {
+  flex: 0 0 64px;
+  height: 64px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 20px;
+  color: var(--accent, #d9468f);
+
+  background: var(--tint, #f9e5f1);
+}
+
+#trajetoria .j-icon svg {
+  width: 35px;
+  height: 35px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+#trajetoria .j-info {
+  min-width: 0;
+  flex: 1;
+}
+
+#trajetoria .j-period {
+  display: block;
+  margin-bottom: 5px;
+
+  font-size: .83rem;
+  line-height: 1.3;
+  font-weight: 800;
+  color: #176fba;
+}
+
+#trajetoria .j-card h3 {
+  margin: 0 0 7px;
+  color: #111d3a;
+  font-size: 1.13rem;
+  line-height: 1.25;
+  font-weight: 800;
+}
+
+#trajetoria .j-card p {
+  margin: 0;
+  color: #344661;
+  line-height: 1.53;
+  font-size: .89rem;
+}
+
+/* Resultados integrados */
+#trajetoria .j-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+#trajetoria .j-metric {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 8px 12px;
+  border: 1px solid #e9d9ed;
+  border-radius: 13px;
+
+  background: rgba(255,255,255,.85);
+  box-shadow: 0 5px 13px rgba(75,50,111,.09);
+}
+
+#trajetoria .j-metric strong {
+  color: #d73588;
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+#trajetoria .j-metric span {
+  color: #273855;
+  font-size: .72rem;
+  line-height: 1.25;
+}
+
+/* Links para explorar detalhes */
+#trajetoria .j-detail {
+  display: inline-block;
+  margin-top: 11px;
+
+  color: #bd3387;
+  font-size: .78rem;
+  font-weight: 750;
+}
+
+#trajetoria .j-detail:hover {
+  text-decoration: underline;
+}
+
+/* Destaque especial para Pesquisa e Projetos */
+#trajetoria .j-stage.current .j-card {
+  background:
+    linear-gradient(
+      125deg,
+      rgba(255,255,255,.96),
+      rgba(249,233,255,.88)
+    );
+
+  box-shadow:
+    0 12px 32px rgba(193,49,156,.15),
+    0 0 0 1px rgba(217,70,143,.12);
+}
+
+/* Início da jornada */
+#trajetoria .j-origin {
+  position: relative;
+  z-index: 3;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+#trajetoria .j-origin-mark {
+  display: grid;
+  place-items: center;
+
+  width: 64px;
+  height: 64px;
+  border: 5px solid white;
+  border-radius: 50%;
+
+  background: #248de0;
+  color: white;
+
+  font-size: 1.8rem;
+  box-shadow:
+    0 0 0 3px #67bdf0,
+    0 0 20px rgba(49,153,233,.35);
+}
+
+#trajetoria .j-origin-label {
+  padding: 10px 17px;
+  border-radius: 25px;
+
+  background: white;
+  color: #1b72bb;
+
+  font-size: .76rem;
+  letter-spacing: .09em;
+  font-weight: 800;
+
+  box-shadow: 0 5px 18px #123e7520;
+}
+
+/* Responsividade */
+@media (max-width: 850px) {
+  #trajetoria .hellen-route {
+    padding-left: 0;
+  }
+
+  #trajetoria .j-path {
+    left: 22px;
+    width: 70px;
+    transform: translateX(-50%);
+  }
+
+  #trajetoria .j-stage {
+    grid-template-columns: 44px minmax(0,1fr);
+    min-height: auto;
+    margin-bottom: 22px;
+  }
+
+  #trajetoria .j-stage.left .j-card,
+  #trajetoria .j-stage.right .j-card {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  #trajetoria .j-node {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  #trajetoria .j-card::after {
+    left: -20px !important;
+    right: auto !important;
+    width: 20px;
+  }
+
+  #trajetoria .j-arrival {
+    margin-right: 0;
+    margin-bottom: 28px;
+  }
+}
+
+@media (max-width: 520px) {
+  #trajetoria .j-card {
+    padding: 16px 13px;
+    border-radius: 17px;
+  }
+
+  #trajetoria .j-card-top {
+    gap: 10px;
+  }
+
+  #trajetoria .j-icon {
+    flex-basis: 43px;
+    height: 43px;
+    border-radius: 12px;
+  }
+
+  #trajetoria .j-icon svg {
+    width: 25px;
+    height: 25px;
+  }
+
+  #trajetoria .j-card h3 {
+    font-size: 1rem;
+  }
+
+  #trajetoria .j-card p {
+    font-size: .82rem;
+  }
+
+  #trajetoria .j-metric {
+    padding: 7px 9px;
+  }
+
+  #trajetoria .j-metric strong {
+    font-size: 1.12rem;
+  }
+
+  #trajetoria .j-origin {
+    justify-content: flex-start;
+    padding-left: 4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #trajetoria .j-card {
+    transition: none;
+  }
+
+  #trajetoria .j-card:hover {
+    transform: none;
+  }
+}
+</style>
+
+<script>
+(function () {
+  "use strict";
+
+  function montarTrajetoria() {
+    const secao = document.getElementById("trajetoria");
+    if (!secao) return;
+
+    // Aceita a timeline original ou o roadmap anterior.
+    const antiga = secao.querySelector(
+      ".timeline, .trajetoria-roadmap, .hellen-route"
+    );
+
+    if (!antiga) return;
+
+    // Ícones vetoriais, sem dependência de bibliotecas.
+    const iconPaths = {
+      pesquisa:
+        '<rect x="3" y="5" width="18" height="14" rx="2"/>' +
+        '<path d="m9 10-3 2 3 2m6-4 3 2-3 2m-2-5-2 6"/>',
+      fatec:
+        '<path d="m2 9 10-5 10 5-10 5-10-5Z"/>' +
+        '<path d="M6 11v6c3 3 9 3 12 0v-6M22 9v7"/>',
+      empresa:
+        '<path d="m3 8 9-5 9 5-9 5-9-5Z"/>' +
+        '<path d="m3 13 9 5 9-5M3 18l9 5 9-5"/>',
+      equipe:
+        '<circle cx="9" cy="7" r="3"/>' +
+        '<path d="M3 20v-2a6 6 0 0 1 12 0v2"/>' +
+        '<path d="M17 4a3 3 0 0 1 0 6M17 14a5 5 0 0 1 4 5"/>',
+      negocio:
+        '<path d="M3 10h18l-2-6H5l-2 6Z"/>' +
+        '<path d="M4 10v11h16V10M9 21v-7h6v7"/>',
+      duke:
+        '<rect x="3" y="7" width="18" height="14" rx="2"/>' +
+        '<path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>' +
+        '<path d="M3 12h18M11 11v3h2v-3"/>',
+      ufob:
+        '<path d="m2 9 10-6 10 6M4 21h16M6 10v9M10 10v9M14 10v9M18 10v9M3 9h18"/>'
+    };
+
+    const etapas = [
+      {
+        lado: "right",
+        tipo: "current",
+        periodo: "CHEGADA ATUAL · PESQUISA E PROJETOS",
+        titulo: "Robótica, FinCrime e Dados",
+        texto:
+          "Projetos Arduino Mulheres na Ciência e Caminhão da Ciência (UFOB); " +
+          "Operação Espelho Falso, ICDF Framework e estudos de risco de crédito.",
+        icone: "pesquisa",
+        cor: "#d946af",
+        fundo: "#f5e4fb"
+      },
+      {
+        lado: "left",
+        periodo: "2026–2029 (PREVISÃO)",
+        titulo: "Fatec Votorantim",
+        texto:
+          "Graduação em Ciência de Dados para Negócios. Projetos em " +
+          "análise estratégica, risco de crédito, IA explicável e " +
+          "inteligência financeira.",
+        icone: "fatec",
+        cor: "#32bfe9",
+        fundo: "#dcf4fc"
+      },
+      {
+        lado: "right",
+        periodo: "2025",
+        titulo: "BWM dos Santos & Cia",
+        texto:
+          "Gerente geral em Barreiras (BA). Redução de custos operacionais " +
+          "e otimização de taxas bancárias e MDR.",
+        icone: "empresa",
+        cor: "#349fe5",
+        fundo: "#e1f3fd",
+        metricas: [
+          ["−20%", "Custos operacionais"],
+          ["25%", "Otimização de taxas e MDR"]
+        ]
+      },
+      {
+        lado: "left",
+        periodo: "2024–2025",
+        titulo: "Terraço Duke",
+        texto:
+          "Sócia participativa em Barreiras (BA). Expansão da carteira " +
+          "de clientes com inteligência de mercado e direcionamento " +
+          "financeiro e comercial.",
+        icone: "equipe",
+        cor: "#8052eb",
+        fundo: "#eee8ff",
+        metricas: [
+          ["3×", "Carteira de clientes"]
+        ]
+      },
+      {
+        lado: "right",
+        periodo: "2023–2024",
+        titulo: "Empreendedorismo autônomo",
+        texto:
+          "Gestão de negócio próprio em Irecê (BA), envolvendo " +
+          "finanças, coordenação de equipes e melhoria de serviços.",
+        icone: "negocio",
+        cor: "#e3429b",
+        fundo: "#fde7f3"
+      },
+      {
+        lado: "left",
+        periodo: "2020–2023",
+        titulo: "DUKE — Experiências Inteligentes",
+        texto:
+          "Gerente financeiro e comercial em Barreiras (BA), " +
+          "com iniciativas de crescimento e recuperação de inadimplência.",
+        icone: "duke",
+        cor: "#26ade5",
+        fundo: "#e0f4fc",
+        metricas: [
+          ["+30%", "Faturamento anual"],
+          ["95%", "Capital inadimplente recuperado"]
+        ]
+      },
+      {
+        lado: "right",
+        periodo: "2017–2020",
+        titulo: "Universidade Federal do Oeste da Bahia (UFOB)",
+        texto:
+          "Estudos universitários em Física e Engenharia Civil, " +
+          "com disciplinas em ciências exatas, programação " +
+          "e fundamentos da engenharia.",
+        icone: "ufob",
+        cor: "#8957ec",
+        fundo: "#eee7ff",
+        link: "#formacao-ufob",
+        linkTexto: "Explorar disciplinas cursadas"
+      }
+    ];
+
+    const svg = `
+      <svg class="j-path"
+           viewBox="0 0 100 1000"
+           preserveAspectRatio="none"
+           aria-hidden="true">
+        <defs>
+          <linearGradient id="hellenRouteGradient"
+                          x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#ec43a6"/>
+            <stop offset="34%" stop-color="#9353ef"/>
+            <stop offset="65%" stop-color="#b95deb"/>
+            <stop offset="100%" stop-color="#26a4ee"/>
+          </linearGradient>
+        </defs>
+
+        <path class="path-glow"
+          d="M50 50
+             C90 100 90 145 50 190
+             S10 280 50 330
+             S90 415 50 470
+             S10 560 50 610
+             S90 700 50 750
+             S10 845 50 890
+             S75 950 50 990"/>
+
+        <path class="path-main"
+          d="M50 50
+             C90 100 90 145 50 190
+             S10 280 50 330
+             S90 415 50 470
+             S10 560 50 610
+             S90 700 50 750
+             S10 845 50 890
+             S75 950 50 990"/>
+      </svg>
+    `;
+
+    const nova = document.createElement("div");
+    nova.className = "hellen-route";
+    nova.setAttribute(
+      "aria-label",
+      "Trajetória profissional e acadêmica, dos marcos atuais até 2017"
+    );
+
+    nova.innerHTML = svg;
+
+    const chegada = document.createElement("div");
+    chegada.className = "j-arrival";
+    chegada.textContent = "CHEGADA (ATUAL)";
+    nova.append(chegada);
+
+    etapas.forEach(etapa => {
+      const linha = document.createElement("div");
+      linha.className =
+        "j-stage " + etapa.lado +
+        (etapa.tipo ? " " + etapa.tipo : "");
+
+      linha.style.setProperty("--accent", etapa.cor);
+      linha.style.setProperty("--tint", etapa.fundo);
+
+      const marcador = document.createElement("span");
+      marcador.className = "j-node";
+      marcador.setAttribute("aria-hidden", "true");
+
+      const card = document.createElement("article");
+      card.className = "j-card";
+
+      const cabecalho = document.createElement("div");
+      cabecalho.className = "j-card-top";
+
+      const icone = document.createElement("div");
+      icone.className = "j-icon";
+      icone.setAttribute("aria-hidden", "true");
+
+      icone.innerHTML =
+        '<svg viewBox="0 0 24 24">' +
+        iconPaths[etapa.icone] +
+        "</svg>";
+
+      const informacoes = document.createElement("div");
+      informacoes.className = "j-info";
+
+      const periodo = document.createElement("span");
+      periodo.className = "j-period";
+      periodo.textContent = etapa.periodo;
+
+      const titulo = document.createElement("h3");
+      titulo.textContent = etapa.titulo;
+
+      const descricao = document.createElement("p");
+      descricao.textContent = etapa.texto;
+
+      informacoes.append(periodo, titulo, descricao);
+      cabecalho.append(icone, informacoes);
+      card.append(cabecalho);
+
+      if (etapa.metricas) {
+        const metricas = document.createElement("div");
+        metricas.className = "j-metrics";
+
+        etapa.metricas.forEach(([valor, rotulo]) => {
+          const item = document.createElement("div");
+          item.className = "j-metric";
+
+          const numero = document.createElement("strong");
+          numero.textContent = valor;
+
+          const texto = document.createElement("span");
+          texto.textContent = rotulo;
+
+          item.append(numero, texto);
+          metricas.append(item);
+        });
+
+        card.append(metricas);
+      }
+
+      if (etapa.link) {
+        const link = document.createElement("a");
+        link.className = "j-detail";
+        link.href = etapa.link;
+        link.textContent = etapa.linkTexto + " →";
+        card.append(link);
+      }
+
+      linha.append(card, marcador);
+      nova.append(linha);
+    });
+
+    const inicio = document.createElement("div");
+    inicio.className = "j-origin";
+
+    const ponto = document.createElement("div");
+    ponto.className = "j-origin-mark";
+    ponto.textContent = "⌖";
+    ponto.setAttribute("aria-hidden", "true");
+
+    const legenda = document.createElement("span");
+    legenda.className = "j-origin-label";
+    legenda.textContent = "INÍCIO DA JORNADA";
+
+    inicio.append(ponto, legenda);
+    nova.append(inicio);
+
+    antiga.replaceWith(nova);
+
+    // Atualiza somente o subtítulo da Trajetória.
+    const lead = secao.querySelector(":scope > .wrap > .lead");
+
+    if (lead) {
+      lead.textContent =
+        "Experiências profissionais e formação, organizadas " +
+        "como uma jornada de evolução em gestão, finanças, " +
+        "ciência de dados e inteligência aplicada.";
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener(
+      "DOMContentLoaded",
+      montarTrajetoria,
+      { once: true }
+    );
+  } else {
+    montarTrajetoria();
+  }
+})();
+</script>
+
  </body>
 </html>
 
