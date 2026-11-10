@@ -4309,7 +4309,7 @@ if (etapa.icone === "ufob") {
 
     if (!projetos) return;
 
-    const abertura = projetos.querySelector(".uh-intro");
+    const abertura = projetos.querySelector(".archive-intro");
     const controles = projetos.querySelector(".archive-controls");
 
     if (!abertura || !controles) return;
@@ -4333,11 +4333,11 @@ if (etapa.icone === "ufob") {
     const rodape = document.createElement("div");
     rodape.className = "uh-search-footer";
 
-    const contagem = projetos.querySelector("#resultsCount");
+    const barraContagem = projetos.querySelector(".archive-toolbar");
 
-    if (contagem) {
-      rodape.appendChild(contagem);
-    }
+if (barraContagem) {
+  rodape.appendChild(barraContagem);
+}
 
     const acessar = document.createElement("a");
 
