@@ -741,86 +741,104 @@
 }
 
 /* ============================================
-   TRANSIÇÃO CONTÍNUA
-   ÁREAS → PROJETOS E SOLUÇÕES
-   Degradê começando atrás dos cards
+   TRANSIÇÃO SUAVE — ÁREAS → PROJETOS
+   sem faixa reta visível
    ============================================ */
 
 #areas.section.areas {
   position: relative;
   isolation: isolate;
+  overflow: hidden;
+  padding-bottom: clamp(110px, 12vw, 180px);
 
-  /* Reduz o espaço vazio após os cards */
-  padding-bottom: clamp(60px, 8vw, 110px);
-
-  /* O degradê agora ocupa TODA a seção */
+  /* O fundo real da aba de projetos já começa aqui */
   background:
-
-    /* Branco desaparece suavemente */
-    linear-gradient(
-      to bottom,
-      #f5f7fc 0%,
-      #f5f7fc 10%,
-      #f5f7fc 20%,
-      rgba(245,247,252,.98) 30%,
-      rgba(245,247,252,.93) 35%,
-      rgba(245,247,252,.88) 42%,
-      rgba(245,247,252,.83) 50%,
-      rgba(245,247,252,.65) 55%,
-      rgba(245,247,252,.60) 60%,
-      rgba(245,247,252,.38) 68%,
-      rgba(245,247,252,.30) 75%,
-      rgba(245,247,252,.12) 83%,
-      rgba(245,247,252,.10) 90%,
-      transparent 50%,
-      transparent 100%
-    ),
-
-    /* Reflexo rosa e roxo à direita */
     radial-gradient(
-      ellipse at 95% 100%,
-      rgba(217,70,143,.32),
-      transparent 43%
+      ellipse at 8% 88%,
+      rgba(64, 127, 201, 0.16),
+      transparent 38%
     ),
-
-    /* Reflexo azul discreto à esquerda */
     radial-gradient(
-      ellipse at 4% 90%,
-      rgba(40,109,157,.16),
-      transparent 35%
+      ellipse at 94% 92%,
+      rgba(217, 70, 143, 0.18),
+      transparent 42%
     ),
-
-    /* Fundo final da seção Projetos */
     linear-gradient(
       125deg,
       #061125 0%,
-      #0a1730 60%,
-      #07152c 100%
+      #0a1730 58%,
+      #291832 100%
     );
 }
 
-/* Desativa o degradê antigo que começava
-   somente abaixo dos cards */
-#areas.section.areas::after {
-  content: none !important;
-  display: none !important;
+/* camada clara que vai sumindo aos poucos */
+#areas.section.areas::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #f5f7fc 0%,
+      #f5f7fc 18%,
+      rgba(245, 247, 252, 0.98) 28%,
+      rgba(238, 243, 250, 0.93) 38%,
+      rgba(219, 230, 243, 0.78) 50%,
+      rgba(184, 206, 230, 0.52) 62%,
+      rgba(120, 156, 199, 0.24) 74%,
+      rgba(40, 69, 110, 0.10) 86%,
+      rgba(6, 17, 37, 0) 100%
+    );
 }
 
-/* Mantém os cards acima do fundo */
+/* camada extra para "quebrar" a linha reta e suavizar a transição */
+#areas.section.areas::after {
+  content: "";
+  position: absolute;
+  left: -8%;
+  right: -8%;
+  bottom: -6%;
+  height: 58%;
+  z-index: 0;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 18%,
+      rgba(255, 255, 255, 0.16) 0%,
+      rgba(189, 211, 236, 0.12) 28%,
+      rgba(102, 140, 187, 0.10) 48%,
+      rgba(46, 74, 119, 0.07) 62%,
+      rgba(6, 17, 37, 0) 82%
+    );
+
+  filter: blur(32px);
+  opacity: 0.95;
+}
+
+/* garante que os cards fiquem acima da transição */
 #areas.section.areas > .wrap {
   position: relative;
   z-index: 1;
 }
 
-/* Une visualmente as duas seções */
+/* liga visualmente com a aba de projetos */
 #projetos.uh-archive {
-  margin-top: -2px;
-  border-top: 0;
+  margin-top: -1px;
+  border-top: none;
 }
 
-/* Responsividade */
+/* celular */
 @media (max-width: 768px) {
   #areas.section.areas {
-    padding-bottom: 100px;
+    padding-bottom: 110px;
+  }
+
+  #areas.section.areas::after {
+    height: 46%;
+    filter: blur(24px);
   }
 }
