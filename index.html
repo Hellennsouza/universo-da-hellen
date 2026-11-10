@@ -3854,7 +3854,7 @@ document.addEventListener('DOMContentLoaded', function () {
         icone: "ufob",
         cor: "#8957ec",
         fundo: "#eee7ff",
-        link: "#formacao-ufob",
+        link: "formacao-ufob.html",
         linkTexto: "Explorar disciplinas cursadas"
       }
     ];
@@ -3945,8 +3945,21 @@ document.addEventListener('DOMContentLoaded', function () {
       periodo.className = "j-period";
       periodo.textContent = etapa.periodo;
 
-      const titulo = document.createElement("h3");
-      titulo.textContent = etapa.titulo;
+      
+const titulo = document.createElement("h3");
+
+if (etapa.icone === "ufob") {
+  const linkUFOB = document.createElement("a");
+
+  linkUFOB.href = "formacao-ufob.html";
+  linkUFOB.textContent = etapa.titulo;
+  linkUFOB.className = "j-ufob-link";
+
+  titulo.append(linkUFOB);
+} else {
+  titulo.textContent = etapa.titulo;
+}
+
 
       const descricao = document.createElement("p");
       descricao.textContent = etapa.texto;
