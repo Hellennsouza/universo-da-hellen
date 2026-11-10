@@ -917,3 +917,72 @@
     height: 220px;
   }
 }
+
+
+/* ============================================
+   TRANSIÇÃO ESPELHADA
+   LABORATÓRIO → CONTATO
+   Branco azulado → azul claro → azul profundo
+   ============================================ */
+
+#laboratorio.section.lab {
+  position: relative;
+  isolation: isolate;
+
+  /* Espaço para a transição acontecer */
+  padding-bottom: clamp(110px, 12vw, 175px);
+
+  /* Fundo com transição contínua */
+  background:
+    linear-gradient(
+      to bottom,
+
+      /* Fundo original do laboratório */
+      #f2f7fd 0%,
+      #f2f7fd 18%,
+
+      /* Início da transformação */
+      #e7f0fa 30%,
+      #d1e1f2 43%,
+
+      /* Azul claro */
+      #a7c3df 56%,
+
+      /* Azul intermediário */
+      #7297be 68%,
+
+      /* Azul mais fechado */
+      #425d8a 80%,
+
+      /* Aproximação do fundo do contato */
+      #23365d 91%,
+
+      /* Cor EXATA do fundo do contato */
+      #101b3c 100%
+    );
+}
+
+/* Mantém os cards acima do degradê */
+#laboratorio.section.lab > .wrap {
+  position: relative;
+  z-index: 1;
+}
+
+/* Elimina possíveis efeitos anteriores */
+#laboratorio.section.lab::after {
+  content: none !important;
+}
+
+/* A seção Contato continua na cor original */
+#contato.section.contact {
+  background: #101b3c;
+  border-top: none;
+  margin-top: -1px;
+}
+
+/* Ajustes para celular */
+@media (max-width: 768px) {
+  #laboratorio.section.lab {
+    padding-bottom: 110px;
+  }
+}
