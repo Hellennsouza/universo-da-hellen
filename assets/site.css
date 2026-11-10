@@ -740,80 +740,80 @@
   }
 }
 
-
 /* ============================================
-   TRANSIÇÃO ESPELHADA
-   ÁREAS DE ATUAÇÃO → PROJETOS E SOLUÇÕES
+   TRANSIÇÃO CONTÍNUA
+   ÁREAS → PROJETOS E SOLUÇÕES
+   Degradê começando atrás dos cards
    ============================================ */
 
-#areas {
+#areas.section.areas {
   position: relative;
   isolation: isolate;
-  background: #f5f7fc;
-  padding-bottom: 245px;
+
+  /* Reduz o espaço vazio após os cards */
+  padding-bottom: clamp(100px, 12vw, 165px);
+
+  /* O degradê agora ocupa TODA a seção */
+  background:
+
+    /* Branco desaparece suavemente */
+    linear-gradient(
+      to bottom,
+      #f5f7fc 0%,
+      #f5f7fc 20%,
+      rgba(245,247,252,.98) 30%,
+      rgba(245,247,252,.88) 42%,
+      rgba(245,247,252,.65) 55%,
+      rgba(245,247,252,.38) 68%,
+      rgba(245,247,252,.12) 83%,
+      transparent 100%
+    ),
+
+    /* Reflexo rosa e roxo à direita */
+    radial-gradient(
+      ellipse at 95% 100%,
+      rgba(217,70,143,.32),
+      transparent 43%
+    ),
+
+    /* Reflexo azul discreto à esquerda */
+    radial-gradient(
+      ellipse at 4% 90%,
+      rgba(40,109,157,.16),
+      transparent 35%
+    ),
+
+    /* Fundo final da seção Projetos */
+    linear-gradient(
+      125deg,
+      #061125 0%,
+      #0a1730 60%,
+      #07152c 100%
+    );
 }
 
-/* Mantém os cards acima da transição */
-#areas > .wrap {
+/* Desativa o degradê antigo que começava
+   somente abaixo dos cards */
+#areas.section.areas::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Mantém os cards acima do fundo */
+#areas.section.areas > .wrap {
   position: relative;
   z-index: 1;
 }
 
-/* Branco se dissolve no fundo escuro e rosado */
-#areas::after {
-  content: "";
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  right: 0;
-  height: 250px;
-  z-index: 0;
-  pointer-events: none;
-
-  background:
-    linear-gradient(
-      to bottom,
-      #f5f7fc 0%,
-      rgba(245,247,252,.96) 12%,
-      rgba(245,247,252,.72) 35%,
-      rgba(245,247,252,.30) 63%,
-      transparent 100%
-    ),
-
-    radial-gradient(
-      ellipse at 95% 100%,
-      rgba(217,70,143,.22),
-      transparent 35%
-    ),
-
-    radial-gradient(
-      ellipse at 5% 100%,
-      rgba(39,122,212,.25),
-      transparent 35%
-    ),
-
-    linear-gradient(
-      125deg,
-      #061125,
-      #0a1730 60%,
-      #07152c
-    );
+/* Une visualmente as duas seções */
+#projetos.uh-archive {
+  margin-top: -2px;
+  border-top: 0;
 }
 
-/* Remove a separação entre as duas seções */
-#areas + #projetos {
-  margin-top: -1px;
-  border-top: none;
-}
-
-/* Ajuste para celular */
+/* Responsividade */
 @media (max-width: 768px) {
-  #areas {
-    padding-bottom: 175px;
-  }
-
-  #areas::after {
-    height: 180px;
+  #areas.section.areas {
+    padding-bottom: 100px;
   }
 }
-
