@@ -4036,6 +4036,161 @@ if (etapa.icone === "ufob") {
 })();
 </script>
 
+<!-- ==========================================
+     UNIVERSO DA HELLEN
+     TRANSIÇÕES CONTÍNUAS ENTRE SEÇÕES
+     Trajetória → Resultados
+     Projetos → Laboratório
+     ========================================== -->
+
+<style>
+  /* Mantém as seções de chegada preparadas
+     para receber uma transição externa. */
+
+  #resultados.outcomes,
+  #laboratorio.lab {
+    position: relative !important;
+    z-index: 20;
+    overflow: visible !important;
+    border-top: 0 !important;
+  }
+
+  /* Camada independente dos pseudoelementos antigos */
+  .uh-blend-join {
+    --blend-color: #f4f7fc;
+    --blend-distance: 270px;
+
+    position: absolute;
+    top: calc(-1 * var(--blend-distance));
+    left: 0;
+    right: 0;
+
+    width: 100%;
+    height: calc(var(--blend-distance) + 100px);
+
+    z-index: 1;
+    pointer-events: none;
+
+    background: linear-gradient(
+      to bottom,
+
+      /* Começa transparente sobre a seção anterior */
+      transparent 0%,
+      transparent 8%,
+
+      /* A nova cor aparece gradualmente */
+      color-mix(
+        in srgb,
+        var(--blend-color) 12%,
+        transparent
+      ) 29%,
+
+      color-mix(
+        in srgb,
+        var(--blend-color) 38%,
+        transparent
+      ) 48%,
+
+      color-mix(
+        in srgb,
+        var(--blend-color) 74%,
+        transparent
+      ) 65%,
+
+      /* Na divisão, a cor já está completamente integrada */
+      var(--blend-color) 73%,
+      var(--blend-color) 80%,
+
+      /* Dissolve-se novamente sobre o fundo da nova seção */
+      transparent 100%
+    );
+  }
+
+  /* Mantém os textos da seção seguinte acima do efeito */
+  #resultados.outcomes > .wrap,
+  #laboratorio.lab > .wrap {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Remove apenas a tentativa antiga de transição
+     do pseudoelemento inferior de Projetos. */
+  #projetos.uh-archive::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  /* Desativa o separador temporário sugerido anteriormente */
+  .transicao-projetos-resultados {
+    display: none !important;
+  }
+
+  /* Ajuste para telas menores */
+  @media (max-width: 768px) {
+    .uh-blend-join {
+      --blend-distance: 180px;
+      height: calc(var(--blend-distance) + 75px);
+    }
+  }
+</style>
+
+<script>
+(function () {
+  function instalarTransicoes() {
+
+    const transicoes = [
+      {
+        id: "resultados",
+        cor: "#f4f7fc",
+        distancia: "270px"
+      },
+      {
+        id: "laboratorio",
+        cor: "#f2f7fd",
+        distancia: "300px"
+      }
+    ];
+
+    transicoes.forEach(config => {
+      const secao = document.getElementById(config.id);
+
+      if (!secao) return;
+
+      // Impede a duplicação se o script for executado novamente
+      if (secao.querySelector(":scope > .uh-blend-join")) {
+        return;
+      }
+
+      const camada = document.createElement("div");
+      camada.className = "uh-blend-join";
+      camada.setAttribute("aria-hidden", "true");
+
+      camada.style.setProperty(
+        "--blend-color",
+        config.cor
+      );
+
+      camada.style.setProperty(
+        "--blend-distance",
+        config.distancia
+      );
+
+      secao.prepend(camada);
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener(
+      "DOMContentLoaded",
+      instalarTransicoes,
+      { once: true }
+    );
+  } else {
+    instalarTransicoes();
+  }
+})();
+</script>
+
  </body>
 </html>
 
