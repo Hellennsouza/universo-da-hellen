@@ -1,203 +1,160 @@
-
 'use strict';
-const PROJECTS = [{"title": "Painel Estratégico Itaú Unibanco — PI1", 
-                   "cat": "Data Science", 
-                   "icon": "🏦", 
-                   "desc": "Dashboard interativo em Streamlit para análise institucional, indicadores, matrizes estratégicas e propostas de ação do Itaú Unibanco.", 
-                   "context": "Projeto Integrador I — Conhecendo o Negócio, Fatec Votorantim, curso de Ciência de Dados para Negócios. Trabalho acadêmico em equipe.", 
-                   "tools": "Python, Streamlit, pandas, SWOT, TOWS, BCG, SMART, BSC, 5W2H", 
-                   "results": "Painel com 15 opções de navegação, incluindo indicadores do 2T26, análises estratégicas, auditoria comparativa e controle da apresentação. Metas 2027 são propostas do estudo, não resultados atingidos.", 
-                   "verified": false, 
-                   "page": "projetos/painel-estrategico-itau-pi1.html", 
-                   "status": "Projeto acadêmico em equipe", 
-                   "featured": true, 
-                   "cover": "assets/capas/itau.png"
-                  }, 
-                  {"title": "ICDF — Framework de Decisão em Crédito Integrado", 
-                   "cat": "Data Science", 
-                   "icon": "📈", 
-                   "desc": "Framework de decisão de crédito que combina risco financeiro (ICD) e qualidade dos dados (IQD).", 
-                   "context": "Arquitetura bidimensional de quatro quadrantes para decisões de crédito, incluindo análise manual de propostas com dados insuficientes. O README documenta a evolução até a versão 29.0.", 
-                   "tools": "Python, TensorFlow Lattice, PyTorch, XGBoost, LightGBM, Isolation Forest, Streamlit, MLOps", 
-                   "results": "O README apresenta benchmark de modelos e simulação com 25 mil proponentes, com resultados projetados. Os números são relatados pelo projeto, não uma validação independente em produção.", 
-                   "source": "https://github.com/Hellennsouza/ICDF-FRAMEWORK", 
-                   "verified": true, 
-                   "page": "projetos/icdf-framework-de-decisao-em-credito-integrado.html", 
-                   "status": "Documentado", 
-                   "featured": true, 
-                   "cover": "assets/capas/icdf.png"
-                  }, 
-                  {"title": "Operação Espelho Falso — Detecção de Deepfakes", 
-                   "cat": "Data Science", "icon": "🪞", 
-                   "desc": "Prova de conceito para investigação de fraude com visão computacional, biometria e explicabilidade de IA.", 
-                   "context": "Versão beta documentada com processamento em memória, módulos de vivacidade ocular, PRNU, grafos de identidade e explicabilidade. Aplicações propostas em investigações e prevenção de fraudes.", 
-                   "tools": "Python, OpenCV, NumPy, SciPy, Pandas, NetworkX, scikit-learn, XAI", 
-                   "results": "README registra testes locais simulados: score 549/1000 para transação legítima e 764/1000 para cenário de ataque. Não constitui prova de desempenho ou conformidade regulatória em ambiente real.", 
-                   "source": "https://github.com/Hellennsouza/Operacao_Espelho_Falso", 
-                   "verified": true, 
-                   "page": "projetos/operacao-espelho-falso-deteccao-de-deepfakes.html", 
-                   "status": "Documentado", 
-                   "featured": true, 
-                   "cover": "assets/capas/espelho.png"
-                  }, 
-                  {"title": "Análise de Risco de Crédito e Inadimplência", 
-                   "cat": "Finanças", 
-                   "icon": "📉", 
-                   "desc": "Modelo preditivo em Python para identificar risco de inadimplência em carteira simulada de 1.500 clientes.", 
-                   "context": "Problema: antecipar default e apoiar decisões de crédito e recuperação de ativos. Dados sintéticos, treinamento/teste 75%/25% e Random Forest com 100 árvores.", 
-                   "tools": "Python, Pandas, NumPy, scikit-learn, Jupyter Notebook, Random Forest", 
-                   "results": "Resultados documentados no README: acurácia de 77%, ROC-AUC 0,8537 e recall de 43% para inadimplentes. O baixo recall desta classe aponta necessidade de aprimoramento antes de uso real.", 
-                   "source": "https://github.com/Hellennsouza/Analise-de-Risco-de-Credito", 
-                   "verified": true, 
-                   "page": "projetos/analise-de-risco-de-credito-e-inadimplencia.html", 
-                   "status": "Documentado", 
-                   "featured": false, 
-                   "cover": "assets/capas/risco.png"
-                  }, 
-                  {"title": "Arduino: Meninas na Ciência", 
-                   "cat": "Robótica", 
-                   "icon": "👩‍🔬", 
-                   "desc": "Projeto de extensão com ensino de robótica e programação C/C++ para alunas de escolas públicas de Barreiras (BA).", 
-                   "context": "Atuação como monitora bolsista CNPq, com oficinas de montagem e programação de Arduino para alunas de cinco colégios estaduais, conforme perfil GitHub.", 
-                   "tools": "Arduino, C/C++, eletrônica educativa, oficinas práticas", 
-                   "results": "O repositório reúne códigos e experimentos com LEDs, sensores, servomotores, LCD e Bluetooth. Não há indicadores quantitativos de aprendizagem verificados.", 
-                   "source": "https://github.com/Hellennsouza/Arduino-Meninas-na-Ciencia", 
-                   "verified": true, 
-                   "page": "projetos/arduino-meninas-na-ciencia.html", 
-                   "status": "Documentado", 
-                   "featured": false, 
-                   "cover": "assets/capas/meninas.png"
-                  }, 
-                  {"title": "Caminhão da Ciência — UFOB", 
-                   "cat": "Robótica", 
-                   "icon": "🚚", 
-                   "desc": "Atividades itinerantes de divulgação científica e aproximação de estudantes com robótica e tecnologia.", 
-                   "context": "Projeto de extensão da UFOB; o perfil GitHub menciona atividades em municípios baianos e apresentações de tecnologia e lógica de programação.", 
-                   "tools": "Divulgação científica, robótica, programação e demonstrações educativas", 
-                   "results": "Registros e documentação do projeto disponíveis no repositório. Resultados quantitativos ainda não documentados aqui.", 
-                   "source": "https://github.com/Hellennsouza/Caminhao-da-Ciencia-UFOB", 
-                   "verified": true, 
-                   "page": "projetos/caminhao-da-ciencia-ufob.html", 
-                   "status": "Documentado", 
-                   "featured": false, 
-                   "cover": "assets/capas/caminhao.png"
-                  }, 
-                  {"title": "Automação Residencial com Arduino", 
-                   "cat": "Robótica", 
-                   "icon": "🏠", 
-                   "desc": "Protótipo de automação residencial implementado em maquete física de madeirite.", 
-                   "context": "Experimento de Robótica de Garagem que aplica microcontroladores a uma representação física de residência.", 
-                   "tools": "Arduino, C/C++, prototipagem física", 
-                   "results": "Protótipo descrito no repositório; componentes e resultados de testes podem ser detalhados após revisão do código e das evidências.", 
-                   "source": "https://github.com/Hellennsouza/Automacao-Residencial-Arduino", 
-                   "verified": true, 
-                   "page": "projetos/automacao-residencial-com-arduino.html", 
-                   "status": "Documentado", 
-                   "featured": false, 
-                   "cover": "assets/capas/arduinocasa.png"
-                  }, 
-                  
-                 
-                  {
-                    "title": "Gestão Financeira e Operacional — Duke",
-                    "cat": "Gestão",
-                    "icon": "💼",
-                    "desc": "Experiência profissional em gestão financeira, controle de caixa, indicadores de desempenho, liderança de equipes e organização de processos operacionais.",
-                    "context": "Atuação como Gerente Financeiro na Duke Experiências Inteligentes, em Barreiras (BA), entre outubro de 2020 e janeiro de 2023. Responsável por controles financeiros, elaboração de relatórios de desempenho, supervisão operacional, suporte administrativo e atendimento consultivo. Registros de 2023 e 2024 documentam convites posteriores para retornar à gestão financeira.",
-                    "tools": "Gestão financeira, fluxo de caixa, indicadores de desempenho (KPIs), relatórios gerenciais, controle operacional, liderança de equipes e relacionamento com clientes",
-                    "results": "Experiência profissional documentada no LinkedIn, com registros de atuação e reconhecimento posterior. Em janeiro de 2024, recebeu convite para retornar à gerência financeira, acompanhado de manifestação explícita de confiança do gestor. O convite não representa contratação efetivada.",
-                    "source": "https://www.linkedin.com/in/hellen-souza-879051194/",
-                    "verified": true,
-                    "page": "projetos/gestao-financeira-duke.html",
-                    "status": "Experiência profissional",
-                    "featured": false,
-                    "cover": "assets/capas/gestao-financeira-duke.png"
-                  },
-                
-                  {"title": "GlobanTIX", 
-                   "cat": "Empreendedorismo", 
-                   "icon": "💡", 
-                   "desc": "Proposta de consultoria 360° integrando tecnologia, finanças e gestão.", 
-                   "context": "Registrar conceito, serviços, identidade e evolução do empreendimento.", 
-                   "verified": false, 
-                   "page": "projetos/globantix.html", 
-                   "status": "Registro em construção", 
-                   "featured": false, 
-                   "cover": "assets/capas/globantix.png"
-                  }, 
-                  {"title": "Reborna", 
-                   "cat": "Empreendedorismo", 
-                   "icon": "🎨", 
-                   "desc": "Hub estratégico voltado a branding, marketing e posicionamento de imagem.", 
-                   "context": "Adicionar projetos de marca, peças visuais e resultados.", 
-                   "verified": false, 
-                   "page": "projetos/reborna.html", 
-                   "status": "Registro em construção", 
-                   "featured": false, 
-                   "cover": "assets/capas/reborna.png"
-                  }, 
-                  {"title": "Candy Lover", 
-                   "cat": "Empreendedorismo", 
-                   "icon": "🍬", 
-                   "desc": "Gestão de e-commerce de doces personalizados sob encomenda.", 
-                   "context": "Documentar operação, catálogo, processos e comunicação da marca.", 
-                   "verified": false, 
-                   "page": "projetos/candy-lover.html", 
-                   "status": "Registro em construção", 
-                   "featured": false, 
-                   "cover": "assets/capas/pirulito.png"
-                  }, 
-                  {"title": "Consultoria Empresarial", 
-                   "cat": "Empreendedorismo", 
-                   "icon": "🤝", 
-                   "desc": "Atuação em gestão financeira estratégica e estruturação de fluxo de caixa.", 
-                   "context": "Detalhar escopo, entregas e aprendizados de cada experiência.", 
-                   "verified": false, 
-                   "page": "projetos/consultoria-empresarial.html", 
-                   "status": "Registro em construção", 
-                   "featured": false, 
-                   "cover": "assets/capas/consultoria.png"
-                  }, 
-                  {"title": "HHMP", 
-                   "cat": "Empreendedorismo", 
-                   "icon": "⚙️", 
-                   "desc": "Engenharia e prototipagem de equipamentos para construção submarina.", 
-                   "context": "Adicionar desenhos, protótipos, fases e participação no projeto.", 
-                   "verified": false, 
-                   "page": "projetos/hhmp.html", 
-                   "status": "Registro em construção", 
-                   "featured": false, 
-                   "cover": "assets/capas/eng.png"
-                  }, 
-                  {"title": "SS Consultoria LTDA", 
-                   "cat": "Empreendedorismo", 
-                   "icon": "🏪", 
-                   "desc": "Experiência empreendedora envolvendo folheados, sex shop e cosméticos.", 
-                   "context": "Documentar estrutura do negócio, operações, produtos e trajetória.", 
-                   "verified": false, 
-                   "page": "projetos/ss-consultoria-ltda.html", 
-                   "status": "Registro em construção", 
-                   "featured": false, 
-                   "cover": "assets/capas/ss.png"
-                  }
-                ];
-const cards=document.getElementById('cards'), featured=document.getElementById('featuredCards'), search=document.getElementById('searchProjects');
-let currentCategory='Todos';
-let observer; // Inicializar antes da primeira renderização
-const normalize=s=>(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
-function el(tag,cls,text){const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n;}
-function makeCard(p){const a=el('article','project reveal');const v=el('div','visual');v.setAttribute('aria-hidden','true');const img=el('img');img.src=p.cover;img.alt='';img.loading=p.featured?'eager':'lazy';img.decoding='async';v.append(img);a.append(v);const body=el('div','project-body');const tags=el('div');tags.append(el('span','tag',p.cat));tags.append(el('span','tag'+(p.status==='Registro em construção'?' draft':''),p.status));body.append(tags,el('h3','',p.title),el('p','',p.desc));const link=el('a','more','Conhecer registro →');link.href=p.page||p.source||'#projetos';body.append(link);a.append(body);return a;}
-function render(){const q=normalize(search.value.trim());const filtered=PROJECTS.filter(p=>(currentCategory==='Todos'||p.cat===currentCategory)&&normalize([p.title,p.desc,p.cat,p.tools,p.context].join(' ')).includes(q));cards.replaceChildren(...filtered.map(makeCard));if(!filtered.length)cards.append(el('p','empty','Nenhum projeto encontrado. Experimente outra busca.'));document.getElementById('resultsCount').textContent=filtered.length+' registro(s) encontrado(s)';observeReveals();}
-featured.replaceChildren(...PROJECTS.filter(p=>p.featured).map(makeCard));
-for(const b of document.querySelectorAll('.filter'))b.addEventListener('click',()=>{currentCategory=b.dataset.filter;for(const other of document.querySelectorAll('.filter')){other.classList.toggle('active',other===b);other.setAttribute('aria-pressed',String(other===b));}render();});
-search.addEventListener('input',render);render();
-const toggle=document.getElementById('menuToggle'),nav=document.getElementById('navLinks');toggle.addEventListener('click',()=>{const expanded=toggle.getAttribute('aria-expanded')==='true';toggle.setAttribute('aria-expanded',String(!expanded));nav.classList.toggle('open',!expanded);});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');toggle.setAttribute('aria-expanded','false');}));
-document.getElementById('year').textContent=new Date().getFullYear();
-function observeReveals(){if(matchMedia('(prefers-reduced-motion: reduce)').matches){document.querySelectorAll('.reveal').forEach(x=>x.classList.add('visible'));return;}if(!('IntersectionObserver' in window)){document.querySelectorAll('.reveal').forEach(x=>x.classList.add('visible'));return;}if(!observer)observer=new IntersectionObserver(entries=>{for(const entry of entries)if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}}, {threshold:.07});document.querySelectorAll('.reveal:not(.visible)').forEach(x=>observer.observe(x));}observeReveals();
 
-// Links das cinco áreas selecionam o filtro correspondente no catálogo.
-document.querySelectorAll('[data-area]').forEach(link => link.addEventListener('click', () => {
-  const category = link.dataset.area;
-  const button = [...document.querySelectorAll('#filters .filter')].find(b => b.dataset.filter === category);
-  if (button) button.click();
+const PROJECTS = [
+  {"title": "Operação Espelho Falso — Detecção de Deepfakes", "cat": "Data Science", "desc": "Prova de conceito para investigação de fraude com visão computacional, biometria e explicabilidade de IA.", "tools": "Python, OpenCV, NumPy, NetworkX, XAI", "status": "Pesquisa documentada", "page": "projetos/operacao-espelho-falso-deteccao-de-deepfakes.html", "cover": "assets/capas/espelho.png", "featured": true},
+  {"title": "ICDF — Framework de Decisão em Crédito Integrado", "cat": "Data Science", "desc": "Framework que combina risco financeiro (ICD) e qualidade dos dados (IQD) para decisões complexas.", "tools": "Python, MLOps, PyTorch, XGBoost", "status": "Documentado", "page": "projetos/icdf-framework-de-decisao-em-credito-integrado.html", "cover": "assets/capas/icdf.png", "featured": true},
+  {"title": "Painel Estratégico Itaú Unibanco — PI1", "cat": "Data Science", "desc": "Dashboard interativo para análise institucional, matrizes estratégicas e auditoria.", "tools": "Python, Streamlit, Pandas", "status": "Projeto Acadêmico", "page": "projetos/painel-estrategico-itau-pi1.html", "cover": "assets/capas/itau.png"},
+  {"title": "Análise de Risco de Crédito e Inadimplência", "cat": "Finanças", "desc": "Modelo preditivo (Random Forest) para identificar risco de default em carteira simulada.", "tools": "Python, Scikit-learn", "status": "Documentado", "page": "projetos/analise-de-risco-de-credito-e-inadimplencia.html", "cover": "assets/capas/risco.png"},
+  {"title": "Gestão Financeira e Operacional — Duke", "cat": "Gestão", "desc": "Recuperação de caixa, indicadores de desempenho (KPIs) e controle operacional.", "tools": "Gestão financeira, Liderança", "status": "Experiência Profissional", "page": "projetos/gestao-financeira-duke.html", "cover": "assets/capas/gestao-financeira-duke.png"},
+  {"title": "Arduino: Meninas na Ciência", "cat": "Robótica", "desc": "Ensino de robótica e programação C/C++ para alunas de escolas públicas da Bahia.", "tools": "Arduino, C/C++", "status": "Extensão", "page": "projetos/arduino-meninas-na-ciencia.html", "cover": "assets/capas/meninas.png"},
+  {"title": "Caminhão da Ciência — UFOB", "cat": "Robótica", "desc": "Divulgação científica e aproximação de estudantes com tecnologia e lógica de programação.", "tools": "Educação tecnológica", "status": "Extensão", "page": "projetos/caminhao-da-ciencia-ufob.html", "cover": "assets/capas/caminhao.png"},
+  {"title": "GlobanTIX", "cat": "Empreendedorismo", "desc": "Consultoria 360° integrando tecnologia, finanças e gestão.", "tools": "Business Design", "status": "Em construção", "page": "projetos/globantix.html", "cover": "assets/capas/globantix.png"},
+  {"title": "Reborna", "cat": "Empreendedorismo", "desc": "Hub estratégico voltado a branding e posicionamento de imagem.", "tools": "Marketing", "status": "Em construção", "page": "projetos/reborna.html", "cover": "assets/capas/reborna.png"}
+];
+
+const cards = document.getElementById('cards'), search = document.getElementById('searchProjects');
+let currentCategory = 'Todos';
+let observer;
+
+const normalize = s => (s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+
+function el(tag, cls, text) { 
+  const n = document.createElement(tag); 
+  if (cls) n.className = cls; 
+  if (text !== undefined) n.textContent = text; 
+  return n; 
+}
+
+function makeCard(p, index) {
+  // O primeiro card sempre recebe o destaque maior na grade (se for de busca geral/categoria específica)
+  const isMainFeatured = (index === 0 && (currentCategory === 'Todos' || search.value.trim() !== ''));
+  const articleCls = isMainFeatured ? 'project featured-main reveal visible' : 'project reveal';
+  
+  const a = el('article', articleCls);
+  
+  const v = el('div', 'visual');
+  const img = el('img');
+  img.src = p.cover;
+  img.alt = p.title;
+  img.loading = isMainFeatured ? 'eager' : 'lazy';
+  v.append(img);
+  a.append(v);
+
+  const body = el('div', 'project-body');
+  
+  const meta = el('div', 'project-meta');
+  meta.append(el('span', 'tag', p.cat));
+  if(p.tools) meta.append(el('span', 'tag tech', p.tools.split(',')[0])); // Mostra a 1ª tecnologia
+  if(p.status) meta.append(el('span', 'tag', p.status));
+  
+  body.append(meta, el('h3', '', p.title), el('p', '', p.desc));
+  
+  const link = el('a', 'more', 'Ver documentação completa →');
+  link.href = p.page || '#projetos';
+  body.append(link);
+  
+  a.append(body);
+  return a;
+}
+
+function render() {
+  const q = normalize(search.value.trim());
+  const filtered = PROJECTS.filter(p => 
+    (currentCategory === 'Todos' || p.cat === currentCategory) &&
+    normalize([p.title, p.desc, p.cat, p.tools].join(' ')).includes(q)
+  );
+  
+  cards.replaceChildren(...filtered.map((p, index) => makeCard(p, index)));
+  
+  if (!filtered.length) {
+    cards.append(el('p', 'empty', 'Nenhum projeto encontrado para esta busca.'));
+  }
+  
+  document.getElementById('resultsCount').textContent = filtered.length + ' registro(s) encontrado(s)';
+  observeReveals();
+}
+
+// Filtros do Portfólio
+for (const b of document.querySelectorAll('.filter')) {
+  b.addEventListener('click', () => {
+    currentCategory = b.dataset.filter;
+    for (const other of document.querySelectorAll('.filter')) {
+      other.classList.toggle('active', other === b);
+    }
+    render();
+  });
+}
+
+search.addEventListener('input', render);
+render(); // Inicialização
+
+// Interações do Menu Mobile
+const toggle = document.getElementById('menuToggle');
+const nav = document.getElementById('navLinks');
+toggle.addEventListener('click', () => {
+  const expanded = toggle.getAttribute('aria-expanded') === 'true';
+  toggle.setAttribute('aria-expanded', String(!expanded));
+  nav.classList.toggle('open', !expanded);
+});
+
+nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  nav.classList.remove('open');
+  toggle.setAttribute('aria-expanded', 'false');
 }));
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Links Contextuais da Seção "Áreas" para o Catálogo
+document.querySelectorAll('[data-area]').forEach(link => {
+  link.addEventListener('click', () => {
+    const category = link.dataset.area;
+    const button = [...document.querySelectorAll('#filters .filter')].find(b => b.dataset.filter === category);
+    if (button) button.click();
+  });
+});
+
+// Scroll Spy (Navegação Contextual)
+const sections = document.querySelectorAll('section[id]');
+const navLinksList = document.querySelectorAll('.navlinks a');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    if (pageYOffset >= sectionTop - 150) {
+      current = section.getAttribute('id');
+    }
+  });
+
+  navLinksList.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === `#${current}`) {
+      link.classList.add('active');
+    }
+  });
+});
+
+// Observador de Aparição (Fade in nas seções)
+function observeReveals() {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.reveal').forEach(x => x.classList.add('visible'));
+    return;
+  }
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('.reveal').forEach(x => x.classList.add('visible'));
+    return;
+  }
+  if (!observer) {
+    observer = new IntersectionObserver(entries => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      }
+    }, { threshold: 0.1 });
+  }
+  document.querySelectorAll('.reveal:not(.visible)').forEach(x => observer.observe(x));
+}
+
+observeReveals();
