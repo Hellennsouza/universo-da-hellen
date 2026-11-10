@@ -3082,6 +3082,403 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
+<!-- ==========================================
+     UNIVERSO DA HELLEN — REORGANIZAÇÃO 2026
+     Navegação, hierarquia e apresentação
+     ========================================== -->
+
+<style>
+  /* Navegação simplificada */
+  html {
+    scroll-padding-top: 95px;
+  }
+
+  main section[id] {
+    scroll-margin-top: 95px;
+  }
+
+  .navlinks a {
+    position: relative;
+    transition: color .2s ease;
+  }
+
+  .navlinks a[aria-current="location"] {
+    color: #f39ac7;
+  }
+
+  .navlinks a[aria-current="location"]::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    border-radius: 3px;
+    background: #d9468f;
+  }
+
+  /* Destaques compactos na primeira tela */
+  #inicio .hero-spotlight {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    max-width: 610px;
+    margin-top: 30px;
+  }
+
+  #inicio .hero-spotlight a {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 17px 18px;
+    border: 1px solid rgba(179, 208, 246, .35);
+    border-radius: 13px;
+    background: rgba(19, 45, 83, .7);
+    color: white;
+    transition:
+      transform .2s ease,
+      border-color .2s ease,
+      background .2s ease;
+  }
+
+  #inicio .hero-spotlight a:hover {
+    transform: translateY(-3px);
+    border-color: #f09bc6;
+    background: rgba(37, 63, 102, .9);
+  }
+
+  #inicio .hero-spotlight .spotlight-label {
+    color: #f19bc8;
+    font: 700 .68rem Consolas, monospace;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+
+  #inicio .hero-spotlight strong {
+    font-size: .99rem;
+    line-height: 1.35;
+  }
+
+  #inicio .hero-spotlight small {
+    color: #c7d8ec;
+    line-height: 1.5;
+  }
+
+  /* UFOB compacta, sem eliminar disciplinas */
+  #formacao-ufob .ufob-disclosure {
+    margin-top: 26px;
+    border: 1px solid #d8e1ed;
+    border-radius: 17px;
+    background: #fff;
+    overflow: hidden;
+  }
+
+  #formacao-ufob .ufob-disclosure > summary {
+    padding: 19px 24px;
+    color: #b62f79;
+    background: #fff2f8;
+    font-weight: 750;
+    cursor: pointer;
+  }
+
+  #formacao-ufob .ufob-disclosure > summary:hover {
+    background: #fbe4f0;
+  }
+
+  #formacao-ufob .ufob-disclosure .ufob-card {
+    margin: 0;
+    border: 0;
+    border-top: 1px solid #e9dfea;
+    border-radius: 0;
+  }
+
+  /* Resultados: leve profundidade sem perder contraste */
+  #resultados.outcomes {
+    background:
+      radial-gradient(
+        ellipse at 93% 10%,
+        rgba(217, 70, 143, .055),
+        transparent 46%
+      ),
+      #f4f7fc;
+  }
+
+  #resultados .outcome {
+    background: rgba(255, 255, 255, .88);
+    border: 1px solid #dce5f1;
+    box-shadow: 0 12px 30px rgba(16, 30, 60, .045);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  @media (max-width: 640px) {
+    #inicio .hero-spotlight {
+      grid-template-columns: 1fr;
+    }
+
+    .navlinks a[aria-current="location"]::after {
+      bottom: 2px;
+      width: 45px;
+    }
+
+    #formacao-ufob .ufob-disclosure > summary {
+      padding: 16px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #inicio .hero-spotlight a {
+      transition: none;
+    }
+
+    #inicio .hero-spotlight a:hover {
+      transform: none;
+    }
+  }
+</style>
+
+<script>
+(function () {
+  "use strict";
+
+  function atualizarPortfolio() {
+    const main = document.querySelector("main#conteudo");
+    const nav = document.getElementById("navLinks");
+
+    if (!main || !nav) return;
+
+    // 1. Menu mais objetivo.
+    // Todos os IDs originais permanecem no site.
+    const links = [
+      ["#inicio", "Início"],
+      ["#sobre", "Sobre"],
+      ["#trajetoria", "Experiência"],
+      ["#projetos", "Projetos"],
+      ["#contato", "Contato"]
+    ];
+
+    nav.replaceChildren();
+
+    links.forEach(([href, label]) => {
+      const a = document.createElement("a");
+      a.href = href;
+      a.textContent = label;
+      nav.appendChild(a);
+    });
+
+    // Compatibilidade com o menu móvel existente.
+    const menuToggle = document.getElementById("menuToggle");
+
+    nav.addEventListener("click", event => {
+      if (!event.target.closest("a")) return;
+
+      nav.classList.remove("open");
+
+      if (menuToggle) {
+        menuToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    // 2. Apresentação inicial direcionada ao objetivo profissional.
+    const hero = document.getElementById("inicio");
+
+    if (hero) {
+      const title = hero.querySelector("h1");
+      const text = hero.querySelector(".hero-inner > div > p");
+      const buttons = hero.querySelectorAll(".hero-inner .btn");
+      const heroContent = hero.querySelector(".hero-inner > div");
+
+      if (title) {
+        title.innerHTML =
+          'Transformando dados em ' +
+          '<em>inteligência para decisões.</em>';
+      }
+
+      if (text) {
+        text.textContent =
+          "Experiência em gestão financeira, formação em " +
+          "Ciência de Dados e projetos voltados à análise " +
+          "de riscos, prevenção a fraudes e inteligência artificial.";
+      }
+
+      if (buttons[0]) {
+        buttons[0].href = "#projetos";
+        buttons[0].textContent = "Explorar projetos";
+      }
+
+      if (buttons[1]) {
+        buttons[1].href = "#trajetoria";
+        buttons[1].textContent = "Conhecer minha trajetória";
+      }
+
+      if (
+        heroContent &&
+        !hero.querySelector(".hero-spotlight")
+      ) {
+        const teaser = document.createElement("div");
+        teaser.className = "hero-spotlight";
+
+        const destaques = [
+          {
+            title: "Operação Espelho Falso",
+            label: "Investigação digital",
+            desc: "Fraudes, deepfakes e IA explicável",
+            href:
+              "projetos/operacao-espelho-falso-deteccao-de-deepfakes.html"
+          },
+          {
+            title: "ICDF Framework",
+            label: "Inteligência de crédito",
+            desc: "Risco financeiro e qualidade dos dados",
+            href:
+              "projetos/icdf-framework-de-decisao-em-credito-integrado.html"
+          }
+        ];
+
+        destaques.forEach(p => {
+          const a = document.createElement("a");
+          a.href = p.href;
+
+          const label = document.createElement("span");
+          label.className = "spotlight-label";
+          label.textContent = p.label;
+
+          const heading = document.createElement("strong");
+          heading.textContent = p.title;
+
+          const description = document.createElement("small");
+          description.textContent = p.desc;
+
+          a.append(label, heading, description);
+          teaser.append(a);
+        });
+
+        heroContent.append(teaser);
+      }
+    }
+
+    // 3. Formação UFOB compacta.
+    // As disciplinas originais não são excluídas.
+    const ufob = document.getElementById("formacao-ufob");
+
+    if (ufob) {
+      const card = ufob.querySelector(".ufob-card");
+
+      if (
+        card &&
+        !card.closest(".ufob-disclosure")
+      ) {
+        const details = document.createElement("details");
+        details.className = "ufob-disclosure";
+
+        const summary = document.createElement("summary");
+        summary.textContent =
+          "Explorar disciplinas e histórico acadêmico da UFOB";
+
+        card.before(details);
+        details.append(summary, card);
+      }
+    }
+
+    // 4. Reorganização das seções existentes.
+    // Os nós são movidos, não recriados.
+    // Isso preserva links, cards e conteúdo.
+    const ordem = [
+      "inicio",
+      "sobre",
+      "competencias",
+      "trajetoria",
+      "resultados",
+      "areas",
+      "projetos",
+      "laboratorio",
+      "contato"
+    ];
+
+    ordem.forEach(id => {
+      const section = document.getElementById(id);
+
+      if (
+        section &&
+        section.parentElement === main
+      ) {
+        main.appendChild(section);
+      }
+    });
+
+    // Remove exclusivamente o separador temporário
+    // de uma tentativa anterior de degradê.
+    document.querySelectorAll(
+      ".transicao-projetos-resultados"
+    ).forEach(element => element.remove());
+
+    // 5. Identifica a seção atual no menu.
+    const correspondencias = {
+      inicio: "#inicio",
+      sobre: "#sobre",
+      competencias: "#sobre",
+      trajetoria: "#trajetoria",
+      resultados: "#trajetoria",
+      areas: "#projetos",
+      projetos: "#projetos",
+      laboratorio: "#projetos",
+      contato: "#contato"
+    };
+
+    function ativarLink(href) {
+      nav.querySelectorAll("a").forEach(a => {
+        if (a.getAttribute("href") === href) {
+          a.setAttribute("aria-current", "location");
+        } else {
+          a.removeAttribute("aria-current");
+        }
+      });
+    }
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(
+        entries => {
+          const visible = entries
+            .filter(entry => entry.isIntersecting)
+            .sort(
+              (a, b) =>
+                b.intersectionRatio - a.intersectionRatio
+            )[0];
+
+          if (!visible) return;
+
+          const href = correspondencias[visible.target.id];
+
+          if (href) ativarLink(href);
+        },
+        {
+          rootMargin: "-15% 0px -55% 0px",
+          threshold: [0, .1, .3]
+        }
+      );
+
+      ordem.forEach(id => {
+        const section = document.getElementById(id);
+
+        if (section) observer.observe(section);
+      });
+    }
+
+    ativarLink(location.hash || "#inicio");
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener(
+      "DOMContentLoaded",
+      atualizarPortfolio,
+      { once: true }
+    );
+  } else {
+    atualizarPortfolio();
+  }
+})();
+</script>
+
  </body>
 </html>
 
