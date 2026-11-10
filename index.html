@@ -752,6 +752,103 @@ img, video, iframe {
 }
 
   
+/* ============================================
+   CORREÇÃO DAS CAPAS — ROBÓTICA E DADOS
+   Evita textos sobrepostos às imagens
+   ============================================ */
+
+/* Cards com imagem e rodapé separados */
+#projetos .uh-topic-card,
+#projetos .uh-topic-card.uh-card-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #101d35;
+}
+
+/* Exibe a capa completa, sem cortar ou ampliar */
+#projetos .uh-topic-card img {
+  position: relative;
+  inset: auto;
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+  opacity: 1;
+  flex-shrink: 0;
+}
+
+/* Remove o escurecimento que cobria as capas */
+#projetos .uh-topic-card .uh-card-shade {
+  display: none;
+}
+
+/* Coloca o botão abaixo da imagem */
+#projetos .uh-topic-card .uh-card-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  flex: 1;
+  min-height: 60px;
+  margin-top: auto;
+  padding: 13px 17px;
+  border-top: 1px solid #ffffff24;
+  background: linear-gradient(110deg, #101e36, #172845);
+}
+
+/* Oculta visualmente o título duplicado,
+   preservando-o para leitores de tela */
+#projetos .uh-topic-card h4 {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Retira a etiqueta sobre a capa */
+#projetos .uh-topic-card .uh-card-kicker {
+  display: none;
+}
+
+/* Link do projeto */
+#projetos .uh-topic-card .uh-card-link {
+  display: inline-flex;
+  align-items: center;
+  color: #78d1ff;
+  font: 700 .77rem Consolas, monospace;
+  letter-spacing: .02em;
+}
+
+/* Não amplia imagens que já contêm textos */
+#projetos .uh-topic-card:hover img {
+  transform: none;
+}
+
+/* Ajuste para celulares */
+@media (max-width: 680px) {
+  #projetos .uh-topic-card,
+  #projetos .uh-topic-card.uh-card-main {
+    min-height: 0;
+  }
+
+  #projetos .uh-topic-card .uh-card-content {
+    min-height: 54px;
+    padding: 12px 15px;
+  }
+}
+
     </style>
     <!-- Logo na aba do navegador -->
     <link href="assets/favicon.ico" rel="icon" type="image/x-icon"/>
