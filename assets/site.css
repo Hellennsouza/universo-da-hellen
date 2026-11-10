@@ -842,3 +842,78 @@
     filter: blur(24px);
   }
 }
+
+
+/* ==============================================
+   TRANSIÇÃO ESPELHADA
+   PROJETOS E SOLUÇÕES → RESULTADOS
+   Preto/roxo → azul → azul claro → branco
+   ============================================== */
+
+/* Prepara a seção para receber a transição */
+#projetos.uh-archive {
+  position: relative;
+  isolation: isolate;
+  border-bottom: none;
+}
+
+/* Degradê que começa atrás da parte inferior
+   do acervo e termina no fundo de Resultados */
+#projetos.uh-archive::after {
+  content: "";
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: -1px;
+
+  height: clamp(250px, 26vw, 360px);
+
+  z-index: 1;
+  pointer-events: none;
+
+  background: linear-gradient(
+    to bottom,
+
+    /* Preserva o preto e roxo originais */
+    rgba(244, 247, 252, 0) 0%,
+    rgba(244, 247, 252, 0) 28%,
+
+    /* Começa o reflexo azul */
+    rgba(57, 102, 160, 0.08) 42%,
+
+    /* Azul mais fechado */
+    rgba(90, 137, 190, 0.24) 56%,
+
+    /* Azul intermediário */
+    rgba(149, 181, 216, 0.48) 70%,
+
+    /* Azul muito claro */
+    rgba(217, 230, 245, 0.83) 86%,
+
+    /* Branco final */
+    #f4f7fc 100%
+  );
+}
+
+/* Mantém os cards e textos acima do efeito */
+#projetos.uh-archive > .wrap {
+  position: relative;
+  z-index: 2;
+}
+
+/* Resultados começa exatamente na cor
+   em que o degradê anterior termina */
+#resultados.outcomes {
+  position: relative;
+  background: #f4f7fc;
+  border-top: none;
+  margin-top: -1px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  #projetos.uh-archive::after {
+    height: 220px;
+  }
+}
