@@ -739,3 +739,81 @@
     height: 160px;
   }
 }
+
+
+/* ============================================
+   TRANSIÇÃO ESPELHADA
+   ÁREAS DE ATUAÇÃO → PROJETOS E SOLUÇÕES
+   ============================================ */
+
+#areas {
+  position: relative;
+  isolation: isolate;
+  background: #f5f7fc;
+  padding-bottom: 245px;
+}
+
+/* Mantém os cards acima da transição */
+#areas > .wrap {
+  position: relative;
+  z-index: 1;
+}
+
+/* Branco se dissolve no fundo escuro e rosado */
+#areas::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 250px;
+  z-index: 0;
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #f5f7fc 0%,
+      rgba(245,247,252,.96) 12%,
+      rgba(245,247,252,.72) 35%,
+      rgba(245,247,252,.30) 63%,
+      transparent 100%
+    ),
+
+    radial-gradient(
+      ellipse at 95% 100%,
+      rgba(217,70,143,.22),
+      transparent 35%
+    ),
+
+    radial-gradient(
+      ellipse at 5% 100%,
+      rgba(39,122,212,.25),
+      transparent 35%
+    ),
+
+    linear-gradient(
+      125deg,
+      #061125,
+      #0a1730 60%,
+      #07152c
+    );
+}
+
+/* Remove a separação entre as duas seções */
+#areas + #projetos {
+  margin-top: -1px;
+  border-top: none;
+}
+
+/* Ajuste para celular */
+@media (max-width: 768px) {
+  #areas {
+    padding-bottom: 175px;
+  }
+
+  #areas::after {
+    height: 180px;
+  }
+}
+
