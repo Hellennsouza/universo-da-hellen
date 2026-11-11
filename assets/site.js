@@ -67,8 +67,8 @@ const PROJECTS = [
     "source": "https://github.com/Hellennsouza/Operacao_Espelho_Falso",
     "verified": true,
     "page": "projetos/operacao-espelho-falso-deteccao-de-deepfakes.html",
-    "featured": false,
-    "hidden": true,
+    "featured": true,
+    "hidden": false,
     "cover": "assets/capas/espelho.png"
   },
 
@@ -545,9 +545,10 @@ function render() {
      ======================================== */
 
   const priority = [
-    'Painel Estratégico Itaú',
-    'ICDF —'
-  ];
+  'Painel Estratégico Itaú',
+  'ICDF —',
+  'Operação Espelho Falso'
+];
 
   let promoted = [];
 
