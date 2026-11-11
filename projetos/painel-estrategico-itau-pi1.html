@@ -223,6 +223,113 @@ body{margin:0;font:15px/1.6 system-ui,-apple-system,Segoe UI,sans-serif;backgrou
 
 
  
+  
+/* =========================================
+   ITAÚ STRATEGY LAB — REFINAMENTO VISUAL
+   ========================================= */
+
+/* Menu lateral */
+.app aside {
+  background: #101d3a !important;
+  color: #ffffff !important;
+  border-right: 1px solid #304566 !important;
+}
+
+/* Título e descrição do menu */
+.app aside h2 {
+  color: #ffffff !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+}
+
+.app aside .sub {
+  color: #b8cbe3 !important;
+}
+
+/* Categorias do menu */
+.app aside .menu-group-title {
+  color: #a2badd !important;
+  letter-spacing: 0.08em;
+}
+
+/* Botões não selecionados */
+.app aside .navbtn {
+  color: #dce7f5 !important;
+  background: transparent !important;
+  border-radius: 10px !important;
+  transition: background .2s ease, color .2s ease;
+}
+
+.app aside .navbtn:hover {
+  background: #243b60 !important;
+  color: #ffffff !important;
+}
+
+/* Botão selecionado */
+.app aside .navbtn.active {
+  background: #ff6200 !important;
+  color: #ffffff !important;
+  border-left: 4px solid #ffba8c !important;
+  font-weight: 700 !important;
+}
+
+/* Título principal: letras menos apertadas */
+.app main > h1 {
+  font-size: clamp(32px, 3.5vw, 45px) !important;
+  letter-spacing: -0.025em !important;
+  line-height: 1.2 !important;
+}
+
+/* Títulos internos */
+.app main .view > h2 {
+  letter-spacing: -0.025em !important;
+}
+
+/* Identificação do painel */
+.app main .sectionlabel {
+  display: inline-block;
+  color: #b94b00 !important;
+  background: #fff0e5;
+  padding: 6px 12px;
+  border-radius: 7px;
+  font-weight: 800;
+}
+
+/* Cards principais */
+.app main .card {
+  border: 1px solid #dce4f0 !important;
+  border-radius: 18px !important;
+  box-shadow: 0 12px 30px rgba(16,29,58,.055);
+}
+
+/* Indicadores */
+.app main .metric {
+  border: 1px solid #dce4f0 !important;
+  border-top: 3px solid #ff6200 !important;
+  border-radius: 14px !important;
+}
+
+/* Organiza os três cards do primeiro painel */
+@media (min-width: 851px) and (max-width: 1300px) {
+  #panel-0 .metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  #panel-0 .metrics > .metric:last-child {
+    grid-column: 1 / -1 !important;
+  }
+}
+
+/* Ajuste para celular */
+@media (max-width: 850px) {
+  #panel-0 .metrics {
+    grid-template-columns: 1fr !important;
+  }
+
+  #panel-0 .metrics > .metric:last-child {
+    grid-column: auto !important;
+  }
+}
+
   </style>
   <link href="../assets/detail-enhancements.css" rel="stylesheet"/>
   <meta content="article" property="og:type"/>
