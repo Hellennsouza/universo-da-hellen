@@ -677,7 +677,9 @@ h2{font-size:clamp(2rem,4vw,3.3rem)}
     <nav aria-label="Menu principal">
       <a href="#case">O case</a>
       <a href="#atuacao">Minha atuação</a>
-      <a href="#simulador">Finance Lab</a>
+      <a href="analise-simulacao-financeira.html">
+  Análise Financeira
+</a>
       <a href="#resultados">Resultados</a>
       <a href="../index.html#projetos" class="back">
         ← Projetos
@@ -721,9 +723,9 @@ h2{font-size:clamp(2rem,4vw,3.3rem)}
           <span>Processos</span>
         </div>
 
-        <a class="cta" href="#simulador">
-          Explorar o Finance Lab ↗
-        </a>
+        <a class="cta" href="analise-simulacao-financeira.html">
+  Abrir Financial Intelligence Lab ↗
+</a>
       </div>
 
       <div class="hero-visual"
@@ -920,234 +922,6 @@ h2{font-size:clamp(2rem,4vw,3.3rem)}
   </div>
 </section>
 
-<!-- LABORATÓRIO FINANCEIRO -->
-
-<section class="lab" id="simulador">
-  <div class="container">
-
-    <div class="lab-head">
-      <div>
-        <span class="eyebrow">
-          03 / LABORATÓRIO DE DECISÕES
-        </span>
-
-        <h2>Duke Finance Lab.</h2>
-
-        <p class="lead">
-          Experimente como crescimento,
-          inadimplência, recuperação e custos
-          podem alterar a geração de caixa
-          de uma empresa fictícia.
-        </p>
-      </div>
-
-      <div class="lab-label">
-        SIMULAÇÃO DIDÁTICA
-        <br>
-        VALORES FICTÍCIOS
-      </div>
-    </div>
-
-    <div class="lab-shell">
-
-      <!-- CONTROLES -->
-
-      <div class="panel">
-
-        <div class="panel-head">
-          <strong>Premissas financeiras</strong>
-          <small>Edite o cenário</small>
-        </div>
-
-        <div class="panel-body">
-
-          <div class="preset-group"
-               aria-label="Cenários prontos">
-
-            <button type="button" class="preset"
-                    data-preset="equilibrado"
-                    aria-pressed="true">
-              Equilibrado
-            </button>
-
-            <button type="button" class="preset"
-                    data-preset="expansao"
-                    aria-pressed="false">
-              Expansão
-            </button>
-
-            <button type="button" class="preset"
-                    data-preset="eficiencia"
-                    aria-pressed="false">
-              Eficiência
-            </button>
-          </div>
-
-          <div class="control-row">
-            <label class="control-label" for="crescimento">
-              Crescimento das vendas
-              <strong id="crescimentoValue">8%</strong>
-            </label>
-            <input id="crescimento" type="range"
-                   min="-10" max="40" value="8">
-            <small class="hint">
-              Variação sobre a receita mensal de referência
-            </small>
-          </div>
-
-          <div class="control-row">
-            <label class="control-label" for="inadimplencia">
-              Inadimplência do período
-              <strong id="inadimplenciaValue">12%</strong>
-            </label>
-            <input id="inadimplencia" type="range"
-                   min="0" max="30" value="12">
-            <small class="hint">
-              Parcela das vendas não recebida inicialmente
-            </small>
-          </div>
-
-          <div class="control-row">
-            <label class="control-label" for="recuperacao">
-              Recuperação dos valores em atraso
-              <strong id="recuperacaoValue">35%</strong>
-            </label>
-            <input id="recuperacao" type="range"
-                   min="0" max="100" value="35">
-            <small class="hint">
-              Percentual dos recebíveis atrasados recuperado
-              no período hipotético
-            </small>
-          </div>
-
-          <div class="control-row">
-            <label class="control-label" for="variaveis">
-              Custos variáveis
-              <strong id="variaveisValue">38%</strong>
-            </label>
-            <input id="variaveis" type="range"
-                   min="10" max="75" value="38">
-            <small class="hint">
-              Percentual da receita destinado aos custos variáveis
-            </small>
-          </div>
-
-          <div class="control-row">
-            <label class="control-label" for="fixos">
-              Despesas fixas mensais
-              <strong id="fixosValue">R$ 48.000</strong>
-            </label>
-            <input id="fixos" type="range"
-                   min="15000" max="80000"
-                   step="1000" value="48000">
-          </div>
-
-          <button class="reset" id="reset" type="button">
-            ↺ Restaurar premissas
-          </button>
-
-          <div class="sim-note">
-            Receita de referência: <strong>R$ 120.000/mês</strong>.
-            Esse valor e todas as premissas do simulador
-            são fictícios; não são dados financeiros da Duke.
-          </div>
-
-        </div>
-      </div>
-
-      <!-- RESULTADOS -->
-
-      <div class="panel">
-
-        <div class="panel-head">
-          <strong>Resultado do cenário</strong>
-          <small>Atualização automática</small>
-        </div>
-
-        <div class="panel-body">
-
-          <div class="results" aria-live="polite">
-
-            <div class="result">
-              <span>Faturamento projetado</span>
-              <strong id="kpiFaturamento">—</strong>
-            </div>
-
-            <div class="result">
-              <span>Recebimentos estimados</span>
-              <strong id="kpiRecebimentos">—</strong>
-            </div>
-
-            <div class="result">
-              <span>Custos variáveis</span>
-              <strong id="kpiCustos">—</strong>
-            </div>
-
-            <div class="result">
-              <span>Valores ainda não recebidos</span>
-              <strong id="kpiPendentes">—</strong>
-            </div>
-
-            <div class="result wide">
-              <span>Saldo operacional de caixa simplificado</span>
-              <strong id="kpiSaldo">—</strong>
-            </div>
-
-          </div>
-
-          <div class="compare">
-
-            <h3>Comparativo de caixa</h3>
-
-            <p>
-              Saldo calculado no cenário de referência
-              e no cenário ajustado.
-            </p>
-
-            <div class="bar-row">
-              <span>Referência</span>
-              <div class="bar-track">
-                <div class="bar-fill" id="barBase"></div>
-              </div>
-              <output id="valorBase">—</output>
-            </div>
-
-            <div class="bar-row">
-              <span>Ajustado</span>
-              <div class="bar-track">
-                <div class="bar-fill adjusted"
-                     id="barAjustado"></div>
-              </div>
-              <output id="valorAjustado">—</output>
-            </div>
-
-          </div>
-
-          <div class="insight" id="insight"
-               role="status">
-            Ajuste as premissas para observar
-            as mudanças no caixa.
-          </div>
-
-        </div>
-
-        <div class="formula">
-          Fórmula simplificada:
-          recebimentos = vendas − inadimplência
-          + recuperação dos valores atrasados.
-          Saldo = recebimentos − custos variáveis
-          − despesas fixas.
-          Não é uma DRE nem um fluxo de caixa
-          contábil completo: não inclui tributos,
-          investimentos, financiamentos ou
-          diferenças detalhadas de prazo.
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-</section>
 
 <!-- RESULTADOS -->
 
