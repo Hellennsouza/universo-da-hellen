@@ -1106,14 +1106,14 @@ mask-image: none !important;
 }
 
 /* ICDF e ESPELHO FALSO: empilhados à direita */
+
 #featuredCards > .archive-feature-card.secondary {
   grid-column: 2 !important;
-  display: grid !important;
-  grid-template-columns:
-    minmax(0, 40%)
-    minmax(0, 60%) !important;
-  grid-template-rows: minmax(0, 1fr) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
 }
+
 
 #featuredCards > .archive-feature-card:nth-child(2) {
   grid-row: 1 !important;
@@ -1145,11 +1145,16 @@ mask-image: none !important;
 }
 
 /* Capas laterais */
+
 #featuredCards .secondary .archive-feature-visual {
-  grid-column: 1 !important;
-  grid-row: 1 !important;
-  height: 100% !important;
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 1100 / 430;
+  flex: 0 0 auto !important;
+  overflow: hidden !important;
+  background: #0a1429 !important;
 }
+
 
 /* Preserva integralmente as artes */
 #featuredCards .archive-feature-visual img {
@@ -1195,11 +1200,15 @@ mask-image: none !important;
 }
 
 /* Conteúdo dos projetos laterais */
+
 #featuredCards .secondary .archive-feature-content {
-  grid-column: 2 !important;
-  grid-row: 1 !important;
+  width: 100% !important;
+  flex: 1 1 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
   padding: 23px !important;
 }
+
 
 /* Retira etiquetas redundantes */
 #featuredCards .archive-card-kicker {
