@@ -1064,45 +1064,98 @@ mask-image: none !important;
   display: none !important;
 }
 
+
 /* ==========================================
-   CORREÇÃO — PROJETO PRINCIPAL EM DESTAQUE
-   Imagem separada da descrição
+   PROJETOS EM DESTAQUE
+   NOVO LAYOUT EDITORIAL BENTO
    ========================================== */
 
-#featuredCards .archive-feature-card.primary {
-  display: flex !important;
-  flex-direction: column !important;
-  position: relative !important;
-  min-width: 0;
-  height: auto !important;
-  min-height: 0 !important;
-  overflow: hidden !important;
+/* Composição geral */
+#featuredCards {
+  display: grid !important;
+  grid-template-columns:
+    minmax(0, 1.12fr)
+    minmax(0, 0.88fr) !important;
+  grid-template-rows:
+    repeat(2, minmax(295px, auto)) !important;
+  gap: 20px !important;
+  align-items: stretch !important;
+  align-content: stretch !important;
 }
 
-/* Área exclusiva da capa */
-#featuredCards .archive-feature-card.primary
-.archive-feature-visual {
-  display: block !important;
+/* Configurações comuns */
+#featuredCards > .archive-feature-card {
+  width: 100% !important;
+  max-width: none !important;
+  height: auto !important;
+  min-height: 0 !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  align-self: stretch !important;
+  position: relative !important;
+  overflow: hidden !important;
+  border-radius: 19px !important;
+}
+
+/* ITAÚ: destaque principal */
+#featuredCards > .archive-feature-card.primary {
+  grid-column: 1 !important;
+  grid-row: 1 / 3 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* ICDF e ESPELHO FALSO: empilhados à direita */
+#featuredCards > .archive-feature-card.secondary {
+  grid-column: 2 !important;
+  display: grid !important;
+  grid-template-columns:
+    minmax(0, 40%)
+    minmax(0, 60%) !important;
+  grid-template-rows: minmax(0, 1fr) !important;
+}
+
+#featuredCards > .archive-feature-card:nth-child(2) {
+  grid-row: 1 !important;
+}
+
+#featuredCards > .archive-feature-card:nth-child(3) {
+  grid-row: 2 !important;
+}
+
+/* Imagens em áreas independentes */
+#featuredCards .archive-feature-visual {
   position: relative !important;
   inset: auto !important;
-  width: 100% !important;
-  height: clamp(210px, 25vw, 320px) !important;
+  display: block !important;
   min-height: 0 !important;
-  flex: 0 0 auto !important;
+  width: 100% !important;
   margin: 0 !important;
   padding: 0 !important;
-  overflow: hidden !important;
-  background: #08152b !important;
   opacity: 1 !important;
+  overflow: hidden !important;
+  background: #0a1429 !important;
   transform: none !important;
 }
 
-/* Imagem completa, sem invadir o texto */
-#featuredCards .archive-feature-card.primary
-.archive-feature-visual img {
+/* Capa principal */
+#featuredCards .primary .archive-feature-visual {
+  height: clamp(260px, 28vw, 340px) !important;
+  flex: 0 0 auto !important;
+}
+
+/* Capas laterais */
+#featuredCards .secondary .archive-feature-visual {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+  height: 100% !important;
+}
+
+/* Preserva integralmente as artes */
+#featuredCards .archive-feature-visual img {
+  position: absolute !important;
+  inset: 0 !important;
   display: block !important;
-  position: static !important;
-  inset: auto !important;
   width: 100% !important;
   height: 100% !important;
   max-width: none !important;
@@ -1112,86 +1165,192 @@ mask-image: none !important;
   transform: none !important;
 }
 
-/* Retira possível camada sobre a imagem */
-#featuredCards .archive-feature-card.primary
-.archive-feature-visual::before,
-#featuredCards .archive-feature-card.primary
-.archive-feature-visual::after {
+/* Elimina possíveis camadas antigas */
+#featuredCards .archive-feature-visual::before,
+#featuredCards .archive-feature-visual::after {
   display: none !important;
 }
 
-/* Conteúdo em uma área própria, abaixo da capa */
-#featuredCards .archive-feature-card.primary
-.archive-feature-content {
+/* Área de texto */
+#featuredCards .archive-feature-content {
+  position: relative !important;
+  inset: auto !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: flex-start !important;
-  position: relative !important;
-  inset: auto !important;
-  z-index: 2 !important;
+  justify-content: flex-start !important;
+  min-width: 0 !important;
   width: 100% !important;
   height: auto !important;
-  min-height: 0 !important;
   margin: 0 !important;
-  padding: 26px !important;
-  background: #101d36 !important;
   opacity: 1 !important;
   transform: none !important;
+  background: #111d35 !important;
 }
 
-/* Título */
-#featuredCards .archive-feature-card.primary
-.archive-feature-content h3 {
+/* Conteúdo do Itaú */
+#featuredCards .primary .archive-feature-content {
+  flex: 1 1 auto !important;
+  padding: 30px !important;
+}
+
+/* Conteúdo dos projetos laterais */
+#featuredCards .secondary .archive-feature-content {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  padding: 23px !important;
+}
+
+/* Retira etiquetas redundantes */
+#featuredCards .archive-card-kicker {
+  display: none !important;
+}
+
+/* Mantém a identificação da área */
+#featuredCards .archive-card-status {
   position: static !important;
-  margin: 14px 0 !important;
-  color: #ffffff !important;
-  font-size: clamp(1.55rem, 2.4vw, 2.4rem) !important;
-  line-height: 1.2 !important;
+  display: inline-block !important;
+  width: auto !important;
+  max-width: 100%;
+  margin-bottom: 14px !important;
+}
+
+/* Tipografia harmonizada */
+#featuredCards .archive-feature-content h3 {
+  position: static !important;
+  color: #fff !important;
+  line-height: 1.18 !important;
+  margin: 0 0 15px !important;
   overflow-wrap: anywhere;
 }
 
-/* Descrição */
-#featuredCards .archive-feature-card.primary
-.archive-feature-content p {
+#featuredCards .primary h3 {
+  font-size: clamp(1.9rem, 3vw, 2.65rem) !important;
+}
+
+#featuredCards .secondary h3 {
+  font-size: clamp(1.1rem, 1.6vw, 1.4rem) !important;
+}
+
+/* Descrições */
+#featuredCards .archive-feature-content p {
   position: static !important;
-  margin: 0 0 18px !important;
-  color: #cbd6e7 !important;
-  font-size: .94rem !important;
-  line-height: 1.65 !important;
+  color: #c2ccdc !important;
+  line-height: 1.6 !important;
+  margin: 0 0 16px !important;
+}
+
+#featuredCards .primary .archive-feature-content p {
+  font-size: .95rem !important;
+}
+
+#featuredCards .secondary .archive-feature-content p {
+  font-size: .82rem !important;
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  overflow: hidden !important;
 }
 
 /* Tecnologias */
-#featuredCards .archive-feature-card.primary
-.archive-project-tags {
+#featuredCards .archive-project-tags {
   position: static !important;
   display: flex !important;
   flex-wrap: wrap !important;
-  gap: 8px;
-  margin: 8px 0 20px !important;
+  gap: 8px !important;
+  margin: 8px 0 22px !important;
 }
 
-/* Botão de acesso */
-#featuredCards .archive-feature-card.primary
-.archive-feature-link {
+/* Links sempre próximos à base */
+#featuredCards .archive-feature-link {
   position: relative !important;
   inset: auto !important;
+  display: inline-flex !important;
+  align-items: center !important;
   margin-top: auto !important;
 }
 
-/* Celular */
-@media (max-width: 768px) {
-  #featuredCards .archive-feature-card.primary
-  .archive-feature-visual {
-    height: 230px !important;
+/* Animação sutil */
+@media (hover: hover) {
+  #featuredCards .archive-feature-card {
+    transition:
+      box-shadow .3s ease,
+      border-color .3s ease !important;
   }
 
-  #featuredCards .archive-feature-card.primary
-  .archive-feature-content {
-    padding: 20px !important;
-  }
-
-  #featuredCards .archive-feature-card.primary
-  .archive-feature-content h3 {
-    font-size: 1.65rem !important;
+  #featuredCards .archive-feature-card:hover {
+    border-color: rgba(217, 70, 143, .55) !important;
+    box-shadow:
+      0 18px 40px rgba(0, 0, 0, .18) !important;
   }
 }
+
+/* TABLETS */
+@media (max-width: 1050px) {
+
+  #featuredCards {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr)) !important;
+    grid-template-rows: auto auto !important;
+  }
+
+  #featuredCards > .archive-feature-card.primary {
+    grid-column: 1 / -1 !important;
+    grid-row: 1 !important;
+  }
+
+  #featuredCards > .archive-feature-card.secondary {
+    grid-column: auto !important;
+    grid-row: 2 !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  #featuredCards .secondary .archive-feature-visual {
+    width: 100% !important;
+    height: 210px !important;
+    flex: 0 0 210px !important;
+  }
+
+  #featuredCards .secondary .archive-feature-content {
+    flex: 1 1 auto !important;
+  }
+}
+
+/* CELULARES */
+@media (max-width: 680px) {
+
+  #featuredCards {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-rows: auto !important;
+    gap: 19px !important;
+  }
+
+  #featuredCards > .archive-feature-card.primary,
+  #featuredCards > .archive-feature-card.secondary {
+    grid-column: 1 !important;
+    grid-row: auto !important;
+  }
+
+  #featuredCards .primary .archive-feature-visual,
+  #featuredCards .secondary .archive-feature-visual {
+    height: 220px !important;
+    flex: 0 0 220px !important;
+  }
+
+  #featuredCards .archive-feature-content,
+  #featuredCards .primary .archive-feature-content,
+  #featuredCards .secondary .archive-feature-content {
+    padding: 22px !important;
+  }
+
+  #featuredCards .primary h3 {
+    font-size: 1.8rem !important;
+  }
+
+  #featuredCards .secondary h3 {
+    font-size: 1.4rem !important;
+  }
+}
+
