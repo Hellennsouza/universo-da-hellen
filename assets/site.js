@@ -213,7 +213,11 @@ function makeFeatureCard(p, primary = false) {
   if (p.cover) visual.append(image);
 
   const content = el('div', 'archive-feature-content');
-
+  const kicker = el(
+    'span',
+    'archive-card-kicker',
+   primary ? '[ PROJETO PRINCIPAL ]' : '[ PROJETO SELECIONADO ]'
+  );
 
   const status = el('span', 'archive-card-status', p.status || p.cat);
 
