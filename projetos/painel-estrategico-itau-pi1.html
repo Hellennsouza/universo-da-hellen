@@ -3323,5 +3323,510 @@ body{margin:0;font:15px/1.6 system-ui,-apple-system,Segoe UI,sans-serif;backgrou
   <script>
    const nav=[...document.querySelectorAll('.navbtn')],views=[...document.querySelectorAll('.view')];function selectPanel(i){views.forEach(v=>v.hidden=v.id!=='panel-'+i);nav.forEach(b=>{const active=Number(b.dataset.panel)===i;b.classList.toggle('active',active);b.setAttribute('aria-current',active?'true':'false')});history.replaceState(null,'','#painel-'+(i+1));document.getElementById('sidebar').classList.remove('open');document.getElementById('mobilemenu').setAttribute('aria-expanded','false')}nav.forEach(b=>b.addEventListener('click',()=>selectPanel(Number(b.dataset.panel))));selectPanel(Math.max(0,Math.min(nav.length-1,(parseInt(location.hash.replace('#painel-',''),10)||1)-1)));document.getElementById('mobilemenu').addEventListener('click',()=>{let el=document.getElementById('sidebar');el.classList.toggle('open');document.getElementById('mobilemenu').setAttribute('aria-expanded',el.classList.contains('open')?'true':'false')});let file=document.getElementById('mediafile');file.addEventListener('change',()=>{const f=file.files[0],preview=document.getElementById('mediapreview');if(!f)return;if(!f.type.startsWith('image/')){preview.textContent='Escolha uma imagem.';return}let url=URL.createObjectURL(f),img=new Image();img.onload=()=>URL.revokeObjectURL(url);img.src=url;img.alt='Pré-visualização de imagem selecionada';preview.replaceChildren(img)});let remaining=600,interval=null;const duration=document.getElementById('duration'),clock=document.getElementById('clock');function render(){let m=Math.floor(remaining/60),s=remaining%60;clock.textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');clock.style.color=remaining<=60?'#bd3333':'#176a7b'}function pause(){if(interval!==null){clearInterval(interval);interval=null}}function reset(){pause();remaining=Number(duration.value)*60;render()}duration.addEventListener('change',reset);document.getElementById('start').addEventListener('click',()=>{if(interval!==null)return;interval=setInterval(()=>{if(remaining>0){remaining--;render()}else{pause();alert('Tempo esgotado!')}},1000)});document.getElementById('pause').addEventListener('click',pause);document.getElementById('reset').addEventListener('click',reset);render();
   </script>
+  
+<!-- =====================================
+     ITAÚ — MODO APRESENTAÇÃO
+     ===================================== -->
+
+<style>
+/* Barra fixa inferior */
+.itau-presentation-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  padding: 13px 24px;
+  padding-bottom: calc(13px + env(safe-area-inset-bottom));
+
+  background: rgba(16, 29, 58, .97);
+  border-top: 2px solid #ff6200;
+  box-shadow: 0 -8px 25px rgba(0,0,0,.15);
+  backdrop-filter: blur(12px);
+}
+
+/* Área central */
+.itau-presentation-info {
+  flex: 1;
+  min-width: 0;
+  text-align: center;
+}
+
+.itau-presentation-count {
+  display: block;
+  color: #ffad77;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .07em;
+}
+
+.itau-presentation-title {
+  display: block;
+  color: #e1e9f5;
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Botões */
+.itau-presentation-btn {
+  border: 1px solid #516783;
+  border-radius: 9px;
+  background: #25395b;
+  color: #fff;
+
+  padding: 11px 17px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+  transition: background .2s ease;
+}
+
+.itau-presentation-btn:hover:not(:disabled) {
+  background: #385580;
+}
+
+.itau-presentation-btn.next {
+  background: #ff6200;
+  border-color: #ff6200;
+}
+
+.itau-presentation-btn.next:hover:not(:disabled) {
+  background: #e85900;
+}
+
+.itau-presentation-btn:disabled {
+  opacity: .35;
+  cursor: not-allowed;
+}
+
+.itau-presentation-btn:focus-visible {
+  outline: 3px solid #ffb77d;
+  outline-offset: 3px;
+}
+
+/* Evita que a barra cubra o conteúdo */
+.app main {
+  padding-bottom: 130px !important;
+}
+
+/* =====================================
+   MODO TELA CHEIA
+   ===================================== */
+
+/* Esconde cabeçalho e menu lateral */
+body.itau-presentation-mode .top,
+body.itau-presentation-mode #sidebar {
+  display: none !important;
+}
+
+/* O painel ocupa a largura disponível */
+body.itau-presentation-mode .app {
+  display: block !important;
+  grid-template-columns: 1fr !important;
+  width: 100% !important;
+  min-height: 100vh !important;
+}
+
+/* Área central ampla */
+body.itau-presentation-mode .app main {
+  width: 100% !important;
+  max-width: 1500px !important;
+  margin: 0 auto !important;
+  padding:
+    34px
+    clamp(20px, 4vw, 65px)
+    125px !important;
+}
+
+/* Esconde introdução geral */
+body.itau-presentation-mode main > .eyebrow,
+body.itau-presentation-mode main > h1,
+body.itau-presentation-mode main > .intro,
+body.itau-presentation-mode main > .notice {
+  display: none !important;
+}
+
+/* Título do painel em destaque */
+body.itau-presentation-mode .view > h2 {
+  font-size: clamp(28px, 3.2vw, 45px) !important;
+  line-height: 1.2 !important;
+  margin-bottom: 28px !important;
+}
+
+/* Fundo adequado à apresentação */
+body.itau-presentation-mode {
+  background: #f4f7fb !important;
+}
+
+/* Ajuste para celular */
+@media (max-width: 700px) {
+  .itau-presentation-bar {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px 12px;
+    padding-bottom: calc(10px + env(safe-area-inset-bottom));
+  }
+
+  .itau-presentation-info {
+    order: -1;
+    flex-basis: 100%;
+  }
+
+  .itau-presentation-btn {
+    flex: 1;
+    padding: 10px 7px;
+    font-size: 11px;
+  }
+
+  .app main {
+    padding-bottom: 160px !important;
+  }
+
+  body.itau-presentation-mode .app main {
+    padding-bottom: 160px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .itau-presentation-btn {
+    transition: none;
+  }
+}
+</style>
+
+<!-- BARRA INFERIOR -->
+<nav
+  class="itau-presentation-bar"
+  aria-label="Navegação dos painéis"
+>
+
+  <button
+    type="button"
+    class="itau-presentation-btn"
+    id="itauPrev"
+  >
+    ← Anterior
+  </button>
+
+  <div class="itau-presentation-info">
+
+    <span
+      class="itau-presentation-count"
+      id="itauCount"
+    >
+      Painel
+    </span>
+
+    <span
+      class="itau-presentation-title"
+      id="itauPanelTitle"
+    ></span>
+
+  </div>
+
+  <button
+    type="button"
+    class="itau-presentation-btn"
+    id="itauFullscreen"
+    aria-pressed="false"
+  >
+    ⛶ Tela cheia
+  </button>
+
+  <button
+    type="button"
+    class="itau-presentation-btn next"
+    id="itauNext"
+  >
+    Próximo →
+  </button>
+
+</nav>
+
+<script>
+(() => {
+  'use strict';
+
+  const previousButton =
+    document.getElementById('itauPrev');
+
+  const nextButton =
+    document.getElementById('itauNext');
+
+  const fullscreenButton =
+    document.getElementById('itauFullscreen');
+
+  const countElement =
+    document.getElementById('itauCount');
+
+  const titleElement =
+    document.getElementById('itauPanelTitle');
+
+  /*
+   * Usa a sequência real dos botões do menu,
+   * e não a ordem numérica dos IDs.
+   */
+  const menuButtons = [
+    ...document.querySelectorAll(
+      '#sidebar .navbtn[data-panel]'
+    )
+  ];
+
+  const panelButtons = [];
+  const seen = new Set();
+
+  menuButtons.forEach(button => {
+    const id = button.dataset.panel;
+
+    if (
+      !seen.has(id) &&
+      document.getElementById('panel-' + id)
+    ) {
+      seen.add(id);
+      panelButtons.push(button);
+    }
+  });
+
+  /* Descobre o painel atualmente visível */
+  function getActiveIndex() {
+
+    const visiblePanel = document.querySelector(
+      'main .view:not([hidden])'
+    );
+
+    if (!visiblePanel) {
+      return 0;
+    }
+
+    const panelId = visiblePanel.id.replace(
+      'panel-', ''
+    );
+
+    const index = panelButtons.findIndex(
+      button => button.dataset.panel === panelId
+    );
+
+    return index >= 0 ? index : 0;
+  }
+
+  /* Atualiza os botões e o contador */
+  function updateNavigation() {
+
+    const index = getActiveIndex();
+    const total = panelButtons.length;
+    const current = panelButtons[index];
+
+    countElement.textContent =
+      'PAINEL ' +
+      String(index + 1).padStart(2, '0') +
+      ' / ' +
+      String(total).padStart(2, '0');
+
+    titleElement.textContent =
+      current ? current.textContent.trim() : '';
+
+    previousButton.disabled = index <= 0;
+
+    nextButton.disabled =
+      index >= total - 1;
+
+  }
+
+  /*
+   * Navega clicando no botão original.
+   * Isso conserva o comportamento atual
+   * do site e a atualização do endereço.
+   */
+  function navigate(direction) {
+
+    const index = getActiveIndex();
+    const target = panelButtons[index + direction];
+
+    if (!target) {
+      return;
+    }
+
+    target.click();
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'auto'
+    });
+
+    updateNavigation();
+  }
+
+  previousButton.addEventListener(
+    'click',
+    () => navigate(-1)
+  );
+
+  nextButton.addEventListener(
+    'click',
+    () => navigate(1)
+  );
+
+  /* Sincroniza quando alguém usa o menu */
+  menuButtons.forEach(button => {
+    button.addEventListener(
+      'click',
+      updateNavigation
+    );
+  });
+
+  /* Modo apresentação */
+  async function enterPresentation() {
+
+    document.body.classList.add(
+      'itau-presentation-mode'
+    );
+
+    updateFullscreenButton();
+
+    try {
+      if (
+        document.fullscreenEnabled &&
+        !document.fullscreenElement
+      ) {
+        await document.documentElement
+          .requestFullscreen();
+      }
+    } catch (error) {
+      /*
+       * Se o navegador impedir o Fullscreen,
+       * o modo de apresentação em CSS
+       * continuará funcionando.
+       */
+      console.info(
+        'Tela cheia nativa indisponível.'
+      );
+    }
+  }
+
+  async function exitPresentation() {
+
+    document.body.classList.remove(
+      'itau-presentation-mode'
+    );
+
+    if (document.fullscreenElement) {
+      try {
+        await document.exitFullscreen();
+      } catch (error) {
+        console.info(
+          'Não foi possível sair da tela cheia.'
+        );
+      }
+    }
+
+    updateFullscreenButton();
+  }
+
+  function updateFullscreenButton() {
+
+    const enabled = document.body.classList
+      .contains('itau-presentation-mode');
+
+    fullscreenButton.textContent = enabled
+      ? '✕ Sair da tela cheia'
+      : '⛶ Tela cheia';
+
+    fullscreenButton.setAttribute(
+      'aria-pressed',
+      String(enabled)
+    );
+  }
+
+  fullscreenButton.addEventListener(
+    'click',
+    () => {
+      if (
+        document.body.classList.contains(
+          'itau-presentation-mode'
+        )
+      ) {
+        exitPresentation();
+      } else {
+        enterPresentation();
+      }
+    }
+  );
+
+  /* Sincroniza a saída pelo ESC */
+  document.addEventListener(
+    'fullscreenchange',
+    () => {
+
+      if (
+        !document.fullscreenElement &&
+        document.body.classList.contains(
+          'itau-presentation-mode'
+        )
+      ) {
+        document.body.classList.remove(
+          'itau-presentation-mode'
+        );
+      }
+
+      updateFullscreenButton();
+    }
+  );
+
+  /* Atalhos durante a apresentação */
+  document.addEventListener(
+    'keydown',
+    event => {
+
+      if (
+        !document.body.classList.contains(
+          'itau-presentation-mode'
+        )
+      ) {
+        return;
+      }
+
+      const tag = event.target.tagName;
+
+      if (
+        ['INPUT', 'TEXTAREA', 'SELECT'].includes(tag) ||
+        event.target.isContentEditable
+      ) {
+        return;
+      }
+
+      if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        navigate(1);
+      }
+
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        navigate(-1);
+      }
+
+      if (
+        event.key === 'Escape' &&
+        !document.fullscreenElement
+      ) {
+        exitPresentation();
+      }
+
+    }
+  );
+
+  updateNavigation();
+})();
+</script>
+
  </body>
 </html>
