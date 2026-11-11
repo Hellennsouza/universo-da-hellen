@@ -659,6 +659,251 @@ h2{font-size:clamp(2rem,4vw,3.3rem)}
 @media(prefers-reduced-motion:reduce){
   *{scroll-behavior:auto!important;transition:none!important}
 }
+  
+/* =========================================
+   DUKE — TRAJETÓRIA E RECONHECIMENTO
+   ========================================= */
+
+#historico-duke {
+  background: #f0f4fa;
+  color: #192743;
+  padding: 85px 0;
+}
+
+#historico-duke .duke-section-heading {
+  max-width: 850px;
+  margin-bottom: 34px;
+}
+
+#historico-duke .duke-section-heading h2 {
+  font-size: clamp(2rem, 4vw, 3.3rem);
+  color: #13233e;
+  margin: 12px 0 18px;
+}
+
+#historico-duke .duke-section-heading p {
+  color: #62728a;
+  font-size: 1.02rem;
+}
+
+#historico-duke .duke-record-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, .85fr);
+  gap: 22px;
+  align-items: start;
+}
+
+#historico-duke .duke-record-column {
+  display: grid;
+  gap: 22px;
+  min-width: 0;
+}
+
+#historico-duke .duke-record-card {
+  min-width: 0;
+  background: #fff;
+  border: 1px solid #dce5f1;
+  border-radius: 19px;
+  padding: 29px;
+  box-shadow: 0 12px 32px rgba(16, 28, 53, .045);
+}
+
+#historico-duke .duke-record-card h3 {
+  font-size: 1.25rem;
+  color: #172744;
+  margin: 0 0 18px;
+}
+
+#historico-duke .duke-record-card p {
+  font-size: .91rem;
+  line-height: 1.8;
+  color: #566781;
+}
+
+#historico-duke .duke-timeline {
+  position: relative;
+  padding-left: 34px;
+  margin-top: 25px;
+}
+
+#historico-duke .duke-timeline::before {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 12px;
+  bottom: 26px;
+  width: 3px;
+  border-radius: 3px;
+  background: linear-gradient(
+    to bottom,
+    #4e91dc,
+    #9865d9 45%,
+    #df4e98
+  );
+}
+
+#historico-duke .duke-milestone {
+  position: relative;
+  padding: 0 0 26px 14px;
+}
+
+#historico-duke .duke-milestone:last-child {
+  padding-bottom: 0;
+}
+
+#historico-duke .duke-milestone::before {
+  content: "";
+  position: absolute;
+  left: -33px;
+  top: 5px;
+  width: 18px;
+  height: 18px;
+  border: 4px solid #fff;
+  border-radius: 50%;
+  background: var(--duke-point, #498de0);
+  box-shadow:
+    0 0 0 2px var(--duke-point, #498de0),
+    0 0 15px rgba(91, 106, 196, .2);
+}
+
+#historico-duke .duke-milestone time {
+  display: block;
+  font-weight: 800;
+  color: #b83e83;
+  font-size: .77rem;
+  margin-bottom: 6px;
+}
+
+#historico-duke .duke-milestone h4 {
+  font-size: 1.02rem;
+  color: #192b4c;
+  margin: 0 0 9px;
+}
+
+#historico-duke .duke-milestone p {
+  margin: 0;
+}
+
+#historico-duke .duke-recommendation {
+  background: linear-gradient(135deg, #142543, #30305c);
+  color: #fff;
+  border-radius: 18px;
+  padding: 29px;
+}
+
+#historico-duke .duke-recommendation .duke-quote-mark {
+  font: 800 4.5rem Georgia, serif;
+  line-height: .8;
+  color: #f082bc;
+}
+
+#historico-duke .duke-recommendation blockquote {
+  margin: 15px 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(1.1rem, 2.3vw, 1.45rem);
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+#historico-duke .duke-recommendation small {
+  display: block;
+  color: #c2cde9;
+  font-size: .75rem;
+  line-height: 1.7;
+}
+
+#historico-duke .duke-fact {
+  padding: 13px 0;
+  border-bottom: 1px solid #e4eaf3;
+}
+
+#historico-duke .duke-fact:last-child {
+  border-bottom: none;
+}
+
+#historico-duke .duke-fact span {
+  display: block;
+  font-size: .73rem;
+  color: #78869b;
+  margin-bottom: 4px;
+}
+
+#historico-duke .duke-fact strong {
+  display: block;
+  color: #172844;
+  font-size: .94rem;
+}
+
+#historico-duke .duke-skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+#historico-duke .duke-skill-tags span {
+  background: #eef3fc;
+  border: 1px solid #d9e3f2;
+  color: #335f90;
+  padding: 7px 11px;
+  border-radius: 99px;
+  font-size: .76rem;
+  font-weight: 700;
+}
+
+#historico-duke .duke-note {
+  background: #fff8fc;
+  border: 1px solid #ecd3e4;
+  border-left: 4px solid #d84c98;
+  border-radius: 11px;
+  padding: 19px;
+}
+
+#historico-duke .duke-note h3 {
+  font-size: 1rem;
+  margin-bottom: 9px;
+}
+
+#historico-duke .duke-note p {
+  margin-bottom: 0;
+}
+
+#historico-duke .duke-record-card details {
+  border-top: 1px solid #e3e9f1;
+  padding: 16px 0;
+}
+
+#historico-duke .duke-record-card summary {
+  cursor: pointer;
+  font-weight: 800;
+  color: #ad3c7e;
+}
+
+#historico-duke .duke-record-card details p {
+  margin-bottom: 0;
+}
+
+#historico-duke .duke-record-card a {
+  color: #286eaa;
+  font-weight: 700;
+}
+
+@media (max-width: 850px) {
+  #historico-duke .duke-record-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 650px) {
+  #historico-duke {
+    padding: 58px 0;
+  }
+
+  #historico-duke .duke-record-card,
+  #historico-duke .duke-recommendation {
+    padding: 21px;
+  }
+}
+
 </style>
 </head>
 
@@ -677,6 +922,9 @@ h2{font-size:clamp(2rem,4vw,3.3rem)}
     <nav aria-label="Menu principal">
       <a href="#case">O case</a>
       <a href="#atuacao">Minha atuação</a>
+      <a href="#historico-duke">
+  Trajetória e reconhecimento
+</a>
       <a href="analise-simulacao-financeira.html">
   Análise Financeira
 </a>
@@ -707,8 +955,7 @@ h2{font-size:clamp(2rem,4vw,3.3rem)}
         </h1>
 
         <p class="hero-copy">
-          Minha experiência como gerente financeiro
-          e comercial na Duke — Experiências
+          Minha experiência como Gerente Financeiro, com atuação também em atividades comerciais, administrativas e operacionais na Duke — Experiências
           Inteligentes, em Barreiras (BA),
           conectando controle financeiro,
           relacionamento com clientes e
@@ -924,6 +1171,442 @@ h2{font-size:clamp(2rem,4vw,3.3rem)}
 
 
 <!-- RESULTADOS -->
+
+<!-- =============================================
+     DUKE — TRAJETÓRIA E RECONHECIMENTO
+     ============================================= -->
+
+<section class="duke-archive" id="historico-duke">
+
+  <div class="container">
+
+    <div class="duke-section-heading">
+
+      <span class="eyebrow">
+        04 / TRAJETÓRIA & RECONHECIMENTO
+      </span>
+
+      <h2>
+        Uma trajetória que continuou
+        sendo lembrada.
+      </h2>
+
+      <p>
+        Além das responsabilidades exercidas
+        entre 2020 e 2023, os registros
+        profissionais mostram que meu trabalho
+        permaneceu como referência em conversas
+        posteriores sobre a organização
+        financeira do negócio.
+      </p>
+
+    </div>
+
+    <div class="duke-record-grid">
+
+      <!-- COLUNA PRINCIPAL -->
+
+      <div class="duke-record-column">
+
+        <article class="duke-record-card">
+
+          <h3>
+            Histórico da experiência
+          </h3>
+
+          <div class="duke-timeline">
+
+            <div class="duke-milestone"
+                 style="--duke-point:#438ddd">
+
+              <time>
+                OUTUBRO DE 2020 — JANEIRO DE 2023
+              </time>
+
+              <h4>
+                Gerência financeira na Duke
+              </h4>
+
+              <p>
+                Atuação como
+                <strong>Gerente Financeiro
+                na Duke Experiências Inteligentes</strong>,
+                com responsabilidades relacionadas
+                a controle de caixa, gestão financeira,
+                elaboração de relatórios de desempenho,
+                supervisão operacional,
+                suporte administrativo
+                e atendimento consultivo.
+              </p>
+
+              <p>
+                A experiência envolveu atividades
+                financeiras, comerciais
+                e administrativas, contribuindo
+                para a organização cotidiana
+                dos processos da empresa.
+              </p>
+
+            </div>
+
+            <div class="duke-milestone"
+                 style="--duke-point:#6774df">
+
+              <time>MAIO DE 2023</time>
+
+              <h4>
+                Contato sobre trabalho remoto
+                e dados inteligentes
+              </h4>
+
+              <p>
+                Após o encerramento do vínculo
+                profissional registrado,
+                um gestor entrou em contato
+                para consultar a possibilidade
+                de colaboração a distância.
+              </p>
+
+              <p>
+                Na conversa, foram mencionados
+                acesso ao sistema da empresa
+                e a necessidade de trabalhar
+                com <strong>“dados inteligentes”</strong>.
+              </p>
+
+              <p>
+                Esse registro demonstra uma
+                possibilidade de colaboração
+                discutida na época,
+                <strong>não a implantação comprovada
+                de uma solução tecnológica</strong>.
+              </p>
+
+            </div>
+
+            <div class="duke-milestone"
+                 style="--duke-point:#9b61dc">
+
+              <time>JULHO DE 2023</time>
+
+              <h4>
+                Nova procura pela organização
+                da área financeira
+              </h4>
+
+              <p>
+                O contato profissional foi
+                retomado com referência à
+                necessidade de reorganizar
+                as atividades financeiras.
+              </p>
+
+              <p>
+                Meu nome voltou a ser mencionado
+                como referência para esse tipo
+                de responsabilidade, demonstrando
+                a continuidade da confiança
+                em minha experiência.
+              </p>
+
+            </div>
+
+            <div class="duke-milestone"
+                 style="--duke-point:#dc4e99">
+
+              <time>29 DE JANEIRO DE 2024</time>
+
+              <h4>
+                Convite para retornar
+                à gerência financeira
+              </h4>
+
+              <p>
+                Recebi uma mensagem propondo
+                meu retorno à gerência financeira.
+                O interlocutor também expressou
+                confiança na minha capacidade
+                de conduzir essa área.
+              </p>
+
+              <p>
+                Durante a conversa, foi
+                descrito um contexto operacional
+                com <strong>dois restaurantes,
+                uma loja e mais de 20 pessoas</strong>.
+              </p>
+
+              <p>
+                Esses números representam
+                a situação relatada pelo
+                interlocutor em 2024.
+                Não são apresentados como
+                resultados atribuídos
+                à minha gestão anterior.
+              </p>
+
+              <p>
+                <strong>O convite não significa
+                que um novo vínculo profissional
+                tenha sido efetivado.</strong>
+              </p>
+
+            </div>
+
+          </div>
+
+        </article>
+
+        <article class="duke-recommendation">
+
+          <div class="duke-quote-mark"
+               aria-hidden="true">“</div>
+
+          <blockquote>
+            Vc é a única pessoa a qual
+            eu confio nessa área
+          </blockquote>
+
+          <small>
+            Trecho de uma mensagem profissional
+            recebida em 29 de janeiro de 2024,
+            reproduzido conforme o registro
+            original e sem identificar
+            o interlocutor.
+          </small>
+
+        </article>
+
+        <article class="duke-record-card">
+
+          <h3>
+            O que a experiência representou
+          </h3>
+
+          <p>
+            Minha atuação na gestão financeira
+            permitiu desenvolver uma visão
+            integrada entre organização de
+            informações, rotinas operacionais,
+            atendimento aos clientes e
+            acompanhamento de resultados.
+          </p>
+
+          <p>
+            Os contatos posteriores demonstram
+            que essas competências permaneceram
+            associadas à minha trajetória,
+            mesmo depois do encerramento
+            do período formal de trabalho.
+          </p>
+
+          <h3>
+            Conexão com Ciência de Dados
+          </h3>
+
+          <p>
+            Atualmente, utilizo essa base
+            de experiência em negócios como
+            referência para meus estudos
+            em indicadores, análise de dados,
+            inteligência financeira
+            e sistemas de apoio à decisão.
+          </p>
+
+          <p>
+            Essa experiência não é apresentada
+            como implantação de machine learning,
+            desenvolvimento de BI ou entrega
+            de modelos preditivos, pois os
+            registros disponibilizados não
+            comprovam essas atividades técnicas.
+          </p>
+
+        </article>
+
+      </div>
+
+      <!-- COLUNA DE APOIO -->
+
+      <aside class="duke-record-column">
+
+        <article class="duke-record-card">
+
+          <h3>Ficha da experiência</h3>
+
+          <div class="duke-fact">
+            <span>Organização</span>
+            <strong>
+              Duke Experiências Inteligentes
+            </strong>
+          </div>
+
+          <div class="duke-fact">
+            <span>Cargo registrado</span>
+            <strong>Gerente Financeiro</strong>
+          </div>
+
+          <div class="duke-fact">
+            <span>Período</span>
+            <strong>
+              Outubro de 2020 a janeiro de 2023
+            </strong>
+          </div>
+
+          <div class="duke-fact">
+            <span>Local de atuação</span>
+            <strong>
+              Barreiras — Bahia, Brasil
+            </strong>
+          </div>
+
+          <div class="duke-fact">
+            <span>Área de atuação</span>
+            <strong>
+              Gestão financeira, comercial
+              e operacional
+            </strong>
+          </div>
+
+        </article>
+
+        <article class="duke-record-card">
+
+          <h3>
+            Competências desenvolvidas
+          </h3>
+
+          <div class="duke-skill-tags">
+
+            <span>Gestão financeira</span>
+            <span>Controle de caixa</span>
+            <span>Relatórios gerenciais</span>
+            <span>Indicadores de desempenho</span>
+            <span>Gestão de operações</span>
+            <span>Supervisão de equipes</span>
+            <span>Atendimento consultivo</span>
+            <span>Relacionamento com clientes</span>
+            <span>Comunicação profissional</span>
+            <span>Visão de negócios</span>
+
+          </div>
+
+        </article>
+
+        <article class="duke-record-card">
+
+          <h3>
+            Sobre os nomes comerciais
+          </h3>
+
+          <p>
+            Os registros profissionais também
+            mencionam os nomes
+            <strong>Terraço Duke</strong>
+            e <strong>Terraço Burger</strong>.
+          </p>
+
+          <p>
+            A relação jurídica entre esses
+            nomes e a Duke Experiências
+            Inteligentes não foi confirmada.
+          </p>
+
+          <p>
+            Por isso, não são atribuídos
+            automaticamente à mesma
+            pessoa jurídica os estabelecimentos,
+            contratos ou operações mencionados
+            nas conversas.
+          </p>
+
+        </article>
+
+        <div class="duke-note">
+
+          <h3>
+            Distinção entre fatos e propostas
+          </h3>
+
+          <p>
+            Os contatos de 2023 e 2024
+            documentam conversas, consultas
+            e um convite profissional.
+            Não comprovam contratação posterior,
+            implantação de sistemas ou
+            execução de projetos adicionais.
+            Projeções mencionadas por terceiros
+            não são tratadas como
+            faturamento efetivamente realizado.
+          </p>
+
+        </div>
+
+        <article class="duke-record-card">
+
+          <h3>
+            Fontes e documentação
+          </h3>
+
+          <p>
+            Esta página reúne informações
+            do registro profissional
+            no LinkedIn e de conversas
+            profissionais documentadas
+            de 2023 e 2024.
+          </p>
+
+          <p>
+            <a
+              href="https://www.linkedin.com/in/hellen-souza-879051194/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Consultar perfil profissional ↗
+            </a>
+          </p>
+
+          <details>
+            <summary>
+              Privacidade das evidências
+            </summary>
+
+            <p>
+              Conversas privadas podem conter
+              dados de terceiros. A página
+              não disponibiliza capturas
+              completas, telefones ou contatos.
+              A publicação de trechos literais
+              deve respeitar a autorização
+              dos envolvidos.
+            </p>
+          </details>
+
+          <details>
+            <summary>
+              Próximas evidências
+            </summary>
+
+            <p>
+              Podem ser acrescentados
+              exemplos autorizados de relatórios
+              e controles, fotografias de
+              atividades com consentimento,
+              descrições documentadas das
+              melhorias executadas e
+              indicadores com bases verificáveis.
+            </p>
+          </details>
+
+        </article>
+
+      </aside>
+
+    </div>
+
+  </div>
+
+</section>
 
 <section class="impact" id="resultados">
   <div class="container">
