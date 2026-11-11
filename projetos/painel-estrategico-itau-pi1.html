@@ -1712,6 +1712,17 @@ body{margin:0;font:15px/1.6 system-ui,-apple-system,Segoe UI,sans-serif;backgrou
            2027
           </td>
          </tr>
+         
+<tr>
+  <td>Enfrentamento</td>
+  <td>
+    Reter 98% da base Wealth Management,
+    mantendo margem de comissões
+    superior a 1,5% ao ano.
+  </td>
+  <td>2027</td>
+</tr>
+
          <tr>
           <td>
            Defesa
@@ -2506,18 +2517,7 @@ body{margin:0;font:15px/1.6 system-ui,-apple-system,Segoe UI,sans-serif;backgrou
        </article>
       </div>
      </section>
-     <section class="card">
-      <h3>
-       Autores do relat&oacute;rio acad&ecirc;mico
-      </h3>
-      <p>
-       O relat&oacute;rio acad&ecirc;mico identifica tamb&eacute;m
-       <strong>
-        Igor Wendel Amaral
-       </strong>
-       entre os quatro autores. A apresenta&ccedil;&atilde;o exibida traz tr&ecirc;s integrantes.
-      </p>
-     </section>
+     
     </section>
     <section aria-label="⏱️ Cron&ocirc;metro da Apresenta&ccedil;&atilde;o" class="view" hidden="" id="panel-14">
      <div class="sectionlabel">
@@ -3625,6 +3625,23 @@ body.itau-presentation-mode {
     const index = getActiveIndex();
     const total = panelButtons.length;
     const current = panelButtons[index];
+
+/* Sincroniza o número no topo do painel */
+const painelVisivel = document.querySelector(
+  'main .view:not([hidden])'
+);
+
+const indicadorSuperior = painelVisivel?.querySelector(
+  '.sectionlabel'
+);
+
+if (indicadorSuperior) {
+  indicadorSuperior.textContent =
+    'Painel ' +
+    String(index + 1).padStart(2, '0') +
+    ' / ' +
+    String(total).padStart(2, '0');
+}
 
     countElement.textContent =
       'PAINEL ' +
