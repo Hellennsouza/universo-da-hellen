@@ -545,9 +545,11 @@ function render() {
      ======================================== */
 
   const priority = [
-  'Painel Estratégico Itaú',
-  'ICDF —',
-  'Operação Espelho Falso'
+   'Operação Espelho Falso',
+   'ICDF —',
+  'Painel Estratégico Itaú'
+  
+  
 ];
 
   let promoted = [];
