@@ -4416,6 +4416,122 @@ if (etapa.icone === "ufob") {
     nova.append(inicio);
 
     antiga.replaceWith(nova);
+   
+/* ==========================================
+   CORREÇÃO DOS PONTOS DA TRAJETÓRIA
+   Mantém a curva original intacta
+   ========================================== */
+
+function alinharPontosNaCurva() {
+
+  const svg = nova.querySelector(".j-path");
+  const curva = svg?.querySelector(".path-main");
+
+  if (!svg || !curva) return;
+
+  const svgRect = svg.getBoundingClientRect();
+  const viewBox = svg.viewBox.baseVal;
+
+  if (!svgRect.width || !svgRect.height) return;
+
+  const comprimento = curva.getTotalLength();
+
+  const pontos = nova.querySelectorAll(".j-node");
+
+  pontos.forEach(ponto => {
+
+    // Remove o deslocamento anterior para
+    // evitar acúmulo ao redimensionar a tela.
+    ponto.style.transform = "none";
+
+    const rect = ponto.getBoundingClientRect();
+
+    // Centro vertical da bolinha.
+    const centroY = rect.top + rect.height / 2;
+
+    // Converte a posição vertical para
+    // as coordenadas do SVG.
+    const ySVG =
+      viewBox.y +
+      ((centroY - svgRect.top) / svgRect.height)
+      * viewBox.height;
+
+    // Encontra o ponto da curva que está
+    // exatamente na mesma altura da bolinha.
+    let inicio = 0;
+    let fim = comprimento;
+
+    for (let i = 0; i < 40; i++) {
+
+      const meio = (inicio + fim) / 2;
+
+      const posicao = curva.getPointAtLength(meio);
+
+      if (posicao.y < ySVG) {
+        inicio = meio;
+      } else {
+        fim = meio;
+      }
+    }
+
+    const posicaoCurva = curva.getPointAtLength(
+      (inicio + fim) / 2
+    );
+
+    // Coordenada horizontal real da curva.
+    const xCurva =
+      svgRect.left +
+      ((posicaoCurva.x - viewBox.x) / viewBox.width)
+      * svgRect.width;
+
+    // Centro horizontal atual da bolinha.
+    const xPonto = rect.left + rect.width / 2;
+
+    // Move SOMENTE a bolinha.
+    const deslocamento = xCurva - xPonto;
+
+    ponto.style.transform =
+      `translateX(${deslocamento.toFixed(2)}px)`;
+
+  });
+}
+
+/* Recalcula após mudanças de tamanho */
+let alinhamentoFrame = 0;
+
+function atualizarAlinhamento() {
+
+  cancelAnimationFrame(alinhamentoFrame);
+
+  alinhamentoFrame = requestAnimationFrame(
+    alinharPontosNaCurva
+  );
+}
+
+// Primeiro alinhamento
+atualizarAlinhamento();
+
+// Recalcula ao redimensionar a janela
+window.addEventListener(
+  "resize",
+  atualizarAlinhamento
+);
+
+// Recalcula depois do carregamento das fontes
+if (document.fonts?.ready) {
+  document.fonts.ready.then(atualizarAlinhamento);
+}
+
+// Recalcula se a trajetória mudar de tamanho
+if ("ResizeObserver" in window) {
+
+  const observadorTrajetoria = new ResizeObserver(
+    atualizarAlinhamento
+  );
+
+  observadorTrajetoria.observe(nova);
+}
+
 
     // Atualiza somente o subtítulo da Trajetória.
     const lead = secao.querySelector(":scope > .wrap > .lead");
