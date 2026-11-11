@@ -1063,3 +1063,135 @@ mask-image: none !important;
 .archive-card-kicker {
   display: none !important;
 }
+
+/* ==========================================
+   CORREÇÃO — PROJETO PRINCIPAL EM DESTAQUE
+   Imagem separada da descrição
+   ========================================== */
+
+#featuredCards .archive-feature-card.primary {
+  display: flex !important;
+  flex-direction: column !important;
+  position: relative !important;
+  min-width: 0;
+  height: auto !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Área exclusiva da capa */
+#featuredCards .archive-feature-card.primary
+.archive-feature-visual {
+  display: block !important;
+  position: relative !important;
+  inset: auto !important;
+  width: 100% !important;
+  height: clamp(210px, 25vw, 320px) !important;
+  min-height: 0 !important;
+  flex: 0 0 auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  background: #08152b !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Imagem completa, sem invadir o texto */
+#featuredCards .archive-feature-card.primary
+.archive-feature-visual img {
+  display: block !important;
+  position: static !important;
+  inset: auto !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Retira possível camada sobre a imagem */
+#featuredCards .archive-feature-card.primary
+.archive-feature-visual::before,
+#featuredCards .archive-feature-card.primary
+.archive-feature-visual::after {
+  display: none !important;
+}
+
+/* Conteúdo em uma área própria, abaixo da capa */
+#featuredCards .archive-feature-card.primary
+.archive-feature-content {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  position: relative !important;
+  inset: auto !important;
+  z-index: 2 !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 26px !important;
+  background: #101d36 !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Título */
+#featuredCards .archive-feature-card.primary
+.archive-feature-content h3 {
+  position: static !important;
+  margin: 14px 0 !important;
+  color: #ffffff !important;
+  font-size: clamp(1.55rem, 2.4vw, 2.4rem) !important;
+  line-height: 1.2 !important;
+  overflow-wrap: anywhere;
+}
+
+/* Descrição */
+#featuredCards .archive-feature-card.primary
+.archive-feature-content p {
+  position: static !important;
+  margin: 0 0 18px !important;
+  color: #cbd6e7 !important;
+  font-size: .94rem !important;
+  line-height: 1.65 !important;
+}
+
+/* Tecnologias */
+#featuredCards .archive-feature-card.primary
+.archive-project-tags {
+  position: static !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px;
+  margin: 8px 0 20px !important;
+}
+
+/* Botão de acesso */
+#featuredCards .archive-feature-card.primary
+.archive-feature-link {
+  position: relative !important;
+  inset: auto !important;
+  margin-top: auto !important;
+}
+
+/* Celular */
+@media (max-width: 768px) {
+  #featuredCards .archive-feature-card.primary
+  .archive-feature-visual {
+    height: 230px !important;
+  }
+
+  #featuredCards .archive-feature-card.primary
+  .archive-feature-content {
+    padding: 20px !important;
+  }
+
+  #featuredCards .archive-feature-card.primary
+  .archive-feature-content h3 {
+    font-size: 1.65rem !important;
+  }
+}
