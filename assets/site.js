@@ -27,11 +27,12 @@ const PROJECTS = [{"title": "Painel Estratégico Itaú Unibanco — PI1",
                    "featured": true, 
                    "cover": "assets/capas/icdf.png"
                   }, 
-                  {"title": "Operação Espelho Falso — Detecção de Deepfakes", 
-                   "cat": "Data Science", "icon": "🪞", 
+                  {
+                    //"title": "Operação Espelho Falso — Detecção de Deepfakes", 
+                   //"cat": "Data Science", "icon": "🪞", 
                    //"desc": "Prova de conceito para investigação de fraude com visão computacional, biometria e explicabilidade de IA.", 
                    //"context": "Versão beta documentada com processamento em memória, módulos de vivacidade ocular, PRNU, grafos de identidade e explicabilidade. Aplicações propostas em investigações e prevenção de fraudes.", 
-                   "tools": "Python, OpenCV, NumPy, SciPy, Pandas, NetworkX, scikit-learn, XAI", 
+                   //"tools": "Python, OpenCV, NumPy, SciPy, Pandas, NetworkX, scikit-learn, XAI", 
                    "results": "README registra testes locais simulados: score 549/1000 para transação legítima e 764/1000 para cenário de ataque. Não constitui prova de desempenho ou conformidade regulatória em ambiente real.", 
                    "source": "https://github.com/Hellennsouza/Operacao_Espelho_Falso", 
                    "verified": true, 
@@ -213,11 +214,6 @@ function makeFeatureCard(p, primary = false) {
 
   const content = el('div', 'archive-feature-content');
 
-  const kicker = el(
-    'span',
-    'archive-card-kicker',
-    primary ? '[ PROJETO PRINCIPAL ]' : '[ PROJETO SELECIONADO ]'
-  );
 
   const status = el('span', 'archive-card-status', p.status || p.cat);
 
