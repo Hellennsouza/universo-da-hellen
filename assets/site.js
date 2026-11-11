@@ -23,20 +23,20 @@ const PROJECTS = [{"title": "Painel Estratégico Itaú Unibanco — PI1",
                    "source": "https://github.com/Hellennsouza/ICDF-FRAMEWORK", 
                    "verified": true, 
                    "page": "projetos/icdf-framework-de-decisao-em-credito-integrado.html", 
-                   "status": "Documentado", 
+                  // "status": "Documentado", 
                    "featured": true, 
                    "cover": "assets/capas/icdf.png"
                   }, 
                   {"title": "Operação Espelho Falso — Detecção de Deepfakes", 
                    "cat": "Data Science", "icon": "🪞", 
-                   "desc": "Prova de conceito para investigação de fraude com visão computacional, biometria e explicabilidade de IA.", 
-                   "context": "Versão beta documentada com processamento em memória, módulos de vivacidade ocular, PRNU, grafos de identidade e explicabilidade. Aplicações propostas em investigações e prevenção de fraudes.", 
+                   //"desc": "Prova de conceito para investigação de fraude com visão computacional, biometria e explicabilidade de IA.", 
+                   //"context": "Versão beta documentada com processamento em memória, módulos de vivacidade ocular, PRNU, grafos de identidade e explicabilidade. Aplicações propostas em investigações e prevenção de fraudes.", 
                    "tools": "Python, OpenCV, NumPy, SciPy, Pandas, NetworkX, scikit-learn, XAI", 
                    "results": "README registra testes locais simulados: score 549/1000 para transação legítima e 764/1000 para cenário de ataque. Não constitui prova de desempenho ou conformidade regulatória em ambiente real.", 
                    "source": "https://github.com/Hellennsouza/Operacao_Espelho_Falso", 
                    "verified": true, 
                    "page": "projetos/operacao-espelho-falso-deteccao-de-deepfakes.html", 
-                   "status": "Documentado", 
+                  // "status": "Documentado", 
                    "featured": true, 
                    "cover": "assets/capas/espelho.png"
                   }, 
@@ -50,7 +50,7 @@ const PROJECTS = [{"title": "Painel Estratégico Itaú Unibanco — PI1",
                    "source": "https://github.com/Hellennsouza/Analise-de-Risco-de-Credito", 
                    "verified": true, 
                    "page": "projetos/analise-de-risco-de-credito-e-inadimplencia.html", 
-                   "status": "Documentado", 
+                  // "status": "Documentado", 
                    "featured": false, 
                    "cover": "assets/capas/risco.png"
                   }, 
@@ -64,7 +64,7 @@ const PROJECTS = [{"title": "Painel Estratégico Itaú Unibanco — PI1",
                    "source": "https://github.com/Hellennsouza/Arduino-Meninas-na-Ciencia", 
                    "verified": true, 
                    "page": "projetos/arduino-meninas-na-ciencia.html", 
-                   "status": "Documentado", 
+                   //"status": "Documentado", 
                    "featured": false, 
                    "cover": "assets/capas/meninas.png"
                   }, 
@@ -78,7 +78,7 @@ const PROJECTS = [{"title": "Painel Estratégico Itaú Unibanco — PI1",
                    "source": "https://github.com/Hellennsouza/Caminhao-da-Ciencia-UFOB", 
                    "verified": true, 
                    "page": "projetos/caminhao-da-ciencia-ufob.html", 
-                   "status": "Documentado", 
+                  // "status": "Documentado", 
                    "featured": false, 
                    "cover": "assets/capas/caminhao.png"
                   }, 
@@ -92,7 +92,7 @@ const PROJECTS = [{"title": "Painel Estratégico Itaú Unibanco — PI1",
                    "source": "https://github.com/Hellennsouza/Automacao-Residencial-Arduino", 
                    "verified": true, 
                    "page": "projetos/automacao-residencial-com-arduino.html", 
-                   "status": "Documentado", 
+                   //"status": "Documentado", 
                    "featured": false, 
                    "cover": "assets/capas/arduinocasa.png"
                   }, 
@@ -263,7 +263,7 @@ function makeFeatureCard(p, primary = false) {
 }
 
 
-// Renderização integrada: destaques, filtros e catálogo
+// Renderização integrada: s, filtros e catálogo
 function render() {
   const q = normalize(search.value.trim());
 
@@ -283,7 +283,7 @@ function render() {
     return categoryMatch && textMatch;
   });
 
-  // Ordem desejada dos destaques
+  // Ordem desejada dos s
   const priority = [
     'Operação Espelho Falso',
     'ICDF —',
@@ -294,7 +294,7 @@ function render() {
 
   // Mostra os três projetos escolhidos na abertura.
   // Quando o usuário pesquisa ou muda de área,
-  // os destaques também passam a respeitar o filtro.
+  // os s também passam a respeitar o filtro.
   if (
     !q &&
     (currentCategory === 'Todos' ||
@@ -307,7 +307,7 @@ function render() {
     promoted = filtered.slice(0, 3);
   }
 
-  // Evita repetir os destaques no catálogo inferior
+  // Evita repetir os s no catálogo inferior
   const promotedSet = new Set(promoted);
   const remaining = filtered.filter(p => !promotedSet.has(p));
 
