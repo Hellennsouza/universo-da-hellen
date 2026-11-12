@@ -1,0 +1,1734 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101c35">
+
+<title>Financial Intelligence Lab | Universo da Hellen</title>
+<meta name="description" content="Laboratório de análise e simulação financeira com importação de Excel e CSV, indicadores, gráficos e cenários interativos.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#101c35;
+  --panel:#1a2c4a;
+  --panel2:#243957;
+  --border:#405674;
+  --pink:#ed63ae;
+  --mint:#7de4c8;
+  --blue:#86b0f3;
+  --text:#f7f9ff;
+  --muted:#b9c9df;
+}
+
+*{box-sizing:border-box}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font:14px/1.65 Inter,Arial,sans-serif;
+}
+
+button,input,select{font:inherit}
+button{cursor:pointer}
+a{color:inherit}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+a:focus-visible{
+  outline:3px solid var(--mint);
+  outline-offset:3px;
+}
+
+h1,h2,h3{
+  font-family:"Plus Jakarta Sans",sans-serif;
+  line-height:1.22;
+  letter-spacing:-.04em;
+}
+
+.wrap{
+  width:min(1250px,calc(100% - 36px));
+  margin:auto;
+}
+
+.topbar{
+  background:#0b162b;
+  border-bottom:1px solid var(--border);
+  padding:17px 0;
+}
+
+.topbar .wrap{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+}
+
+.brand{
+  font-weight:800;
+  text-decoration:none;
+}
+
+.brand span{color:var(--pink)}
+
+.back{
+  color:#b8cbe3;
+  text-decoration:none;
+  font-size:12px;
+}
+
+.hero{
+  padding:70px 0 42px;
+  background:
+    radial-gradient(circle at 83% 0%,#78457950,transparent 40%),
+    #101c35;
+}
+
+.kicker{
+  color:var(--mint);
+  font-size:11px;
+  letter-spacing:.15em;
+  font-weight:800;
+}
+
+h1{
+  font-size:clamp(2.5rem,5vw,4.8rem);
+  margin:15px 0;
+}
+
+h1 span{color:var(--pink)}
+
+.hero p{
+  max-width:780px;
+  color:var(--muted);
+  font-size:15px;
+}
+
+.section{
+  padding:24px 0 40px;
+}
+
+.card{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:17px;
+  overflow:hidden;
+}
+
+.card-head{
+  padding:16px 20px;
+  background:var(--panel2);
+  border-bottom:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.card-head strong{
+  font-size:13px;
+}
+
+.card-head small{
+  color:#a9bfd9;
+  font-size:11px;
+}
+
+.card-body{padding:22px}
+
+.upload{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  min-height:185px;
+  padding:25px;
+  border:2px dashed #7992b8;
+  background:#1e3454;
+  border-radius:15px;
+  cursor:pointer;
+}
+
+.upload:hover,
+.upload.dragging{
+  border-color:var(--mint);
+  background:#264564;
+}
+
+.upload-icon{
+  font-size:35px;
+  color:var(--mint);
+  line-height:1;
+}
+
+.upload strong{
+  margin-top:13px;
+  font-size:15px;
+}
+
+.upload span:last-child{
+  color:#adc3db;
+  font-size:12px;
+  margin-top:6px;
+}
+
+.upload input{display:none}
+
+.actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:17px;
+}
+
+.btn{
+  border:1px solid #748bac;
+  background:#304665;
+  color:white;
+  padding:11px 15px;
+  border-radius:9px;
+  font-size:12px;
+  font-weight:800;
+}
+
+.btn.primary{
+  background:var(--pink);
+  color:#210e29;
+  border-color:var(--pink);
+}
+
+.btn:hover{filter:brightness(1.12)}
+
+.message{
+  color:#b9c9df;
+  font-size:12px;
+  margin-top:16px;
+  overflow-wrap:anywhere;
+}
+
+.message.error{color:#ffa5b4}
+.message.success{color:#a1eed7}
+
+.mapping{
+  display:none;
+  margin-top:20px;
+}
+
+.mapping.visible{display:block}
+
+.mapping-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:15px;
+}
+
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+  min-width:0;
+}
+
+.field label{
+  color:#c2d2e6;
+  font-size:11px;
+  font-weight:700;
+}
+
+.field select{
+  width:100%;
+  min-width:0;
+  background:#101f39;
+  border:1px solid #6580a4;
+  color:white;
+  padding:10px 12px;
+  border-radius:8px;
+}
+
+.mapping-help{
+  font-size:12px;
+  color:#bbcce1;
+  margin-top:14px;
+}
+
+.dashboard{
+  display:none;
+}
+
+.dashboard.visible{display:block}
+
+.dashboard-note{
+  color:#aebfd9;
+  font-size:12px;
+  margin:14px 0 20px;
+}
+
+.kpis{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  margin-bottom:20px;
+}
+
+.kpi{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:21px;
+}
+
+.kpi span{
+  display:block;
+  color:#bed0e8;
+  font-size:11px;
+}
+
+.kpi strong{
+  display:block;
+  margin-top:11px;
+  font:800 clamp(1.2rem,2vw,1.8rem)
+    "Plus Jakarta Sans",sans-serif;
+  overflow-wrap:anywhere;
+}
+
+.kpi:nth-child(1) strong{color:var(--mint)}
+.kpi:nth-child(2) strong{color:#ffabbf}
+.kpi:nth-child(3) strong{color:#a9c8ff}
+.kpi:nth-child(4) strong{color:#e7d5ff}
+
+.charts{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+.chart-card{
+  min-width:0;
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:22px;
+}
+
+.chart-card.wide{grid-column:1/-1}
+
+.chart-card h3{
+  font-size:15px;
+  margin:0 0 6px;
+}
+
+.chart-card p{
+  color:#b2c2d9;
+  font-size:11px;
+  margin:0 0 19px;
+}
+
+.chart-wrap{
+  position:relative;
+  height:275px;
+}
+
+.chart-card.wide .chart-wrap{
+  height:315px;
+}
+
+.simulation{
+  margin-top:22px;
+  display:grid;
+  grid-template-columns:.85fr 1.15fr;
+  gap:18px;
+}
+
+.slider-row{
+  margin:18px 0 24px;
+}
+
+.slider-row label{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  color:#dbe7f5;
+  font-size:12px;
+}
+
+.slider-row output{
+  color:var(--mint);
+  font-weight:800;
+}
+
+.slider-row input{
+  width:100%;
+  margin-top:13px;
+  accent-color:var(--pink);
+}
+
+.sim-result{
+  padding:20px;
+  background:#102442;
+  border:1px solid #527199;
+  border-radius:12px;
+  margin-top:13px;
+}
+
+.sim-result span{
+  display:block;
+  color:#b5cce3;
+  font-size:11px;
+}
+
+.sim-result strong{
+  display:block;
+  margin-top:7px;
+  color:var(--mint);
+  font:800 clamp(1.5rem,3vw,2.4rem)
+    "Plus Jakarta Sans",sans-serif;
+}
+
+.sim-result p{
+  color:#d5e0ee;
+  font-size:12px;
+}
+
+.table-wrap{
+  overflow-x:auto;
+  margin-top:14px;
+}
+
+table{
+  border-collapse:collapse;
+  width:100%;
+  font-size:12px;
+}
+
+th,td{
+  padding:12px;
+  text-align:left;
+  border-bottom:1px solid #354a6c;
+}
+
+th{
+  color:#c1d4ed;
+  background:#243957;
+}
+
+td{color:#dae4f2}
+
+footer{
+  padding:32px 0;
+  border-top:1px solid var(--border);
+  color:#a9bdd8;
+  font-size:12px;
+}
+
+@media(max-width:980px){
+  .mapping-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+  .kpis{
+    grid-template-columns:repeat(2,1fr);
+  }
+  .simulation{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:650px){
+  .wrap{width:calc(100% - 24px)}
+  .hero{padding-top:45px}
+  .mapping-grid,
+  .charts,
+  .kpis{
+    grid-template-columns:1fr;
+  }
+  .chart-card.wide{grid-column:auto}
+  .chart-wrap{height:245px}
+  .chart-card.wide .chart-wrap{height:265px}
+  .card-body{padding:16px}
+  .brand{font-size:12px}
+  .back{font-size:11px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *{scroll-behavior:auto!important}
+}
+</style>
+<link rel="stylesheet" href="../assets/transicoes.css?v=1">
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a href="../index.html" class="brand">
+      ✦ UNIVERSO <span>DA HELLEN</span>
+    </a>
+    <a href="gestao-financeira-duke.html" class="back">
+      ← Voltar ao case Duke
+    </a>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="kicker">
+      FINANCIAL INTELLIGENCE · DATA ANALYTICS
+    </span>
+
+    <h1>
+      Financial <span>Intelligence Lab.</span>
+    </h1>
+
+    <p>
+      Importe dados financeiros, interprete
+      movimentações, gere indicadores,
+      visualize gráficos e experimente
+      cenários de decisão.
+    </p>
+
+    <p>
+      Os gráficos são calculados com base
+      no arquivo selecionado. Nenhum valor
+      fictício é acrescentado aos dados
+      importados.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="card">
+
+      <div class="card-head">
+        <strong>01 / Importação de documentos</strong>
+        <small>Excel e CSV</small>
+      </div>
+
+      <div class="card-body">
+
+        <label class="upload" id="dropzone">
+          <span class="upload-icon">⇧</span>
+          <strong>Arraste seu arquivo ou clique para importar</strong>
+          <span>
+            Formatos: .xlsx, .xls e .csv
+          </span>
+          <input
+            id="fileInput"
+            type="file"
+            accept=".xlsx,.xls,.csv"
+          >
+        </label>
+
+        <div class="actions">
+          <button class="btn" id="sampleButton" type="button">
+            Ver demonstração com dados fictícios
+          </button>
+        </div>
+
+        <div id="fileMessage" class="message" role="status">
+          Nenhum documento carregado.
+        </div>
+
+        <div class="mapping" id="mapping">
+
+          <h3>02 / Identificação das colunas</h3>
+
+          <p class="mapping-help">
+            Confira as colunas antes de analisar.
+            Use uma coluna de Valor e, se houver,
+            uma coluna de Tipo; ou selecione
+            separadamente colunas de entradas e saídas.
+          </p>
+
+          <div class="mapping-grid">
+
+            <div class="field" id="sheetField" hidden>
+              <label for="sheetSelect">Aba da planilha</label>
+              <select id="sheetSelect"></select>
+            </div>
+
+            <div class="field">
+              <label for="colDate">Data / competência</label>
+              <select id="colDate"></select>
+            </div>
+
+            <div class="field">
+              <label for="colDesc">Descrição</label>
+              <select id="colDesc"></select>
+            </div>
+
+            <div class="field">
+              <label for="colCategory">Categoria</label>
+              <select id="colCategory"></select>
+            </div>
+
+            <div class="field">
+              <label for="colAmount">Valor único</label>
+              <select id="colAmount"></select>
+            </div>
+
+            <div class="field">
+              <label for="colType">Tipo (receita/despesa)</label>
+              <select id="colType"></select>
+            </div>
+
+            <div class="field">
+              <label for="colIncome">Coluna de entradas</label>
+              <select id="colIncome"></select>
+            </div>
+
+            <div class="field">
+              <label for="colExpense">Coluna de saídas</label>
+              <select id="colExpense"></select>
+            </div>
+
+          </div>
+
+          <p class="mapping-help">
+            Se não houver coluna Tipo, valores positivos
+            serão classificados como entradas e negativos
+            como saídas. Confira essa regra antes de utilizar
+            os resultados.
+          </p>
+
+          <button class="btn primary"
+                  id="analyzeButton"
+                  type="button">
+            Gerar análise financeira →
+          </button>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section dashboard" id="dashboard">
+  <div class="wrap">
+
+    <span class="kicker">
+      DIAGNÓSTICO FINANCEIRO
+    </span>
+
+    <h2>Indicadores do documento</h2>
+
+    <p class="dashboard-note" id="dataSummary"></p>
+
+    <div class="kpis">
+
+      <article class="kpi">
+        <span>Total de entradas</span>
+        <strong id="totalIncome">—</strong>
+      </article>
+
+      <article class="kpi">
+        <span>Total de saídas</span>
+        <strong id="totalExpense">—</strong>
+      </article>
+
+      <article class="kpi">
+        <span>Saldo das movimentações</span>
+        <strong id="totalBalance">—</strong>
+      </article>
+
+      <article class="kpi">
+        <span>Registros considerados</span>
+        <strong id="totalRows">—</strong>
+      </article>
+
+    </div>
+
+    <div class="charts">
+
+      <article class="chart-card wide">
+        <h3>Entradas e saídas por período</h3>
+        <p>Comparativo com base nas datas encontradas.</p>
+        <div class="chart-wrap">
+          <canvas id="monthlyChart"></canvas>
+        </div>
+      </article>
+
+      <article class="chart-card">
+        <h3>Evolução do saldo acumulado</h3>
+        <p>Soma progressiva das movimentações importadas.</p>
+        <div class="chart-wrap">
+          <canvas id="balanceChart"></canvas>
+        </div>
+      </article>
+
+      <article class="chart-card">
+        <h3>Distribuição das despesas</h3>
+        <p>Agrupamento por categoria informada.</p>
+        <div class="chart-wrap">
+          <canvas id="categoryChart"></canvas>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="simulation">
+
+      <div class="card">
+        <div class="card-head">
+          <strong>03 / Simulação financeira</strong>
+          <small>Cenário hipotético</small>
+        </div>
+
+        <div class="card-body">
+
+          <p style="color:#b9c9df;font-size:12px">
+            Use as entradas e saídas reais do arquivo
+            como base para testar mudanças percentuais.
+          </p>
+
+          <div class="slider-row">
+            <label for="incomeScenario">
+              Alteração nas entradas
+              <output id="incomeScenarioValue">0%</output>
+            </label>
+            <input id="incomeScenario"
+                   type="range"
+                   min="-50" max="50"
+                   value="0">
+          </div>
+
+          <div class="slider-row">
+            <label for="expenseScenario">
+              Alteração nas saídas
+              <output id="expenseScenarioValue">0%</output>
+            </label>
+            <input id="expenseScenario"
+                   type="range"
+                   min="-50" max="50"
+                   value="0">
+          </div>
+
+          <button class="btn" id="resetScenario" type="button">
+            ↺ Restaurar cenário
+          </button>
+
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <strong>Resultado da simulação</strong>
+          <small>Comparação com a base</small>
+        </div>
+
+        <div class="card-body">
+
+          <div class="sim-result">
+            <span>Saldo projetado</span>
+            <strong id="projectedBalance">—</strong>
+            <p id="scenarioInsight"></p>
+          </div>
+
+          <div class="sim-result">
+            <span>Diferença em relação ao documento</span>
+            <strong id="scenarioDifference">—</strong>
+            <p>
+              Projeção simplificada. Não considera
+              mudanças de prazo, tributos, financiamento
+              ou efeitos de capital de giro.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="card" style="margin-top:20px">
+
+      <div class="card-head">
+        <strong>04 / Movimentações interpretadas</strong>
+        <small>Prévia de até 12 registros</small>
+      </div>
+
+      <div class="card-body">
+
+        <div class="actions">
+          <button class="btn" id="exportButton" type="button">
+            ↓ Exportar dados tratados em CSV
+          </button>
+          <button class="btn" id="exportChartButton" type="button">
+            ↓ Baixar gráfico principal
+          </button>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Data</th>
+                <th>Descrição</th>
+                <th>Categoria</th>
+                <th>Tipo</th>
+                <th>Valor</th>
+              </tr>
+            </thead>
+            <tbody id="previewBody"></tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    Universo da Hellen · Financial Intelligence Lab
+    — Ferramenta educativa de análise financeira.
+    Os resultados dependem da qualidade dos dados importados.
+  </div>
+</footer>
+
+<!-- Bibliotecas utilizadas -->
+<script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.7.0/papaparse.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+
+<script>
+'use strict';
+
+const $ = id => document.getElementById(id);
+
+const state = {
+  workbook:null,
+  rows:[],
+  records:[],
+  name:'',
+  demo:false,
+  charts:[]
+};
+
+const money = new Intl.NumberFormat('pt-BR',{
+  style:'currency',
+  currency:'BRL'
+});
+
+function normalize(text){
+  return String(text ?? '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g,'')
+    .toLowerCase()
+    .trim();
+}
+
+function formatMoney(value){
+  return money.format(value);
+}
+
+function setMessage(message,error=false){
+  $('fileMessage').textContent = message;
+  $('fileMessage').className =
+    'message ' + (error?'error':'success');
+}
+
+/* ==================================
+   LEITURA DE VALORES MONETÁRIOS
+================================== */
+
+function parseMoney(value){
+
+  if(typeof value === 'number'){
+    return Number.isFinite(value) ? value : null;
+  }
+
+  let str = String(value ?? '').trim();
+
+  if(!str || str === '-') return null;
+
+  const negativeByParentheses =
+    /^\s*\(.*\)\s*$/.test(str);
+
+  str = str.replace(/[^\d.,+-]/g,'');
+
+  if(!str) return null;
+
+  const comma = str.lastIndexOf(',');
+  const dot = str.lastIndexOf('.');
+
+  if(comma >= 0 && dot >= 0){
+    const decimal = comma > dot ? ',' : '.';
+    const thousands = decimal === ',' ? '.' : ',';
+
+    str = str.replaceAll(thousands,'');
+
+    if(decimal === ','){
+      str = str.replace(',','.');
+    }
+  }
+  else if(comma >= 0){
+    const decimalDigits = str.length-comma-1;
+
+    if(decimalDigits === 2 || decimalDigits === 1){
+      str = str.replaceAll('.','').replace(',','.');
+    }else{
+      str = str.replaceAll(',','');
+    }
+  }
+  else if(dot >= 0){
+    const decimalDigits = str.length-dot-1;
+
+    if(decimalDigits > 2 || decimalDigits === 3){
+      str = str.replaceAll('.','');
+    }else{
+      const parts = str.split('.');
+
+      if(parts.length > 2){
+        const last = parts.pop();
+        str = parts.join('') + '.' + last;
+      }
+    }
+  }
+
+  const number = Number(str);
+
+  if(!Number.isFinite(number)) return null;
+
+  return negativeByParentheses
+    ? -Math.abs(number)
+    : number;
+}
+
+/* ==================================
+   INTERPRETAÇÃO DAS DATAS
+================================== */
+
+function parsePeriod(value){
+
+  const str = String(value ?? '').trim();
+
+  if(!str) return 'Sem data';
+
+  let match;
+
+  // AAAA-MM-DD
+  match = /^(\d{4})-(\d{1,2})(?:-\d{1,2})?/.exec(str);
+
+  if(match){
+    const month = Number(match[2]);
+
+    if(month >= 1 && month <= 12){
+      return match[1]+'-'+String(month).padStart(2,'0');
+    }
+  }
+
+  // DD/MM/AAAA
+  match = /^(\d{1,2})\/(\d{1,2})\/(\d{4})/.exec(str);
+
+  if(match){
+    const month = Number(match[2]);
+
+    if(month >= 1 && month <= 12){
+      return match[3]+'-'+String(month).padStart(2,'0');
+    }
+  }
+
+  // MM/AAAA
+  match = /^(\d{1,2})\/(\d{4})$/.exec(str);
+
+  if(match){
+    const month = Number(match[1]);
+
+    if(month >= 1 && month <= 12){
+      return match[2]+'-'+String(month).padStart(2,'0');
+    }
+  }
+
+  return 'Sem data';
+}
+
+function monthLabel(period){
+
+  if(period === 'Sem data') return period;
+
+  const [year,month] = period.split('-').map(Number);
+
+  return new Intl.DateTimeFormat('pt-BR',{
+    month:'short',
+    year:'2-digit',
+    timeZone:'UTC'
+  }).format(new Date(Date.UTC(year,month-1,1)));
+}
+
+/* ==================================
+   IMPORTAR ARQUIVO
+================================== */
+
+async function handleFile(file){
+
+  if(!file) return;
+
+  state.demo = false;
+  state.name = file.name;
+
+  $('dashboard').classList.remove('visible');
+
+  const extension =
+    file.name.split('.').pop().toLowerCase();
+
+  try{
+
+    if(extension === 'csv'){
+
+      if(typeof Papa === 'undefined'){
+        throw new Error('Biblioteca CSV indisponível.');
+      }
+
+      const result = await new Promise((resolve,reject)=>{
+        Papa.parse(file,{
+          header:true,
+          skipEmptyLines:'greedy',
+          complete:resolve,
+          error:reject
+        });
+      });
+
+      state.workbook = null;
+      $('sheetField').hidden = true;
+
+      loadRows(result.data);
+    }
+    else if(extension === 'xlsx' || extension === 'xls'){
+
+      if(typeof XLSX === 'undefined'){
+        throw new Error('Biblioteca Excel indisponível.');
+      }
+
+      const buffer = await file.arrayBuffer();
+
+      state.workbook = XLSX.read(buffer,{type:'array'});
+
+      const select = $('sheetSelect');
+      select.replaceChildren();
+
+      state.workbook.SheetNames.forEach(name=>{
+        select.add(new Option(name,name));
+      });
+
+      $('sheetField').hidden = false;
+
+      readSheet(select.value);
+    }
+    else{
+      throw new Error(
+        'Formato não suportado. Utilize Excel ou CSV.'
+      );
+    }
+
+  }catch(error){
+    setMessage(
+      'Não foi possível importar: '+error.message,
+      true
+    );
+  }
+}
+
+function readSheet(name){
+
+  const ws = state.workbook.Sheets[name];
+
+  const rows = XLSX.utils.sheet_to_json(ws,{
+    defval:'',
+    raw:false
+  });
+
+  loadRows(rows);
+}
+
+function loadRows(rows){
+
+  state.rows = rows
+    .filter(row=>
+      row &&
+      Object.values(row).some(value=>
+        String(value??'').trim() !== ''
+      )
+    )
+    .slice(0,30000);
+
+  if(!state.rows.length){
+    throw new Error('Não foram encontradas linhas de dados.');
+  }
+
+  setupMapping();
+
+  $('mapping').classList.add('visible');
+
+  setMessage(
+    (state.demo?'Demonstração fictícia':'Arquivo: '+state.name)+
+    ' · '+state.rows.length+
+    ' linhas disponíveis para análise.'
+  );
+}
+
+/* ==================================
+   MAPEAMENTO DAS COLUNAS
+================================== */
+
+const mappings = {
+  colDate:/data|date|compet|mes|periodo|lancamento/,
+  colDesc:/descricao|historico|estabelecimento|detalhe|nome/,
+  colCategory:/categoria|grupo|classificacao|centro de custo/,
+  colAmount:/^valor$|montante|quantia|amount/,
+  colType:/^tipo$|natureza|operacao|movimento/,
+  colIncome:/entrada|receita|credito|recebimento/,
+  colExpense:/saida|despesa|debito|pagamento/
+};
+
+function setupMapping(){
+
+  const columns = [...new Set(
+    state.rows.flatMap(row=>Object.keys(row))
+  )];
+
+  Object.entries(mappings).forEach(([id,pattern])=>{
+
+    const select = $(id);
+    select.replaceChildren();
+
+    select.add(new Option('Não utilizar',''));
+
+    columns.forEach(column=>{
+      select.add(new Option(column,column));
+    });
+
+    const detected =
+      columns.find(column=>pattern.test(normalize(column)));
+
+    select.value = detected || '';
+  });
+
+  // Evita misturar dois modelos de valores
+  if($('colAmount').value){
+    $('colIncome').value = '';
+    $('colExpense').value = '';
+  }
+}
+
+function getColumn(id){
+  return $(id).value;
+}
+
+function classify(value,type){
+
+  const t = normalize(type);
+
+  if(
+    /despesa|saida|debito|pagamento|retirada/.test(t) ||
+    t === 'd'
+  ) return 'Despesa';
+
+  if(
+    /receita|entrada|credito|recebimento|deposito/.test(t) ||
+    t === 'c'
+  ) return 'Receita';
+
+  return value < 0 ? 'Despesa' : 'Receita';
+}
+
+function createRecords(){
+
+  const dateCol = getColumn('colDate');
+  const descCol = getColumn('colDesc');
+  const catCol = getColumn('colCategory');
+  const amountCol = getColumn('colAmount');
+  const typeCol = getColumn('colType');
+  const incomeCol = getColumn('colIncome');
+  const expenseCol = getColumn('colExpense');
+
+  const separate = Boolean(incomeCol || expenseCol);
+
+  if(!amountCol && !separate){
+    throw new Error(
+      'Selecione Valor único ou colunas de entradas/saídas.'
+    );
+  }
+
+  const records = [];
+
+  function add(row,value,type){
+
+    if(value === null || value === 0) return;
+
+    const description =
+      String(row[descCol] ?? '').trim();
+
+    // Evita alguns totais duplicados em planilhas
+    if(
+      /^(total|total geral|subtotal|saldo final)$/i
+        .test(description)
+    ){
+      return;
+    }
+
+    records.push({
+      date:dateCol?String(row[dateCol]??''):'',
+      period:dateCol?parsePeriod(row[dateCol]):'Sem data',
+      description:description || 'Sem descrição',
+      category:
+        (catCol?String(row[catCol]??'').trim():'') ||
+        'Não informada',
+      type,
+      amount:Math.abs(value)
+    });
+  }
+
+  state.rows.forEach(row=>{
+
+    if(separate){
+
+      if(incomeCol){
+        const value = parseMoney(row[incomeCol]);
+        add(row,value,'Receita');
+      }
+
+      if(expenseCol){
+        const value = parseMoney(row[expenseCol]);
+        add(row,value,'Despesa');
+      }
+
+    }else{
+
+      const value = parseMoney(row[amountCol]);
+
+      if(value === null) return;
+
+      const type = classify(
+        value,
+        typeCol?row[typeCol]:''
+      );
+
+      add(row,value,type);
+    }
+  });
+
+  if(!records.length){
+    throw new Error(
+      'Nenhum valor numérico válido foi identificado.'
+    );
+  }
+
+  return records;
+}
+
+/* ==================================
+   INDICADORES
+================================== */
+
+function totals(records){
+
+  const income = records
+    .filter(r=>r.type==='Receita')
+    .reduce((sum,r)=>sum+r.amount,0);
+
+  const expense = records
+    .filter(r=>r.type==='Despesa')
+    .reduce((sum,r)=>sum+r.amount,0);
+
+  return {
+    income,
+    expense,
+    balance:income-expense
+  };
+}
+
+function groupMonthly(records){
+
+  const groups = new Map();
+
+  records.forEach(record=>{
+
+    if(!groups.has(record.period)){
+      groups.set(record.period,{
+        income:0,
+        expense:0
+      });
+    }
+
+    const group = groups.get(record.period);
+
+    if(record.type==='Receita'){
+      group.income += record.amount;
+    }else{
+      group.expense += record.amount;
+    }
+  });
+
+  return [...groups.entries()].sort((a,b)=>
+    a[0] === 'Sem data' ? 1 :
+    b[0] === 'Sem data' ? -1 :
+    a[0].localeCompare(b[0])
+  );
+}
+
+function groupCategories(records){
+
+  const categories = new Map();
+
+  records
+    .filter(r=>r.type==='Despesa')
+    .forEach(record=>{
+
+      categories.set(
+        record.category,
+        (categories.get(record.category)||0)+record.amount
+      );
+    });
+
+  return [...categories.entries()]
+    .sort((a,b)=>b[1]-a[1]);
+}
+
+/* ==================================
+   GRÁFICOS
+================================== */
+
+function renderCharts(records){
+
+  if(typeof Chart === 'undefined'){
+    throw new Error(
+      'A biblioteca de gráficos não foi carregada.'
+    );
+  }
+
+  state.charts.forEach(chart=>chart.destroy());
+  state.charts = [];
+
+  Chart.defaults.color = '#bacde4';
+  Chart.defaults.borderColor = '#354966';
+
+  const months = groupMonthly(records);
+
+  const labels = months.map(([key])=>monthLabel(key));
+
+  const incomes = months.map(([,v])=>v.income);
+  const expenses = months.map(([,v])=>v.expense);
+
+  const commonOptions = {
+    responsive:true,
+    maintainAspectRatio:false,
+    plugins:{
+      legend:{
+        labels:{color:'#d2e0f2'}
+      }
+    }
+  };
+
+  const monthly = new Chart($('monthlyChart'),{
+    type:'bar',
+    data:{
+      labels,
+      datasets:[
+        {
+          label:'Entradas',
+          data:incomes,
+          backgroundColor:'#7de4c8',
+          borderRadius:5
+        },
+        {
+          label:'Saídas',
+          data:expenses,
+          backgroundColor:'#f28aa9',
+          borderRadius:5
+        }
+      ]
+    },
+    options:commonOptions
+  });
+
+  state.charts.push(monthly);
+
+  let accumulated = 0;
+
+  const balance = months.map(([,v])=>{
+    accumulated += v.income-v.expense;
+    return accumulated;
+  });
+
+  const evolution = new Chart($('balanceChart'),{
+    type:'line',
+    data:{
+      labels,
+      datasets:[{
+        label:'Saldo acumulado das movimentações',
+        data:balance,
+        borderColor:'#86b0f3',
+        backgroundColor:'#86b0f322',
+        fill:true,
+        tension:.3,
+        pointRadius:4
+      }]
+    },
+    options:commonOptions
+  });
+
+  state.charts.push(evolution);
+
+  const categories = groupCategories(records);
+
+  const colors = [
+    '#ed63ae','#7de4c8','#86b0f3',
+    '#b69af0','#f2b66a','#7cc7e2',
+    '#e387c0','#bdca80','#cc98ef',
+    '#a8b7d6'
+  ];
+
+  const distribution = new Chart($('categoryChart'),{
+    type:'doughnut',
+    data:{
+      labels:categories.length?
+        categories.map(([key])=>key):
+        ['Sem despesas identificadas'],
+      datasets:[{
+        data:categories.length?
+          categories.map(([,value])=>value):
+          [1],
+        backgroundColor:categories.length?
+          categories.map((_,i)=>colors[i%colors.length]):
+          ['#425775'],
+        borderWidth:0
+      }]
+    },
+    options:{
+      ...commonOptions,
+      plugins:{
+        ...commonOptions.plugins,
+        legend:{
+          position:'bottom',
+          labels:{
+            color:'#d2e0f2',
+            boxWidth:12
+          }
+        }
+      }
+    }
+  });
+
+  state.charts.push(distribution);
+}
+
+/* ==================================
+   SIMULAÇÃO
+================================== */
+
+function updateSimulation(){
+
+  if(!state.records.length) return;
+
+  const original = totals(state.records);
+
+  const revenueChange = Number($('incomeScenario').value);
+  const expenseChange = Number($('expenseScenario').value);
+
+  $('incomeScenarioValue').textContent =
+    revenueChange+'%';
+
+  $('expenseScenarioValue').textContent =
+    expenseChange+'%';
+
+  const projectedIncome =
+    original.income*(1+revenueChange/100);
+
+  const projectedExpense =
+    original.expense*(1+expenseChange/100);
+
+  const projectedBalance =
+    projectedIncome-projectedExpense;
+
+  const difference =
+    projectedBalance-original.balance;
+
+  $('projectedBalance').textContent =
+    formatMoney(projectedBalance);
+
+  $('scenarioDifference').textContent =
+    formatMoney(difference);
+
+  $('scenarioInsight').textContent =
+    difference > 0
+      ? 'O cenário aumentaria o saldo em relação aos dados importados.'
+      : difference < 0
+        ? 'O cenário reduziria o saldo em relação aos dados importados.'
+        : 'O cenário mantém o saldo calculado dos dados originais.';
+}
+
+function resetScenario(){
+
+  $('incomeScenario').value = 0;
+  $('expenseScenario').value = 0;
+
+  updateSimulation();
+}
+
+/* ==================================
+   TABELA DE CONFERÊNCIA
+================================== */
+
+function renderPreview(records){
+
+  const tbody = $('previewBody');
+  tbody.replaceChildren();
+
+  records.slice(0,12).forEach(record=>{
+
+    const tr = document.createElement('tr');
+
+    [
+      record.date || '—',
+      record.description,
+      record.category,
+      record.type,
+      formatMoney(record.amount)
+    ].forEach(value=>{
+
+      const td = document.createElement('td');
+      td.textContent = value;
+      tr.appendChild(td);
+    });
+
+    tbody.appendChild(tr);
+  });
+}
+
+/* ==================================
+   GERAR DIAGNÓSTICO
+================================== */
+
+function analyze(){
+
+  try{
+
+    const records = createRecords();
+
+    state.records = records;
+
+    const result = totals(records);
+
+    $('totalIncome').textContent =
+      formatMoney(result.income);
+
+    $('totalExpense').textContent =
+      formatMoney(result.expense);
+
+    $('totalBalance').textContent =
+      formatMoney(result.balance);
+
+    $('totalRows').textContent =
+      String(records.length);
+
+    const withoutDate = records
+      .filter(r=>r.period==='Sem data').length;
+
+    const withoutCategory = records
+      .filter(r=>r.category==='Não informada').length;
+
+    $('dataSummary').textContent =
+      (state.demo
+        ? 'DEMONSTRAÇÃO — dados totalmente fictícios.'
+        : 'Documento: '+state.name+'.')+
+      ' '+records.length+' movimentações analisadas.'+
+      (withoutDate
+        ? ' '+withoutDate+' sem data reconhecida.'
+        : '')+
+      (withoutCategory
+        ? ' '+withoutCategory+' sem categoria informada.'
+        : '')+
+      ' Confirme os tipos e os valores na tabela.';
+
+    renderCharts(records);
+    renderPreview(records);
+    resetScenario();
+
+    $('dashboard').classList.add('visible');
+
+    $('dashboard').scrollIntoView({
+      behavior:'smooth'
+    });
+
+    setMessage('Análise gerada.',false);
+
+  }catch(error){
+
+    setMessage(error.message,true);
+  }
+}
+
+/* ==================================
+   EXPORTAR RESULTADOS
+================================== */
+
+function downloadBlob(blob,filename){
+
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement('a');
+
+  anchor.href = url;
+  anchor.download = filename;
+  anchor.click();
+
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+
+function exportRecords(){
+
+  if(!state.records.length) return;
+
+  const data = state.records.map(r=>({
+    Data:r.date,
+    Descricao:r.description,
+    Categoria:r.category,
+    Tipo:r.type,
+    Valor:r.amount
+  }));
+
+  const csv = Papa.unparse(data,{
+    delimiter:';'
+  });
+
+  downloadBlob(
+    new Blob(['\uFEFF'+csv],{
+      type:'text/csv;charset=utf-8'
+    }),
+    'analise-financeira-tratada.csv'
+  );
+}
+
+function exportChart(){
+
+  if(!state.charts.length) return;
+
+  const link = document.createElement('a');
+
+  link.href = state.charts[0].toBase64Image();
+  link.download = 'grafico-financeiro.png';
+  link.click();
+}
+
+/* ==================================
+   DADOS FICTÍCIOS PARA DEMONSTRAÇÃO
+================================== */
+
+function loadSample(){
+
+  state.demo = true;
+  state.name = 'demonstração fictícia';
+
+  state.workbook = null;
+  $('sheetField').hidden = true;
+
+  const rows = [];
+
+  for(let month=1;month<=12;month++){
+
+    const date =
+      '2026-'+String(month).padStart(2,'0')+'-05';
+
+    rows.push({
+      Data:date,
+      Descricao:'Recebimentos de clientes',
+      Categoria:'Receita operacional',
+      Valor:90000+month*3200,
+      Tipo:'Receita'
+    });
+
+    rows.push({
+      Data:date,
+      Descricao:'Custos de operação',
+      Categoria:'Operação',
+      Valor:37000+month*700,
+      Tipo:'Despesa'
+    });
+
+    rows.push({
+      Data:date,
+      Descricao:'Despesas administrativas',
+      Categoria:'Administração',
+      Valor:15000+month*200,
+      Tipo:'Despesa'
+    });
+
+    rows.push({
+      Data:date,
+      Descricao:'Marketing',
+      Categoria:'Marketing',
+      Valor:4500+month*120,
+      Tipo:'Despesa'
+    });
+  }
+
+  loadRows(rows);
+}
+
+/* ==================================
+   EVENTOS
+================================== */
+
+$('fileInput').addEventListener('change',event=>{
+  handleFile(event.target.files[0]);
+});
+
+const dropzone = $('dropzone');
+
+dropzone.addEventListener('dragover',event=>{
+  event.preventDefault();
+  dropzone.classList.add('dragging');
+});
+
+dropzone.addEventListener('dragleave',()=>{
+  dropzone.classList.remove('dragging');
+});
+
+dropzone.addEventListener('drop',event=>{
+  event.preventDefault();
+
+  dropzone.classList.remove('dragging');
+
+  const file = event.dataTransfer.files[0];
+
+  handleFile(file);
+});
+
+$('sheetSelect').addEventListener('change',event=>{
+  readSheet(event.target.value);
+});
+
+$('sampleButton').addEventListener('click',loadSample);
+
+$('analyzeButton').addEventListener('click',analyze);
+
+$('incomeScenario').addEventListener('input',updateSimulation);
+
+$('expenseScenario').addEventListener('input',updateSimulation);
+
+$('resetScenario').addEventListener('click',resetScenario);
+
+$('exportButton').addEventListener('click',exportRecords);
+
+$('exportChartButton').addEventListener('click',exportChart);
+</script>
+
+<script defer src="../assets/transicoes.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,2181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#071122">
+
+<title>Operação Espelho Falso | Universo da Hellen</title>
+
+<meta name="description"
+content="Estudo de caso da Operação Espelho Falso: uma prova de conceito de inteligência antifraude com visão computacional, PRNU, grafos e IA explicável.">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Operação Espelho Falso — Hellen Souza">
+<meta property="og:description"
+content="Da biometria à inteligência financeira: conheça os quatro módulos e os testes sintéticos da Operação Espelho Falso.">
+<meta property="og:image"
+content="https://universodahellen.com.br/assets/capas/espelho.png">
+
+<style>
+:root {
+  --bg: #071122;
+  --panel: #101c33;
+  --panel2: #152440;
+  --white: #f4f7ff;
+  --muted: #b1bfd4;
+  --pink: #ec579f;
+  --cyan: #63c7f2;
+  --line: rgba(161,190,225,.22);
+  --green: #68d9ae;
+  --yellow: #f3c77a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 105px;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--white);
+  font: 16px/1.7 system-ui, Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+img, video {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--cyan);
+  outline-offset: 4px;
+}
+
+.wrap {
+  width: min(1150px, calc(100% - 40px));
+  margin-inline: auto;
+}
+
+section {
+  padding: 90px 0;
+}
+
+h1, h2, h3, p {
+  margin-top: 0;
+}
+
+h1, h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  letter-spacing: -.045em;
+}
+
+h2 {
+  font-size: clamp(2rem, 4.6vw, 3.6rem);
+  font-weight: 500;
+  line-height: 1.15;
+  margin-bottom: 18px;
+}
+
+h3 {
+  line-height: 1.3;
+}
+
+.lead {
+  color: var(--muted);
+  max-width: 770px;
+  font-size: 1.05rem;
+}
+
+.kicker {
+  display: block;
+  margin-bottom: 15px;
+  color: var(--cyan);
+  font: 700 .72rem/1.5 Consolas, monospace;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+}
+
+.highlight {
+  color: var(--pink);
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.skip-link {
+  position: fixed;
+  left: 10px;
+  top: -100px;
+  padding: 12px;
+  background: white;
+  color: #071122;
+  z-index: 200;
+}
+
+.skip-link:focus {
+  top: 10px;
+}
+
+/* NAVEGAÇÃO */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(7,17,34,.95);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(15px);
+}
+
+.topbar-inner {
+  min-height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.brand {
+  font-weight: 900;
+  letter-spacing: .05em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.brand span {
+  color: var(--cyan);
+}
+
+.back {
+  padding: 9px 16px;
+  border: 1px solid #536d91;
+  border-radius: 99px;
+  text-decoration: none;
+  font-size: .8rem;
+  font-weight: 700;
+}
+
+.back:hover {
+  border-color: var(--pink);
+  color: var(--pink);
+}
+
+.subnav {
+  display: flex;
+  gap: 27px;
+  overflow-x: auto;
+  padding: 15px 0;
+  scrollbar-width: thin;
+  border-top: 1px solid rgba(255,255,255,.05);
+}
+
+.subnav a {
+  flex-shrink: 0;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: .77rem;
+  font-weight: 700;
+}
+
+.subnav a:hover {
+  color: var(--cyan);
+}
+
+/* HERO */
+
+.hero {
+  position: relative;
+  padding: 85px 0 80px;
+  background:
+    radial-gradient(circle at 85% 22%,
+      rgba(236,87,159,.16), transparent 35%),
+    radial-gradient(circle at 8% 80%,
+      rgba(41,128,204,.17), transparent 40%),
+    #081329;
+}
+
+.hero-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 55px;
+  align-items: center;
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  line-height: 1.05;
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+
+.hero-copy p {
+  color: #c9d5e8;
+  max-width: 620px;
+  line-height: 1.85;
+}
+
+.hero-image {
+  overflow: hidden;
+  border-radius: 22px;
+  background: #070c19;
+  border: 1px solid #49617f;
+  box-shadow: 0 28px 65px #0005;
+}
+
+.hero-image img {
+  width: 100%;
+  height: auto;
+}
+
+.hero-image figcaption {
+  padding: 12px 15px;
+  color: #98afc9;
+  text-align: center;
+  font-size: .72rem;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin: 25px 0 32px;
+}
+
+.tags span {
+  padding: 7px 11px;
+  border: 1px solid #3b5b7f;
+  border-radius: 999px;
+  background: #172b47;
+  color: #d7e5f6;
+  font-size: .73rem;
+}
+
+.primary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 21px;
+  border-radius: 10px;
+  background: var(--pink);
+  color: white;
+  text-decoration: none;
+  font-size: .88rem;
+  font-weight: 800;
+  transition: transform .2s, background .2s;
+}
+
+.primary-btn:hover {
+  background: #f477b6;
+  transform: translateY(-2px);
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 15px;
+  margin-top: 60px;
+}
+
+.stat {
+  border-top: 1px solid #486482;
+  padding-top: 18px;
+}
+
+.stat strong {
+  display: block;
+  color: #fff;
+  font: 500 2.5rem Georgia, serif;
+}
+
+.stat span {
+  color: #afc2d8;
+  font-size: .8rem;
+}
+
+/* PROBLEMA */
+
+.problem {
+  background: #f4f7fc;
+  color: #172540;
+}
+
+.problem .kicker {
+  color: #bb3882;
+}
+
+.problem .lead {
+  color: #53647b;
+}
+
+.threat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 20px;
+  margin-top: 38px;
+}
+
+.threat-card {
+  padding: 29px;
+  background: #fff;
+  border: 1px solid #dce4ee;
+  border-radius: 18px;
+  box-shadow: 0 12px 30px #14294b0b;
+}
+
+.threat-icon {
+  display: inline-block;
+  color: #be3b89;
+  font: 800 1.2rem Consolas, monospace;
+  margin-bottom: 18px;
+}
+
+.threat-card h3 {
+  font-size: 1.17rem;
+}
+
+.threat-card p {
+  color: #53647b;
+  font-size: .91rem;
+  margin-bottom: 0;
+}
+
+/* ARQUITETURA */
+
+.architecture {
+  background: #0c182d;
+}
+
+.architecture-flow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+  gap: 12px;
+  margin-top: 42px;
+}
+
+.flow-node {
+  position: relative;
+  padding: 26px 20px;
+  border: 1px solid #40587a;
+  border-radius: 14px;
+  background: #15253e;
+  min-width: 0;
+}
+
+.flow-node::after {
+  content: "→";
+  position: absolute;
+  right: -14px;
+  top: 46%;
+  color: var(--pink);
+  z-index: 2;
+  font-weight: 900;
+}
+
+.flow-node:last-child::after {
+  display: none;
+}
+
+.flow-num {
+  display: block;
+  color: var(--cyan);
+  font: 700 .72rem Consolas, monospace;
+  margin-bottom: 14px;
+}
+
+.flow-node h3 {
+  margin-bottom: 10px;
+  font-size: 1.08rem;
+}
+
+.flow-node p {
+  color: var(--muted);
+  font-size: .82rem;
+  margin-bottom: 0;
+}
+
+.flow-footer {
+  margin-top: 20px;
+  padding: 17px 22px;
+  border: 1px solid rgba(99,199,242,.3);
+  background: rgba(99,199,242,.05);
+  border-radius: 12px;
+  color: #c0d6ea;
+  font-size: .88rem;
+}
+
+/* MÓDULOS */
+
+.modules {
+  background: #091324;
+}
+
+.module-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 19px;
+  margin-top: 40px;
+}
+
+.module-card {
+  padding: 29px;
+  background: #121e34;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+}
+
+.module-card:hover {
+  border-color: #ba5f9f;
+}
+
+.module-number {
+  display: block;
+  margin-bottom: 20px;
+  color: var(--pink);
+  font: 700 .78rem Consolas, monospace;
+}
+
+.module-card h3 {
+  font-size: 1.3rem;
+}
+
+.module-card p {
+  color: var(--muted);
+  font-size: .9rem;
+}
+
+.module-card ul {
+  padding-left: 20px;
+  color: #ced9e9;
+  font-size: .86rem;
+}
+
+.module-card li {
+  margin-bottom: 8px;
+}
+
+.module-file {
+  display: block;
+  padding-top: 15px;
+  border-top: 1px solid var(--line);
+  color: var(--cyan);
+  font: .72rem/1.7 Consolas, monospace;
+  overflow-wrap: anywhere;
+}
+
+/* DEMONSTRAÇÃO INTERATIVA */
+
+.demo {
+  background:
+    radial-gradient(circle at 95% 18%,
+      rgba(217,70,143,.12), transparent 37%),
+    #0b172b;
+}
+
+.demo-layout {
+  display: grid;
+  grid-template-columns: .85fr 1.15fr;
+  gap: 27px;
+  align-items: start;
+  margin-top: 40px;
+}
+
+.scenario-card {
+  padding: 27px;
+  border: 1px solid #435d80;
+  border-radius: 18px;
+  background: #15243f;
+}
+
+.scenario-card h3 {
+  font-size: 1.2rem;
+}
+
+.scenario-buttons {
+  display: grid;
+  gap: 11px;
+  margin: 22px 0;
+}
+
+.scenario-btn {
+  width: 100%;
+  padding: 15px;
+  text-align: left;
+  background: #0e1b30;
+  border: 1px solid #455c7d;
+  border-radius: 10px;
+  color: #d5e4f7;
+  font-weight: 700;
+}
+
+.scenario-btn[aria-pressed="true"] {
+  background: #273459;
+  border-color: var(--pink);
+  color: white;
+}
+
+.scenario-help {
+  font-size: .8rem;
+  color: #b2c3d8;
+}
+
+.result-panel {
+  padding: 30px;
+  border: 1px solid #435d80;
+  border-radius: 18px;
+  background: #0d1b32;
+}
+
+.result-label {
+  color: var(--muted);
+  font: .74rem Consolas, monospace;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+}
+
+.result-score {
+  margin: 12px 0;
+  font: 500 clamp(3rem,6vw,4.7rem) Georgia,serif;
+  line-height: 1;
+}
+
+.result-score small {
+  font: 400 .95rem system-ui,sans-serif;
+  color: #aebfd7;
+}
+
+.risk-track {
+  width: 100%;
+  height: 14px;
+  border-radius: 100px;
+  overflow: hidden;
+  background: #253957;
+  margin: 23px 0 12px;
+}
+
+.risk-fill {
+  height: 100%;
+  width: 53%;
+  background: var(--yellow);
+  border-radius: inherit;
+  transition: width .35s, background .35s;
+}
+
+.risk-scale {
+  display: flex;
+  justify-content: space-between;
+  color: #8da7c5;
+  font: .72rem Consolas, monospace;
+}
+
+.result-state {
+  display: inline-block;
+  margin: 24px 0 10px;
+  padding: 7px 11px;
+  border: 1px solid #89703e;
+  border-radius: 6px;
+  color: var(--yellow);
+  font-size: .79rem;
+  font-weight: 800;
+}
+
+.result-panel p {
+  color: #c5d5e8;
+  font-size: .88rem;
+}
+
+.result-log {
+  padding: 18px;
+  margin-top: 21px;
+  background: #060e1c;
+  border: 1px solid #253d60;
+  border-radius: 10px;
+  font: .79rem/1.85 Consolas, monospace;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  color: #a3c7e6;
+}
+
+.evidence-note {
+  margin-top: 20px;
+  color: #c1ccdc;
+  border-left: 3px solid var(--cyan);
+  padding: 12px 18px;
+  background: #16304c55;
+  font-size: .86rem;
+}
+
+/* RESULTADOS E TELEMETRIA */
+
+.telemetry {
+  background: #f4f7fc;
+  color: #162543;
+}
+
+.telemetry .kicker {
+  color: #b13f84;
+}
+
+.telemetry .lead {
+  color: #53657f;
+}
+
+.telemetry-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 19px;
+  margin-top: 38px;
+}
+
+.telemetry-card {
+  background: white;
+  padding: 28px;
+  border: 1px solid #dce4ee;
+  border-radius: 17px;
+}
+
+.telemetry-card strong {
+  display: block;
+  margin: 9px 0;
+  color: #183f6d;
+  font: 500 clamp(2rem,3vw,2.75rem) Georgia,serif;
+}
+
+.telemetry-card h3 {
+  margin: 0;
+  font-size: .86rem;
+  color: #455a75;
+}
+
+.telemetry-card p {
+  margin-bottom: 0;
+  color: #53657f;
+  font-size: .8rem;
+}
+
+/* MATURIDADE */
+
+.maturity {
+  background: #101d33;
+}
+
+.maturity-grid {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 18px;
+  margin-top: 34px;
+}
+
+.maturity-card {
+  border: 1px solid var(--line);
+  background: #17273f;
+  border-radius: 16px;
+  padding: 25px;
+}
+
+.maturity-card h3 {
+  font-size: 1.08rem;
+}
+
+.maturity-card p {
+  color: #b8c8dc;
+  font-size: .88rem;
+}
+
+.maturity-card .phase {
+  display: block;
+  font: 700 .73rem Consolas, monospace;
+  margin-bottom: 16px;
+  color: var(--cyan);
+}
+
+/* PRIVACIDADE E GOVERNANÇA */
+
+.governance {
+  background: #f4f7fc;
+  color: #172640;
+}
+
+.governance .kicker {
+  color: #b33b81;
+}
+
+.governance .lead {
+  color: #53657f;
+}
+
+.governance-grid {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 20px;
+  margin-top: 34px;
+}
+
+.gov-card {
+  background: white;
+  border: 1px solid #dbe4f0;
+  border-radius: 16px;
+  padding: 28px;
+}
+
+.gov-card h3 {
+  font-size: 1.13rem;
+}
+
+.gov-card p {
+  color: #52627b;
+  font-size: .89rem;
+}
+
+.gov-card a {
+  color: #aa2e7b;
+  font-weight: 750;
+}
+
+.disclaimer {
+  margin-top: 30px;
+  padding: 22px 25px;
+  border-left: 4px solid #bc4389;
+  background: #eaf0f9;
+  border-radius: 8px;
+}
+
+.disclaimer p {
+  margin: 0;
+  color: #40536d;
+}
+
+/* DOCUMENTAÇÃO */
+
+.materials {
+  background: #091426;
+}
+
+.material-grid {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 25px;
+  margin-top: 36px;
+}
+
+.media-panel,
+.docs-panel {
+  padding: 26px;
+  background: #13223b;
+  border: 1px solid #405776;
+  border-radius: 18px;
+}
+
+.media-panel h3,
+.docs-panel h3 {
+  margin-bottom: 16px;
+}
+
+.media-panel video {
+  width: 100%;
+  border-radius: 10px;
+  aspect-ratio: 16 / 9;
+  background: #071122;
+}
+
+.media-panel p,
+.docs-panel p {
+  color: #b9c9dd;
+  font-size: .85rem;
+}
+
+.docs-panel ul {
+  padding-left: 19px;
+  color: #b9c9dd;
+  font-size: .86rem;
+}
+
+.docs-panel li {
+  margin-bottom: 12px;
+}
+
+.repo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 10px;
+  padding: 12px 17px;
+  border-radius: 9px;
+  text-decoration: none;
+  background: var(--pink);
+  font-weight: 800;
+  font-size: .86rem;
+}
+
+/* PRÓXIMOS PASSOS */
+
+.next {
+  background: #111e35;
+}
+
+.next-grid {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 19px;
+  margin-top: 33px;
+}
+
+.next-card {
+  border-top: 2px solid var(--pink);
+  padding: 23px 8px;
+}
+
+.next-card strong {
+  display: block;
+  color: var(--cyan);
+  font: 700 .8rem Consolas,monospace;
+  margin-bottom: 12px;
+}
+
+.next-card p {
+  color: var(--muted);
+  font-size: .87rem;
+}
+
+/* RODAPÉ */
+
+footer {
+  padding: 42px 0;
+  background: #071020;
+  border-top: 1px solid var(--line);
+  text-align: center;
+  color: #a8bad0;
+  font-size: .84rem;
+}
+
+footer a {
+  color: var(--cyan);
+  text-decoration: none;
+  font-weight: 750;
+}
+
+/* RESPONSIVIDADE */
+
+@media(max-width: 980px) {
+  .hero-layout,
+  .demo-layout,
+  .material-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-image {
+    max-width: 720px;
+    margin-inline: auto;
+  }
+
+  .architecture-flow {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+
+  .flow-node::after {
+    display: none;
+  }
+
+  .telemetry-grid,
+  .maturity-grid,
+  .next-grid {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+}
+
+@media(max-width: 650px) {
+  .wrap {
+    width: calc(100% - 30px);
+  }
+
+  section {
+    padding: 65px 0;
+  }
+
+  .topbar-inner {
+    min-height: 66px;
+  }
+
+  .brand {
+    font-size: .76rem;
+  }
+
+  .back {
+    padding: 9px 10px;
+    font-size: .72rem;
+  }
+
+  .subnav {
+    gap: 20px;
+  }
+
+  .hero {
+    padding: 60px 0;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.8rem,11vw,4rem);
+  }
+
+  .hero-stats,
+  .threat-grid,
+  .architecture-flow,
+  .module-grid,
+  .telemetry-grid,
+  .maturity-grid,
+  .governance-grid,
+  .next-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-stats {
+    gap: 22px;
+    margin-top: 40px;
+  }
+
+  .module-card,
+  .scenario-card,
+  .result-panel,
+  .gov-card,
+  .media-panel,
+  .docs-panel {
+    padding: 20px;
+  }
+
+  .result-score {
+    font-size: 3.4rem;
+  }
+}
+
+@media(prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+</style>
+<link rel="stylesheet" href="../assets/transicoes.css?v=1">
+</head>
+
+<body>
+
+<a class="skip-link" href="#conteudo">
+  Pular para o conteúdo
+</a>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+
+    <a class="brand" href="../index.html#inicio">
+      UNIVERSO <span>DA HELLEN</span>
+    </a>
+
+    <a class="back" href="../index.html#destaques">
+      ← Voltar aos projetos
+    </a>
+
+  </div>
+
+  <nav class="subnav wrap"
+       aria-label="Navegação interna">
+
+    <a href="#desafio">O desafio</a>
+    <a href="#arquitetura">Arquitetura</a>
+    <a href="#modulos">Módulos</a>
+    <a href="#demonstracao">Demonstração</a>
+    <a href="#telemetria">Telemetria</a>
+    <a href="#governanca">Governança</a>
+    <a href="#documentacao">Documentação</a>
+
+  </nav>
+</header>
+
+<main id="conteudo">
+
+<!-- ===================================
+     HERO
+=================================== -->
+
+<section class="hero" id="inicio">
+
+  <div class="wrap">
+
+    <div class="hero-layout">
+
+      <div class="hero-copy">
+
+        <span class="kicker">
+          P&D INDEPENDENTE · FINCRIME · 2026
+        </span>
+
+        <h1>
+          Operação
+          <span class="highlight">
+            Espelho Falso.
+          </span>
+        </h1>
+
+        <p>
+          Uma investigação tecnológica sobre
+          identidade digital, manipulação
+          biométrica e redes financeiras
+          suspeitas.
+        </p>
+
+        <p>
+          A prova de conceito combina visão
+          computacional, análise de sensores,
+          inteligência de grafos e modelos
+          explicáveis para estudar mecanismos
+          de prevenção à fraude.
+        </p>
+
+        <div class="tags">
+          <span>Python</span>
+          <span>OpenCV</span>
+          <span>NetworkX</span>
+          <span>Random Forest</span>
+          <span>SHAP / XAI</span>
+          <span>Streamlit</span>
+        </div>
+
+        <a class="primary-btn" href="#arquitetura">
+          Explorar arquitetura ↗
+        </a>
+
+      </div>
+
+      <figure class="hero-image">
+
+        <img
+          src="../assets/capas/espelho.png"
+          alt="Identidade visual da Operação Espelho Falso, com rosto humano e representação digital de análise biométrica"
+        >
+
+        <figcaption>
+          Operação Espelho Falso ·
+          v8.2.1 Beta Plus ·
+          Prova de conceito
+        </figcaption>
+
+      </figure>
+
+    </div>
+
+    <div class="hero-stats">
+
+      <div class="stat">
+        <strong>04</strong>
+        <span>Módulos técnicos integrados</span>
+      </div>
+
+      <div class="stat">
+        <strong>02</strong>
+        <span>Cenários documentados de teste</span>
+      </div>
+
+      <div class="stat">
+        <strong>08</strong>
+        <span>Variáveis previstas no motor de risco</span>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ===================================
+     DESAFIO
+=================================== -->
+
+<section class="problem" id="desafio">
+  <div class="wrap">
+
+    <span class="kicker">
+      01 / CONTEXTO E PROBLEMA
+    </span>
+
+    <h2>
+      Quando a identidade digital
+      deixa de ser confiável.
+    </h2>
+
+    <p class="lead">
+      A evolução da IA generativa amplia
+      os desafios de autenticação e
+      investigação financeira.
+      O projeto estuda como combinar
+      diferentes sinais para reduzir
+      a dependência de uma única
+      verificação facial.
+    </p>
+
+    <div class="threat-grid">
+
+      <article class="threat-card">
+
+        <span class="threat-icon">01 //</span>
+
+        <h3>Deepfakes e reapresentação</h3>
+
+        <p>
+          Imagens, vídeos ou outras
+          representações manipuladas
+          podem ser utilizadas para
+          tentar superar mecanismos
+          de autenticação biométrica.
+        </p>
+
+      </article>
+
+      <article class="threat-card">
+
+        <span class="threat-icon">02 //</span>
+
+        <h3>Injeção de câmera virtual</h3>
+
+        <p>
+          Uma captura biométrica pode ser
+          substituída por um fluxo de mídia
+          controlado por software, exigindo
+          verificações adicionais de origem
+          e integridade.
+        </p>
+
+      </article>
+
+      <article class="threat-card">
+
+        <span class="threat-icon">03 //</span>
+
+        <h3>Redes de contas mulas</h3>
+
+        <p>
+          Contas, dispositivos e outros
+          identificadores podem formar
+          estruturas conectadas de
+          movimentação financeira suspeita.
+        </p>
+
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ===================================
+     ARQUITETURA
+=================================== -->
+
+<section class="architecture" id="arquitetura">
+  <div class="wrap">
+
+    <span class="kicker">
+      02 / ENGENHARIA DE SISTEMAS
+    </span>
+
+    <h2>
+      Uma arquitetura de
+      defesa em quatro camadas.
+    </h2>
+
+    <p class="lead">
+      O pipeline Python conecta resultados
+      de análise visual, sinais de câmera
+      e relacionamentos entre entidades
+      a um motor de pontuação e
+      explicabilidade.
+    </p>
+
+    <div class="architecture-flow">
+
+      <div class="flow-node">
+
+        <span class="flow-num">MÓDULO 01</span>
+
+        <h3>Liveness ocular</h3>
+
+        <p>
+          Gradientes, características
+          espectrais e análise
+          de frequência.
+        </p>
+
+      </div>
+
+      <div class="flow-node">
+
+        <span class="flow-num">MÓDULO 02</span>
+
+        <h3>Integridade da câmera</h3>
+
+        <p>
+          Ruído de imagem, correlação
+          e heurísticas de possível
+          injeção virtual.
+        </p>
+
+      </div>
+
+      <div class="flow-node">
+
+        <span class="flow-num">MÓDULO 03</span>
+
+        <h3>Identity Graph</h3>
+
+        <p>
+          Conexões entre contas,
+          dispositivos e IPs;
+          detecção de comunidades.
+        </p>
+
+      </div>
+
+      <div class="flow-node">
+
+        <span class="flow-num">MÓDULO 04</span>
+
+        <h3>SCIB + XAI</h3>
+
+        <p>
+          Classificação de risco,
+          ação simulada e geração
+          de justificativa técnica.
+        </p>
+
+      </div>
+
+    </div>
+
+    <div class="flow-footer">
+      Pipeline integrado:
+      entrada sintética → extração de
+      características → análise de relações →
+      score → decisão demonstrativa →
+      relatório explicativo.
+    </div>
+
+  </div>
+</section>
+
+<!-- ===================================
+     QUATRO MÓDULOS
+=================================== -->
+
+<section class="modules" id="modulos">
+  <div class="wrap">
+
+    <span class="kicker">
+      03 / COMPONENTES TÉCNICOS
+    </span>
+
+    <h2>
+      O que existe por trás
+      de cada decisão?
+    </h2>
+
+    <p class="lead">
+      Cada módulo trata uma dimensão
+      diferente do problema.
+      A combinação busca enriquecer a
+      análise, mas sua eficácia precisa
+      ser avaliada com protocolos
+      experimentais adequados.
+    </p>
+
+    <div class="module-grid">
+
+      <article class="module-card">
+
+        <span class="module-number">
+          01 / COMPUTER VISION
+        </span>
+
+        <h3>
+          Perícia visual e liveness ocular
+        </h3>
+
+        <p>
+          Estuda características da região
+          ocular para buscar sinais
+          associados à reapresentação
+          de imagens ou vídeos.
+        </p>
+
+        <ul>
+          <li>Localização da região ocular.</li>
+          <li>Gradientes de Sobel.</li>
+          <li>Características HSV.</li>
+          <li>Análise temporal por FFT.</li>
+          <li>Fallbacks OpenCV e sintético.</li>
+        </ul>
+
+        <span class="module-file">
+          module1_ocular_liveness.py
+        </span>
+
+      </article>
+
+      <article class="module-card">
+
+        <span class="module-number">
+          02 / DIGITAL FORENSICS
+        </span>
+
+        <h3>
+          Ruído do sensor e PRNU
+        </h3>
+
+        <p>
+          Explora características de
+          ruído presentes em imagens
+          digitais para investigar
+          indícios de origem e
+          integridade do sinal.
+        </p>
+
+        <ul>
+          <li>Extração de mapa de ruído.</li>
+          <li>Variância e desvio-padrão.</li>
+          <li>Correlação de Pearson.</li>
+          <li>Heurísticas de câmera virtual.</li>
+          <li>Score experimental de hardware.</li>
+        </ul>
+
+        <span class="module-file">
+          module2_prnu_silicon.py
+        </span>
+
+      </article>
+
+      <article class="module-card">
+
+        <span class="module-number">
+          03 / GRAPH ANALYTICS
+        </span>
+
+        <h3>
+          Identity Graph
+        </h3>
+
+        <p>
+          Modela transações e identidades
+          como uma rede de entidades
+          conectadas, permitindo
+          investigar padrões coletivos.
+        </p>
+
+        <ul>
+          <li>Grafo com NetworkX.</li>
+          <li>Nós de conta, IP e dispositivo.</li>
+          <li>Comunidades de Louvain.</li>
+          <li>Centralidade por PageRank.</li>
+          <li>Dados de transações sintéticas.</li>
+        </ul>
+
+        <span class="module-file">
+          module3_identity_graph.py
+        </span>
+
+      </article>
+
+      <article class="module-card">
+
+        <span class="module-number">
+          04 / DECISION INTELLIGENCE
+        </span>
+
+        <h3>
+          Score SCIB e XAI
+        </h3>
+
+        <p>
+          Combina atributos de risco
+          em uma pontuação de 0 a 1000,
+          simulando ações e produzindo
+          uma explicação estruturada.
+        </p>
+
+        <ul>
+          <li>Modelo Random Forest.</li>
+          <li>Treinamento sintético.</li>
+          <li>Probabilidade de fraude.</li>
+          <li>SHAP quando disponível.</li>
+          <li>Explicações aproximadas de fallback.</li>
+        </ul>
+
+        <span class="module-file">
+          module4_scib_xai.py
+        </span>
+
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ===================================
+     DEMONSTRAÇÃO
+=================================== -->
+
+<section class="demo" id="demonstracao">
+  <div class="wrap">
+
+    <span class="kicker">
+      04 / EVIDÊNCIA DE BANCADA
+    </span>
+
+    <h2>
+      Dois cenários.
+      Decisões diferentes.
+    </h2>
+
+    <p class="lead">
+      Explore abaixo dois resultados
+      registrados nos testes locais
+      do pipeline. A interação reproduz
+      os valores documentados:
+      não executa o modelo Python
+      e não consulta dados bancários.
+    </p>
+
+    <div class="demo-layout">
+
+      <div class="scenario-card">
+
+        <h3>Selecione um cenário</h3>
+
+        <div class="scenario-buttons">
+
+          <button
+            type="button"
+            class="scenario-btn"
+            data-scenario="legit"
+            aria-pressed="true"
+          >
+            01 — Transação legítima
+          </button>
+
+          <button
+            type="button"
+            class="scenario-btn"
+            data-scenario="fraud"
+            aria-pressed="false"
+          >
+            02 — Ataque combinado
+          </button>
+
+        </div>
+
+        <p class="scenario-help">
+          Os cenários foram desenvolvidos
+          com imagens e metadados sintéticos.
+        </p>
+
+        <p class="scenario-help">
+          A simulação de ataque combina
+          características forçadas de
+          reapresentação, câmera virtual
+          e associação a uma rede suspeita.
+        </p>
+
+      </div>
+
+      <div class="result-panel"
+           aria-live="polite">
+
+        <div class="result-label">
+          SCORE SCIB DOCUMENTADO
+        </div>
+
+        <div class="result-score">
+          <span id="demoScore">530</span>
+          <small>/ 1000</small>
+        </div>
+
+        <div class="risk-track"
+             aria-label="Pontuação em escala de zero a mil">
+
+          <div
+            class="risk-fill"
+            id="riskFill"
+            style="width:53%"
+          ></div>
+
+        </div>
+
+        <div class="risk-scale">
+          <span>0</span>
+          <span>500</span>
+          <span>1000</span>
+        </div>
+
+        <div class="result-state" id="demoStatus">
+          FLUXO DE LIBERAÇÃO PROGRAMADA
+        </div>
+
+        <p id="demoDescription">
+          O cenário legítimo recebeu
+          pontuação intermediária no log.
+          Pela lógica do módulo de decisão,
+          essa faixa corresponde a um
+          fluxo de liberação programada
+          com verificação complementar.
+        </p>
+
+        <div class="result-log" id="demoLog">
+ID: TX_LEGIT_1001
+SCORE: 530 / 1000
+ACTION: AUTOMATED_RELEASE_UNDER_24H_SUPERAPP
+ORIGEM: teste local sintético
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="evidence-note">
+      Os resultados de 530 e 890 pontos
+      são exemplos registrados em um
+      relatório de execução da versão beta.
+      Outros documentos registram valores
+      diferentes, correspondentes a
+      outras execuções ou versões.
+      Não representam taxa de acerto
+      ou desempenho validado em produção.
+    </div>
+
+  </div>
+</section>
+
+<!-- ===================================
+     TELEMETRIA
+=================================== -->
+
+<section class="telemetry" id="telemetria">
+  <div class="wrap">
+
+    <span class="kicker">
+      05 / OBSERVABILIDADE
+    </span>
+
+    <h2>
+      Telemetria,
+      indicadores e rastreabilidade.
+    </h2>
+
+    <p class="lead">
+      O projeto inclui uma proposta
+      de dashboard SOC em Streamlit,
+      com indicadores de desempenho,
+      risco, eventos e trilhas de auditoria.
+    </p>
+
+    <div class="telemetry-grid">
+
+      <article class="telemetry-card">
+
+        <h3>Latência de inferência</h3>
+
+        <strong>41,8 ms</strong>
+
+        <p>
+          Valor apresentado no estado
+          de telemetria e no dashboard.
+          Ainda requer benchmark
+          reproduzível em hardware definido.
+        </p>
+
+      </article>
+
+      <article class="telemetry-card">
+
+        <h3>Throughput</h3>
+
+        <strong>1.420 TPS</strong>
+
+        <p>
+          Valor documentado para
+          o pipeline proposto.
+          Não foi estabelecido por
+          teste de carga independente
+          nos materiais analisados.
+        </p>
+
+      </article>
+
+      <article class="telemetry-card">
+
+        <h3>Tempo médio de análise</h3>
+
+        <strong>3,8 h</strong>
+
+        <p>
+          Métrica exibida na simulação
+          de fluxo operacional.
+          Não é resultado de
+          implantação em instituição
+          financeira real.
+        </p>
+
+      </article>
+
+    </div>
+
+    <p class="muted" style="margin-top:23px">
+      Os indicadores acima são valores
+      declarados nos materiais do projeto.
+      O dashboard também possui
+      dados de fallback quando
+      a telemetria não está disponível.
+    </p>
+
+  </div>
+</section>
+
+<!-- ===================================
+     MATURIDADE
+=================================== -->
+
+<section class="maturity">
+  <div class="wrap">
+
+    <span class="kicker">
+      06 / ESTADO DO DESENVOLVIMENTO
+    </span>
+
+    <h2>
+      O que foi desenvolvido
+      e o que ainda precisa ser validado?
+    </h2>
+
+    <div class="maturity-grid">
+
+      <article class="maturity-card">
+
+        <span class="phase">IMPLEMENTAÇÃO DOCUMENTADA</span>
+
+        <h3>Pipeline Python</h3>
+
+        <p>
+          Existem módulos de análise
+          visual, PRNU, grafos,
+          classificação de risco
+          e geração de relatórios.
+        </p>
+
+      </article>
+
+      <article class="maturity-card">
+
+        <span class="phase">SIMULAÇÃO DOCUMENTADA</span>
+
+        <h3>Cenários sintéticos</h3>
+
+        <p>
+          O projeto inclui testes
+          automatizados, exemplos
+          de execução e geração
+          de dados sintéticos.
+        </p>
+
+      </article>
+
+      <article class="maturity-card">
+
+        <span class="phase">EVOLUÇÃO NECESSÁRIA</span>
+
+        <h3>Validação de produção</h3>
+
+        <p>
+          Faltam evidências suficientes
+          de avaliação independente,
+          integração bancária real
+          e homologação externa.
+        </p>
+
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ===================================
+     GOVERNANÇA
+=================================== -->
+
+<section class="governance" id="governanca">
+  <div class="wrap">
+
+    <span class="kicker">
+      07 / SEGURANÇA E RESPONSABILIDADE
+    </span>
+
+    <h2>
+      Privacidade e explicabilidade
+      como requisitos de projeto.
+    </h2>
+
+    <p class="lead">
+      Além da detecção de padrões
+      suspeitos, a arquitetura foi
+      concebida para discutir
+      minimização de dados,
+      rastreabilidade e justificativa
+      de decisões automatizadas.
+    </p>
+
+    <div class="governance-grid">
+
+      <article class="gov-card">
+
+        <h3>Zero-Disk Persistence</h3>
+
+        <p>
+          A arquitetura propõe
+          processar imagens e
+          características biométricas
+          em memória volátil, reduzindo
+          a necessidade de gravação
+          persistente de mídias sensíveis.
+        </p>
+
+        <p>
+          A efetividade dessa política
+          depende de auditoria de
+          todo o ciclo de dados,
+          incluindo logs,
+          temporários e integrações.
+        </p>
+
+      </article>
+
+      <article class="gov-card">
+
+        <h3>Explicabilidade XAI</h3>
+
+        <p>
+          O módulo de decisão gera
+          contribuições de variáveis
+          e um relatório textual
+          para auxiliar a interpretação
+          de classificações de risco.
+        </p>
+
+        <p>
+          O código contempla SHAP e
+          mecanismos alternativos de
+          explicação. Eles não devem
+          ser tratados como equivalentes
+          sem validação metodológica.
+        </p>
+
+      </article>
+
+      <article class="gov-card">
+
+        <h3>LGPD e decisões automatizadas</h3>
+
+        <p>
+          O estudo considera os
+          artigos 11 e 20 da LGPD,
+          relacionados ao tratamento
+          de dados sensíveis e à
+          revisão de decisões
+          automatizadas.
+        </p>
+
+        <p>
+          O enquadramento jurídico
+          completo exige avaliação
+          específica da operação real.
+        </p>
+
+      </article>
+
+      <article class="gov-card">
+
+        <h3>Segurança do Pix</h3>
+
+        <p>
+          O Banco Central prevê
+          mecanismos de prevenção
+          à fraude, incluindo
+          bloqueio cautelar
+          por até 72 horas.
+        </p>
+
+        <p>
+          <a
+            href="https://www.bcb.gov.br/meubc/faqs/p/o-que-e-e-como-funciona-o-bloqueio-cautelar"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Consultar orientação oficial do BCB ↗
+          </a>
+        </p>
+
+      </article>
+
+    </div>
+
+    <div class="disclaimer">
+
+      <p>
+        <strong>Nota de independência:</strong>
+        a Operação Espelho Falso é um
+        projeto independente de P&D.
+        A referência a normas,
+        instituições financeiras e
+        organismos de segurança
+        não representa vínculo,
+        aprovação, certificação,
+        endosso ou homologação oficial.
+        Os dossiês são estudos
+        produzidos no âmbito do projeto.
+      </p>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ===================================
+     DOCUMENTAÇÃO E VÍDEO
+=================================== -->
+
+<section class="materials" id="documentacao">
+  <div class="wrap">
+
+    <span class="kicker">
+      08 / MATERIAIS DO PROJETO
+    </span>
+
+    <h2>
+      Da documentação
+      à demonstração.
+    </h2>
+
+    <p class="lead">
+      Os materiais reunidos incluem
+      código-fonte, testes locais,
+      relatório técnico,
+      arquitetura, contrato de API,
+      esquemas de dados e
+      protótipo de dashboard.
+    </p>
+
+    <div class="material-grid">
+
+      <div class="media-panel">
+
+        <h3>Demonstração audiovisual</h3>
+
+        <video
+          controls
+          preload="metadata"
+          poster="../assets/capas/espelho.png"
+          aria-label="Vídeo demonstrativo da Operação Espelho Falso"
+        >
+          <source
+            src="../assets/projetos/espelho-falso/demo.mp4"
+            type="video/mp4"
+          >
+          Seu navegador não oferece
+          suporte à reprodução do vídeo.
+        </video>
+
+        <p>
+          Vídeo demonstrativo do projeto.
+          Para reproduzi-lo nesta página,
+          publique o arquivo
+          <code>demo.mp4</code>
+          na pasta indicada.
+        </p>
+
+      </div>
+
+      <div class="docs-panel">
+
+        <h3>Documentação técnica</h3>
+
+        <ul>
+          <li>README e arquitetura geral.</li>
+          <li>Pipeline unificado em Python.</li>
+          <li>Quatro módulos de análise.</li>
+          <li>Suíte de testes automatizados.</li>
+          <li>Dashboard Streamlit.</li>
+          <li>Telemetria e esquema XAI.</li>
+          <li>Contratos OpenAPI.</li>
+          <li>Estudos de governança e riscos.</li>
+        </ul>
+
+        <a
+          class="repo-link"
+          href="https://github.com/Hellennsouza/Operacao_Espelho_Falso"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Explorar repositório ↗
+        </a>
+
+        <p style="margin-top:16px">
+          A disponibilidade de cada versão
+          dos códigos e documentos depende
+          dos materiais efetivamente
+          publicados no repositório.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ===================================
+     PRÓXIMOS PASSOS
+=================================== -->
+
+<section class="next">
+  <div class="wrap">
+
+    <span class="kicker">
+      09 / ROADMAP DE PESQUISA
+    </span>
+
+    <h2>
+      Evolução técnica:
+      da prova de conceito à validação.
+    </h2>
+
+    <div class="next-grid">
+
+      <article class="next-card">
+
+        <strong>PRÓXIMA ETAPA 01</strong>
+
+        <h3>Testes biométricos controlados</h3>
+
+        <p>
+          Construir protocolo experimental
+          com dados adequadamente
+          autorizados, diferentes
+          dispositivos e ataques,
+          avaliando APCER e BPCER.
+        </p>
+
+      </article>
+
+      <article class="next-card">
+
+        <strong>PRÓXIMA ETAPA 02</strong>
+
+        <h3>Benchmark reproduzível</h3>
+
+        <p>
+          Medir latência,
+          throughput, consumo
+          de memória e confiabilidade
+          em condições documentadas,
+          com infraestrutura e
+          metodologia explícitas.
+        </p>
+
+      </article>
+
+      <article class="next-card">
+
+        <strong>PRÓXIMA ETAPA 03</strong>
+
+        <h3>Engenharia e governança</h3>
+
+        <p>
+          Ampliar testes de integração,
+          revisar regras de decisão,
+          validar a persistência
+          de dados e realizar
+          avaliação regulatória
+          independente.
+        </p>
+
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+
+    <p>
+      Operação Espelho Falso ·
+      Pesquisa e Desenvolvimento Independente
+      <br>
+      Hellen Souza · 2026
+    </p>
+
+    <a href="../index.html#destaques">
+      ← Voltar ao Universo da Hellen
+    </a>
+
+  </div>
+</footer>
+
+<!-- ===================================
+     INTERAÇÃO LOCAL DE TESTES
+     NÃO EXECUTA MODELOS DE IA
+=================================== -->
+
+<script>
+'use strict';
+
+const scenarios = {
+
+  legit: {
+    score: 530,
+    status: 'FLUXO DE LIBERAÇÃO PROGRAMADA',
+    color: '#f3c77a',
+    border: '#89703e',
+    description:
+      'O cenário legítimo recebeu pontuação ' +
+      'intermediária no log. Pela lógica do ' +
+      'módulo de decisão, essa faixa corresponde ' +
+      'a um fluxo de liberação programada ' +
+      'com verificação complementar.',
+    log:
+      'ID: TX_LEGIT_1001\n' +
+      'SCORE: 530 / 1000\n' +
+      'ACTION: AUTOMATED_RELEASE_UNDER_24H_SUPERAPP\n' +
+      'ORIGEM: teste local sintético'
+  },
+
+  fraud: {
+    score: 890,
+    status: 'RETENÇÃO CAUTELAR SIMULADA',
+    color: '#f5798e',
+    border: '#be516e',
+    description:
+      'O teste de ataque combinado utilizou ' +
+      'características sintéticas forçadas, ' +
+      'incluindo indícios de câmera virtual ' +
+      'e associação a uma rede suspeita. ' +
+      'O motor produziu uma ação de retenção ' +
+      'e um relatório explicativo.',
+    log:
+      'ID: TX_FRAUD_9909\n' +
+      'SCORE: 890 / 1000\n' +
+      'ACTION: MAINTAIN_PIX_LOCK_AND_FREEZE\n' +
+      'XAI: laudo textual gerado\n' +
+      'ORIGEM: teste local sintético'
+  }
+
+};
+
+const scoreElement =
+  document.getElementById('demoScore');
+
+const fillElement =
+  document.getElementById('riskFill');
+
+const statusElement =
+  document.getElementById('demoStatus');
+
+const descriptionElement =
+  document.getElementById('demoDescription');
+
+const logElement =
+  document.getElementById('demoLog');
+
+const scenarioButtons =
+  document.querySelectorAll('[data-scenario]');
+
+function showScenario(name) {
+
+  const scenario = scenarios[name];
+
+  if (!scenario) {
+    return;
+  }
+
+  scoreElement.textContent =
+    scenario.score;
+
+  fillElement.style.width =
+    (scenario.score / 10) + '%';
+
+  fillElement.style.background =
+    scenario.color;
+
+  statusElement.textContent =
+    scenario.status;
+
+  statusElement.style.color =
+    scenario.color;
+
+  statusElement.style.borderColor =
+    scenario.border;
+
+  descriptionElement.textContent =
+    scenario.description;
+
+  logElement.textContent =
+    scenario.log;
+
+  scenarioButtons.forEach(button => {
+
+    button.setAttribute(
+      'aria-pressed',
+      String(button.dataset.scenario === name)
+    );
+
+  });
+}
+
+scenarioButtons.forEach(button => {
+
+  button.addEventListener('click', () => {
+
+    showScenario(button.dataset.scenario);
+
+  });
+
+});
+
+showScenario('legit');
+</script>
+
+<script defer src="../assets/transicoes.js?v=1"></script>
+</body>
+</html>
