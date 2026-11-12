@@ -1,0 +1,1998 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101c35">
+
+<title>Gestão Financeira — Duke | Universo da Hellen</title>
+
+<meta name="description" content="Case profissional de Hellen Souza na Duke — Experiências Inteligentes: gestão financeira, recuperação de recebíveis, crescimento comercial e laboratório interativo de decisões.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#101c35;
+  --navy2:#182b4c;
+  --blue:#508de2;
+  --pink:#dd4e96;
+  --green:#58d8b5;
+  --ink:#192743;
+  --muted:#64748b;
+  --line:#dce5f1;
+  --paper:#f5f7fb;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:85px}
+body{
+  margin:0;
+  font:15px/1.7 Inter,Arial,sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+}
+h1,h2,h3,h4{
+  font-family:"Plus Jakarta Sans",sans-serif;
+  letter-spacing:-.045em;
+  line-height:1.2;
+}
+h1,h2,h3,h4,p{margin-top:0}
+a{color:inherit}
+button,input{font:inherit}
+button{cursor:pointer}
+button:focus-visible,
+a:focus-visible,
+input:focus-visible{
+  outline:3px solid var(--pink);
+  outline-offset:3px;
+}
+.container{
+  width:min(1180px,calc(100% - 36px));
+  margin:auto;
+}
+section{padding:85px 0}
+h2{font-size:clamp(2rem,4vw,3.3rem)}
+.eyebrow{
+  display:block;
+  margin-bottom:15px;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.15em;
+  color:var(--pink);
+  text-transform:uppercase;
+}
+.lead{
+  color:var(--muted);
+  font-size:1.05rem;
+  max-width:760px;
+}
+.skip{
+  position:absolute;
+  top:-100px;
+  left:10px;
+  background:#fff;
+  padding:12px;
+  z-index:999;
+}
+.skip:focus{top:10px}
+
+/* MENU */
+
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(16,28,53,.97);
+  border-bottom:1px solid #344766;
+  backdrop-filter:blur(14px);
+}
+.topbar-inner{
+  min-height:71px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:18px;
+}
+.brand{
+  color:#fff;
+  font-weight:800;
+  text-decoration:none;
+  white-space:nowrap;
+  font-size:13px;
+}
+.brand span{color:#fa80bf}
+.topbar nav{
+  display:flex;
+  align-items:center;
+  gap:22px;
+}
+.topbar nav a{
+  color:#cbd8eb;
+  font-size:12px;
+  font-weight:700;
+  text-decoration:none;
+}
+.topbar nav a:hover{color:#fa80bf}
+.topbar .back{
+  border:1px solid #71839c;
+  padding:9px 13px;
+  border-radius:30px;
+}
+
+/* HERO */
+
+.hero{
+  position:relative;
+  overflow:hidden;
+  color:#fff;
+  background:
+    radial-gradient(circle at 83% 12%,#9c3f9250,transparent 43%),
+    radial-gradient(circle at 5% 95%,#4079b335,transparent 43%),
+    #101c35;
+  padding:95px 0 75px;
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.16;
+  background-image:radial-gradient(#b2c8ec 1px,transparent 1px);
+  background-size:27px 27px;
+}
+.hero-grid{
+  position:relative;
+  display:grid;
+  grid-template-columns:1fr .9fr;
+  gap:55px;
+  align-items:center;
+}
+.hero .eyebrow{color:#9be7d7}
+.hero h1{
+  font-size:clamp(3rem,5.2vw,5.4rem);
+  margin:15px 0 25px;
+  font-weight:800;
+}
+.hero h1 em{
+  display:block;
+  font-style:normal;
+  color:#ff80c1;
+}
+.hero-copy{
+  max-width:540px;
+  font-size:1.03rem;
+  color:#cbd7eb;
+}
+.pills{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:27px 0 30px;
+}
+.pills span{
+  font-size:11px;
+  border:1px solid #6f799e;
+  background:#263656;
+  color:#dce6f6;
+  border-radius:99px;
+  padding:7px 12px;
+}
+.cta{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:13px 19px;
+  background:var(--pink);
+  color:#fff;
+  font-size:12px;
+  font-weight:800;
+  border-radius:10px;
+  text-decoration:none;
+}
+.cta:hover{background:#f368aa}
+.hero-visual{
+  background:#192747;
+  border:1px solid #627294;
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 30px 70px #0005;
+}
+.windowbar{
+  display:flex;
+  justify-content:space-between;
+  padding:15px 19px;
+  background:#243657;
+  border-bottom:1px solid #516486;
+  gap:15px;
+}
+.windowbar strong{font-size:12px}
+.windowbar small{color:#adc1dc;font-size:10px}
+.visual-body{padding:26px}
+.visual-label{
+  color:#a8bcda;
+  font-size:11px;
+  letter-spacing:.1em;
+}
+.visual-number{
+  margin:10px 0;
+  font:800 clamp(2rem,3vw,3rem) "Plus Jakarta Sans",sans-serif;
+}
+.visual-number span{
+  color:#81e5c7;
+  font-size:.48em;
+}
+.hero-bars{
+  height:165px;
+  display:flex;
+  align-items:flex-end;
+  gap:10px;
+  margin:30px 0 18px;
+  padding-bottom:5px;
+  border-bottom:1px solid #647592;
+}
+.hero-bars i{
+  flex:1;
+  height:var(--h);
+  border-radius:5px 5px 0 0;
+  background:linear-gradient(0deg,#4477c7,#8eaeef);
+}
+.hero-bars i:nth-child(3n){
+  background:linear-gradient(0deg,#b94393,#f786bd);
+}
+.visual-footer{
+  display:flex;
+  justify-content:space-between;
+  color:#b6c6dd;
+  font-size:11px;
+}
+.metrics{
+  position:relative;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+  margin-top:60px;
+}
+.metric{
+  background:#1b2d4b;
+  border:1px solid #526687;
+  padding:23px;
+  border-radius:15px;
+}
+.metric strong{
+  display:block;
+  color:#fff;
+  font:800 2rem "Plus Jakarta Sans",sans-serif;
+}
+.metric:nth-child(2) strong{color:#87ecd0}
+.metric span{
+  display:block;
+  margin-top:6px;
+  color:#becde0;
+  font-size:12px;
+}
+.factual-note{
+  position:relative;
+  color:#b9c9dd;
+  font-size:11px;
+  margin:16px 0 0;
+}
+
+/* CASE */
+
+.case{
+  background:#fff;
+}
+.case-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:19px;
+  margin-top:38px;
+}
+.case-card{
+  border:1px solid var(--line);
+  border-radius:17px;
+  padding:28px;
+  background:#f9fbff;
+}
+.case-card .num{
+  color:var(--pink);
+  font-size:12px;
+  font-weight:800;
+}
+.case-card h3{
+  margin:19px 0 13px;
+  font-size:1.15rem;
+}
+.case-card p{
+  color:#62718a;
+  font-size:13px;
+}
+
+/* ATUAÇÃO */
+
+.work{
+  background:#edf2fa;
+}
+.work-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:17px;
+  margin-top:37px;
+}
+.work-card{
+  display:flex;
+  align-items:flex-start;
+  gap:18px;
+  border:1px solid #d7e1ef;
+  background:#fff;
+  padding:25px;
+  border-radius:16px;
+}
+.work-icon{
+  flex:0 0 43px;
+  height:43px;
+  border-radius:12px;
+  background:#e6eefc;
+  color:#2b65ac;
+  display:grid;
+  place-items:center;
+  font-weight:800;
+}
+.work-card h3{
+  margin-bottom:9px;
+  font-size:1.04rem;
+}
+.work-card p{
+  color:#62738b;
+  font-size:13px;
+  margin:0;
+}
+
+/* LAB */
+
+.lab{
+  color:#fff;
+  background:
+    radial-gradient(circle at 90% 10%,#a93d8540,transparent 40%),
+    #101c35;
+}
+.lab .eyebrow{color:#8eead2}
+.lab .lead{color:#bccce1}
+.lab-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:20px;
+}
+.lab-label{
+  color:#ffb2d4;
+  font-size:11px;
+  font-weight:800;
+  text-align:right;
+}
+.lab-shell{
+  display:grid;
+  grid-template-columns:.86fr 1.14fr;
+  align-items:start;
+  gap:20px;
+  margin-top:36px;
+}
+.panel{
+  background:#182a48;
+  border:1px solid #506486;
+  border-radius:18px;
+  overflow:hidden;
+}
+.panel-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  background:#243755;
+  border-bottom:1px solid #4b6080;
+  padding:17px 21px;
+}
+.panel-head strong{font-size:13px}
+.panel-head small{
+  color:#9db9da;
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+.panel-body{padding:24px}
+.preset-group{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-bottom:24px;
+}
+.preset{
+  border:1px solid #6c7b99;
+  background:#2c4061;
+  color:#dce7f9;
+  padding:10px 12px;
+  border-radius:8px;
+  font-size:11px;
+  font-weight:800;
+}
+.preset[aria-pressed="true"]{
+  background:#e3579c;
+  border-color:#e3579c;
+  color:#fff;
+}
+.control-row{
+  margin-bottom:22px;
+}
+.control-label{
+  display:flex;
+  justify-content:space-between;
+  align-items:start;
+  gap:12px;
+  margin-bottom:8px;
+  font-size:12px;
+}
+.control-label strong{
+  color:#8fe9d4;
+  white-space:nowrap;
+}
+.control-row input{
+  width:100%;
+  accent-color:#e85da1;
+}
+.hint{
+  display:block;
+  color:#afbfda;
+  font-size:10px;
+  margin-top:4px;
+}
+.reset{
+  background:#304768;
+  color:white;
+  padding:11px 14px;
+  border:1px solid #667fa0;
+  border-radius:9px;
+  font-size:11px;
+  font-weight:800;
+}
+.reset:hover{background:#3c577c}
+.sim-note{
+  margin-top:20px;
+  padding:13px;
+  color:#c3d0e1;
+  border-radius:9px;
+  background:#243856;
+  font-size:11px;
+  border-left:3px solid var(--green);
+}
+.results{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+.result{
+  background:#243757;
+  border:1px solid #496386;
+  border-radius:12px;
+  padding:16px;
+}
+.result.wide{
+  grid-column:1/-1;
+  background:#294668;
+  border-color:#6289a8;
+}
+.result span{
+  display:block;
+  color:#b8cce6;
+  font-size:11px;
+}
+.result strong{
+  display:block;
+  margin-top:5px;
+  font:800 clamp(1.25rem,2.4vw,1.85rem)
+    "Plus Jakarta Sans",sans-serif;
+  color:#fff;
+  overflow-wrap:anywhere;
+}
+.result.wide strong{color:#91f0d5}
+.result strong.negative{color:#ffa0ae}
+.compare{
+  margin-top:28px;
+  background:#14233e;
+  border-radius:13px;
+  padding:19px;
+  border:1px solid #425a7d;
+}
+.compare h3{
+  margin-bottom:8px;
+  font-size:1rem;
+}
+.compare p{
+  margin-bottom:21px;
+  color:#b8c7dd;
+  font-size:11px;
+}
+.bar-row{
+  display:grid;
+  grid-template-columns:73px minmax(0,1fr) 112px;
+  align-items:center;
+  gap:10px;
+  margin:13px 0;
+  font-size:11px;
+}
+.bar-track{
+  height:14px;
+  background:#2a3b58;
+  border-radius:20px;
+  overflow:hidden;
+}
+.bar-fill{
+  height:100%;
+  width:0;
+  border-radius:20px;
+  background:#6e99db;
+  transition:width .3s ease;
+}
+.bar-fill.adjusted{background:#71dfc1}
+.bar-fill.negative{background:#f185a3}
+.bar-row output{
+  text-align:right;
+  white-space:nowrap;
+  font-size:10px;
+}
+.insight{
+  margin-top:16px;
+  color:#d9e7f5;
+  font-size:12px;
+  line-height:1.7;
+  background:#263c5b;
+  padding:17px;
+  border-radius:10px;
+}
+.formula{
+  padding:0 23px 20px;
+  color:#aebfda;
+  font-size:11px;
+  line-height:1.75;
+}
+
+/* RESULTADO PROFISSIONAL */
+
+.impact{
+  background:#fff;
+}
+.impact-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+  margin-top:34px;
+}
+.impact-card{
+  padding:33px;
+  border-radius:18px;
+  background:#f7f9fd;
+  border:1px solid var(--line);
+}
+.impact-card strong{
+  display:block;
+  font:800 clamp(2.5rem,5vw,4.5rem)
+    "Plus Jakarta Sans",sans-serif;
+  color:#1e548d;
+}
+.impact-card:nth-child(2) strong{color:#c44687}
+.impact-card h3{font-size:1.07rem}
+.impact-card p{font-size:13px;color:#62738b}
+.impact-foot{
+  margin-top:19px;
+  color:#66778d;
+  font-size:12px;
+}
+
+/* END */
+
+.end{
+  background:var(--navy);
+  color:#fff;
+  text-align:center;
+}
+.end h2{
+  max-width:850px;
+  margin:0 auto 23px;
+}
+.end p{
+  max-width:730px;
+  margin:0 auto 29px;
+  color:#c6d3e7;
+}
+.footer{
+  padding:28px 0;
+  background:#091429;
+  color:#aebdd5;
+  font-size:12px;
+}
+.footer-inner{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  flex-wrap:wrap;
+}
+.footer a{
+  color:#ed91c3;
+  text-decoration:none;
+}
+
+/* MOBILE */
+
+@media(max-width:950px){
+  .hero-grid,.lab-shell{
+    grid-template-columns:1fr;
+  }
+  .hero-visual{max-width:640px}
+  .case-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:650px){
+  section{padding:57px 0}
+  .topbar-inner{min-height:63px}
+  .brand{font-size:11px}
+  .topbar nav a:not(.back){display:none}
+  .topbar .back{font-size:10px}
+  .hero{padding:60px 0}
+  .hero h1{font-size:clamp(2.6rem,11vw,4rem)}
+  .metrics,.case-grid,.work-grid,.impact-grid{
+    grid-template-columns:1fr;
+  }
+  .lab-head{display:block}
+  .lab-label{text-align:left;margin-top:10px}
+  .results{grid-template-columns:1fr}
+  .result.wide{grid-column:auto}
+  .bar-row{
+    grid-template-columns:58px minmax(0,1fr);
+  }
+  .bar-row output{
+    grid-column:2;
+    text-align:left;
+  }
+  .panel-body{padding:17px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{scroll-behavior:auto!important;transition:none!important}
+}
+  
+/* =========================================
+   DUKE — TRAJETÓRIA E RECONHECIMENTO
+   ========================================= */
+
+#historico-duke {
+  background: #f0f4fa;
+  color: #192743;
+  padding: 85px 0;
+}
+
+#historico-duke .duke-section-heading {
+  max-width: 850px;
+  margin-bottom: 34px;
+}
+
+#historico-duke .duke-section-heading h2 {
+  font-size: clamp(2rem, 4vw, 3.3rem);
+  color: #13233e;
+  margin: 12px 0 18px;
+}
+
+#historico-duke .duke-section-heading p {
+  color: #62728a;
+  font-size: 1.02rem;
+}
+
+#historico-duke .duke-record-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, .85fr);
+  gap: 22px;
+  align-items: start;
+}
+
+#historico-duke .duke-record-column {
+  display: grid;
+  gap: 22px;
+  min-width: 0;
+}
+
+#historico-duke .duke-record-card {
+  min-width: 0;
+  background: #fff;
+  border: 1px solid #dce5f1;
+  border-radius: 19px;
+  padding: 29px;
+  box-shadow: 0 12px 32px rgba(16, 28, 53, .045);
+}
+
+#historico-duke .duke-record-card h3 {
+  font-size: 1.25rem;
+  color: #172744;
+  margin: 0 0 18px;
+}
+
+#historico-duke .duke-record-card p {
+  font-size: .91rem;
+  line-height: 1.8;
+  color: #566781;
+}
+
+#historico-duke .duke-timeline {
+  position: relative;
+  padding-left: 34px;
+  margin-top: 25px;
+}
+
+#historico-duke .duke-timeline::before {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 12px;
+  bottom: 26px;
+  width: 3px;
+  border-radius: 3px;
+  background: linear-gradient(
+    to bottom,
+    #4e91dc,
+    #9865d9 45%,
+    #df4e98
+  );
+}
+
+#historico-duke .duke-milestone {
+  position: relative;
+  padding: 0 0 26px 14px;
+}
+
+#historico-duke .duke-milestone:last-child {
+  padding-bottom: 0;
+}
+
+#historico-duke .duke-milestone::before {
+  content: "";
+  position: absolute;
+  left: -33px;
+  top: 5px;
+  width: 18px;
+  height: 18px;
+  border: 4px solid #fff;
+  border-radius: 50%;
+  background: var(--duke-point, #498de0);
+  box-shadow:
+    0 0 0 2px var(--duke-point, #498de0),
+    0 0 15px rgba(91, 106, 196, .2);
+}
+
+#historico-duke .duke-milestone time {
+  display: block;
+  font-weight: 800;
+  color: #b83e83;
+  font-size: .77rem;
+  margin-bottom: 6px;
+}
+
+#historico-duke .duke-milestone h4 {
+  font-size: 1.02rem;
+  color: #192b4c;
+  margin: 0 0 9px;
+}
+
+#historico-duke .duke-milestone p {
+  margin: 0;
+}
+
+#historico-duke .duke-recommendation {
+  background: linear-gradient(135deg, #142543, #30305c);
+  color: #fff;
+  border-radius: 18px;
+  padding: 29px;
+}
+
+#historico-duke .duke-recommendation .duke-quote-mark {
+  font: 800 4.5rem Georgia, serif;
+  line-height: .8;
+  color: #f082bc;
+}
+
+#historico-duke .duke-recommendation blockquote {
+  margin: 15px 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(1.1rem, 2.3vw, 1.45rem);
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+#historico-duke .duke-recommendation small {
+  display: block;
+  color: #c2cde9;
+  font-size: .75rem;
+  line-height: 1.7;
+}
+
+#historico-duke .duke-fact {
+  padding: 13px 0;
+  border-bottom: 1px solid #e4eaf3;
+}
+
+#historico-duke .duke-fact:last-child {
+  border-bottom: none;
+}
+
+#historico-duke .duke-fact span {
+  display: block;
+  font-size: .73rem;
+  color: #78869b;
+  margin-bottom: 4px;
+}
+
+#historico-duke .duke-fact strong {
+  display: block;
+  color: #172844;
+  font-size: .94rem;
+}
+
+#historico-duke .duke-skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+#historico-duke .duke-skill-tags span {
+  background: #eef3fc;
+  border: 1px solid #d9e3f2;
+  color: #335f90;
+  padding: 7px 11px;
+  border-radius: 99px;
+  font-size: .76rem;
+  font-weight: 700;
+}
+
+#historico-duke .duke-note {
+  background: #fff8fc;
+  border: 1px solid #ecd3e4;
+  border-left: 4px solid #d84c98;
+  border-radius: 11px;
+  padding: 19px;
+}
+
+#historico-duke .duke-note h3 {
+  font-size: 1rem;
+  margin-bottom: 9px;
+}
+
+#historico-duke .duke-note p {
+  margin-bottom: 0;
+}
+
+#historico-duke .duke-record-card details {
+  border-top: 1px solid #e3e9f1;
+  padding: 16px 0;
+}
+
+#historico-duke .duke-record-card summary {
+  cursor: pointer;
+  font-weight: 800;
+  color: #ad3c7e;
+}
+
+#historico-duke .duke-record-card details p {
+  margin-bottom: 0;
+}
+
+#historico-duke .duke-record-card a {
+  color: #286eaa;
+  font-weight: 700;
+}
+
+@media (max-width: 850px) {
+  #historico-duke .duke-record-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 650px) {
+  #historico-duke {
+    padding: 58px 0;
+  }
+
+  #historico-duke .duke-record-card,
+  #historico-duke .duke-recommendation {
+    padding: 21px;
+  }
+}
+
+</style>
+<link rel="stylesheet" href="../assets/transicoes.css?v=2-visible">
+  <!-- Universo da Hellen: analytics e consentimento LGPD -->
+  <link rel="stylesheet" href="../assets/analytics-consent.css" data-uh-tracking="G-XKVSE9F9FZ">
+  <script defer src="../assets/analytics-consent.js" data-uh-tracking="G-XKVSE9F9FZ"></script>
+</head>
+
+<body>
+
+<a class="skip" href="#conteudo">
+  Ir para o conteúdo
+</a>
+
+<header class="topbar">
+  <div class="container topbar-inner">
+    <a href="../index.html" class="brand">
+      ✦ UNIVERSO <span>DA HELLEN</span>
+    </a>
+
+    <nav aria-label="Menu principal">
+      <a href="#case">O case</a>
+      <a href="#atuacao">Minha atuação</a>
+      <a href="#historico-duke">
+  Trajetória e reconhecimento
+</a>
+      <a href="analise-simulacao-financeira.html">
+  Análise Financeira
+</a>
+      <a href="#resultados">Resultados</a>
+      <a href="../index.html#projetos" class="back">
+        ← Projetos
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+
+<!-- HERO -->
+
+<section class="hero">
+  <div class="container">
+
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">
+          EXPERIÊNCIA PROFISSIONAL · 2020–2023
+        </span>
+
+        <h1>
+          Gestão financeira
+          <em>que gera resultados.</em>
+        </h1>
+
+        <p class="hero-copy">
+          Minha experiência como Gerente Financeiro, com atuação também em atividades comerciais, administrativas e operacionais na Duke — Experiências
+          Inteligentes, em Barreiras (BA),
+          conectando controle financeiro,
+          relacionamento com clientes e
+          decisões de negócio.
+        </p>
+
+        <div class="pills">
+          <span>Fluxo de caixa</span>
+          <span>Contas a receber</span>
+          <span>KPIs</span>
+          <span>Gestão comercial</span>
+          <span>Processos</span>
+        </div>
+
+        <a class="cta" href="analise-simulacao-financeira.html">
+  Abrir Financial Intelligence Lab ↗
+</a>
+      </div>
+
+      <div class="hero-visual"
+           aria-label="Ilustração conceitual de um painel financeiro">
+
+        <div class="windowbar">
+          <strong>DUKE / FINANCIAL INTELLIGENCE</strong>
+          <small>VISÃO CONCEITUAL</small>
+        </div>
+
+        <div class="visual-body">
+          <span class="visual-label">
+            DECISÕES ORIENTADAS POR INDICADORES
+          </span>
+
+          <div class="visual-number">
+            FINANCE <span>+ STRATEGY</span>
+          </div>
+
+          <div class="hero-bars" aria-hidden="true">
+            <i style="--h:35%"></i>
+            <i style="--h:42%"></i>
+            <i style="--h:40%"></i>
+            <i style="--h:53%"></i>
+            <i style="--h:49%"></i>
+            <i style="--h:58%"></i>
+            <i style="--h:66%"></i>
+            <i style="--h:63%"></i>
+            <i style="--h:74%"></i>
+            <i style="--h:81%"></i>
+            <i style="--h:78%"></i>
+            <i style="--h:95%"></i>
+          </div>
+
+          <div class="visual-footer">
+            <span>CONTROLE</span>
+            <span>ANÁLISE</span>
+            <span>DECISÃO</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="metrics">
+
+      <div class="metric">
+        <strong>2020–23</strong>
+        <span>Período da experiência profissional</span>
+      </div>
+
+      <div class="metric">
+        <strong>+30%</strong>
+        <span>Crescimento do faturamento anual relatado</span>
+      </div>
+
+      <div class="metric">
+        <strong>95%</strong>
+        <span>Capital inadimplente recuperado, conforme trajetória</span>
+      </div>
+
+    </div>
+
+    <p class="factual-note">
+      Indicadores profissionais informados no portfólio.
+      O gráfico ilustrativo acima não representa a série histórica
+      de faturamento da empresa.
+    </p>
+
+  </div>
+</section>
+
+<!-- DESAFIO -->
+
+<section class="case" id="case">
+  <div class="container">
+
+    <span class="eyebrow">01 / CONTEXTO PROFISSIONAL</span>
+
+    <h2>Gestão é mais do que acompanhar números.</h2>
+
+    <p class="lead">
+      Uma operação financeira exige visibilidade
+      sobre entradas, saídas, obrigações,
+      recebíveis e desempenho comercial.
+      O desafio é transformar essas informações
+      em decisões práticas.
+    </p>
+
+    <div class="case-grid">
+
+      <article class="case-card">
+        <span class="num">01 — VISIBILIDADE</span>
+        <h3>Entender a saúde financeira</h3>
+        <p>
+          Organizar informações de caixa e
+          acompanhar indicadores para identificar
+          riscos, necessidades e oportunidades.
+        </p>
+      </article>
+
+      <article class="case-card">
+        <span class="num">02 — RECUPERAÇÃO</span>
+        <h3>Reduzir a pressão da inadimplência</h3>
+        <p>
+          Acompanhar os recebíveis e apoiar
+          ações de cobrança e negociação
+          orientadas pela situação de cada cliente.
+        </p>
+      </article>
+
+      <article class="case-card">
+        <span class="num">03 — CRESCIMENTO</span>
+        <h3>Conectar finanças e comercial</h3>
+        <p>
+          Relacionar desempenho de vendas,
+          atendimento e disponibilidade de
+          recursos para melhorar as decisões.
+        </p>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ATUAÇÃO -->
+
+<section class="work" id="atuacao">
+  <div class="container">
+
+    <span class="eyebrow">02 / MINHA ATUAÇÃO</span>
+
+    <h2>Da rotina financeira à visão estratégica.</h2>
+
+    <p class="lead">
+      As responsabilidades envolviam controles,
+      relatórios, supervisão operacional,
+      suporte administrativo e relacionamento
+      com clientes.
+    </p>
+
+    <div class="work-grid">
+
+      <article class="work-card">
+        <div class="work-icon">01</div>
+        <div>
+          <h3>Controle financeiro</h3>
+          <p>
+            Acompanhamento de caixa, pagamentos,
+            recebimentos e organização
+            das rotinas financeiras.
+          </p>
+        </div>
+      </article>
+
+      <article class="work-card">
+        <div class="work-icon">02</div>
+        <div>
+          <h3>Relatórios e indicadores</h3>
+          <p>
+            Consolidação de informações
+            de desempenho para apoiar a gestão
+            e acompanhar resultados.
+          </p>
+        </div>
+      </article>
+
+      <article class="work-card">
+        <div class="work-icon">03</div>
+        <div>
+          <h3>Recuperação de recebíveis</h3>
+          <p>
+            Acompanhamento da inadimplência,
+            relacionamento com clientes e
+            organização de esforços de recuperação.
+          </p>
+        </div>
+      </article>
+
+      <article class="work-card">
+        <div class="work-icon">04</div>
+        <div>
+          <h3>Gestão operacional e comercial</h3>
+          <p>
+            Supervisão de atividades,
+            suporte administrativo e conexão
+            entre operação e desempenho financeiro.
+          </p>
+        </div>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- RESULTADOS -->
+
+<!-- =============================================
+     DUKE — TRAJETÓRIA E RECONHECIMENTO
+     ============================================= -->
+
+<section class="duke-archive" id="historico-duke">
+
+  <div class="container">
+
+    <div class="duke-section-heading">
+
+      <span class="eyebrow">
+        04 / TRAJETÓRIA & RECONHECIMENTO
+      </span>
+
+      <h2>
+        Uma trajetória que continuou
+        sendo lembrada.
+      </h2>
+
+      <p>
+        Além das responsabilidades exercidas
+        entre 2020 e 2023, os registros
+        profissionais mostram que meu trabalho
+        permaneceu como referência em conversas
+        posteriores sobre a organização
+        financeira do negócio.
+      </p>
+
+    </div>
+
+    <div class="duke-record-grid">
+
+      <!-- COLUNA PRINCIPAL -->
+
+      <div class="duke-record-column">
+
+        <article class="duke-record-card">
+
+          <h3>
+            Histórico da experiência
+          </h3>
+
+          <div class="duke-timeline">
+
+            <div class="duke-milestone"
+                 style="--duke-point:#438ddd">
+
+              <time>
+                OUTUBRO DE 2020 — JANEIRO DE 2023
+              </time>
+
+              <h4>
+                Gerência financeira na Duke
+              </h4>
+
+              <p>
+                Atuação como
+                <strong>Gerente Financeiro
+                na Duke Experiências Inteligentes</strong>,
+                com responsabilidades relacionadas
+                a controle de caixa, gestão financeira,
+                elaboração de relatórios de desempenho,
+                supervisão operacional,
+                suporte administrativo
+                e atendimento consultivo.
+              </p>
+
+              <p>
+                A experiência envolveu atividades
+                financeiras, comerciais
+                e administrativas, contribuindo
+                para a organização cotidiana
+                dos processos da empresa.
+              </p>
+
+            </div>
+
+            <div class="duke-milestone"
+                 style="--duke-point:#6774df">
+
+              <time>MAIO DE 2023</time>
+
+              <h4>
+                Contato sobre trabalho remoto
+                e dados inteligentes
+              </h4>
+
+              <p>
+                Após o encerramento do vínculo
+                profissional registrado,
+                um gestor entrou em contato
+                para consultar a possibilidade
+                de colaboração a distância.
+              </p>
+
+              <p>
+                Na conversa, foram mencionados
+                acesso ao sistema da empresa
+                e a necessidade de trabalhar
+                com <strong>“dados inteligentes”</strong>.
+              </p>
+
+              <p>
+                Esse registro demonstra uma
+                possibilidade de colaboração
+                discutida na época,
+                <strong>não a implantação comprovada
+                de uma solução tecnológica</strong>.
+              </p>
+
+            </div>
+
+            <div class="duke-milestone"
+                 style="--duke-point:#9b61dc">
+
+              <time>JULHO DE 2023</time>
+
+              <h4>
+                Nova procura pela organização
+                da área financeira
+              </h4>
+
+              <p>
+                O contato profissional foi
+                retomado com referência à
+                necessidade de reorganizar
+                as atividades financeiras.
+              </p>
+
+              <p>
+                Meu nome voltou a ser mencionado
+                como referência para esse tipo
+                de responsabilidade, demonstrando
+                a continuidade da confiança
+                em minha experiência.
+              </p>
+
+            </div>
+
+            <div class="duke-milestone"
+                 style="--duke-point:#dc4e99">
+
+              <time>29 DE JANEIRO DE 2024</time>
+
+              <h4>
+                Convite para retornar
+                à gerência financeira
+              </h4>
+
+              <p>
+                Recebi uma mensagem propondo
+                meu retorno à gerência financeira.
+                O interlocutor também expressou
+                confiança na minha capacidade
+                de conduzir essa área.
+              </p>
+
+              <p>
+                Durante a conversa, foi
+                descrito um contexto operacional
+                com <strong>dois restaurantes,
+                uma loja e mais de 20 pessoas</strong>.
+              </p>
+
+              <p>
+                Esses números representam
+                a situação relatada pelo
+                interlocutor em 2024.
+                Não são apresentados como
+                resultados atribuídos
+                à minha gestão anterior.
+              </p>
+
+              <p>
+                <strong>O convite não significa
+                que um novo vínculo profissional
+                tenha sido efetivado.</strong>
+              </p>
+
+            </div>
+
+          </div>
+
+        </article>
+
+        <article class="duke-recommendation">
+
+          <div class="duke-quote-mark"
+               aria-hidden="true">“</div>
+
+          <blockquote>
+            Vc é a única pessoa a qual
+            eu confio nessa área
+          </blockquote>
+
+          <small>
+            Trecho de uma mensagem profissional
+            recebida em 29 de janeiro de 2024,
+            reproduzido conforme o registro
+            original e sem identificar
+            o interlocutor.
+          </small>
+
+        </article>
+
+        <article class="duke-record-card">
+
+          <h3>
+            O que a experiência representou
+          </h3>
+
+          <p>
+            Minha atuação na gestão financeira
+            permitiu desenvolver uma visão
+            integrada entre organização de
+            informações, rotinas operacionais,
+            atendimento aos clientes e
+            acompanhamento de resultados.
+          </p>
+
+          <p>
+            Os contatos posteriores demonstram
+            que essas competências permaneceram
+            associadas à minha trajetória,
+            mesmo depois do encerramento
+            do período formal de trabalho.
+          </p>
+
+          <h3>
+            Conexão com Ciência de Dados
+          </h3>
+
+          <p>
+            Atualmente, utilizo essa base
+            de experiência em negócios como
+            referência para meus estudos
+            em indicadores, análise de dados,
+            inteligência financeira
+            e sistemas de apoio à decisão.
+          </p>
+
+          <p>
+            Essa experiência não é apresentada
+            como implantação de machine learning,
+            desenvolvimento de BI ou entrega
+            de modelos preditivos, pois os
+            registros disponibilizados não
+            comprovam essas atividades técnicas.
+          </p>
+
+        </article>
+
+      </div>
+
+      <!-- COLUNA DE APOIO -->
+
+      <aside class="duke-record-column">
+
+        <article class="duke-record-card">
+
+          <h3>Ficha da experiência</h3>
+
+          <div class="duke-fact">
+            <span>Organização</span>
+            <strong>
+              Duke Experiências Inteligentes
+            </strong>
+          </div>
+
+          <div class="duke-fact">
+            <span>Cargo registrado</span>
+            <strong>Gerente Financeiro</strong>
+          </div>
+
+          <div class="duke-fact">
+            <span>Período</span>
+            <strong>
+              Outubro de 2020 a janeiro de 2023
+            </strong>
+          </div>
+
+          <div class="duke-fact">
+            <span>Local de atuação</span>
+            <strong>
+              Barreiras — Bahia, Brasil
+            </strong>
+          </div>
+
+          <div class="duke-fact">
+            <span>Área de atuação</span>
+            <strong>
+              Gestão financeira, comercial
+              e operacional
+            </strong>
+          </div>
+
+        </article>
+
+        <article class="duke-record-card">
+
+          <h3>
+            Competências desenvolvidas
+          </h3>
+
+          <div class="duke-skill-tags">
+
+            <span>Gestão financeira</span>
+            <span>Controle de caixa</span>
+            <span>Relatórios gerenciais</span>
+            <span>Indicadores de desempenho</span>
+            <span>Gestão de operações</span>
+            <span>Supervisão de equipes</span>
+            <span>Atendimento consultivo</span>
+            <span>Relacionamento com clientes</span>
+            <span>Comunicação profissional</span>
+            <span>Visão de negócios</span>
+
+          </div>
+
+        </article>
+
+        <article class="duke-record-card">
+
+          <h3>
+            Sobre os nomes comerciais
+          </h3>
+
+          <p>
+            Os registros profissionais também
+            mencionam os nomes
+            <strong>Terraço Duke</strong>
+            e <strong>Terraço Burger</strong>.
+          </p>
+
+          <p>
+            A relação jurídica entre esses
+            nomes e a Duke Experiências
+            Inteligentes não foi confirmada.
+          </p>
+
+          <p>
+            Por isso, não são atribuídos
+            automaticamente à mesma
+            pessoa jurídica os estabelecimentos,
+            contratos ou operações mencionados
+            nas conversas.
+          </p>
+
+        </article>
+
+        <div class="duke-note">
+
+          <h3>
+            Distinção entre fatos e propostas
+          </h3>
+
+          <p>
+            Os contatos de 2023 e 2024
+            documentam conversas, consultas
+            e um convite profissional.
+            Não comprovam contratação posterior,
+            implantação de sistemas ou
+            execução de projetos adicionais.
+            Projeções mencionadas por terceiros
+            não são tratadas como
+            faturamento efetivamente realizado.
+          </p>
+
+        </div>
+
+        <article class="duke-record-card">
+
+          <h3>
+            Fontes e documentação
+          </h3>
+
+          <p>
+            Esta página reúne informações
+            do registro profissional
+            no LinkedIn e de conversas
+            profissionais documentadas
+            de 2023 e 2024.
+          </p>
+
+          <p>
+            <a
+              href="https://www.linkedin.com/in/hellen-souza-879051194/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Consultar perfil profissional ↗
+            </a>
+          </p>
+
+          <details>
+            <summary>
+              Privacidade das evidências
+            </summary>
+
+            <p>
+              Conversas privadas podem conter
+              dados de terceiros. A página
+              não disponibiliza capturas
+              completas, telefones ou contatos.
+              A publicação de trechos literais
+              deve respeitar a autorização
+              dos envolvidos.
+            </p>
+          </details>
+
+          <details>
+            <summary>
+              Próximas evidências
+            </summary>
+
+            <p>
+              Podem ser acrescentados
+              exemplos autorizados de relatórios
+              e controles, fotografias de
+              atividades com consentimento,
+              descrições documentadas das
+              melhorias executadas e
+              indicadores com bases verificáveis.
+            </p>
+          </details>
+
+        </article>
+
+      </aside>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="impact" id="resultados">
+  <div class="container">
+
+    <span class="eyebrow">
+      04 / RESULTADOS PROFISSIONAIS
+    </span>
+
+    <h2>Resultados que marcaram minha trajetória.</h2>
+
+    <p class="lead">
+      Indicadores relatados na experiência
+      da Duke, apresentados separadamente
+      das simulações do Finance Lab.
+    </p>
+
+    <div class="impact-grid">
+
+      <article class="impact-card">
+        <strong>+30%</strong>
+        <h3>Crescimento do faturamento anual</h3>
+        <p>
+          Resultado informado na trajetória
+          profissional, associado à atuação
+          em gestão financeira e comercial.
+        </p>
+      </article>
+
+      <article class="impact-card">
+        <strong>95%</strong>
+        <h3>Capital inadimplente recuperado</h3>
+        <p>
+          Indicador informado no portfólio,
+          relacionado às iniciativas de
+          acompanhamento e recuperação
+          de recebíveis.
+        </p>
+      </article>
+
+    </div>
+
+    <p class="impact-foot">
+      Esses percentuais são registros da experiência
+      profissional e não foram calculados pelo simulador.
+      As bases monetárias e as séries detalhadas
+      não estão publicadas nesta página.
+    </p>
+
+  </div>
+</section>
+
+<!-- ENCERRAMENTO -->
+
+<section class="end">
+  <div class="container">
+
+    <span class="eyebrow">
+      GESTÃO · FINANÇAS · INTELIGÊNCIA
+    </span>
+
+    <h2>
+      Números só se tornam valiosos
+      quando ajudam a tomar decisões melhores.
+    </h2>
+
+    <p>
+      A experiência na Duke contribuiu para
+      consolidar minha visão integrada
+      entre gestão financeira, processos,
+      resultados comerciais e relacionamento
+      com clientes — conhecimentos que
+      hoje conecto à Ciência de Dados
+      para Negócios.
+    </p>
+
+    <a class="cta" href="../index.html#projetos">
+      Explorar outros projetos ↗
+    </a>
+
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <span>
+      Universo da Hellen · Hellen Souza
+    </span>
+    <a href="../index.html">
+      Voltar ao portfólio
+    </a>
+  </div>
+</footer>
+
+<script>
+'use strict';
+
+/* ==========================================
+   FINANCE LAB — SIMULADOR DIDÁTICO
+   ========================================== */
+
+const baseRevenue = 120000;
+
+const defaultValues = {
+  crescimento:8,
+  inadimplencia:12,
+  recuperacao:35,
+  variaveis:38,
+  fixos:48000
+};
+
+const presets = {
+  equilibrado:{
+    crescimento:8,
+    inadimplencia:12,
+    recuperacao:35,
+    variaveis:38,
+    fixos:48000
+  },
+  expansao:{
+    crescimento:25,
+    inadimplencia:16,
+    recuperacao:45,
+    variaveis:44,
+    fixos:54000
+  },
+  eficiencia:{
+    crescimento:5,
+    inadimplencia:8,
+    recuperacao:60,
+    variaveis:32,
+    fixos:42000
+  }
+};
+
+const ids = Object.keys(defaultValues);
+
+const brl = new Intl.NumberFormat('pt-BR',{
+  style:'currency',
+  currency:'BRL',
+  maximumFractionDigits:0
+});
+
+/* Coleta o cenário escolhido */
+function getScenario(){
+  const data = {};
+
+  ids.forEach(id=>{
+    data[id] = Number(
+      document.getElementById(id).value
+    );
+  });
+
+  return data;
+}
+
+/* Cálculo das variáveis fictícias */
+function calculate(p){
+
+  const faturamento =
+    baseRevenue * (1+p.crescimento/100);
+
+  const atraso =
+    faturamento * p.inadimplencia/100;
+
+  const recuperado =
+    atraso * p.recuperacao/100;
+
+  const recebimentos =
+    faturamento - atraso + recuperado;
+
+  const custos =
+    faturamento * p.variaveis/100;
+
+  const pendentes =
+    atraso - recuperado;
+
+  const saldo =
+    recebimentos - custos - p.fixos;
+
+  return {
+    faturamento,
+    recebimentos,
+    custos,
+    pendentes,
+    saldo
+  };
+}
+
+/* Cenário de referência fixo */
+const reference = calculate({
+  crescimento:0,
+  inadimplencia:12,
+  recuperacao:35,
+  variaveis:38,
+  fixos:48000
+});
+
+/* Atualiza rótulos dos controles */
+function updateLabels(p){
+
+  ['crescimento','inadimplencia',
+   'recuperacao','variaveis'].forEach(id=>{
+
+    document.getElementById(id+'Value')
+      .textContent = p[id]+'%';
+  });
+
+  document.getElementById('fixosValue')
+    .textContent = brl.format(p.fixos);
+}
+
+/* Atualiza indicador monetário */
+function setMoney(id,value){
+
+  const element = document.getElementById(id);
+  element.textContent = brl.format(value);
+  element.classList.toggle(
+    'negative',
+    value < 0
+  );
+}
+
+/* Destaque de interpretação */
+function makeInsight(p,result){
+
+  const recommendations = [];
+
+  if(p.inadimplencia >= 15){
+    recommendations.push(
+      'A inadimplência elevada pressiona os recebimentos.'
+    );
+  }
+
+  if(p.recuperacao < 40){
+    recommendations.push(
+      'Uma recuperação mais eficiente pode liberar caixa.'
+    );
+  }
+
+  if(p.variaveis >= 50){
+    recommendations.push(
+      'Os custos variáveis consomem parcela relevante das vendas.'
+    );
+  }
+
+  if(result.saldo < 0){
+    recommendations.push(
+      'O saldo estimado está negativo; é necessário rever receitas, custos ou recebimentos.'
+    );
+  }
+
+  if(recommendations.length === 0){
+    recommendations.push(
+      'Neste cenário, os parâmetros sugerem melhor equilíbrio entre receitas, custos e recebimentos.'
+    );
+  }
+
+  const difference =
+    result.saldo - reference.saldo;
+
+  const comparison = difference >= 0
+    ? 'acima'
+    : 'abaixo';
+
+  return (
+    'LEITURA GERENCIAL\n\n' +
+    'O saldo operacional estimado está ' +
+    brl.format(Math.abs(difference)) +
+    ' ' + comparison +
+    ' do cenário de referência.\n\n' +
+    recommendations.join(' ')
+  );
+}
+
+/* Atualiza a interface */
+function render(){
+
+  const scenario = getScenario();
+  const result = calculate(scenario);
+
+  updateLabels(scenario);
+
+  setMoney('kpiFaturamento',result.faturamento);
+  setMoney('kpiRecebimentos',result.recebimentos);
+  setMoney('kpiCustos',result.custos);
+  setMoney('kpiPendentes',result.pendentes);
+  setMoney('kpiSaldo',result.saldo);
+
+  setMoney('valorBase',reference.saldo);
+  setMoney('valorAjustado',result.saldo);
+
+  const scale = Math.max(
+    Math.abs(reference.saldo),
+    Math.abs(result.saldo),
+    1
+  );
+
+  const baseBar =
+    document.getElementById('barBase');
+
+  const adjustedBar =
+    document.getElementById('barAjustado');
+
+  baseBar.style.width =
+    (Math.abs(reference.saldo)/scale*100)+'%';
+
+  adjustedBar.style.width =
+    (Math.abs(result.saldo)/scale*100)+'%';
+
+  baseBar.classList.toggle(
+    'negative',reference.saldo<0
+  );
+
+  adjustedBar.classList.toggle(
+    'negative',result.saldo<0
+  );
+
+  document.getElementById('insight')
+    .textContent = makeInsight(scenario,result);
+}
+
+/* Aplica conjuntos de premissas */
+function applyPreset(name){
+
+  const values = presets[name];
+  if(!values) return;
+
+  ids.forEach(id=>{
+    document.getElementById(id).value =
+      values[id];
+  });
+
+  document.querySelectorAll('.preset')
+    .forEach(button=>{
+
+      button.setAttribute(
+        'aria-pressed',
+        String(button.dataset.preset===name)
+      );
+    });
+
+  render();
+}
+
+/* Mudanças manuais */
+ids.forEach(id=>{
+
+  document.getElementById(id)
+    .addEventListener('input',()=>{
+
+      document.querySelectorAll('.preset')
+        .forEach(button=>{
+          button.setAttribute(
+            'aria-pressed','false'
+          );
+        });
+
+      render();
+    });
+});
+
+/* Cenários prontos */
+document.querySelectorAll('.preset')
+  .forEach(button=>{
+
+    button.addEventListener('click',()=>{
+      applyPreset(button.dataset.preset);
+    });
+  });
+
+/* Restaurar */
+document.getElementById('reset')
+  .addEventListener('click',()=>{
+    applyPreset('equilibrado');
+  });
+
+/* Inicialização */
+applyPreset('equilibrado');
+</script>
+
+<script defer src="../assets/transicoes.js?v=2-visible"></script>
+</body>
+</html>
