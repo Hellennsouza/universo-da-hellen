@@ -1,0 +1,40 @@
+/* UI isolada para não alterar o restante do Universo da Hellen. */
+#uh-privacy-root { font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size:14px; line-height:1.45; color:#172b4e; }
+#uh-privacy-root *, #uh-privacy-root *::before, #uh-privacy-root *::after { box-sizing:border-box; }
+#uh-privacy-root [hidden] { display:none !important; }
+#uh-privacy-root button { font:inherit; cursor:pointer; }
+#uh-privacy-root a { color:#145eae; font-weight:700; text-decoration:underline; text-underline-offset:2px; }
+#uh-privacy-root :is(button,a,input):focus-visible { outline:3px solid #f077b4; outline-offset:3px; }
+#uh-privacy-root .uh-consent-banner { position:fixed; z-index:2147483000; inset:auto 14px 14px auto; width:min(600px,calc(100vw - 28px)); padding:22px 24px 19px; background:linear-gradient(125deg,#fff 0%,#f3faff 100%); color:#172b4e; border:1px solid #b7d5ee; border-radius:18px; box-shadow:0 17px 65px rgba(8,35,69,.24); }
+#uh-privacy-root .uh-consent-heading { display:flex; align-items:center; gap:11px; margin-bottom:8px; }
+#uh-privacy-root .uh-consent-symbol { display:grid; place-items:center; width:35px; height:35px; background:#e6f2ff; border-radius:12px; color:#de438b; font-size:24px; }
+#uh-privacy-root h2 { font-size:19px; line-height:1.2; letter-spacing:-.025em; margin:0; color:#10244c; font-weight:800; }
+#uh-privacy-root p { margin:0 0 11px; font-size:13px; color:#3b5071; }
+#uh-privacy-root .uh-consent-actions { display:flex; justify-content:flex-end; align-items:center; flex-wrap:wrap; gap:9px; margin-top:15px; }
+#uh-privacy-root .uh-btn { border-radius:12px; border:1px solid transparent; min-height:39px; padding:9px 14px; white-space:nowrap; font-size:12px; font-weight:800; transition:transform .14s ease, background .14s ease; }
+#uh-privacy-root .uh-btn:hover { transform:translateY(-1px); }
+#uh-privacy-root .uh-btn-primary { color:#fff; background:#102e5b; border-color:#102e5b; }
+#uh-privacy-root .uh-btn-secondary { color:#173d6f; background:#fff; border-color:#91b8d9; }
+#uh-privacy-root .uh-btn-text { color:#9a2366; background:transparent; border-color:transparent; }
+#uh-privacy-root .uh-privacy-opener { position:fixed; z-index:2147482999; left:14px; bottom:14px; padding:7px 12px; background:#102e5b; color:white; border:1px solid rgba(255,255,255,.2); border-radius:999px; box-shadow:0 5px 16px rgba(5,31,63,.18); font-size:11px; font-weight:800; }
+#uh-privacy-root .uh-opener-hidden { display:none; }
+#uh-privacy-root .uh-privacy-overlay { position:fixed; z-index:2147483001; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(9,22,42,.68); padding:20px; }
+#uh-privacy-root .uh-privacy-panel { width:min(480px,100%); max-height:min(90vh,750px); overflow:auto; padding:24px; background:#fff; color:#182b4b; border:1px solid #b7d5ee; border-radius:19px; box-shadow:0 20px 65px rgba(9,25,56,.25); }
+#uh-privacy-root .uh-privacy-panel-head { display:flex; align-items:center; gap:12px; justify-content:space-between; margin-bottom:12px; }
+#uh-privacy-root .uh-privacy-close { border:0; background:#f0f5fa; color:#223657; border-radius:50%; width:30px; height:30px; display:grid; place-items:center; font-size:23px; }
+#uh-privacy-root .uh-preference-item { border:1px solid #d9e7f3; padding:15px; border-radius:12px; display:flex; align-items:flex-start; justify-content:space-between; gap:16px; margin:11px 0; }
+#uh-privacy-root .uh-preference-item strong { display:block; margin:0 0 5px; font-size:13px; }
+#uh-privacy-root .uh-preference-item p { font-size:12px; margin:0; }
+#uh-privacy-root .uh-preference-required { font-size:10px; color:#205f76; font-weight:800; white-space:nowrap; background:#e5f7ef; border-radius:999px; padding:5px 7px; }
+#uh-privacy-root .uh-preference-item input { accent-color:#e34896; width:19px; height:19px; flex:0 0 auto; cursor:pointer; }
+#uh-privacy-root .uh-privacy-help { margin:13px 0; font-size:11px; }
+#uh-privacy-root .uh-btn-full { width:100%; margin-top:19px; }
+body.uh-privacy-dialog-open { overflow:hidden; }
+@media(max-width:610px) {
+  #uh-privacy-root .uh-consent-banner { width:calc(100vw - 22px); inset:auto 11px 11px; padding:16px; max-height:min(80vh,650px); overflow:auto; }
+  #uh-privacy-root .uh-consent-actions { gap:7px; }
+  #uh-privacy-root .uh-consent-actions .uh-btn { flex:1 1 100%; min-height:39px; }
+  #uh-privacy-root .uh-privacy-panel { padding:18px; }
+  #uh-privacy-root .uh-privacy-opener { bottom:11px; left:11px; }
+}
+@media(prefers-reduced-motion:reduce) { #uh-privacy-root .uh-btn { transition:none; } }
