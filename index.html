@@ -1861,6 +1861,58 @@ img, video, iframe {
       transform: none;
     }
   }
+ 
+/* =====================================
+   CAPA DO PROJETO SYMBIO-SUIT
+   ===================================== */
+
+#laboratorio .uh-lab-symbio-cover {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 360px;
+  overflow: hidden;
+
+  background: #061728;
+}
+
+/* Imagem sem cortes */
+#laboratorio .uh-lab-symbio-cover img {
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Destaque do card */
+#laboratorio .uh-lab-project-symbio {
+  border-color: #54bfc4;
+}
+
+/* Botão */
+#laboratorio .uh-lab-project-symbio .uh-lab-button {
+  background: #103a4b;
+  border-color: #54bfc4;
+  color: #b1f2eb;
+}
+
+#laboratorio .uh-lab-project-symbio .uh-lab-button:hover {
+  background: #197b83;
+  color: #fff;
+}
+
+/* Responsividade */
+@media (max-width: 680px) {
+  #laboratorio .uh-lab-symbio-cover {
+    height: 340px;
+  }
+}
+
 </style>
    
 <style>
@@ -1924,60 +1976,59 @@ img, video, iframe {
            01 — SYMBIO-SUIT
            ==================================== -->
 
-      <article class="uh-lab-project">
+     
+<!-- ====================================
+     01 — SYMBIO-SUIT
+     ==================================== -->
 
-        <a
-          class="uh-lab-cover"
-          href="documentos/symbio-suit.docx"
-          aria-label="Abrir pesquisa SYMBIO-SUIT"
-        >
-          <div class="uh-lab-art uh-lab-symbio">
+<article class="uh-lab-project uh-lab-project-symbio">
 
-            <span class="uh-lab-art-label">
-              01 // MATERIAIS INTELIGENTES
-            </span>
+  <!-- CAPA -->
+  <a
+    class="uh-lab-cover"
+    href="documentos/symbio-suit.docx"
+    aria-label="Consultar pesquisa SYMBIO-SUIT"
+  >
+    <div class="uh-lab-symbio-cover">
+      <img
+        src="assets/capas/symbio-suit.png"
+        alt="SYMBIO-SUIT — pesquisa teórica sobre compósitos poliméricos magnetoativos e superfícies adaptativas"
+        loading="lazy"
+      >
+    </div>
+  </a>
 
-            <div>
-              <h3>SYMBIO-SUIT</h3>
+  <!-- CONTEÚDO -->
+  <div class="uh-lab-content">
 
-              <p class="uh-lab-art-subtitle">
-                Materiais magnetoativos e
-                superfícies adaptativas.
-              </p>
-            </div>
+    <p class="uh-lab-type">
+      Pesquisa teórica · Ciência dos Materiais
+    </p>
 
-          </div>
-        </a>
+    <h3>SYMBIO-SUIT</h3>
 
-        <div class="uh-lab-content">
+    <p>
+      Investigação teórica sobre compósitos
+      poliméricos magnetoativos e suas
+      possíveis aplicações em materiais
+      flexíveis e superfícies adaptativas.
+    </p>
 
-          <p class="uh-lab-type">
-            Pesquisa teórica
-          </p>
+    <span class="uh-lab-status">
+      Estudo bibliográfico
+    </span>
 
-          <h3>SYMBIO-SUIT</h3>
+    <a
+      class="uh-lab-button"
+      href="documentos/symbio-suit.docx"
+    >
+      Consultar pesquisa
+      <span aria-hidden="true">↗</span>
+    </a>
 
-          <p>
-            Investigação teórica sobre compósitos
-            poliméricos magnetoativos e suas
-            possíveis aplicações em materiais
-            flexíveis e superfícies adaptativas.
-          </p>
+  </div>
 
-          <span class="uh-lab-status">
-            Estudo bibliográfico
-          </span>
-
-          <a
-            class="uh-lab-button"
-            href="documentos/symbio-suit.docx"
-          >
-            Consultar pesquisa
-            <span aria-hidden="true">↗</span>
-          </a>
-
-        </div>
-      </article>
+</article>
 
       <!-- ====================================
            02 — SHAP E XAI
