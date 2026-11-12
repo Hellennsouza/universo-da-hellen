@@ -1,0 +1,91 @@
+/* Universo da Hellen — MOVIMENTO VISÍVEL, SEM POLUIÇÃO VISUAL · v2
+ * Cross-document: página desliza e entra em foco.
+ * Same-document: cartões reorganizam com deslocamento perceptível.
+ * Fallback: navegação e filtros seguem funcionando sem API. */
+@view-transition { navigation: auto; }
+
+@keyframes uh-v2-page-out {
+  from { opacity: 1; transform: translate3d(0,0,0) scale(1); filter: blur(0); }
+  to { opacity: 0; transform: translate3d(-48px,0,0) scale(.975); filter: blur(5px); }
+}
+@keyframes uh-v2-page-in {
+  from { opacity: .08; transform: translate3d(68px,0,0) scale(1.025); filter: blur(7px); }
+  58% { opacity: .88; filter: blur(1px); }
+  to { opacity: 1; transform: translate3d(0,0,0) scale(1); filter: blur(0); }
+}
+::view-transition-old(root) {
+  animation: 590ms cubic-bezier(.4,0,.6,1) both uh-v2-page-out;
+  transform-origin: center center;
+}
+::view-transition-new(root) {
+  animation: 750ms cubic-bezier(.16,1,.3,1) both uh-v2-page-in;
+  transform-origin: center center;
+}
+
+/* Títulos com movimento próprio entre as páginas de experiência. */
+.ux-intro h1 { view-transition-name: uh-titulo; }
+@keyframes uh-v2-title-out {
+  to { opacity: 0; transform: translate3d(-20px,-8px,0); filter: blur(3px); }
+}
+@keyframes uh-v2-title-in {
+  from { opacity: 0; transform: translate3d(30px,22px,0); filter: blur(5px); }
+  to { opacity: 1; transform: none; filter: none; }
+}
+::view-transition-group(uh-titulo) {
+  animation-duration: 750ms;
+  animation-timing-function: cubic-bezier(.16,1,.3,1);
+}
+::view-transition-old(uh-titulo) { animation: 400ms ease-in both uh-v2-title-out; }
+::view-transition-new(uh-titulo) { animation: 680ms cubic-bezier(.16,1,.3,1) both uh-v2-title-in; }
+
+/* Abertura do projeto, a partir de um cartão selecionado. */
+::view-transition-group(uh-projeto-foco) {
+  animation-duration: 760ms;
+  animation-timing-function: cubic-bezier(.16,1,.3,1);
+}
+::view-transition-old(uh-projeto-foco) { animation-duration: 400ms; }
+::view-transition-new(uh-projeto-foco) { animation-duration: 650ms; }
+
+/* Mesmo DOM: enquanto filtro muda, o resto da tela fica estável. */
+html.uh-filtrando::view-transition-old(root),
+html.uh-filtrando::view-transition-new(root) {
+  animation: none;
+}
+.ux-area { transition: transform 240ms ease, box-shadow 240ms ease, border-color 240ms ease; }
+.ux-area:active { transform: scale(.98); }
+.ux-area[aria-pressed="true"] { box-shadow: 0 8px 24px rgba(25,99,172,.14); }
+.ux-catalog-card { view-transition-class: uh-catalog-card; }
+@keyframes uh-v2-card-out {
+  to { opacity: 0; transform: translate3d(-18px,-10px,0) scale(.96); filter: blur(3px); }
+}
+@keyframes uh-v2-card-in {
+  from { opacity: 0; transform: translate3d(34px,30px,0) scale(.95); filter: blur(5px); }
+  45% { opacity: .80; filter: blur(1px); }
+  to { opacity: 1; transform: none; filter: none; }
+}
+::view-transition-group(.uh-catalog-card) {
+  animation-duration: 730ms;
+  animation-timing-function: cubic-bezier(.16,1,.3,1);
+}
+::view-transition-old(.uh-catalog-card) { animation: 370ms ease-in both uh-v2-card-out; }
+::view-transition-new(.uh-catalog-card) { animation: 680ms cubic-bezier(.16,1,.3,1) both uh-v2-card-in; }
+/* Fallback para navegadores que ainda não aplicam view-transition-class. */
+::view-transition-group(uh-card-0),
+::view-transition-group(uh-card-1),
+::view-transition-group(uh-card-2),
+::view-transition-group(uh-card-3) {
+  animation-duration: 730ms;
+  animation-timing-function: cubic-bezier(.16,1,.3,1);
+}
+
+/* Evita movimento quando a pessoa expressa preferência por menos animações. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; }
+  .ux-area { transition: none !important; }
+  ::view-transition-old(*), ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation-duration: .01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
