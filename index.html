@@ -857,6 +857,100 @@ img, video, iframe {
     <link href="assets/favicon.png" rel="apple-touch-icon"/>
    </meta>
   </meta>
+  
+<style>
+/* TRÊS PILARES — UNIVERSO DA HELLEN */
+
+#areas .pillar-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 38px;
+}
+
+#areas .pillar-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 10px;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 24px;
+  color: #182747;
+  text-decoration: none;
+  box-shadow: 0 16px 35px rgba(23, 45, 85, .12);
+  transition: transform .25s, box-shadow .25s;
+}
+
+#areas .pillar-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 24px 45px rgba(23, 45, 85, .2);
+}
+
+#areas .pillar-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 17px;
+}
+
+#areas .pillar-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 22px 15px 17px;
+}
+
+#areas .pillar-content h3 {
+  font-family: Georgia, serif;
+  font-size: clamp(1.25rem, 1.8vw, 1.65rem);
+  color: #17284b;
+  margin: 0 0 15px;
+}
+
+#areas .pillar-content p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #465a7e;
+  margin: 0 0 24px;
+}
+
+#areas .pillar-content span {
+  margin-top: auto;
+  color: #dc348c;
+  font-weight: 800;
+  font-size: 13px;
+}
+
+@media (max-width: 900px) {
+  #areas .pillar-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 650px) {
+  #areas .pillar-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  #areas .pillar-card {
+    border-radius: 20px;
+  }
+
+  #areas .pillar-content {
+    padding: 20px 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #areas .pillar-card {
+    transition: none;
+  }
+}
+</style>
+
  </head>
  <body>
   <a class="skip" href="#conteudo">
@@ -1003,82 +1097,94 @@ img, video, iframe {
      </aside>
     </div>
    </section>
-   <section class="section areas" id="areas">
-    <div class="wrap">
-     <div class="eyebrow">
-      Um universo, muitas possibilidades
-     </div>
-     <h2>
-      Minhas cinco áreas de atuação
-     </h2>
-     <p class="lead">
-      Conheça as frentes que conectam minha experiência profissional, meus estudos e os projetos que desenvolvo.
-     </p>
-     <div class="area-grid">
-      <a class="area-card reveal" data-area="Finanças" href="#projetos">
-       <img alt="Ilustração de finanças" class="area-image" loading="lazy" src="assets/areas/financas.png"/>
-       <h3>
-        Finanças
-       </h3>
-       <p>
-        Inteligência financeira, FinCrime, crédito, riscos e finanças empresariais e pessoais.
-       </p>
-       <span class="area-action">
-        Explorar projetos ↗
-       </span>
-      </a>
-      <a class="area-card reveal" data-area="Robótica" href="#projetos">
-       <img alt="Ilustração de robotica" class="area-image" loading="lazy" src="assets/areas/robotica.png"/>
-       <h3>
-        Robótica
-       </h3>
-       <p>
-        Oficinas de Arduino, automação residencial e iniciativas de educação científica.
-       </p>
-       <span class="area-action">
-        Explorar projetos ↗
-       </span>
-      </a>
-      <a class="area-card reveal" data-area="Gestão" href="#projetos">
-       <img alt="Ilustração de gestao" class="area-image" loading="lazy" src="assets/areas/gestao.png"/>
-       <h3>
-        Gestão
-       </h3>
-       <p>
-        Gestão financeira, comercial, operacional, de processos e do tempo.
-       </p>
-       <span class="area-action">
-        Explorar projetos ↗
-       </span>
-      </a>
-      <a class="area-card reveal" data-area="Data Science" href="#projetos">
-       <img alt="Ilustração de data" class="area-image" loading="lazy" src="assets/areas/data.png"/>
-       <h3>
-        Data Science
-       </h3>
-       <p>
-        Python, SQL, Streamlit, modelos preditivos e inteligência de dados para negócios.
-       </p>
-       <span class="area-action">
-        Explorar projetos ↗
-       </span>
-      </a>
-      <a class="area-card reveal" data-area="Empreendedorismo" href="#projetos">
-       <img alt="Ilustração de empreendedorismo" class="area-image" loading="lazy" src="assets/areas/empreendedorismo.png"/>
-       <h3>
-        Empreendedorismo
-       </h3>
-       <p>
-        Empreendimentos, desenvolvimento de marcas, soluções de negócio e inovação.
-       </p>
-       <span class="area-action">
-        Explorar projetos ↗
-       </span>
-      </a>
-     </div>
+   
+<section class="section areas" id="areas">
+  <div class="wrap">
+
+    <div class="eyebrow">
+      EXPERIÊNCIA, COMPETÊNCIAS E PROJETOS
     </div>
-   </section>
- 
+
+    <h2>Experiência que se transforma em inteligência.</h2>
+
+    <p class="lead">
+      Uma trajetória multidisciplinar que conecta
+      gestão financeira, tecnologia, análise de dados
+      e resolução de problemas complexos.
+    </p>
+
+    <div class="pillar-grid">
+
+      <!-- EXPERIÊNCIA PROFISSIONAL -->
+      <a class="pillar-card reveal" href="#trajetoria">
+
+        <img
+          src="assets/areas/experiencia-profissional.jpg"
+          alt="Gestão financeira, indicadores e decisões empresariais"
+          loading="lazy"
+        >
+
+        <div class="pillar-content">
+          <h3>Experiência profissional</h3>
+
+          <p>
+            Gestão financeira, comercial e operacional,
+            com vivência em processos, indicadores,
+            relacionamento e tomada de decisões empresariais.
+          </p>
+
+          <span>Conhecer minha experiência ↗</span>
+        </div>
+      </a>
+
+      <!-- COMPETÊNCIAS TÉCNICAS -->
+      <a class="pillar-card reveal" href="#competencias">
+
+        <img
+          src="assets/areas/competencias-tecnicas.jpg"
+          alt="Python, SQL, visualização de dados e inteligência artificial"
+          loading="lazy"
+        >
+
+        <div class="pillar-content">
+          <h3>Competências técnicas</h3>
+
+          <p>
+            Ciência de Dados, Python, SQL,
+            análise estatística, modelos preditivos,
+            visualização de dados e inteligência artificial.
+          </p>
+
+          <span>Explorar competências ↗</span>
+        </div>
+      </a>
+
+      <!-- PROJETOS E PESQUISAS -->
+      <a class="pillar-card reveal" href="#destaques">
+
+        <img
+          src="assets/areas/projetos-pesquisas.jpg"
+          alt="Investigação de fraudes, risco de crédito e inteligência financeira"
+          loading="lazy"
+        >
+
+        <div class="pillar-content">
+          <h3>Projetos e pesquisas</h3>
+
+          <p>
+            Aplicações e estudos envolvendo risco de crédito,
+            detecção de fraudes, IA explicável
+            e inteligência financeira.
+          </p>
+
+          <span>Ver projetos e pesquisas ↗</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
 <!-- ============================================
      PROJETOS E SOLUÇÕES
      ============================================ -->
@@ -1101,6 +1207,7 @@ img, video, iframe {
         que conectam ciência de dados, inteligência
         financeira, tecnologia e estratégia de negócios.
       </p>
+     
     </header>
 
 
