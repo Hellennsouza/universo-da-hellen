@@ -1879,14 +1879,23 @@ img, video, iframe {
   background: #061728;
 }
 
-/* Imagem sem cortes */
+
+/* CAPA SYMBIO-SUIT — SEM MARGENS */
+
+#laboratorio .uh-lab-symbio-cover {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  background: #061728;
+}
+
 #laboratorio .uh-lab-symbio-cover img {
   display: block;
   width: 100%;
-  height: 100%;
-
-  object-fit: contain;
-  object-position: center;
+  height: auto;
+  max-width: 100%;
+  object-fit: initial;
 }
 
 /* Destaque do card */
