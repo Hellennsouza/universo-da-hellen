@@ -3154,30 +3154,32 @@ function createProjectCard(project, main) {
 }
 
 /* Área exclusiva da capa */
+
+/* CAPAS DOS PROJETOS SEM MARGENS LATERAIS */
+
 #projetos .uh2-cover {
   position: relative !important;
   display: block !important;
 
   width: 100% !important;
-  aspect-ratio: 1100 / 430 !important;
+  aspect-ratio: auto !important;
 
   min-height: 0 !important;
   height: auto !important;
   overflow: hidden !important;
 
-  background: linear-gradient(135deg, #142b50, #0b1831);
+  background: #101d35;
 }
 
-/* Imagem original, sem recortes ou sobreposições */
 #projetos .uh2-cover img {
-  position: absolute !important;
-  inset: 0 !important;
+  position: relative !important;
+  inset: auto !important;
 
   display: block !important;
   width: 100% !important;
-  height: 100% !important;
+  height: auto !important;
 
-  max-width: none !important;
+  max-width: 100% !important;
   max-height: none !important;
 
   object-fit: contain !important;
@@ -3186,6 +3188,7 @@ function createProjectCard(project, main) {
   opacity: 1 !important;
   transform: none !important;
 }
+
 
 /* Alternativa quando a capa não estiver disponível */
 #projetos .uh2-fallback {
