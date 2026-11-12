@@ -191,37 +191,15 @@
         <div><h2 id="sol-form-title">Solicitar solução personalizada</h2><p>Conte sua necessidade em um breve formulário. Assim, poderei preparar um atendimento especializado e uma proposta alinhada ao seu objetivo.</p></div>
         <div class="sol-form-rule" aria-hidden="true"></div>
         <div class="sol-form-action">
-          <!-- Enquanto o link do Jotform não for definido, o botão leva ao contato do site. -->
-          <a id="sol-jotform" href="index.html#contato"><svg class="sol-icon" aria-hidden="true"><use href="#sol-i-external"/></svg><span id="sol-cta-label">Solicitar atendimento</span></a>
-          <small id="sol-cta-note">Atendimento inicial pelo contato do site</small>
+          <a id="sol-jotform" href="https://form.jotform.com/263156092560052" target="_blank" rel="noopener noreferrer" aria-label="Preencher formulário de solicitação personalizada (abre em nova aba)"><svg class="sol-icon" aria-hidden="true"><use href="#sol-i-external"/></svg><span id="sol-cta-label">Preencher formulário</span></a>
+          <small id="sol-cta-note">Formulário de atendimento via Jotform</small>
         </div>
       </section>
       <p class="sol-disclaimer">Os projetos demonstram competências e metodologias; estudos, simulações e provas de conceito não representam sistemas validados em produção. O escopo de cada serviço é definido conforme a necessidade do cliente.</p>
     </div>
   </main>
   <footer class="ux-footer"><div class="ux-container"><span>UNIVERSO <b>DA HELLEN</b> ✦</span><span>Ciência de Dados · Fraudes · Inteligência Financeira</span><a href="index.html">Voltar ao início ↗</a></div></footer>
-  <script>
-    /* CONFIGURAÇÃO DO FORMULÁRIO
-       Cole abaixo somente o link do formulário de SOLICITAÇÃO DE SOLUÇÕES.
-       Exemplo: const JOTFORM_URL = 'https://form.jotform.com/123456789012345';
-       Não use um formulário de outro site/empresa por engano. */
-    const JOTFORM_URL = '';
-    (() => {
-      const link = document.getElementById('sol-jotform');
-      const label = document.getElementById('sol-cta-label');
-      const note = document.getElementById('sol-cta-note');
-      try {
-        const form = new URL(JOTFORM_URL);
-        if (form.protocol === 'https:' && /(^|\.)jotform\.com$/i.test(form.hostname)) {
-          link.href = form.toString();
-          link.target = '_blank';
-          link.rel = 'noopener noreferrer';
-          label.textContent = 'Preencher formulário';
-          note.textContent = 'Formulário de atendimento via Jotform';
-        }
-      } catch { /* Sem URL configurada: mantém o contato existente funcionando. */ }
-    })();
-  </script>
+
   <script defer src="assets/experiencias.js?v=2"></script>
   <script defer src="assets/transicoes.js?v=2-visible"></script>
 </body>
