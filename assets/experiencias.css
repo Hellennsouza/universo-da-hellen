@@ -148,3 +148,4 @@ body.ux-body{margin:0;min-width:320px;font:16px/1.45 Arial,Helvetica,sans-serif;
  .ux-device-base{height:10px;background:linear-gradient(#adcde6,#5e91b3);width:120%;margin-left:-10%;border-radius:1px 1px 18px 18px}
 }
 @media(max-width:1100px){.ux-device{display:none}}
+
