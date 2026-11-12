@@ -2728,6 +2728,25 @@ img, video, iframe {
       transition: none !important;
     }
   }
+ 
+/* ==========================================
+   REMOVER PAINÉIS PORTFÓLIO / ROBÓTICA E DADOS
+   ========================================== */
+
+/* Oculta os quadros decorativos */
+#projetos .uh-topic-terminal {
+  display: none !important;
+}
+
+/* Aproveita o espaço liberado no computador */
+@media (min-width: 1181px) {
+  #projetos .uh-topic-grid {
+    grid-template-columns:
+      minmax(0, 1.65fr)
+      repeat(2, minmax(0, .87fr)) !important;
+  }
+}
+
 </style>
 
 <script>
