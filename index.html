@@ -951,7 +951,8 @@ img, video, iframe {
 }
 </style>
 
- </head>
+   <link rel="stylesheet" href="assets/hero-minimal.css?v=20261112"/>
+</head>
  <body>
   <a class="skip" href="#conteudo">
    Ir para conteúdo
@@ -969,82 +970,53 @@ img, video, iframe {
      ☰ Menu
     </button>
     <nav aria-label="Navegação principal" class="navlinks" id="navLinks">
-     <a href="#sobre">
-      Sobre
-     </a>
-     <a href="#areas">
-      Áreas
-     </a>
-     <a href="#destaques">
-      Destaques
-     </a>
-     <a href="#projetos">
-      Projetos
-     </a>
-     <a href="#resultados">
-      Resultados
-     </a>
-     <a href="#trajetoria">
-      Trajetória
-     </a>
-     <a href="#competencias">
-      Competências
-     </a>
-     <a href="#laboratorio">
-      Laboratório
-     </a>
-     <a href="#contato">
-      Contato
-     </a>
+      <a href="#inicio" aria-current="location">Início</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#trajetoria">Experiência</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#contato">Contato</a>
     </nav>
+    <a class="hero-nav-cta" href="#contato">Vamos conversar <span aria-hidden="true">↗</span></a>
    </div>
   </header>
   <main id="conteudo">
-   <section class="hero" id="inicio">
-    <div class="wrap hero-inner">
-     <div>
-      <div class="eyebrow">
-       Bem-vindo ao meu universo
+   <section class="hero hero-minimal" id="inicio" aria-labelledby="hero-titulo">
+      <div class="wrap hero-inner hero-minimal-layout">
+        <div class="hero-copy">
+          <div class="eyebrow hero-kicker">Dados · Finanças · Riscos · IA</div>
+          <h1 id="hero-titulo">Transformando dados em <em>inteligência</em> para decisões.</h1>
+          <p>Ciência de Dados, Inteligência Financeira e Prevenção a Fraudes com foco em análise, estratégia e impacto no negócio.</p>
+          <div class="hero-actions">
+            <a class="btn" href="#projetos">Explorar projetos <span aria-hidden="true">↗</span></a>
+            <a class="btn secondary" href="#trajetoria">Conhecer minha trajetória</a>
+          </div>
+        </div>
+        <div class="hero-portrait">
+          <svg class="hero-data-curve" viewBox="0 0 440 350" fill="none" aria-hidden="true" focusable="false">
+            <path d="M6 294 C80 248 108 285 172 215 S312 196 433 40" stroke="#3abcf3" stroke-width="1.6" opacity=".48"/>
+            <path d="M6 300 C83 259 107 295 172 228 S312 206 433 52" stroke="#3abcf3" stroke-width="12" opacity=".035"/>
+          </svg>
+          <img class="hero-portrait-photo" src="assets/hellen-souza.png" width="1056" height="1408" decoding="async" fetchpriority="high" alt="Retrato profissional de Hellen Souza"/>
+          <div class="hero-portrait-caption"><strong>Hellen Souza</strong><span>Dados &amp; Inteligência Financeira</span></div>
+        </div>
       </div>
-      <h1>
-       Ideias, caminhos e
-       <em>
-        projetos que ganham vida.
-       </em>
-      </h1>
-      <p>
-       Gestão financeira e comercial, ciência de dados e inteligência financeira: projetos, pesquisas e experiências que conectam visão de negócios à análise de dados.
-      </p>
-      <a class="btn" href="#destaques">
-       Ver destaques
-      </a>
-      <a class="btn secondary" href="#sobre">
-       Minha história
-      </a>
-     </div>
-     <div aria-label="Registros de alguém que sonha alto" class="window">
-      <div class="windowbar">
-       <i class="dot">
-       </i>
-       <i class="dot">
-       </i>
-       <i class="dot">
-       </i>
+      <div class="wrap hero-featured" aria-labelledby="hero-featured-title">
+        <h2 id="hero-featured-title">Projetos em destaque</h2>
+        <div class="hero-featured-grid">
+          <a class="hero-feature-card" href="projetos/operacao-espelho-falso-deteccao-de-deepfakes.html" aria-label="Conhecer Operação Espelho Falso">
+            <svg class="hero-feature-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="21" cy="21" r="12"/><path d="m30 30 11 11"/></svg>
+            <span class="hero-feature-copy"><small>Investigação digital</small><strong>Operação Espelho Falso</strong><span>Fraudes, deepfakes e IA explicável</span></span>
+            <span class="hero-feature-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="hero-feature-card" href="projetos/icdf-framework-de-decisao-em-credito-integrado.html" aria-label="Conhecer ICDF Framework">
+            <svg class="hero-feature-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="m24 5 19 10-19 10L5 15 24 5Z"/><path d="m5 24 19 10 19-10M5 33l19 10 19-10"/></svg>
+            <span class="hero-feature-copy"><small>Inteligência de crédito</small><strong>ICDF Framework</strong><span>Risco financeiro e qualidade dos dados</span></span>
+            <span class="hero-feature-arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
       </div>
-      <div class="windowcontent">
-       <strong>
-        Registros de alguém
-        <br/>
-        que sonha alto ✨
-       </strong>
-       <small>
-        BY HELLEN SOUZA
-       </small>
-      </div>
-     </div>
-    </div>
-   </section>
-   <section class="section" id="sobre">
+    </section>
+    <section class="section" id="sobre">
     <div class="wrap about">
      <div class="reveal">
       <div class="eyebrow">
@@ -3742,83 +3714,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
 
-    // 2. Apresentação inicial direcionada ao objetivo profissional.
-    const hero = document.getElementById("inicio");
-
-    if (hero) {
-      const title = hero.querySelector("h1");
-      const text = hero.querySelector(".hero-inner > div > p");
-      const buttons = hero.querySelectorAll(".hero-inner .btn");
-      const heroContent = hero.querySelector(".hero-inner > div");
-
-      if (title) {
-        title.innerHTML =
-          'Transformando dados em ' +
-          '<em>inteligência para decisões.</em>';
-      }
-
-      if (text) {
-        text.textContent =
-          "Experiência em gestão financeira, formação em " +
-          "Ciência de Dados e projetos voltados à análise " +
-          "de riscos, prevenção a fraudes e inteligência artificial.";
-      }
-
-      if (buttons[0]) {
-        buttons[0].href = "#projetos";
-        buttons[0].textContent = "Explorar projetos";
-      }
-
-      if (buttons[1]) {
-        buttons[1].href = "#trajetoria";
-        buttons[1].textContent = "Conhecer minha trajetória";
-      }
-
-      if (
-        heroContent &&
-        !hero.querySelector(".hero-spotlight")
-      ) {
-        const teaser = document.createElement("div");
-        teaser.className = "hero-spotlight";
-
-        const destaques = [
-          {
-            title: "Operação Espelho Falso",
-            label: "Investigação digital",
-            desc: "Fraudes, deepfakes e IA explicável",
-            href:
-              "projetos/operacao-espelho-falso-deteccao-de-deepfakes.html"
-          },
-          {
-            title: "ICDF Framework",
-            label: "Inteligência de crédito",
-            desc: "Risco financeiro e qualidade dos dados",
-            href:
-              "projetos/icdf-framework-de-decisao-em-credito-integrado.html"
-          }
-        ];
-
-        destaques.forEach(p => {
-          const a = document.createElement("a");
-          a.href = p.href;
-
-          const label = document.createElement("span");
-          label.className = "spotlight-label";
-          label.textContent = p.label;
-
-          const heading = document.createElement("strong");
-          heading.textContent = p.title;
-
-          const description = document.createElement("small");
-          description.textContent = p.desc;
-
-          a.append(label, heading, description);
-          teaser.append(a);
-        });
-
-        heroContent.append(teaser);
-      }
-    }
+    // 2. A abertura agora está no HTML para renderização imediata e SEO.
 
     // 3. Formação UFOB compacta.
     // As disciplinas originais não são excluídas.
