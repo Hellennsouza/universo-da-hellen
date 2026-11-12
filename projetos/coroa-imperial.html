@@ -1,0 +1,1903 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+
+  <meta name="theme-color" content="#0b1020">
+
+  <title>
+    Coroa Imperial — Black Princess | Universo da Hellen
+  </title>
+
+  <meta name="description"
+        content="Estudo de caso do projeto Coroa Imperial, desenvolvido pela equipe Código Malte no Hackathon Grupo Petrópolis 2026. Pesquisa, inovação, experiência do consumidor e estratégia de dados.">
+
+  <style>
+    :root {
+      --navy: #111d3a;
+      --dark: #0b1020;
+      --dark-2: #151b2c;
+      --gold: #ddb979;
+      --gold-light: #f4dbac;
+      --pink: #d9468f;
+      --white: #ffffff;
+      --muted: #b6c0d1;
+      --line: rgba(221,185,121,.23);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 120px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--dark);
+      color: var(--white);
+      font-family: "Segoe UI", Arial, sans-serif;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    a:focus-visible,
+    summary:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 4px;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .wrap {
+      width: min(1200px, calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    h1, h2, h3, p {
+      margin-top: 0;
+    }
+
+    h1, h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      letter-spacing: -.035em;
+    }
+
+    .eyebrow {
+      display: block;
+      margin-bottom: 13px;
+      color: var(--gold);
+      font: 700 .76rem Consolas, monospace;
+      text-transform: uppercase;
+      letter-spacing: .13em;
+    }
+
+    .section-title {
+      margin-bottom: 20px;
+      font-size: clamp(2.1rem, 4.8vw, 3.9rem);
+      line-height: 1.12;
+      font-weight: 500;
+    }
+
+    .section-lead {
+      max-width: 880px;
+      color: var(--muted);
+      font-size: 1.04rem;
+      line-height: 1.85;
+    }
+
+    .section-space {
+      padding: 94px 0;
+    }
+
+    /* CABEÇALHO */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(17,29,58,.96);
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .header-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      text-decoration: none;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 900;
+      letter-spacing: .065em;
+    }
+
+    .brand span {
+      color: #58c6ec;
+    }
+
+    .return-link {
+      text-decoration: none;
+      padding: 10px 16px;
+      border: 1px solid #637594;
+      border-radius: 999px;
+      color: #e6eefb;
+      font-weight: 700;
+      font-size: .83rem;
+    }
+
+    .return-link:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* NAVEGAÇÃO INTERNA */
+    .project-nav {
+      border-bottom: 1px solid var(--line);
+      background: #0e1425;
+    }
+
+    .project-nav-inner {
+      display: flex;
+      gap: 30px;
+      overflow-x: auto;
+      padding: 14px 0;
+      scrollbar-width: thin;
+    }
+
+    .project-nav a {
+      flex-shrink: 0;
+      color: #b7c3d4;
+      text-decoration: none;
+      font-size: .83rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .project-nav a:hover {
+      color: var(--gold);
+    }
+
+    /* ABERTURA */
+    .project-hero {
+      position: relative;
+      overflow: hidden;
+      padding: 95px 0 75px;
+
+      background:
+        radial-gradient(
+          ellipse at 85% 16%,
+          rgba(183,123,58,.16),
+          transparent 38%
+        ),
+        radial-gradient(
+          ellipse at 7% 75%,
+          rgba(87,61,132,.18),
+          transparent 42%
+        ),
+        linear-gradient(
+          120deg,
+          #080d19,
+          #121726 65%,
+          #261d25
+        );
+    }
+
+    .hero-copy {
+      max-width: 900px;
+    }
+
+    .project-hero h1 {
+      margin: 0 0 22px;
+      font-size: clamp(2.7rem, 6.5vw, 5.6rem);
+      line-height: 1.08;
+      font-weight: 500;
+    }
+
+    .project-hero h1 em {
+      color: var(--gold);
+      font-weight: 400;
+    }
+
+    .project-hero .intro {
+      max-width: 750px;
+      color: #d4d6e0;
+      font-size: 1.1rem;
+      line-height: 1.85;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 28px 0 36px;
+    }
+
+    .hero-tags span {
+      padding: 8px 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(221,185,121,.065);
+      color: #e4cfac;
+      font-size: .76rem;
+      font-weight: 700;
+    }
+
+    .primary-link {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 23px;
+      border-radius: 999px;
+      background: var(--gold);
+      color: #121626;
+      text-decoration: none;
+      font-weight: 800;
+      transition: transform .2s, background .2s;
+    }
+
+    .primary-link:hover {
+      transform: translateY(-2px);
+      background: var(--gold-light);
+    }
+
+    /* CAPA ORIGINAL */
+    .hero-cover {
+      margin: 55px 0 0;
+      padding: 7px;
+      overflow: hidden;
+      border-radius: 22px;
+      border: 1px solid rgba(221,185,121,.5);
+      background: #080b13;
+      box-shadow: 0 24px 60px rgba(0,0,0,.35);
+    }
+
+    .hero-cover img {
+      width: 100%;
+      height: auto;
+      border-radius: 15px;
+    }
+
+    .hero-cover figcaption {
+      padding: 15px 14px 9px;
+      color: #aeb9c9;
+      font-size: .8rem;
+      text-align: center;
+    }
+
+    /* INDICADORES */
+    .project-facts {
+      display: grid;
+      grid-template-columns: repeat(4,minmax(0,1fr));
+      gap: 15px;
+      margin-top: 38px;
+    }
+
+    .fact {
+      padding: 23px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255,255,255,.035);
+    }
+
+    .fact strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--gold);
+      font-size: clamp(1.5rem,3vw,2.5rem);
+      line-height: 1.15;
+    }
+
+    .fact span {
+      color: #c3cad5;
+      font-size: .82rem;
+    }
+
+    /* DESAFIO */
+    .challenge {
+      background: #f5f7fc;
+      color: #172747;
+    }
+
+    .challenge .eyebrow {
+      color: #b98540;
+    }
+
+    .challenge .section-lead {
+      color: #475875;
+    }
+
+    .challenge-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 28px;
+      margin-top: 40px;
+    }
+
+    .challenge-card {
+      padding: 32px;
+      border-radius: 20px;
+      background: #fff;
+      border: 1px solid #dce3ed;
+      box-shadow: 0 12px 28px rgba(12,25,52,.06);
+    }
+
+    .challenge-card h3 {
+      margin-bottom: 13px;
+      font-size: 1.27rem;
+    }
+
+    .challenge-card p {
+      color: #50617b;
+      margin-bottom: 0;
+    }
+
+    .challenge-quote {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 36px;
+      border-radius: 20px;
+
+      background: linear-gradient(
+        130deg,
+        #111c36,
+        #30253b
+      );
+
+      color: white;
+      border: 1px solid #b79668;
+    }
+
+    .challenge-quote p {
+      font-family: Georgia, serif;
+      font-size: clamp(1.5rem,2.7vw,2.2rem);
+      line-height: 1.45;
+      margin: 0;
+    }
+
+    .challenge-quote strong {
+      color: #e4bb7d;
+      font-weight: 500;
+    }
+
+    /* PROCESSO */
+    .process {
+      background: #0d1425;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4,minmax(0,1fr));
+      gap: 16px;
+      margin-top: 37px;
+    }
+
+    .process-card {
+      padding: 25px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #151e31;
+    }
+
+    .process-number {
+      display: block;
+      margin-bottom: 22px;
+      color: var(--gold);
+      font: 800 1.35rem Consolas, monospace;
+    }
+
+    .process-card h3 {
+      color: #fff;
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+    }
+
+    .process-card p {
+      color: #b4c0d0;
+      font-size: .86rem;
+      margin-bottom: 0;
+    }
+
+    /* CONCEITOS */
+    .innovations {
+      background:
+        radial-gradient(
+          circle at 92% 8%,
+          #33283c,
+          transparent 35%
+        ),
+        #090e1a;
+    }
+
+    .innovation-grid {
+      display: grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      gap: 27px;
+      margin-top: 42px;
+    }
+
+    .innovation-card {
+      overflow: hidden;
+      border: 1px solid rgba(221,185,121,.28);
+      border-radius: 20px;
+      background: #151b2a;
+    }
+
+    .innovation-media {
+      background: #090d16;
+      display: grid;
+      place-items: center;
+    }
+
+    .innovation-media img {
+      width: 100%;
+      height: auto;
+      max-height: 510px;
+      object-fit: contain;
+    }
+
+    .innovation-body {
+      padding: 27px;
+    }
+
+    .innovation-number {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--gold);
+      font: 700 .76rem Consolas, monospace;
+      letter-spacing: .07em;
+    }
+
+    .innovation-body h3 {
+      margin-bottom: 10px;
+      font-size: 1.35rem;
+      color: #fff;
+    }
+
+    .innovation-body p {
+      color: #b6c0d0;
+      font-size: .92rem;
+    }
+
+    .innovation-note {
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      font-size: .78rem !important;
+      color: #e0bd8b !important;
+      margin-bottom: 0;
+    }
+
+    /* GALERIA COMPLEMENTAR */
+    .gallery-section {
+      background: #121827;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 23px;
+      margin-top: 35px;
+    }
+
+    .gallery figure {
+      margin: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      background: #090d17;
+    }
+
+    .gallery a {
+      display: block;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+      max-height: 590px;
+      object-fit: contain;
+    }
+
+    .gallery figcaption {
+      padding: 15px 19px;
+      color: #c7ccd5;
+      font-size: .85rem;
+    }
+
+    /* DADOS / QR CODE */
+    .data-section {
+      background: linear-gradient(
+        135deg,
+        #101c33,
+        #191932 65%,
+        #29213a
+      );
+    }
+
+    .data-flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 11px;
+      align-items: center;
+      margin-top: 35px;
+    }
+
+    .flow-step {
+      flex: 1 1 120px;
+      min-width: 0;
+      text-align: center;
+      padding: 18px 13px;
+      border-radius: 13px;
+      border: 1px solid #57718d;
+      background: #182941;
+      color: #fff;
+      font-weight: 800;
+      font-size: .83rem;
+    }
+
+    .flow-arrow {
+      color: var(--gold);
+      font-size: 1.45rem;
+      font-weight: 800;
+    }
+
+    .data-grid {
+      display: grid;
+      grid-template-columns: repeat(3,minmax(0,1fr));
+      gap: 17px;
+      margin-top: 32px;
+    }
+
+    .data-card {
+      padding: 25px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.12);
+    }
+
+    .data-card h3 {
+      color: #e7c089;
+      margin-bottom: 10px;
+    }
+
+    .data-card p {
+      color: #b7c4d8;
+      font-size: .9rem;
+      margin-bottom: 0;
+    }
+
+    /* PESQUISA */
+    .research {
+      background: #f5f7fc;
+      color: #172747;
+    }
+
+    .research .eyebrow {
+      color: #bd8745;
+    }
+
+    .research .section-lead {
+      color: #4e607d;
+    }
+
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      gap: 25px;
+      margin-top: 35px;
+    }
+
+    .research-card {
+      padding: 30px;
+      border-radius: 20px;
+      border: 1px solid #dce5f0;
+      background: #fff;
+      box-shadow: 0 10px 30px rgba(19,37,76,.05);
+    }
+
+    .research-card h3 {
+      margin-bottom: 12px;
+      font-size: 1.25rem;
+    }
+
+    .research-card p {
+      color: #52627b;
+    }
+
+    .survey-number {
+      display: block;
+      font: 700 clamp(2.4rem,5vw,4rem) Georgia,serif;
+      color: #b7864b;
+      line-height: 1.1;
+      margin: 15px 0;
+    }
+
+    .survey-bar {
+      width: 100%;
+      height: 13px;
+      border-radius: 999px;
+      background: #e7eaf1;
+      overflow: hidden;
+      margin: 17px 0;
+    }
+
+    .survey-bar span {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(
+        to right,
+        #b18a51,
+        #d5ae7b
+      );
+    }
+
+    .research-warning {
+      margin-top: 14px;
+      color: #75562c !important;
+      font-size: .83rem;
+    }
+
+    /* VALIDAÇÃO */
+    .validation {
+      background: #101829;
+    }
+
+    .validation-grid {
+      display: grid;
+      grid-template-columns: repeat(3,minmax(0,1fr));
+      gap: 18px;
+      margin-top: 38px;
+    }
+
+    .validation-card {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 27px;
+      background: #182239;
+    }
+
+    .validation-card b {
+      display: inline-block;
+      margin-bottom: 16px;
+      color: var(--gold);
+      font: 700 .81rem Consolas, monospace;
+    }
+
+    .validation-card h3 {
+      font-size: 1.13rem;
+    }
+
+    .validation-card p {
+      color: #bdc7d8;
+      font-size: .9rem;
+      margin-bottom: 0;
+    }
+
+    .kpis {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 30px;
+    }
+
+    .kpis span {
+      padding: 9px 14px;
+      border: 1px solid #46617f;
+      border-radius: 999px;
+      color: #d2dfef;
+      background: #192a40;
+      font-size: .78rem;
+    }
+
+    .note {
+      margin-top: 24px;
+      border-left: 3px solid var(--gold);
+      padding: 13px 19px;
+      color: #d1d6df;
+      background: rgba(221,185,121,.06);
+      font-size: .89rem;
+    }
+
+    /* EQUIPE */
+    .team {
+      background:
+        linear-gradient(
+          135deg,
+          #181527,
+          #101c30 75%
+        );
+    }
+
+    .team-panel {
+      margin-top: 30px;
+      padding: 35px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(255,255,255,.035);
+    }
+
+    .team-panel h3 {
+      margin-bottom: 18px;
+      color: var(--gold);
+      font-size: 1.4rem;
+    }
+
+    .team-list {
+      display: grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      gap: 12px;
+    }
+
+    .team-person {
+      padding: 14px 17px;
+      border: 1px solid #344156;
+      border-radius: 12px;
+      background: #172237;
+      color: #e9ecf5;
+      font-size: .9rem;
+    }
+
+    .team-note {
+      color: #aab6ca;
+      margin-top: 24px;
+      font-size: .88rem;
+    }
+
+    /* REFERÊNCIAS / TRANSPARÊNCIA */
+    .sources {
+      background: #f5f7fc;
+      color: #172747;
+    }
+
+    .sources details {
+      margin-top: 25px;
+      padding: 22px 26px;
+      background: white;
+      border: 1px solid #dce5ee;
+      border-radius: 15px;
+    }
+
+    .sources summary {
+      color: #172747;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .sources p {
+      color: #53647e;
+      font-size: .92rem;
+    }
+
+    .sources ul {
+      color: #53647e;
+      padding-left: 21px;
+    }
+
+    /* RODAPÉ */
+    .footer {
+      padding: 45px 0;
+      text-align: center;
+      background: #090e1a;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer p {
+      color: #aeb9ca;
+      font-size: .85rem;
+    }
+
+    .footer a {
+      display: inline-block;
+      margin-top: 10px;
+      color: var(--gold);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    /* TABLET */
+    @media (max-width: 920px) {
+      .project-facts,
+      .process-grid {
+        grid-template-columns: repeat(2,minmax(0,1fr));
+      }
+
+      .challenge-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .data-grid,
+      .validation-grid {
+        grid-template-columns: repeat(2,minmax(0,1fr));
+      }
+    }
+
+    /* CELULAR */
+    @media (max-width: 650px) {
+      .wrap {
+        width: min(100% - 30px, 1200px);
+      }
+
+      .header-inner {
+        min-height: 72px;
+      }
+
+      .brand {
+        font-size: .78rem;
+      }
+
+      .return-link {
+        padding: 9px 11px;
+        font-size: .74rem;
+      }
+
+      .project-nav-inner {
+        gap: 20px;
+      }
+
+      .project-hero {
+        padding: 65px 0 55px;
+      }
+
+      .project-hero .intro {
+        font-size: .98rem;
+      }
+
+      .section-space {
+        padding: 65px 0;
+      }
+
+      .project-facts,
+      .process-grid,
+      .innovation-grid,
+      .gallery,
+      .data-grid,
+      .research-grid,
+      .validation-grid,
+      .team-list {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-cover {
+        margin-top: 32px;
+        border-radius: 14px;
+      }
+
+      .hero-cover img {
+        border-radius: 8px;
+      }
+
+      .challenge-card,
+      .challenge-quote,
+      .research-card,
+      .team-panel {
+        padding: 23px;
+      }
+
+      .innovation-body {
+        padding: 21px;
+      }
+
+      .data-flow {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .flow-arrow {
+        transform: rotate(90deg);
+        align-self: center;
+      }
+
+      .flow-step {
+        flex: auto;
+      }
+
+      .kpis {
+        gap: 8px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .primary-link {
+        transition: none;
+      }
+
+      .primary-link:hover {
+        transform: none;
+      }
+    }
+  </style>
+<link rel="stylesheet" href="../assets/transicoes.css?v=2-visible">
+</head>
+
+<body>
+
+  <!-- CABEÇALHO DO UNIVERSO DA HELLEN -->
+  <header class="site-header">
+    <div class="header-inner wrap">
+
+      <a class="brand" href="../index.html#inicio">
+        UNIVERSO <span>DA HELLEN</span> ✦
+      </a>
+
+      <a class="return-link"
+         href="../index.html#laboratorio">
+        ← Voltar ao Laboratório
+      </a>
+
+    </div>
+  </header>
+
+  <!-- NAVEGAÇÃO DA PÁGINA -->
+  <nav class="project-nav"
+       aria-label="Navegação do projeto">
+
+    <div class="project-nav-inner wrap">
+      <a href="#desafio">O desafio</a>
+      <a href="#processo">Metodologia</a>
+      <a href="#inovacoes">Inovações</a>
+      <a href="#dados">Dados & Tecnologia</a>
+      <a href="#pesquisa">Pesquisa</a>
+      <a href="#validacao">Validação</a>
+      <a href="#equipe">Equipe</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- 01: ABERTURA -->
+    <section class="project-hero" id="inicio">
+      <div class="wrap">
+
+        <div class="hero-copy">
+
+          <span class="eyebrow">
+            HACKATHON GRUPO PETRÓPOLIS · 2026
+          </span>
+
+          <h1>
+            Da embalagem à
+            <em>experiência.</em>
+          </h1>
+
+          <p class="intro">
+            Coroa Imperial — Black Princess:
+            uma proposta de inovação desenvolvida
+            pela equipe Código Malte, integrando
+            experiência do consumidor, design de
+            produto, tecnologia, sustentabilidade
+            e estratégia de posicionamento premium.
+          </p>
+
+          <div class="hero-tags">
+            <span>Inovação</span>
+            <span>Design de Produto</span>
+            <span>Pesquisa de Mercado</span>
+            <span>Experiência Digital</span>
+            <span>Inteligência de Dados</span>
+          </div>
+
+          <a class="primary-link" href="#desafio">
+            Conheça a jornada
+            <span aria-hidden="true">↘</span>
+          </a>
+
+        </div>
+
+        <!-- CAPA ORIGINAL, SEM TEXTO SOBREPOSTO -->
+        <figure class="hero-cover">
+
+          <img
+            src="../assets/projetos/coroa-imperial/capa.png"
+            alt="Capa conceitual A Nova Era da Coroa Imperial, com uma garrafa Black Princess Gold e seus atributos de inovação"
+            fetchpriority="high"
+          >
+
+          <figcaption>
+            Arte conceitual desenvolvida para a
+            apresentação do projeto.
+          </figcaption>
+
+        </figure>
+
+        <div class="project-facts">
+
+          <div class="fact">
+            <strong>2026</strong>
+            <span>Hackathon Grupo Petrópolis</span>
+          </div>
+
+          <div class="fact">
+            <strong>5</strong>
+            <span>Integrantes na equipe Código Malte</span>
+          </div>
+
+          <div class="fact">
+            <strong>4</strong>
+            <span>Frentes principais de inovação propostas</span>
+          </div>
+
+          <div class="fact">
+            <strong>10–20</strong>
+            <span>Estabelecimentos previstos no piloto conceitual</span>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 02: DESAFIO -->
+    <section class="section-space challenge" id="desafio">
+      <div class="wrap">
+
+        <span class="eyebrow">
+          01 // PROBLEMA DE NEGÓCIO
+        </span>
+
+        <h2 class="section-title">
+          O desafio do posicionamento premium
+        </h2>
+
+        <p class="section-lead">
+          O projeto partiu da investigação de
+          oportunidades para fortalecer a
+          diferenciação da Black Princess em
+          um mercado competitivo, buscando
+          propostas capazes de criar valor
+          percebido sem depender exclusivamente
+          de alterações industriais de alto custo.
+        </p>
+
+        <div class="challenge-grid">
+
+          <div class="challenge-card">
+
+            <h3>O diagnóstico da equipe</h3>
+
+            <p>
+              Identificamos oportunidades para
+              aprofundar a experiência da marca
+              no ponto de venda, ampliar a
+              interação com consumidores e
+              desenvolver novas ocasiões de consumo.
+            </p>
+
+            <p style="margin-top:15px">
+              As soluções deveriam considerar
+              experiência do usuário, diferenciação
+              premium, viabilidade técnica,
+              sustentabilidade e potencial de
+              geração de dados.
+            </p>
+
+          </div>
+
+          <div class="challenge-quote">
+
+            <p>
+              Como transformar uma embalagem
+              em um ponto de
+              <strong>experiência, relacionamento
+              e inteligência de mercado?</strong>
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 03: METODOLOGIA -->
+    <section class="section-space process" id="processo">
+      <div class="wrap">
+
+        <span class="eyebrow">
+          02 // PROCESSO DE DESENVOLVIMENTO
+        </span>
+
+        <h2 class="section-title">
+          Da pesquisa à concepção.
+        </h2>
+
+        <p class="section-lead">
+          A equipe percorreu etapas de
+          investigação, benchmarking, brainstorming,
+          avaliação de alternativas e estruturação
+          de propostas para apresentação executiva.
+        </p>
+
+        <div class="process-grid">
+
+          <div class="process-card">
+            <span class="process-number">01</span>
+            <h3>Pesquisa</h3>
+            <p>
+              Estudos de mercado, público,
+              consumo premium, inovação
+              em embalagens e tendências.
+            </p>
+          </div>
+
+          <div class="process-card">
+            <span class="process-number">02</span>
+            <h3>Ideação</h3>
+            <p>
+              Exploração de alternativas de
+              produto, experiência digital,
+              sustentabilidade e ativações.
+            </p>
+          </div>
+
+          <div class="process-card">
+            <span class="process-number">03</span>
+            <h3>Concepção</h3>
+            <p>
+              Desenvolvimento de propostas
+              visuais, posicionamento
+              e materiais de apresentação.
+            </p>
+          </div>
+
+          <div class="process-card">
+            <span class="process-number">04</span>
+            <h3>Validação planejada</h3>
+            <p>
+              Estruturação de hipóteses,
+              indicadores e piloto comparativo
+              para possível avaliação futura.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 04: INOVAÇÕES -->
+    <section class="section-space innovations" id="inovacoes">
+      <div class="wrap">
+
+        <span class="eyebrow">
+          03 // INOVAÇÕES PROPOSTAS
+        </span>
+
+        <h2 class="section-title">
+          Quatro frentes.
+          Uma experiência integrada.
+        </h2>
+
+        <p class="section-lead">
+          A proposta Coroa Imperial foi
+          estruturada para conectar inovação
+          de produto, interação digital,
+          novas ocasiões de consumo e
+          posicionamento cultural.
+        </p>
+
+        <div class="innovation-grid">
+
+          <!-- TAMPA -->
+          <article class="innovation-card">
+
+            <div class="innovation-media">
+              <img
+                src="../assets/projetos/coroa-imperial/coroa-colecionavel.jpg"
+                alt="Conceito de garrafa Black Princess com tampa decorativa e proposta de abertura e fechamento"
+                loading="lazy"
+              >
+            </div>
+
+            <div class="innovation-body">
+
+              <span class="innovation-number">
+                01 // EMBALAGEM
+              </span>
+
+              <h3>Coroa Imperial — Abre & Fecha</h3>
+
+              <p>
+                Exploração de uma solução de
+                fechamento reutilizável,
+                com identidade visual premium,
+                conveniência de uso e elementos
+                colecionáveis.
+              </p>
+
+              <p>
+                O estudo também considerou
+                alternativas de materiais para
+                vedação e redução de componentes
+                plásticos convencionais.
+              </p>
+
+              <p class="innovation-note">
+                Conceito não submetido a testes
+                próprios de vedação, pressão
+                ou viabilidade industrial.
+              </p>
+
+            </div>
+          </article>
+
+          <!-- EXPERIÊNCIA DIGITAL -->
+          <article class="innovation-card">
+
+            <div class="innovation-media">
+              <img
+                src="../assets/projetos/coroa-imperial/variacoes-tampas.jpg"
+                alt="Oito propostas visuais de tampas personalizadas, com QR Code, mensagens e elementos colecionáveis"
+                loading="lazy"
+              >
+            </div>
+
+            <div class="innovation-body">
+
+              <span class="innovation-number">
+                02 // SMART PACKAGING
+              </span>
+
+              <h3>Embalagem conectada</h3>
+
+              <p>
+                Proposta de utilização de QR Code
+                e NFC para conectar a embalagem
+                ao universo gastronômico da marca.
+              </p>
+
+              <p>
+                O consumidor poderia consultar
+                sugestões de harmonização,
+                conhecer produtos e encontrar
+                estabelecimentos participantes.
+              </p>
+
+              <p class="innovation-note">
+                Plataforma e integração comercial
+                apresentadas como proposta,
+                sem operação comprovada.
+              </p>
+
+            </div>
+          </article>
+
+          <!-- ZERO ÁLCOOL -->
+          <article class="innovation-card">
+
+            <div class="innovation-media">
+              <img
+                src="../assets/projetos/coroa-imperial/zero-isotonica.jpg"
+                alt="Embalagem conceitual Black Princess Zero Álcool com proposta de posicionamento isotônico"
+                loading="lazy"
+              >
+            </div>
+
+            <div class="innovation-body">
+
+              <span class="innovation-number">
+                03 // NOVA OCASIÃO DE CONSUMO
+              </span>
+
+              <h3>Black Princess Zero</h3>
+
+              <p>
+                Estudo conceitual de uma bebida
+                zero álcool com proposta de
+                características hidroeletrolíticas,
+                associado a tendências de
+                moderação e estilo de vida ativo.
+              </p>
+
+              <p>
+                A equipe também investigou
+                eventos esportivos como
+                possíveis oportunidades de
+                apresentação da proposta.
+              </p>
+
+              <p class="innovation-note">
+                Formulação, propriedades
+                isotônicas e enquadramento
+                regulatório não validados.
+              </p>
+
+            </div>
+          </article>
+
+          <!-- TERRITÓRIO CULTURAL -->
+          <article class="innovation-card">
+
+            <div class="innovation-body"
+                 style="min-height:100%;display:flex;flex-direction:column;justify-content:center;padding:35px">
+
+              <span class="innovation-number">
+                04 // POSICIONAMENTO
+              </span>
+
+              <h3 style="font-family:Georgia,serif;font-size:clamp(2rem,4vw,3rem);color:#e5bd7f">
+                Jazz &amp; Blues
+              </h3>
+
+              <p>
+                Exploração de experiências
+                musicais intimistas como
+                território cultural para
+                fortalecer a percepção de
+                sofisticação e diferenciação.
+              </p>
+
+              <p>
+                A proposta privilegiava
+                ambientes de degustação,
+                gastronomia e relacionamento
+                em vez de ações de massa
+                indiferenciadas.
+              </p>
+
+              <p class="innovation-note">
+                Estratégia de posicionamento
+                proposta; não representa
+                patrocínio ou ativação realizada.
+              </p>
+
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 05: GALERIA -->
+    <section class="section-space gallery-section">
+      <div class="wrap">
+
+        <span class="eyebrow">
+          04 // EXPLORAÇÃO VISUAL
+        </span>
+
+        <h2 class="section-title">
+          Design, alternativas e protótipos visuais.
+        </h2>
+
+        <p class="section-lead">
+          Os desenhos e renders documentam
+          alternativas conceituais exploradas
+          durante o projeto. Não representam
+          protótipos físicos testados.
+        </p>
+
+        <div class="gallery">
+
+          <figure>
+            <a href="../assets/projetos/coroa-imperial/tampa-giratoria.jpg"
+               target="_blank"
+               rel="noopener noreferrer">
+
+              <img
+                src="../assets/projetos/coroa-imperial/tampa-giratoria.jpg"
+                alt="Diagrama conceitual de uma tampa giratória integrada em lata"
+                loading="lazy"
+              >
+
+            </a>
+
+            <figcaption>
+              Mecanismo giratório integrado —
+              representação conceitual.
+            </figcaption>
+          </figure>
+
+          <figure>
+            <a href="../assets/projetos/coroa-imperial/coroa-colecionavel.jpg"
+               target="_blank"
+               rel="noopener noreferrer">
+
+              <img
+                src="../assets/projetos/coroa-imperial/coroa-colecionavel.jpg"
+                alt="Proposta de garrafa com coroa decorativa e versões colecionáveis"
+                loading="lazy"
+              >
+
+            </a>
+
+            <figcaption>
+              Exploração do sistema de fechamento
+              e das coroas colecionáveis.
+            </figcaption>
+          </figure>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 06: DADOS -->
+    <section class="section-space data-section" id="dados">
+      <div class="wrap">
+
+        <span class="eyebrow">
+          05 // TECNOLOGIA E INTELIGÊNCIA
+        </span>
+
+        <h2 class="section-title">
+          Da embalagem ao dado.
+        </h2>
+
+        <p class="section-lead">
+          Uma das propostas estudadas transforma
+          o QR Code em porta de entrada para
+          uma experiência digital de harmonização
+          gastronômica, com potencial de gerar
+          informações úteis para decisões de negócio.
+        </p>
+
+        <div class="data-flow"
+             aria-label="Fluxo conceitual de interação">
+
+          <div class="flow-step">Embalagem</div>
+          <span class="flow-arrow" aria-hidden="true">→</span>
+
+          <div class="flow-step">QR / NFC</div>
+          <span class="flow-arrow" aria-hidden="true">→</span>
+
+          <div class="flow-step">Conteúdo</div>
+          <span class="flow-arrow" aria-hidden="true">→</span>
+
+          <div class="flow-step">Interação</div>
+          <span class="flow-arrow" aria-hidden="true">→</span>
+
+          <div class="flow-step">Insights</div>
+
+        </div>
+
+        <div class="data-grid">
+
+          <article class="data-card">
+            <h3>Experiência</h3>
+            <p>
+              Conteúdo gastronômico,
+              sugestões de harmonização
+              e conexão com restaurantes.
+            </p>
+          </article>
+
+          <article class="data-card">
+            <h3>Mensuração</h3>
+            <p>
+              Possíveis indicadores de
+              acessos, conteúdos visualizados,
+              tempo de navegação e engajamento.
+            </p>
+          </article>
+
+          <article class="data-card">
+            <h3>Decisão</h3>
+            <p>
+              Uso potencial dos dados para
+              avaliar interesse, aprimorar
+              experiências e orientar
+              estratégias comerciais.
+            </p>
+          </article>
+
+        </div>
+
+        <div class="note">
+          A geração de dados é uma possibilidade
+          da solução proposta. Não houve
+          demonstração de coleta real em
+          escala, e qualquer implementação
+          exigiria cuidados com privacidade,
+          transparência e legislação aplicável.
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 07: PESQUISA -->
+    <section class="section-space research" id="pesquisa">
+      <div class="wrap">
+
+        <span class="eyebrow">
+          06 // EVIDÊNCIAS E INVESTIGAÇÃO
+        </span>
+
+        <h2 class="section-title">
+          Pesquisa para orientar escolhas.
+        </h2>
+
+        <p class="section-lead">
+          O processo incluiu investigação
+          de tendências, oportunidades
+          de posicionamento, eventos e
+          sondagens exploratórias para
+          apoiar as discussões da equipe.
+        </p>
+
+        <div class="research-grid">
+
+          <article class="research-card">
+
+            <h3>Sondagem com corredoras</h3>
+
+            <p>
+              Foi realizada uma enquete
+              exploratória em um grupo de
+              corredoras sobre o interesse
+              em experimentar a proposta
+              de bebida zero álcool com
+              características isotônicas.
+            </p>
+
+            <strong class="survey-number">
+              11 de 11
+            </strong>
+
+            <div class="survey-bar"
+                 aria-label="11 de 11 respostas registradas na alternativa favorável">
+              <span></span>
+            </div>
+
+            <p>
+              As 11 respostas registradas
+              escolheram a alternativa positiva.
+            </p>
+
+            <p class="research-warning">
+              A amostra é pequena e não
+              representativa. A formulação da
+              pergunta também pode ter
+              influenciado as respostas.
+              O resultado não comprova
+              aceitação de mercado.
+            </p>
+
+          </article>
+
+          <article class="research-card">
+
+            <h3>Oportunidades de ativação</h3>
+
+            <p>
+              A equipe pesquisou eventos
+              esportivos e experiências
+              voltadas a públicos de
+              interesse da marca.
+            </p>
+
+            <p>
+              Entre as alternativas analisadas,
+              a Sephora Beauty Run foi
+              considerada como possível
+              contexto de apresentação de
+              uma inovação zero álcool.
+            </p>
+
+            <p class="research-warning">
+              Trata-se de uma oportunidade
+              estudada. Não significa que
+              houve parceria, patrocínio
+              ou participação confirmada.
+            </p>
+
+          </article>
+
+          <article class="research-card">
+
+            <h3>Benchmarking</h3>
+
+            <p>
+              O trabalho reuniu referências
+              sobre marcas de bebidas,
+              embalagens inteligentes,
+              posicionamento premium,
+              comportamento do consumidor
+              e sustentabilidade.
+            </p>
+
+            <p>
+              Esses materiais foram utilizados
+              para fundamentar hipóteses
+              e comparar oportunidades.
+            </p>
+
+          </article>
+
+          <article class="research-card">
+
+            <h3>Alternativas avaliadas</h3>
+
+            <p>
+              A equipe também examinou
+              outras possibilidades, como
+              snacks produzidos com resíduos
+              cervejeiros, máquinas de
+              venda reversa e ativações
+              em eventos de massa.
+            </p>
+
+            <p>
+              Parte dessas alternativas
+              foi descartada ou adaptada
+              após discussões sobre
+              posicionamento e viabilidade.
+            </p>
+
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 08: VALIDAÇÃO -->
+    <section class="section-space validation" id="validacao">
+      <div class="wrap">
+
+        <span class="eyebrow">
+          07 // ESTRATÉGIA EXPERIMENTAL
+        </span>
+
+        <h2 class="section-title">
+          Como a proposta poderia ser validada?
+        </h2>
+
+        <p class="section-lead">
+          Para a experiência gastronômica
+          conectada, foi estruturada uma
+          proposta de piloto controlado,
+          visando mensurar o interesse
+          dos consumidores e a contribuição
+          potencial da solução.
+        </p>
+
+        <div class="validation-grid">
+
+          <div class="validation-card">
+
+            <b>FASE 01</b>
+
+            <h3>Seleção de estabelecimentos</h3>
+
+            <p>
+              Escolha proposta de 10 a 20
+              restaurantes premium com
+              perfil compatível com o
+              público-alvo, inicialmente
+              em São Paulo.
+            </p>
+
+          </div>
+
+          <div class="validation-card">
+
+            <b>FASE 02</b>
+
+            <h3>Comparação de experiências</h3>
+
+            <p>
+              Comparar grupo controle,
+              com embalagem convencional,
+              e grupo teste, com QR Code
+              e conteúdo gastronômico.
+            </p>
+
+          </div>
+
+          <div class="validation-card">
+
+            <b>FASE 03</b>
+
+            <h3>Mensuração de resultados</h3>
+
+            <p>
+              Avaliar indicadores de
+              interação, interesse,
+              experiência e percepção
+              de marca antes de
+              considerar expansão.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="kpis"
+             aria-label="Indicadores propostos para o piloto">
+
+          <span>Taxa de scan</span>
+          <span>Usuários únicos</span>
+          <span>Tempo de permanência</span>
+          <span>Intenção de compra</span>
+          <span>Brand Lift</span>
+          <span>Vendas por estabelecimento</span>
+
+        </div>
+
+        <div class="note">
+          O piloto representa uma estratégia
+          de validação proposta no hackathon,
+          não um experimento já executado.
+          Os indicadores acima não são
+          resultados obtidos.
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 09: EQUIPE -->
+    <section class="section-space team" id="equipe">
+      <div class="wrap">
+
+        <span class="eyebrow">
+          08 // CONSTRUÇÃO COLABORATIVA
+        </span>
+
+        <h2 class="section-title">
+          Código Malte.
+          Inovação que fermenta!
+        </h2>
+
+        <p class="section-lead">
+          O Coroa Imperial foi desenvolvido
+          de forma colaborativa por uma
+          equipe multidisciplinar durante
+          o Hackathon Grupo Petrópolis 2026.
+        </p>
+
+        <div class="team-panel">
+
+          <h3>Integrantes da equipe</h3>
+
+          <div class="team-list">
+
+            <div class="team-person">
+              Débora Fragoso Teófilo dos Santos
+            </div>
+
+            <div class="team-person">
+              Evelyn Dayane Cavalcante
+            </div>
+
+            <div class="team-person">
+              Jaqueline Clara Gutierrez Bresio
+            </div>
+
+            <div class="team-person">
+              Raphaella Camilly Lucas
+            </div>
+
+            <div class="team-person">
+              Hellen Nunes dos Santos Souza
+            </div>
+
+          </div>
+
+          <p class="team-note">
+            Projeto apresentado como trabalho
+            coletivo. As propostas e materiais
+            conceituais não representam
+            implementação comercial ou
+            aprovação técnica pelo fabricante.
+          </p>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 10: REFERÊNCIAS E TRANSPARÊNCIA -->
+    <section class="section-space sources">
+      <div class="wrap">
+
+        <span class="eyebrow">
+          09 // DOCUMENTAÇÃO
+        </span>
+
+        <h2 class="section-title">
+          Pesquisa, limites e transparência.
+        </h2>
+
+        <p class="section-lead">
+          A documentação diferencia
+          dados consultados, hipóteses
+          de negócio, imagens conceituais
+          e propostas de validação.
+        </p>
+
+        <details>
+          <summary>
+            Materiais utilizados no desenvolvimento
+          </summary>
+
+          <p>
+            A equipe trabalhou com relatório
+            de encerramento, pesquisas
+            documentais, benchmarking,
+            estudos sobre comportamento
+            de consumo, concepções visuais
+            e materiais de apresentação.
+          </p>
+
+          <ul>
+            <li>
+              Relatório de Encerramento e
+              Protocolo de Projeto —
+              Hackathon Grupo Petrópolis 2026.
+            </li>
+
+            <li>
+              Black Princess: da Embalagem
+              à Experiência Gastronômica.
+            </li>
+
+            <li>
+              Referências bibliográficas
+              reunidas pela equipe Código Malte.
+            </li>
+
+            <li>
+              Pesquisas sobre QR Code,
+              consumo premium, eventos,
+              embalagem e sustentabilidade.
+            </li>
+          </ul>
+
+          <p>
+            Alguns números e benefícios citados
+            durante o processo de ideação
+            dependem de verificação adicional
+            nas fontes originais.
+          </p>
+        </details>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer class="footer">
+    <div class="wrap">
+
+      <p>
+        Coroa Imperial — Black Princess
+        <br>
+        Equipe Código Malte · Hackathon 2026
+      </p>
+
+      <a href="../index.html#laboratorio">
+        ← Voltar ao Laboratório da Hellen
+      </a>
+
+    </div>
+  </footer>
+
+<script defer src="../assets/transicoes.js?v=2-visible"></script>
+</body>
+</html>
