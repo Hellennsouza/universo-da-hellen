@@ -24,10 +24,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
- ```yaml
+
+      # Injeta a medição em todas as páginas HTML apenas durante o deploy.
+      # Preserva os arquivos originais do repositório.
       - name: Instalar integração de Analytics e consentimento
         run: python3 scripts/injetar-analytics.py .
-   ```
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
