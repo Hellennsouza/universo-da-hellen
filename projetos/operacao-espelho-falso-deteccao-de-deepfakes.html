@@ -790,11 +790,72 @@ h3 {
   margin-bottom: 16px;
 }
 
-.media-panel video {
+/* Video Espelho Falso: sem download de video ate o clique do visitante */
+.media-panel .drive-video {
+  position: relative;
   width: 100%;
-  border-radius: 10px;
   aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  overflow: hidden;
   background: #071122;
+}
+.media-panel .drive-video button {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  padding: 0;
+  color: #fff;
+  cursor: pointer;
+  background: #071122;
+}
+.media-panel .drive-video img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: .9;
+}
+.media-panel .drive-video .drive-play {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: rgba(241, 91, 167, .95);
+  box-shadow: 0 7px 22px #0008;
+  font-size: 29px;
+  padding-left: 4px;
+}
+.media-panel .drive-video .drive-label {
+  position: absolute;
+  bottom: 13px;
+  left: 13px;
+  right: 13px;
+  text-align: center;
+  font-size: .85rem;
+  font-weight: 700;
+  text-shadow: 0 1px 9px #000;
+}
+.media-panel .drive-video button:hover .drive-play,
+.media-panel .drive-video button:focus-visible .drive-play {
+  background: #f56db2;
+}
+.media-panel .drive-video iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.media-panel .drive-link {
+  color: #a2d8ff;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .media-panel p,
@@ -1903,26 +1964,20 @@ ORIGEM: teste local sintético
 
         <h3>Demonstração audiovisual</h3>
 
-        <video
-          controls
-          preload="metadata"
-          poster="../assets/capas/espelho.webp"
-          aria-label="Vídeo demonstrativo da Operação Espelho Falso"
-        >
-          <source
-            src="../assets/projetos/espelho-falso/demo.mp4"
-            type="video/mp4"
-          >
-          Seu navegador não oferece
-          suporte à reprodução do vídeo.
-        </video>
+        <div class="drive-video" id="espelho-video" aria-label="Demonstração audiovisual da Operação Espelho Falso">
+          <button type="button" class="drive-video-trigger" aria-label="Carregar o vídeo demonstrativo da Operação Espelho Falso">
+            <img src="../assets/capas/espelho.webp" alt="" loading="lazy" decoding="async">
+            <span class="drive-play" aria-hidden="true">▶</span>
+            <span class="drive-label">Assistir à demonstração</span>
+          </button>
+        </div>
 
         <p>
-          Vídeo demonstrativo do projeto.
-          Para reproduzi-lo nesta página,
-          publique o arquivo
-          <code>demo.mp4</code>
-          na pasta indicada.
+          Demonstração audiovisual hospedada no Google Drive.
+          O vídeo só é carregado quando você escolhe assistir.
+          <a class="drive-link" href="https://drive.google.com/file/d/1SvtdDd6hFDdXHMPJ-Lrq2pJrVzMpt0V1/view" target="_blank" rel="noopener noreferrer">
+            Abrir vídeo em outra aba
+          </a>.
         </p>
 
       </div>
@@ -2181,5 +2236,25 @@ showScenario('legit');
 </script>
 
 <script defer src="../assets/transicoes.js?v=2-visible"></script>
+
+<!-- Integração do vídeo sem download automático ao entrar na página -->
+<script>
+(function () {
+  'use strict';
+  var holder = document.getElementById('espelho-video');
+  if (!holder) return;
+  var button = holder.querySelector('.drive-video-trigger');
+  if (!button) return;
+  button.addEventListener('click', function () {
+    var frame = document.createElement('iframe');
+    frame.src = 'https://drive.google.com/file/d/1SvtdDd6hFDdXHMPJ-Lrq2pJrVzMpt0V1/preview';
+    frame.title = 'Vídeo demonstrativo da Operação Espelho Falso';
+    frame.allow = 'autoplay; fullscreen; picture-in-picture';
+    frame.allowFullscreen = true;
+    frame.referrerPolicy = 'strict-origin-when-cross-origin';
+    holder.replaceChildren(frame);
+  });
+})();
+</script>
 </body>
 </html>
