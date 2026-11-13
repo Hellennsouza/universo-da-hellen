@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+<title id="title">XAI e SHAP — Inteligência Artificial Explicável</title>
+<desc id="desc">Capa abstrata com as letras XAI, SHAP e gráfico de contribuição de variáveis.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#081532"/><stop offset=".55" stop-color="#17244c"/><stop offset="1" stop-color="#3d2468"/>
+  </linearGradient>
+  <radialGradient id="glow" cx="52%" cy="32%" r="78%">
+    <stop offset="0" stop-color="#a45be5" stop-opacity=".26"/><stop offset="1" stop-color="#081532" stop-opacity="0"/>
+  </radialGradient>
+  <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+    <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#88a8ed" stroke-opacity=".075" stroke-width="1.5"/>
+  </pattern>
+  <linearGradient id="positive" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#ed5aab"/><stop offset="1" stop-color="#ff95ce"/>
+  </linearGradient>
+  <linearGradient id="negative" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#459ddf"/><stop offset="1" stop-color="#60e3f5"/>
+  </linearGradient>
+  <filter id="softglow" x="-30%" y="-50%" width="160%" height="200%"><feGaussianBlur stdDeviation="26"/></filter>
+</defs>
+<rect width="1200" height="675" fill="url(#bg)"/>
+<rect width="1200" height="675" fill="url(#glow)"/>
+<rect width="1200" height="675" fill="url(#grid)"/>
+<circle cx="1100" cy="95" r="160" fill="#ce62e7" opacity=".12" filter="url(#softglow)"/>
+<circle cx="690" cy="505" r="180" fill="#328de2" opacity=".10" filter="url(#softglow)"/>
+<g stroke="#83aff2" stroke-width="2" opacity=".24" fill="none">
+ <path d="M 52 180 L 194 123 L 332 171 L 456 103 M 46 555 L 150 509 L 219 570 L 327 531"/>
+ <circle cx="52" cy="180" r="7"/><circle cx="194" cy="123" r="6"/><circle cx="332" cy="171" r="6"/>
+</g>
+<rect x="77" y="83" width="415" height="45" rx="22" fill="#e84fa0" fill-opacity=".16" stroke="#e84fa0" stroke-opacity=".6"/>
+<text x="100" y="114" fill="#fbc0df" font-family="Arial,Helvetica,sans-serif" font-size="23" font-weight="700" letter-spacing="3">INTELIGÊNCIA EXPLICÁVEL</text>
+<text x="65" y="365" fill="#fbfcff" font-family="Arial,Helvetica,sans-serif" font-size="255" font-weight="800" letter-spacing="-12">XAI</text>
+<rect x="78" y="397" width="197" height="6" rx="3" fill="#f36bad"/>
+<text x="80" y="491" fill="#a9d6fc" font-family="Arial,Helvetica,sans-serif" font-size="74" font-weight="800" letter-spacing="6">SHAP</text>
+<text x="84" y="537" fill="#d9e2f7" font-family="Arial,Helvetica,sans-serif" font-size="25" letter-spacing="1.3">EXPLICANDO AS DECISÕES</text>
+<g transform="translate(618 122)">
+ <rect width="492" height="442" rx="31" fill="#071734" fill-opacity=".74" stroke="#8fa6ff" stroke-opacity=".34" stroke-width="2"/>
+ <circle cx="33" cy="39" r="7" fill="#ef76bc"/><circle cx="57" cy="39" r="7" fill="#56bee7"/><circle cx="81" cy="39" r="7" fill="#8e85e7"/>
+ <text x="32" y="101" fill="#f7f8ff" font-family="Arial,Helvetica,sans-serif" font-size="28" font-weight="700">CONTRIBUIÇÃO DAS VARIÁVEIS</text>
+ <path d="M 250 129 L 250 366" stroke="#a4b4db" stroke-width="2" stroke-dasharray="6 7" opacity=".5"/>
+ <g font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#b9cdea">
+  <text x="35" y="165">Fator 01</text><text x="35" y="214">Fator 02</text><text x="35" y="263">Fator 03</text><text x="35" y="312">Fator 04</text><text x="35" y="361">Fator 05</text>
+ </g>
+ <g>
+  <rect x="250" y="144" width="176" height="24" rx="9" fill="url(#positive)"/>
+  <rect x="153" y="193" width="97" height="24" rx="9" fill="url(#negative)"/>
+  <rect x="250" y="242" width="116" height="24" rx="9" fill="url(#positive)"/>
+  <rect x="190" y="291" width="60" height="24" rx="9" fill="url(#negative)"/>
+  <rect x="250" y="340" width="71" height="24" rx="9" fill="url(#positive)"/>
+ </g>
+ <circle cx="250" cy="388" r="7" fill="#dcefff"/>
+ <text x="270" y="398" fill="#c7d7ed" font-family="Arial,Helvetica,sans-serif" font-size="19">Previsão do modelo</text>
+</g>
+<rect x="0" y="655" width="1200" height="20" fill="#e85aa6"/>
+</svg>
