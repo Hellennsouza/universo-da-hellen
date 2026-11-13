@@ -1363,3 +1363,29 @@ mask-image: none !important;
   }
 }
 
+.estrela-3d {
+  display: inline-block;
+  transform-origin: center;
+  animation: girarEstrela 8s ease-in-out infinite;
+  backface-visibility: visible;
+}
+
+@keyframes girarEstrela {
+  0%, 15%, 100% {
+    transform: perspective(200px) rotateY(0deg);
+  }
+
+  45% {
+    transform: perspective(200px) rotateY(180deg);
+  }
+
+  70% {
+    transform: perspective(200px) rotateY(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .estrela-3d {
+    animation: none;
+  }
+}
