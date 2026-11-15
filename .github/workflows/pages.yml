@@ -10,9 +10,10 @@ permissions:
   pages: write
   id-token: write
 
+# Uma publicação por vez; não cancela uma publicação que já começou.
 concurrency:
-  group: pages-${{ github.ref }}
-  cancel-in-progress: true
+  group: pages
+  cancel-in-progress: false
 
 jobs:
   deploy:
@@ -33,11 +34,16 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
+      # Nome único por tentativa: evita o erro "Vários artefatos com o nome
+      # github-pages" quando o fluxo é executado novamente (Re-run).
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: .
+          name: github-pages-${{ github.run_attempt }}
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages-${{ github.run_attempt }}
