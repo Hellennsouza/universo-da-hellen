@@ -7,7 +7,71 @@
   <link rel="stylesheet" href="../assets/analytics-consent.css" data-uh-tracking="G-XKVSE9F9FZ">
   <script defer src="../assets/analytics-consent.js" data-uh-tracking="G-XKVSE9F9FZ"></script>
 <link rel="canonical" href="https://universodahellen.com.br/projetos/icdf-framework-de-decisao-em-credito-integrado.html">
-</head><body><header><strong>✦ Universo da Hellen</strong><a href="../index.html">← Voltar ao portfólio</a></header><main><div class="eyebrow">ZORNTIX · FINANCIAL INTELLIGENCE · DEMONSTRAÇÃO</div><h1>Framework Integrado de Decisão de Crédito <span style="color:#efa5ca">ICDF v29</span></h1><p class="lead">Explore risco de crédito (ICD), qualidade cadastral (IQD), classificação em quatro quadrantes, processamento de carteiras e análise de sensibilidade.</p><p class="note">Ambiente demonstrativo e educacional, com dados sintéticos e regras de pontuação derivadas do protótipo Streamlit. Não consulta bureaus, não executa um TensorFlow Lattice treinado e não constitui decisão real de crédito nem certificação regulatória. Evite inserir dados pessoais reais.</p><div class="shell"><aside class="panel controls"><div class="eyebrow">GOVERNANÇA · PARÂMETROS</div><h2 style="margin-top:8px">Cut-offs</h2><label class="field">ICD mínimo <span class="value" id="icdVal">0,85</span><input id="cutIcd" type="range" min="0.50" max="0.95" step="0.01" value="0.85"></label><label class="field">IQD mínimo <span class="value" id="iqdVal">0,70</span><input id="cutIqd" type="range" min="0.50" max="0.90" step="0.01" value="0.70"></label><label class="checkbox field"><input id="q2lock" type="checkbox" checked> Monitorar retenção Q2 ≥ 1%</label><p class="muted small">Os cut-offs alteram o enquadramento do simulador e da carteira sintética. A trava Q2 é um indicador de alerta, não um bloqueio automático.</p><button class="button secondary" id="reset">Restaurar parâmetros</button></aside><section class="panel"><nav class="tabs" aria-label="Módulos ICDF"><button class="tab active" data-tab="individual">🧮 Simulador</button><button class="tab" data-tab="portfolio">📊 Carteira</button><button class="tab" data-tab="batch">📂 CSV em lote</button><button class="tab" data-tab="monte">📉 Monte Carlo</button><button class="tab" data-tab="bench">🏆 Benchmark</button></nav>
+<style>/* Universo da Hellen · blocos complementares (atualização 2026-11) */
+.nx{font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:#fff;padding:84px 0;background:radial-gradient(900px 380px at 85% 0%,#1c2f6b 0%,transparent 60%),linear-gradient(180deg,#0a1330,#101b3c);position:relative}
+.nx *{box-sizing:border-box}
+.nx .g>*{min-width:0}
+.nx.light{background:#f7f9fd;color:#1d2844}
+.nx.nx-round{margin:28px 0;border-radius:24px}
+.nx .w{max-width:1120px;margin:0 auto;padding:0 32px}
+.nx .k{font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#7bd4f4}
+.nx.light .k{color:#c93d84}
+.nx .k.nx-sub{margin-top:46px}
+.nx h2{font-family:inherit;font-size:clamp(28px,3.4vw,38px);line-height:1.12;letter-spacing:-.025em;font-weight:800;margin:10px 0;color:inherit}
+.nx h3{font-family:inherit;font-size:22px;margin:10px 0 6px;color:#101b3c;letter-spacing:-.01em}
+.nx p.l{color:#c4cee6;max-width:720px;font-size:16.5px;line-height:1.6;margin:0}
+.nx.light p.l{color:#56657e}
+.nx p.l.nx-small{margin-top:22px;font-size:14px}
+.nx .g{display:grid;gap:16px;margin-top:30px}
+.nx .g3{grid-template-columns:repeat(3,1fr)}.nx .g4{grid-template-columns:repeat(4,1fr)}
+.nx .c{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.13);border-radius:18px;padding:22px;color:inherit;text-decoration:none}
+.nx.light .c{background:#fff;border-color:#e3e8f2;box-shadow:0 10px 30px rgba(16,27,60,.06)}
+.nx .c.hl{border:1.5px solid #ec70ae}
+.nx .nx-link{transition:transform .2s,border-color .2s}.nx .nx-link:hover{transform:translateY(-3px);border-color:#ec70ae}
+.nx .n{font-size:34px;font-weight:800;letter-spacing:-.03em;line-height:1.1}
+.nx .n em{font-style:normal;color:#ec70ae}
+.nx .t{font-weight:650;margin-top:6px;font-size:15px;line-height:1.35}
+.nx .s{color:#9fb0d3;font-size:13.5px;margin-top:6px;line-height:1.5}
+.nx.light .s{color:#56657e}
+.nx .ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:rgba(236,112,174,.16);color:#f59cc9;font-weight:800;margin-bottom:12px;font-size:18px}
+.nx.light .ic{background:#fdeaf3;color:#c93d84}
+.nx .acts{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.nx .btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:12px 22px;font-weight:650;font-size:15px;background:#ec70ae;color:#fff;text-decoration:none;box-shadow:0 8px 24px rgba(236,112,174,.35);transition:transform .2s}
+.nx .btn:hover{transform:translateY(-2px)}
+.nx .btn.o{background:transparent;border:1.5px solid rgba(255,255,255,.45);box-shadow:none}
+.nx.light .btn.o{border-color:#c7d1e3;color:#101b3c}
+.nx pre{font-family:ui-monospace,"JetBrains Mono",Menlo,Consolas,monospace;background:#060d22;border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:14px;font-size:12.5px;line-height:1.5;color:#cfe3ff;margin:12px 0 0;white-space:pre;overflow-x:auto}
+.nx .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.nx .chips span{font-size:12.5px;font-weight:600;padding:5px 11px;border-radius:999px;background:rgba(255,255,255,.1);color:#dbe4f7}
+.nx.light .chips span{background:#eef2fa;color:#2a3a63}
+.nx .tl{display:grid;grid-template-columns:repeat(4,1fr);margin-top:30px;border-top:2px solid rgba(255,255,255,.15)}
+.nx .tl div{padding:16px 16px 0 0;position:relative}.nx .tl div::before{content:"";position:absolute;top:-8px;left:0;width:14px;height:14px;border-radius:50%;background:#ec70ae}
+.nx .tl b{display:block;font-size:14px;color:#f59cc9}.nx .tl span{font-size:13.5px;color:#c4cee6}
+.nx .pill{display:inline-block;font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:999px;background:#e3f6ee;color:#167a53;text-transform:uppercase;letter-spacing:.05em}
+.nx .nx-ifba{grid-template-columns:1.1fr 1fr;align-items:stretch}
+.nx .nx-mini{grid-template-columns:1fr 1fr;margin-top:0;gap:12px}
+.nx .nx-mini .t{margin:0}
+.nx .nx-gal .ph-img{display:block;border-radius:14px;overflow:hidden;aspect-ratio:4/3;background:#e9eef8}
+.nx .nx-gal img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
+.nx .nx-gal .ph-img:hover img{transform:scale(1.04)}
+@media(max-width:900px){.nx .g3,.nx .g4{grid-template-columns:1fr 1fr}.nx .nx-ifba{grid-template-columns:1fr}.nx .tl{grid-template-columns:1fr 1fr;row-gap:20px}}
+@media(max-width:600px){.nx{padding:60px 0}.nx .w{padding:0 20px}.nx .g3{grid-template-columns:1fr}.nx .g4{grid-template-columns:1fr 1fr}.nx .tl{grid-template-columns:1fr}.nx .btn{width:100%;justify-content:center}}
+@media(prefers-reduced-motion:reduce){.nx .btn,.nx .nx-link,.nx .nx-gal img{transition:none}}
+</style>
+</head><body><header><strong>✦ Universo da Hellen</strong><a href="../index.html">← Voltar ao portfólio</a></header><main><div class="eyebrow">ZORNTIX · FINANCIAL INTELLIGENCE · DEMONSTRAÇÃO</div><h1>Framework Integrado de Decisão de Crédito <span style="color:#efa5ca">ICDF v29</span></h1><p class="lead">Explore risco de crédito (ICD), qualidade cadastral (IQD), classificação em quatro quadrantes, processamento de carteiras e análise de sensibilidade.</p><p class="note">Ambiente demonstrativo e educacional, com dados sintéticos e regras de pontuação derivadas do protótipo Streamlit. Não consulta bureaus, não executa um TensorFlow Lattice treinado e não constitui decisão real de crédito nem certificação regulatória. Evite inserir dados pessoais reais.</p><section class="nx nx-round" aria-labelledby="nx-icdf-t"><div class="w">
+<div class="k">Resultados do protótipo v29</div><h2 id="nx-icdf-t">O que o ICDF entregou na base de teste</h2>
+<p class="l">Base sintética de 25.000 proponentes. A matriz cruza risco de crédito (ICD) e qualidade cadastral (IQD, com Isolation Forest) e reserva ao menos 1% do fluxo para a mesa de análise.</p>
+<div class="g g3">
+ <div class="c"><div class="n"><em>R$</em> 34,1 mi</div><div class="t">Lucro líquido projetado</div><div class="s">R$ 34.125.750,00 na base de teste</div></div>
+ <div class="c"><div class="n">861</div><div class="t">Propostas retidas na mesa (Q2)</div><div class="s">3,44% da base, para saneamento cadastral</div></div>
+ <div class="c"><div class="n">2,09% <em>×</em> 1,24%</div><div class="t">Inadimplência Q2 × Q1</div><div class="s">O IQD separou os perfis de pior risco</div></div>
+ <div class="c"><div class="n"><em>R$</em> 117 mil</div><div class="t">Capital de PDD preservado</div><div class="s">18 inadimplentes retidos preventivamente</div></div>
+ <div class="c"><div class="n">&lt; 0,001</div><div class="t">PSI das 5 variáveis</div><div class="s">Sem mudança de população (dataset shift)</div></div>
+ <div class="c"><div class="n">100%</div><div class="t">Monotonicidade (TF Lattice)</div><div class="s">Garantida por construção do modelo</div></div>
+</div>
+<div class="tl"><div><b>v3 – v6</b><span>Primeira versão do IQD: completude + Isolation Forest</span></div><div><b>v7 – v22</b><span>MLOps: Monte Carlo, calibração Brier e KS</span></div><div><b>v23 – v26</b><span>Trava de governança na mesa de análise (Q2 ≥ 1%)</span></div><div><b>v27 – v29</b><span>TensorFlow Lattice e benchmark com 4 modelos</span></div></div>
+<p class="l nx-small">Base regulatória: Resoluções CMN nº 4.557/2017 e nº 4.966/2021. Base teórica: racionalidade limitada (Herbert Simon). Resultados de simulação relatados no README do projeto, sem validação em produção.</p>
+<div class="acts"><a class="btn" href="https://github.com/Hellennsouza/ICDF-FRAMEWORK" target="_blank" rel="noopener noreferrer">‹/› Ver código no GitHub</a><a class="btn o" href="https://github.com/Hellennsouza/ICDF-FRAMEWORK/blob/main/IQDF/VERS%C3%83O%20ATUAL/relatorio-tecnico-icdf-v29.docx" target="_blank" rel="noopener noreferrer">Relatório técnico v29 ↗</a></div>
+</div></section><div class="shell"><aside class="panel controls"><div class="eyebrow">GOVERNANÇA · PARÂMETROS</div><h2 style="margin-top:8px">Cut-offs</h2><label class="field">ICD mínimo <span class="value" id="icdVal">0,85</span><input id="cutIcd" type="range" min="0.50" max="0.95" step="0.01" value="0.85"></label><label class="field">IQD mínimo <span class="value" id="iqdVal">0,70</span><input id="cutIqd" type="range" min="0.50" max="0.90" step="0.01" value="0.70"></label><label class="checkbox field"><input id="q2lock" type="checkbox" checked> Monitorar retenção Q2 ≥ 1%</label><p class="muted small">Os cut-offs alteram o enquadramento do simulador e da carteira sintética. A trava Q2 é um indicador de alerta, não um bloqueio automático.</p><button class="button secondary" id="reset">Restaurar parâmetros</button></aside><section class="panel"><nav class="tabs" aria-label="Módulos ICDF"><button class="tab active" data-tab="individual">🧮 Simulador</button><button class="tab" data-tab="portfolio">📊 Carteira</button><button class="tab" data-tab="batch">📂 CSV em lote</button><button class="tab" data-tab="monte">📉 Monte Carlo</button><button class="tab" data-tab="bench">🏆 Benchmark</button></nav>
 
 <div id="individual" class="view active"><h2>Avaliação individual</h2><p class="muted">Insira valores fictícios para observar como o protótipo calcula o ICD e o IQD.</p><div class="grid"><div><label class="field">Identificador fictício<input id="client" value="PROPONENTE-EXEMPLO"></label><label class="field">Renda mensal (R$)<input id="income" type="number" min="1000" max="100000" value="8500"></label><label class="field">Score de crédito (0–1000)<input id="score" type="number" min="0" max="1000" value="720"></label><label class="field">Idade<input id="age" type="number" min="18" max="80" value="38"></label></div><div><label class="field">Dias de atraso<input id="late" type="number" min="0" max="180" value="0"></label><label class="field">Utilização do limite (%)<input id="util" type="number" min="0" max="100" value="35"></label><label class="field">Produto<select id="product"><option>Crédito Pessoal</option><option>Consignado</option><option>Imobiliário</option><option>Veículos</option></select></label></div><div><label class="field">Completude cadastral (%)<input id="complete" type="number" min="20" max="100" value="95"></label><label class="field">Segmento<select id="segment"><option>Varejo</option><option>Uniclass</option><option>Personnalité</option></select></label><label class="field">Comprovante verificado?<select id="proof"><option>Sim</option><option>Não</option></select></label></div></div><button class="button" id="calc">Calcular avaliação</button><div class="metrics"><div class="metric">ICD <strong id="mIcd">—</strong><small>Score demonstrativo</small></div><div class="metric">IQD <strong id="mIqd">—</strong><small>Qualidade cadastral</small></div><div class="metric">PD estimada <strong id="mPd">—</strong><small>Fórmula heurística</small></div><div class="metric">Quadrante <strong id="mQ">—</strong><small id="mStatus">Classificação</small></div></div><div class="note" id="decision" aria-live="polite"></div><h3>Contribuições dos fatores</h3><p class="muted small">Decomposição aritmética das fórmulas, não valores SHAP calculados sobre um modelo treinado.</p><div class="chart" id="factors"></div><h3>Laudo demonstrativo</h3><button class="button secondary" id="downloadJson">Baixar avaliação JSON</button><button class="button secondary" id="downloadTxt">Baixar resumo TXT</button></div>
 <div id="portfolio" class="view"><h2>Matriz de carteira sintética</h2><p class="muted">2.500 registros gerados com semente fixa para comparar o efeito dos cut-offs. Os pontos são fictícios.</p><div class="chart"><canvas id="scatter" width="940" height="500" aria-label="Gráfico de dispersão ICD versus IQD"></canvas></div><div class="legend"><span><i class="dot" style="background:#48b77a"></i>Q1 Aprovação</span><span><i class="dot" style="background:#efb84d"></i>Q2 Mesa</span><span><i class="dot" style="background:#58b7f0"></i>Q3 Reestruturação</span><span><i class="dot" style="background:#f07680"></i>Q4 Recusa</span></div><div class="metrics" id="portfolioMetrics"></div><p class="note" id="portfolioAlert"></p><button class="button secondary" id="exportPortfolio">Baixar carteira sintética CSV</button></div>
