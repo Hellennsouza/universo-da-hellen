@@ -1,8 +1,220 @@
 <!DOCTYPE html>
-<html lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Análise de Risco de Crédito e Inadimplência | Universo da Hellen</title><meta content="Modelo preditivo em Python para identificar risco de inadimplência em carteira simulada de 1.500 clientes." name="description"/><style>*{box-sizing:border-box}body{margin:0;background:#f5f7fc;color:#182442;font:16px/1.7 system-ui,Segoe UI,sans-serif}a{color:#176da3}header{background:#101b3c;color:white;padding:22px 6%}header a{color:white;text-decoration:none;font-weight:800}main{max-width:1020px;margin:auto;padding:55px 25px 90px}.eyebrow{color:#a84d85;font-weight:800;text-transform:uppercase;letter-spacing:.15em;font-size:12px}h1{font-size:clamp(2.3rem,5vw,4.2rem);line-height:1.12;margin:15px 0}h2{color:#101b3c}p{max-width:760px}.lead{font-size:1.2rem;color:#52637b}.hero{padding:35px 0 50px;border-bottom:1px solid #d9e1ee}.pill{display:inline-block;padding:5px 13px;background:#e3f0fb;color:#145985;border-radius:50px;font-size:13px;font-weight:700;margin:5px 7px 5px 0}.layout{display:grid;grid-template-columns:1.6fr .8fr;gap:28px;margin-top:40px}.panel{background:white;border:1px solid #e2e9f3;border-radius:18px;padding:26px;margin-bottom:22px;box-shadow:0 8px 30px #1523460b}.panel h2{margin-top:0}.note{border-left:4px solid #e87fb5;background:#fff3f9;padding:15px 20px;border-radius:8px}.button{display:inline-block;background:#e87fb5;color:#142044;padding:12px 19px;border-radius:10px;font-weight:800;text-decoration:none;margin-top:10px}.back{display:inline-block;margin:20px 0;color:#42607f;text-decoration:none}footer{text-align:center;padding:25px;background:#101b3c;color:#c5d5ed}@media(max-width:750px){.layout{grid-template-columns:1fr}main{padding-top:25px}}</style><link href="../assets/detail-enhancements.css" rel="stylesheet"/><meta content="article" property="og:type"/><meta content="Análise de Risco de Crédito e Inadimplência | Universo da Hellen" property="og:title"/><meta content="Modelo preditivo em Python para identificar risco de inadimplência em carteira simulada de 1.500 clientes." property="og:description"/><meta content="../assets/compartilhamento.png" property="og:image"/><link rel="stylesheet" href="../assets/transicoes.css?v=2-visible">
-  <!-- Universo da Hellen: analytics e consentimento LGPD -->
-  <link rel="stylesheet" href="../assets/analytics-consent.css" data-uh-tracking="G-XKVSE9F9FZ">
-  <script defer src="../assets/analytics-consent.js" data-uh-tracking="G-XKVSE9F9FZ"></script>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Análise de Risco de Crédito e Inadimplência | Universo da Hellen</title>
+<meta name="description" content="Modelo Random Forest em Python para prever inadimplência em carteira simulada de 1.500 clientes: ROC-AUC 0,85 e acurácia de 77%.">
 <link rel="canonical" href="https://universodahellen.com.br/projetos/analise-de-risco-de-credito-e-inadimplencia.html">
-</head><body><header><a href="../index.html">✦ UNIVERSO DA HELLEN</a></header><main><div class="site-note">Universo da Hellen · Registro de projeto. Dados e resultados apresentados refletem a documentação disponível; metas e simulações não representam resultados de produção.</div><a class="back" href="../index.html#projetos">← Voltar ao acervo</a><section class="hero"><div class="eyebrow">Registro de projeto · Finanças</div><h1>Análise de Risco de Crédito e Inadimplência</h1><p class="lead">Modelo preditivo em Python para identificar risco de inadimplência em carteira simulada de 1.500 clientes.</p><span class="pill">Repositório público documentado</span><span class="pill">Finanças</span></section><div class="layout"><div><section class="panel"><h2>Sobre o projeto</h2><p>Problema: antecipar default e apoiar decisões de crédito e recuperação de ativos. Dados sintéticos, treinamento/teste 75%/25% e Random Forest com 100 árvores.</p></section><section class="panel"><h2>Desenvolvimento e metodologia</h2><p>As ferramentas e técnicas identificadas no registro estão apresentadas ao lado. Esta seção pode ser ampliada com etapas, decisões de arquitetura, metodologia, imagens e desafios encontrados.</p></section><section class="panel"><h2>Resultados e aprendizados</h2><p>Resultados documentados no README: acurácia de 77%, ROC-AUC 0,8537 e recall de 43% para inadimplentes. O baixo recall desta classe aponta necessidade de aprimoramento antes de uso real.</p></section><section class="panel"><h2>Galeria e evidências</h2><p>Espaço para inserir fotografias, capturas de tela, diagramas, demonstrações e documentos deste projeto.</p></section></div><aside><section class="panel"><h2>Ficha do projeto</h2><strong>Área</strong><p>Finanças</p><strong>Ferramentas e competências</strong><p>Python, Pandas, NumPy, scikit-learn, Jupyter Notebook, Random Forest</p><strong>Fonte</strong><p>GitHub público</p><a class="button" href="https://github.com/Hellennsouza/Analise-de-Risco-de-Credito" rel="noopener noreferrer" target="_blank">Ver no GitHub ↗</a></section><div class="note">Informações baseadas no registro público previamente documentado. Resultados de protótipos ou simulações não representam validação em produção.</div></aside></div><a class="back" href="../index.html#projetos">← Explorar outros projetos</a></main><footer>Universo da Hellen · Registros de alguém que sonha alto</footer><script defer="" src="../galeria-github.js"></script><script defer src="../assets/transicoes.js?v=2-visible"></script>
-</body></html>
+<meta property="og:type" content="article">
+<meta property="og:title" content="Análise de Risco de Crédito e Inadimplência | Universo da Hellen">
+<meta property="og:description" content="Random Forest em carteira simulada de 1.500 clientes: ROC-AUC 0,85 e acurácia de 77%.">
+<meta property="og:image" content="https://universodahellen.com.br/assets/capas/risco.webp">
+<meta property="og:url" content="https://universodahellen.com.br/projetos/analise-de-risco-de-credito-e-inadimplencia.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.png">
+<style>
+:root{--navy:#101b3c;--deep:#0a1330;--pink:#ec70ae;--pinkd:#c93d84;--cyan:#57c6eb;--paper:#f7f9fd;--ink:#1d2844;--muted:#56657e;--line:#e3e8f2;--warn:#b07707}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--paper);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{max-width:100%;height:auto;display:block}
+.wrap{max-width:1160px;margin:0 auto;padding:0 32px}
+.skip{position:absolute;left:-999px}.skip:focus{left:12px;top:12px;background:#fff;color:var(--navy);padding:8px 12px;border-radius:8px;z-index:20}
+/* Navegação */
+.nav{position:sticky;top:0;z-index:10;background:rgba(10,19,48,.94);backdrop-filter:blur(8px);color:#fff}
+.nav .wrap{display:flex;align-items:center;gap:28px;height:66px}
+.logo{font-weight:800;letter-spacing:.06em;font-size:15px;text-decoration:none;white-space:nowrap}.logo b{color:var(--cyan)}.logo i{color:var(--pink);font-style:normal}
+.nav ul{display:flex;gap:26px;list-style:none;margin-left:auto;font-size:14.5px}
+.nav ul a{color:#c9d3ea;text-decoration:none}.nav ul a:hover{color:#fff}
+.nav ul a[aria-current]{color:#fff;font-weight:600;box-shadow:inset 0 -2px 0 var(--pink);padding-bottom:4px}
+.nav details{display:none;margin-left:auto}
+.nav summary{list-style:none;cursor:pointer;border:1px solid rgba(255,255,255,.4);border-radius:12px;padding:7px 12px;font-size:14px}
+.nav summary::-webkit-details-marker{display:none}
+.nav details[open] ul{display:flex;flex-direction:column;position:absolute;right:16px;top:60px;background:var(--deep);padding:18px 22px;border-radius:14px;gap:14px;box-shadow:0 20px 40px rgba(0,0,0,.35)}
+/* Botões e selos */
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:12px 22px;font-weight:650;font-size:15px;text-decoration:none;border:1.5px solid transparent;white-space:nowrap}
+.btn.p{background:var(--pink);color:#fff;box-shadow:0 8px 24px rgba(236,112,174,.35)}.btn.p:hover{background:#e25ca0}
+.btn.o{border-color:rgba(255,255,255,.45);color:#fff}.btn.o:hover{background:rgba(255,255,255,.08)}
+.btn.s{padding:8px 16px;font-size:13.5px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.05em;padding:4px 10px;border-radius:999px;text-transform:uppercase}
+.b-ok{background:#e3f6ee;color:#167a53}.b-soft{background:rgba(255,255,255,.12);color:#dbe4f7}
+.chip{display:inline-block;font-size:12.5px;font-weight:600;padding:5px 11px;border-radius:999px;background:rgba(255,255,255,.1);color:#dbe4f7}
+.eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--pinkd)}
+/* Topo */
+.hero{background:radial-gradient(1100px 480px at 85% 0%,#1c2f6b 0%,transparent 60%),linear-gradient(180deg,#0a1330,#101b3c);color:#fff;padding:40px 0 80px}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center}
+.crumb{font-size:14px;color:#9fb0d3}.crumb a{color:#c9d3ea;text-decoration:none}.crumb a:hover{text-decoration:underline}
+.hero h1{font-size:clamp(2.1rem,4.4vw,3.1rem);line-height:1.08;letter-spacing:-.03em;font-weight:800;margin:14px 0 10px}
+.hero .lead{font-size:18px;color:#c4cee6;max-width:560px}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.hero .tags{margin:18px 0 26px}
+.hero figure img{border-radius:20px;box-shadow:0 30px 60px rgba(0,0,0,.4);width:100%}
+/* Resumo */
+.tldr{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 14px 40px rgba(16,27,60,.08);margin-top:-44px;position:relative;overflow:hidden}
+.tldr div{padding:22px 24px;border-right:1px solid var(--line)}.tldr div:last-child{border-right:none}
+.tldr h2{font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--pinkd);margin-bottom:6px}
+.tldr p{font-size:14.5px}
+/* Seções */
+section.block{padding:72px 0 0}
+.block h2.t{font-size:clamp(1.6rem,3vw,2.2rem);letter-spacing:-.025em;line-height:1.15;margin:8px 0 10px}
+.block .intro{color:var(--muted);max-width:680px;margin-bottom:28px}
+.card{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 10px 30px rgba(16,27,60,.06)}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.kpi{padding:24px}.kpi .n{font-size:42px;font-weight:800;letter-spacing:-.03em;color:var(--navy);line-height:1.1}
+.kpi .t{font-weight:650;margin-top:4px}.kpi .s{color:var(--muted);font-size:13.5px;margin-top:6px}
+.kpi.alert .n{color:var(--warn)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:s}
+.steps li{list-style:none;padding:22px;counter-increment:s}
+.steps li::before{content:counter(s,decimal-leading-zero);display:inline-block;font-size:12px;font-weight:700;color:var(--pinkd);border:1.5px solid #f3bcd8;border-radius:8px;padding:2px 8px;margin-bottom:12px}
+.steps h3{font-size:16.5px;margin-bottom:6px}.steps p{font-size:14px;color:var(--muted)}
+.vars{margin-top:18px;padding:20px 24px;font-size:14.5px}
+.vars ul{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;list-style:none;margin-top:10px}
+.vars li{background:#f3f6fc;border-radius:12px;padding:10px 12px}.vars li b{display:block;font-size:13.5px}.vars li span{font-size:12.5px;color:var(--muted)}
+.charts{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.charts figure{padding:16px}.charts img{border-radius:10px;width:100%}
+.charts figcaption{font-size:13.5px;color:var(--muted);margin-top:10px}
+.charts .wide{grid-column:1/3}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.two .card{padding:26px}.two h3{font-size:18px;margin-bottom:8px}
+.two ul{margin-left:18px;font-size:15px}.two li{margin:6px 0}
+.disclaimer{margin-top:26px;border-left:4px solid var(--pink);background:#fff3f9;padding:14px 18px;border-radius:10px;font-size:14px;color:#5a3550}
+.pager{display:flex;justify-content:space-between;gap:16px;border-top:1px solid var(--line);margin-top:56px;padding:24px 0 72px;font-weight:600}
+.pager a{text-decoration:none;color:var(--navy)}.pager a:hover{color:var(--pinkd)}
+.pager small{display:block;font-weight:500;color:var(--muted);font-size:12.5px}
+footer{background:var(--deep);color:#aab6d3;font-size:14px;padding:26px 0}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}footer a{color:#dbe4f7}
+:focus-visible{outline:3px solid var(--cyan);outline-offset:3px;border-radius:6px}
+@media (max-width:860px){
+ .wrap{padding:0 20px}
+ .nav ul{display:none}.nav details{display:block}
+ .hero .wrap{grid-template-columns:1fr}.hero{padding-bottom:70px}
+ .tldr,.kpis,.steps,.charts,.two{grid-template-columns:1fr}
+ .tldr div{border-right:none;border-bottom:1px solid var(--line)}
+ .charts .wide{grid-column:auto}
+ .vars ul{grid-template-columns:1fr 1fr}
+ .btn{justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+<link rel="stylesheet" href="../assets/transicoes.css?v=2-visible">
+<!-- Universo da Hellen: analytics e consentimento LGPD -->
+<link rel="stylesheet" href="../assets/analytics-consent.css" data-uh-tracking="G-XKVSE9F9FZ">
+<script defer src="../assets/analytics-consent.js" data-uh-tracking="G-XKVSE9F9FZ"></script>
+</head>
+<body>
+<a class="skip" href="#conteudo">Ir para o conteúdo</a>
+
+<nav class="nav" aria-label="Principal"><div class="wrap">
+ <a class="logo" href="../index.html">UNIVERSO <b>DA HELLEN</b> <i>✦</i></a>
+ <ul>
+  <li><a href="../index.html">Início</a></li>
+  <li><a href="../projetos.html" aria-current="page">Projetos</a></li>
+  <li><a href="../recrutadores.html">Experiência</a></li>
+  <li><a href="../solucoes.html">Soluções</a></li>
+  <li><a href="../index.html#contato">Contato</a></li>
+ </ul>
+ <details><summary>☰ Menu</summary><ul>
+  <li><a href="../index.html">Início</a></li>
+  <li><a href="../projetos.html" aria-current="page">Projetos</a></li>
+  <li><a href="../recrutadores.html">Experiência</a></li>
+  <li><a href="../solucoes.html">Soluções</a></li>
+  <li><a href="../index.html#contato">Contato</a></li>
+ </ul></details>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+ <div>
+  <div class="crumb"><a href="../projetos.html">Projetos</a> › Ciência de Dados · Finanças</div>
+  <div class="row" style="margin-top:16px"><span class="badge b-ok">Concluído</span><span class="badge b-soft">Projeto autônomo</span></div>
+  <h1>Análise de risco de crédito e inadimplência</h1>
+  <p class="lead">Modelo preditivo em Python que antecipa quais clientes tendem a atrasar pagamentos, para apoiar decisões de crédito, cobrança e provisão.</p>
+  <div class="row tags"><span class="chip">Python</span><span class="chip">pandas</span><span class="chip">NumPy</span><span class="chip">scikit-learn</span><span class="chip">Random Forest</span><span class="chip">Jupyter</span></div>
+  <div class="row">
+   <a class="btn p" href="https://github.com/Hellennsouza/Analise-de-Risco-de-Credito" target="_blank" rel="noopener noreferrer">‹/› Ver código no GitHub</a>
+   <a class="btn o" href="https://github.com/Hellennsouza/Analise-de-Risco-de-Credito/blob/main/notebooks/01_analise_credito.ipynb" target="_blank" rel="noopener noreferrer">Abrir notebook ↗</a>
+  </div>
+ </div>
+ <figure><img src="../assets/capas/risco.webp" srcset="../assets/capas/risco-720.webp 720w, ../assets/capas/risco.webp 1280w" sizes="(max-width:860px) 92vw, 460px" alt="Capa do projeto Análise de Risco de Crédito e Inadimplência" width="1280" height="721"></figure>
+</div></header>
+
+<main id="conteudo" class="wrap">
+ <section class="tldr" aria-label="Resumo do projeto">
+  <div><h2>Problema</h2><p>Identificar clientes propensos ao default antes do vencimento, reduzindo perdas e provisão (PDD).</p></div>
+  <div><h2>Solução</h2><p>Random Forest com 100 árvores, separação de treino e teste de 75% e 25%.</p></div>
+  <div><h2>Dados</h2><p>Carteira sintética de 1.500 clientes com 5 variáveis de crédito.</p></div>
+  <div><h2>Resultado</h2><p><b>ROC-AUC de 0,85</b> e acurácia de 77% na base de teste.</p></div>
+ </section>
+
+ <section class="block" aria-labelledby="res">
+  <div class="eyebrow">Resultados</div>
+  <h2 class="t" id="res">O que o modelo entregou</h2>
+  <p class="intro">Métricas calculadas sobre 375 clientes reservados para teste, que o modelo não viu durante o treinamento.</p>
+  <div class="kpis">
+   <div class="card kpi"><div class="n">0,85</div><div class="t">ROC-AUC</div><div class="s">Boa capacidade de separar bons e maus pagadores.</div></div>
+   <div class="card kpi"><div class="n">77%</div><div class="t">Acurácia</div><div class="s">Classificações corretas no conjunto de teste.</div></div>
+   <div class="card kpi"><div class="n">88%</div><div class="t">Recall de adimplentes</div><div class="s">249 de 283 bons pagadores aprovados corretamente.</div></div>
+   <div class="card kpi alert"><div class="n">43%</div><div class="t">Recall de inadimplentes</div><div class="s">40 de 92 identificados: principal ponto a melhorar.</div></div>
+  </div>
+ </section>
+
+ <section class="block" aria-labelledby="graf">
+  <div class="eyebrow">Evidências</div>
+  <h2 class="t" id="graf">Gráficos gerados no notebook</h2>
+  <p class="intro">Saídas reais do código publicado no repositório.</p>
+  <div class="charts">
+   <figure class="card"><img src="../assets/projetos/risco-credito/curva-roc.webp" alt="Curva ROC do modelo Random Forest com AUC de 0,8537" loading="lazy" width="1277" height="929"><figcaption>Curva ROC: AUC de 0,8537. No corte padrão de 50%, a taxa de falsos positivos é de 12%.</figcaption></figure>
+   <figure class="card"><img src="../assets/projetos/risco-credito/matriz-confusao.webp" alt="Matriz de confusão: 249 adimplentes e 40 inadimplentes classificados corretamente" loading="lazy" width="1242" height="929"><figcaption>Matriz de confusão: 249 de 283 adimplentes e 40 de 92 inadimplentes classificados corretamente.</figcaption></figure>
+   <figure class="card wide"><img src="../assets/projetos/risco-credito/importancia-variaveis.webp" alt="Importância das variáveis: score de crédito 36%, uso do limite 22%, renda 17%, idade 14%, dias de atraso 11%" loading="lazy" width="1582" height="855"><figcaption>Importância das variáveis: score de crédito (36%) e uso do limite (22%) explicam mais da metade das decisões do modelo.</figcaption></figure>
+  </div>
+ </section>
+
+ <section class="block" aria-labelledby="met">
+  <div class="eyebrow">Metodologia</div>
+  <h2 class="t" id="met">Como o projeto foi construído</h2>
+  <ol class="steps">
+   <li class="card"><h3>Simulação da carteira</h3><p>1.500 clientes gerados com semente fixa (42), garantindo resultados reproduzíveis.</p></li>
+   <li class="card"><h3>Regra de risco</h3><p>Probabilidade de default sobe com score abaixo de 500, uso do limite acima de 80% e mais de 3 atrasos.</p></li>
+   <li class="card"><h3>Treino e teste</h3><p>Divisão de 75% (1.125 clientes) para treino e 25% (375) para teste.</p></li>
+   <li class="card"><h3>Avaliação</h3><p>Relatório de classificação, ROC-AUC, matriz de confusão e importância das variáveis.</p></li>
+  </ol>
+  <div class="card vars"><b>Variáveis usadas pelo modelo</b>
+   <ul>
+    <li><b>Score de crédito</b><span>300 a 850</span></li>
+    <li><b>Uso do limite</b><span>10% a 100%</span></li>
+    <li><b>Renda mensal</b><span>média de R$ 5.500</span></li>
+    <li><b>Idade</b><span>21 a 64 anos</span></li>
+    <li><b>Dias de atraso</b><span>histórico (Poisson)</span></li>
+   </ul></div>
+ </section>
+
+ <section class="block" aria-labelledby="apr">
+  <div class="eyebrow">Leitura de negócio</div>
+  <h2 class="t" id="apr">Aprendizados e próximos passos</h2>
+  <div class="two">
+   <div class="card"><h3>Aprendizados</h3><ul>
+    <li>Score de birô e uso do limite são os sinais de risco mais fortes da carteira.</li>
+    <li>Em crédito, o falso negativo é perda direta: aprovar um inadimplente custa mais do que recusar um bom pagador.</li>
+    <li>Uma ROC-AUC alta não basta: o ponto de corte precisa refletir o apetite de risco da instituição.</li>
+   </ul></div>
+   <div class="card"><h3>Próximos passos</h3><ul>
+    <li>Balancear as classes e testar cortes mais conservadores (por exemplo, 30%) para elevar o recall de inadimplentes.</li>
+    <li>Adicionar SHAP para explicar cada decisão individual.</li>
+    <li>Validar o modelo com uma base real anonimizada.</li>
+   </ul></div>
+  </div>
+  <p class="disclaimer">Projeto de estudo com dados sintéticos. Os resultados demonstram método e raciocínio analítico e não representam validação em produção.</p>
+ </section>
+
+ <nav class="pager" aria-label="Outros projetos">
+  <a href="icdf-framework-de-decisao-em-credito-integrado.html"><small>← Projeto anterior</small>Framework ICDF</a>
+  <a href="../projetos.html" style="text-align:center"><small>Portfólio</small>Todos os projetos</a>
+  <a href="operacao-espelho-falso-deteccao-de-deepfakes.html" style="text-align:right"><small>Próximo projeto →</small>Operação Espelho Falso</a>
+ </nav>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Universo da Hellen · Por Hellen Souza</span><span><a href="../privacidade.html">Privacidade</a> · <a href="#conteudo">Voltar ao topo ↑</a></span></div></footer>
+<script defer src="../assets/transicoes.js?v=2-visible"></script>
+</body>
+</html>
